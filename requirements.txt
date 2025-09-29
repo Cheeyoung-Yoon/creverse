@@ -4,3 +4,6 @@ openai
 langfuse
 pandas
 openpyxl
+pytest
+pytest-asyncio 
+jsonschema

@@ -48,6 +48,10 @@ class AzureOpenAILLM:
 
         return await asyncio.to_thread(_invoke_sync)
 
+    
+    
+    
+    
 
 # 테스트/개발용
 class FakeLLM:

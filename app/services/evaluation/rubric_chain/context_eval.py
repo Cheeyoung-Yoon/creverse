@@ -2,12 +2,13 @@ from typing import Dict, Any, Optional
 from app.client.bootstrap import build_llm
 from app.utils.prompt_loader import PromptLoader
 from app.models.rubric import RubricItemResult
+from app.utils.tracer import LLM
 
 
 class StructureEvaluator:
     """서론/본론/결론 구조 평가 체인 (PromptLoader + AzureOpenAI)"""
 
-    def __init__(self, client: Optional[build_llm] = None, loader: Optional[PromptLoader] = None):
+    def __init__(self, client: Optional[LLM] = None, loader: Optional[PromptLoader] = None):
         self.client = client or build_llm()
         # Use provided PromptLoader if given; otherwise create a new one.
         self.prompt_loader = loader or PromptLoader()
@@ -21,8 +22,7 @@ class StructureEvaluator:
         rubric_item: str,
         text: str,
         level: str = "Basic",
-        previous_summary: Optional[str] = None,
-        trace_id: Optional[str] = None,
+        previous_summary: Optional[str] = None
     ) -> Dict[str, Any]:
         try:
             system_message = self.prompt_loader.load_prompt(rubric_item, level)
@@ -42,7 +42,6 @@ class StructureEvaluator:
             response = await self.client.run_azure_openai(
                 messages=messages,
                 json_schema=self._get_schema(),
-                trace_id=trace_id,
                 name=f"structure_{rubric_item}",
             )
 
@@ -75,25 +74,22 @@ class StructureEvaluator:
         body: str,
         conclusion: str,
         level: str = "Basic",
-        trace_id: Optional[str] = None,
     ) -> Dict[str, Any]:
         """서론→본론→결론 순으로 평가하며, 이전 섹션 요약(피드백)을 다음 섹션 컨텍스트로 제공."""
         intro_res = await self._evaluate_section(
-            rubric_item="introduction", text=intro, level=level, trace_id=trace_id
+            rubric_item="introduction", text=intro, level=level
         )
         body_res = await self._evaluate_section(
             rubric_item="body",
             text=body,
             level=level,
-            previous_summary=intro_res.get("feedback"),
-            trace_id=trace_id,
+            previous_summary=intro_res.get("feedback")
         )
         concl_res = await self._evaluate_section(
             rubric_item="conclusion",
             text=conclusion,
             level=level,
             previous_summary=body_res.get("feedback"),
-            trace_id=trace_id,
         )
 
         total_usage = {

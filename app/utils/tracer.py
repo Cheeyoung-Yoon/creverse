@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional, List, Protocol
+from typing import Any, Dict, Optional, List, Protocol, runtime_checkable
 from langfuse import Langfuse, observe
 from dotenv import load_dotenv
 
@@ -12,6 +12,7 @@ def lf():
         _lf = Langfuse()  # 이 시점에 이미 .env 로드되어 있어야 함
     return _lf  # LANGFUSE_* env used when present
 
+@runtime_checkable
 class LLM(Protocol):
     async def run_azure_openai(
         self, *, messages: List[Dict[str, str]],

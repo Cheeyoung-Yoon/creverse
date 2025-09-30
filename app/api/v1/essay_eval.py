@@ -2,11 +2,11 @@
 import os
 import time
 from fastapi import APIRouter, Depends, HTTPException, Request, Response
-from app.client.azure_openai import AzureOpenAILLM
 from app.utils.prompt_loader import PromptLoader
 from app.services.essay_evaluator import EssayEvaluator
 from app.models.request import EssayEvalRequest
 from app.client.bootstrap import build_llm
+from app.utils.tracer import LLM
 # 기본 골조 작성 
 async def route_timer(request: Request):
     start = time.perf_counter()
@@ -24,14 +24,14 @@ async def route_timer(request: Request):
 
 router = APIRouter(dependencies=[Depends(route_timer)])
 
-def get_llm():
+def get_llm() -> LLM:
     # Use ObservedLLM wrapper so Langfuse traces are emitted
     return build_llm()
 
 def get_loader():
     return PromptLoader()
 
-def get_evaluator(llm=Depends(get_llm), loader=Depends(get_loader)):
+def get_evaluator(llm: LLM = Depends(get_llm), loader: PromptLoader = Depends(get_loader)) -> EssayEvaluator:
     return EssayEvaluator(llm, loader)
 
 @router.post("/essay-eval")

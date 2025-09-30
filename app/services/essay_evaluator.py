@@ -2,7 +2,7 @@
 import asyncio
 from typing import Any, Dict
 
-from app.client.azure_openai import AzureOpenAILLM
+from app.utils.tracer import LLM
 from app.utils.prompt_loader import PromptLoader
 from app.models.request import EssayEvalRequest
 from app.services.evaluation.pre_process import pre_process_essay
@@ -21,7 +21,7 @@ class EssayEvaluator:
       pre_process → (grammar | structure) in parallel → aggregate → post_process
     """
 
-    def __init__(self, llm: AzureOpenAILLM, loader: PromptLoader):
+    def __init__(self, llm: LLM, loader: PromptLoader):
         self.llm = llm
         self.loader = loader
 

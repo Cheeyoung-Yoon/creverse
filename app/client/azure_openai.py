@@ -2,9 +2,10 @@ import asyncio, json
 from typing import Any, Dict, Optional
 from openai import AzureOpenAI
 from app.core.config import settings
+from app.utils.tracer import LLM
 
 
-class AzureOpenAILLM:
+class AzureOpenAILLM(LLM):
     """GPT-5용 최소 래퍼: JSON 스키마 강제 제어"""
 
     def __init__(self):
@@ -90,7 +91,7 @@ class AzureOpenAILLM:
                 #     "prompt_tokens": resp.usage.prompt_tokens,
                 #     "completion_tokens": resp.usage.completion_tokens,
                 #     "total_tokens": resp.usage.total_tokens,
-                # } 
+                # }
             }
             return result
 

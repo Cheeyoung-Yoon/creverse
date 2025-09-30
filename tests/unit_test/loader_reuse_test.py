@@ -20,7 +20,7 @@ class _DummyGrammarEvaluator:
         self.loader = loader
         type(self).instances.append(self)
 
-    async def check_grammar(self, text: str, level: str = "Basic", trace_id: str | None = None):
+    async def check_grammar(self, text: str, level: str = "Basic"):
         return {
             "rubric_item": "grammar",
             "score": 1,
@@ -39,7 +39,7 @@ class _DummyStructureEvaluator:
         self.loader = loader
         type(self).instances.append(self)
 
-    async def run_structure_chain(self, *, intro: str, body: str, conclusion: str, level: str = "Basic", trace_id=None):
+    async def run_structure_chain(self, *, intro: str, body: str, conclusion: str, level: str = "Basic"):
         def _sec(name: str):
             return {
                 "rubric_item": name,
@@ -59,6 +59,12 @@ class _DummyStructureEvaluator:
         }
 
 
+class _DummyLLM:
+    async def run_azure_openai(self, *, messages, json_schema, trace_id=None, name=None):
+        # Minimal protocol-satisfying stub; never actually used in this test
+        return {"content": {}}
+
+
 @pytest.mark.asyncio
 async def test_loader_reused_via_essay_evaluator(monkeypatch):
     # Patch EssayEvaluator to use our dummy evaluators
@@ -67,8 +73,8 @@ async def test_loader_reused_via_essay_evaluator(monkeypatch):
     monkeypatch.setattr(essay_eval_mod, "StructureEvaluator", _DummyStructureEvaluator)
 
     loader = PromptLoader()
-    # llm is unused by dummies; can be any object
-    ev = EssayEvaluator(llm=object(), loader=loader)
+    # Provide an LLM-like stub that satisfies the protocol
+    ev = EssayEvaluator(llm=_DummyLLM(), loader=loader)
 
     req = EssayEvalRequest(level_group="Basic", topic_prompt="abc", submit_text="this is a sufficiently long essay text for test")
     result = await ev.evaluate(req)
@@ -91,4 +97,3 @@ def test_loader_can_be_injected_into_evaluators_directly():
     s = StructureEvaluator(loader=loader)
     assert g.prompt_loader is loader
     assert s.prompt_loader is loader
-

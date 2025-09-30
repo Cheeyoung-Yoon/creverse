@@ -3,12 +3,13 @@ import json
 from app.client.bootstrap import build_llm
 from app.utils.prompt_loader import PromptLoader
 from app.models.rubric import RubricItemResult
+from app.utils.tracer import LLM
 
 
 class GrammarEvaluator:
     """문법 검수를 위한 평가자 클래스"""
     
-    def __init__(self, client: Optional[build_llm] = None, loader: Optional[PromptLoader] = None):
+    def __init__(self, client: Optional[LLM] = None, loader: Optional[PromptLoader] = None):
         self.client = client or build_llm()
         # Use provided PromptLoader if given; otherwise create a new one.
         self.prompt_loader = loader or PromptLoader()
@@ -17,7 +18,7 @@ class GrammarEvaluator:
         """문법 검수 결과를 위한 JSON 스키마 (Pydantic에서 자동 생성)"""
         return RubricItemResult.model_json_schema()
     
-    async def check_grammar(self, text: str, level: str = "Basic", trace_id: str | None = None) -> Dict[str, Any]:
+    async def check_grammar(self, text: str, level: str = "Basic") -> Dict[str, Any]:
         """
         텍스트의 문법을 검사합니다.
         Returns: GrammarRubricResult + 메타데이터(token_usage, evaluation_type)
@@ -36,7 +37,6 @@ class GrammarEvaluator:
             response = await self.client.run_azure_openai(
                 messages=messages,
                 json_schema=self._get_grammar_schema(),
-                trace_id=trace_id,
                 name="grammar_check",
             )
             

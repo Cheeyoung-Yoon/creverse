@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 from app.services.evaluation.rubric_chain.grammar_eval import GrammarEvaluator
 from app.models.rubric import RubricItemResult
 from app.client.azure_openai import AzureOpenAILLM
+from app.utils.tracer import LLM
 
 
 class TestGrammarEvaluator:
@@ -208,7 +209,8 @@ class TestGrammarEvaluator:
         evaluator = GrammarEvaluator()
         
         assert evaluator.client is not None
-        assert isinstance(evaluator.client, AzureOpenAILLM)
+        # Accept any client that satisfies the LLM protocol (ObservedLLM or concrete client)
+        assert isinstance(evaluator.client, LLM)
         assert evaluator.prompt_loader is not None
 
     def test_evaluator_initialization_with_custom_client(self):

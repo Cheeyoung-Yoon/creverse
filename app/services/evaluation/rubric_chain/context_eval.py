@@ -34,11 +34,11 @@ class StructureEvaluator:
             # 이전 섹션 요약을 사용자 메시지 컨텍스트로 첨부(있을 경우)
             if previous_summary:
                 user_content = (
-                    f"[Previous section summary]
+                    f"""[Previous section summary]
 {previous_summary}
 
 [Current section]
-{text}"
+{text}"""
                 )
             else:
                 user_content = text

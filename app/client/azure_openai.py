@@ -70,10 +70,12 @@ class AzureOpenAILLM(LLM):
         def _invoke_sync() -> dict[str, Any]:
             # Patch schema to satisfy OpenAI strict JSON Schema requirements
             strict_schema = self._ensure_strict_json_schema(json_schema)
-            resp = self.client.responses.parse(
+            
+            # Use the correct chat completions API with structured outputs
+            resp = self.client.chat.completions.create(
                 model=self.deployment,
-                input=messages,
-                text_format={
+                messages=messages,
+                response_format={
                     "type": "json_schema",
                     "json_schema": {
                         "name": json_schema.get("title", json_schema.get("name", "EvalSchema")),
@@ -81,17 +83,23 @@ class AzureOpenAILLM(LLM):
                         "strict": True,
                     },
                 },
-                reasoning={"effort": "minimal"},
-                text={"verbosity": "low"},
+                max_completion_tokens=self.default_max_output_tokens,
             )
+            
+            # Parse the response content
+            content = resp.choices[0].message.content
+            if content:
+                parsed_content = json.loads(content)
+            else:
+                parsed_content = {}
+            
             result = {
-                "content": json.loads(resp.choices[0].message.content),
-                # langfuse에서 이미 기록하므로 주석 처리
-                # "usage": {
-                #     "prompt_tokens": resp.usage.prompt_tokens,
-                #     "completion_tokens": resp.usage.completion_tokens,
-                #     "total_tokens": resp.usage.total_tokens,
-                # }
+                "content": parsed_content,
+                "usage": {
+                    "prompt_tokens": resp.usage.prompt_tokens if resp.usage else 0,
+                    "completion_tokens": resp.usage.completion_tokens if resp.usage else 0,
+                    "total_tokens": resp.usage.total_tokens if resp.usage else 0,
+                }
             }
             return result
 

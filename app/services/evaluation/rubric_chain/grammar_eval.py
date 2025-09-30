@@ -16,7 +16,7 @@ class GrammarEvaluator:
         """문법 검수 결과를 위한 JSON 스키마 (Pydantic에서 자동 생성)"""
         return RubricItemResult.model_json_schema()
     
-    async def check_grammar(self, text: str) -> Dict[str, Any]:
+    async def check_grammar(self, text: str, level: str = "Basic") -> Dict[str, Any]:
         """
         텍스트의 문법을 검사합니다.
         Returns: GrammarRubricResult + 메타데이터(token_usage, evaluation_type)
@@ -24,7 +24,7 @@ class GrammarEvaluator:
         try:
             # 프롬프트 구성
             system_message = self.prompt_loader.load_prompt(
-                "grammar", {"text": text}
+                "grammar", level
             )
             messages = [
                 {"role": "system", "content": system_message},

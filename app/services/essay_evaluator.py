@@ -40,9 +40,9 @@ class EssayEvaluator:
         t1 = perf_counter()
         timings_ms["pre_process"] = (t1 - t0) * 1000.0
 
-        # Evaluators share the same client
-        grammar_eval = GrammarEvaluator(client=self.llm)
-        structure_eval = StructureEvaluator(client=self.llm)
+        # Evaluators share the same client and PromptLoader (reuse per request)
+        grammar_eval = GrammarEvaluator(client=self.llm, loader=self.loader)
+        structure_eval = StructureEvaluator(client=self.llm, loader=self.loader)
 
         # No splitting — pass full text to each section
         intro = body = conclusion = req.submit_text

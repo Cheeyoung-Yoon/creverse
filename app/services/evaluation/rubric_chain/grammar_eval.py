@@ -8,9 +8,10 @@ from app.models.rubric import RubricItemResult
 class GrammarEvaluator:
     """문법 검수를 위한 평가자 클래스"""
     
-    def __init__(self, client: Optional[build_llm] = None):
+    def __init__(self, client: Optional[build_llm] = None, loader: Optional[PromptLoader] = None):
         self.client = client or build_llm()
-        self.prompt_loader = PromptLoader()
+        # Use provided PromptLoader if given; otherwise create a new one.
+        self.prompt_loader = loader or PromptLoader()
     
     def _get_grammar_schema(self) -> Dict[str, Any]:
         """문법 검수 결과를 위한 JSON 스키마 (Pydantic에서 자동 생성)"""

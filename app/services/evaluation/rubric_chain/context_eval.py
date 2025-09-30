@@ -7,9 +7,10 @@ from app.models.rubric import RubricItemResult
 class StructureEvaluator:
     """서론/본론/결론 구조 평가 체인 (PromptLoader + AzureOpenAI)"""
 
-    def __init__(self, client: Optional[build_llm] = None):
+    def __init__(self, client: Optional[build_llm] = None, loader: Optional[PromptLoader] = None):
         self.client = client or build_llm()
-        self.prompt_loader = PromptLoader()
+        # Use provided PromptLoader if given; otherwise create a new one.
+        self.prompt_loader = loader or PromptLoader()
 
     def _get_schema(self) -> Dict[str, Any]:
         return RubricItemResult.model_json_schema()

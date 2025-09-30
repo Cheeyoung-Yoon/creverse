@@ -74,8 +74,8 @@ class PriceTracker:
         """Get summary of current session usage and costs."""
         
         # Calculate total costs
-        total_input_cost = (self.total_usage.prompt_tokens / 1000) * self.input_cost_per_1m
-        total_output_cost = (self.total_usage.completion_tokens / 1000) * self.output_cost_per_1m
+        total_input_cost = (self.total_usage.prompt_tokens / 1000000) * self.input_cost_per_1m
+        total_output_cost = (self.total_usage.completion_tokens / 1000000) * self.output_cost_per_1m
         total_session_cost = total_input_cost + total_output_cost
         
         # Calculate session duration

@@ -28,7 +28,7 @@ essay-eval/
 │   └──              # Prompt Ops (semver)
 ├── tests/
 │   ├── unit/                          # pre/post/loader 순수 함수 테스트
-│   └── integration/                   # API + FakeLLM 통합 테스트
+│   └── integration/                   # API/CLI 통합 테스트 (실 Azure 필요)
 ├── scripts/                           # (배치/리포트 등 선택)
 ├── docker-compose.yml
 ├── pyproject.toml
@@ -92,4 +92,3 @@ essay-eval/
   API 경계에서 명확한 계약(Contract)을 정의하여, 내부 로직과 분리된 안정적인 개발이 가능합니다.
 
 ⚡ 내부 서비스 로직에서는 불필요한 오버헤드를 줄이기 위해 **dict 또는 dataclass**를 활용하며, **Pydantic은 API 경계에서만 사용**합니다.
-

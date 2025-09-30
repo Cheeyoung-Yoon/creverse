@@ -35,30 +35,12 @@ RUBRIC_ITEM_SCHEMA = {
 }
 
 @pytest.mark.asyncio
-async def test_generate_json_returns_valid_schema(monkeypatch):
-    # Import your real class
+async def test_generate_json_returns_valid_schema():
+    # Real call only when Azure creds are present
+    if not (os.getenv("AZURE_OPENAI_API_KEY") and os.getenv("AZURE_OPENAI_ENDPOINT") and os.getenv("AZURE_OPENAI_DEPLOYMENT")):
+        pytest.skip("Azure OpenAI credentials not configured; skipping LLM test.")
+
     from app.client.azure_openai import AzureOpenAILLM
-
-    # Stub the LLM call so the test is fast, deterministic, and doesn’t need real Azure credentials.
-    async def fake_generate_json(self, messages, json_schema):
-        # You can assert inputs if you want:
-        assert isinstance(messages, list) and messages, "messages must be non-empty"
-        assert json_schema.get("name") == "RubricItem"
-        # Return a JSON matching the schema
-        return {
-            "rubric_item": "introduction",
-            "score": 2,
-            "corrections": [
-                {
-                    "highlight": "The opening sentence",
-                    "issue": "Too generic",
-                    "correction": "Add a specific hook about the topic"
-                }
-            ],
-            "feedback": "Clear, engaging introduction with a solid thesis."
-        }
-
-    monkeypatch.setattr(AzureOpenAILLM, "generate_json", fake_generate_json)
 
     llm = AzureOpenAILLM()
     messages = [
@@ -68,11 +50,14 @@ async def test_generate_json_returns_valid_schema(monkeypatch):
 
     out = await llm.generate_json(messages=messages, json_schema=RUBRIC_ITEM_SCHEMA)
 
+    # The client returns a dict with content and usage
+    assert "content" in out and "usage" in out
+    content = out["content"]
+    usage = out["usage"]
+
     # Validate structure against the schema
-    validate(instance=out, schema=RUBRIC_ITEM_SCHEMA)
+    validate(instance=content, schema=RUBRIC_ITEM_SCHEMA)
 
     # A few semantic checks
-    assert out["rubric_item"] == "introduction"
-    assert out["score"] == 2
-    assert isinstance(out["corrections"], list) and len(out["corrections"]) >= 1
-    assert "feedback" in out and out["feedback"]
+    assert content["rubric_item"] in ["introduction", "body", "conclusion", "grammar"]
+    assert isinstance(usage.get("total_tokens"), int)

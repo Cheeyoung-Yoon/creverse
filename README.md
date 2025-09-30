@@ -94,10 +94,34 @@ essay-eval/
 ⚡ 내부 서비스 로직에서는 불필요한 오버헤드를 줄이기 위해 **dict 또는 dataclass**를 활용하며, **Pydantic은 API 경계에서만 사용**합니다.
 
 
-gpt 5 paramter: 
-reasoning={"effort": "minimal"},
-text={"verbosity": "low"},
 
-문장이 복잡하거나 길지 않은 500자 이하의 문장들이여서 reasoning을 사용할 필요성 없음
-오히려 속도 저하 이슈를 발생시킴. 
-결과 값 비교하여도 차이가 없음으로 minial 사용 
+## 📋 TODO - Advanced Scoring Features
+
+###  CEFR 기반 어휘 난이도 평가 시스템
+- [ ] Grammar 평가에 어휘 난이도 정보 추가 (A1-A2:1, B1-B2:2, B2-C1:3, C1+:4)
+- [ ] CEFR 레벨별 가중치 계산 로직 구현
+- [ ] 학생 레벨과 어휘 난이도 매칭을 통한 점수 보정
+
+###  길이 기반 점수 시스템
+- [ ] 단어 수 기반 점수 계산 (Basic:50-100=1, Intermediate:100-150=2, Advanced:150-200=3, Expert:200+=4)
+- [ ] 길이 요구사항 충족 여부에 따른 가중치 적용
+- [ ] Pre-process 단계에서 길이 검증 통합
+
+###  언어 기반 가중치 시스템
+- [ ] 영어/비영어 텍스트 감지 및 가중치 적용 (영어=1.0, 비영어=0.0)
+- [ ] 언어 검증을 통한 점수 무효화 로직
+
+###  적응형 레벨 평가 시스템
+- [ ] 8점 초과 시 자동 레벨 승급 로직 (Basic → Intermediate → Advanced → Expert)
+- [ ] recommended_student_level 및 adj_score 계산
+- [ ] 각 레벨별 최적 점수 범위 내 수렴 알고리즘
+
+###  통합 점수 계산 공식
+- [ ] 최종점수 = 기본총점 × 어휘가중치 × 길이가중치 × 언어가중치
+- [ ] FinalEvaluation 모델 확장 (vocabulary_weight, length_score, language_weight 등)
+- [ ] 다중 요소 가중치 시스템의 피드백 통합
+
+###  향상된 피드백 시스템
+- [ ] 레벨 평가 정보 포함 피드백 생성
+- [ ] CEFR 어휘 분석 결과 피드백 추가
+- [ ] 길이 및 언어 검증 결과 상세 정보 제공 

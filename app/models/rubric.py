@@ -20,7 +20,7 @@ class RubricItemResult(BaseModel):
 
 class ScoreCorrectionFeedback(BaseModel):
     """Aggregated score, merged corrections, and combined feedback."""
-    score: int = Field(ge=0, le=2)
+    score: int = Field(ge=0, le=2, description="개별 항목들의 평균 점수 (0-2)")
     corrections: List[Correction]
     feedback: str
 

@@ -43,9 +43,23 @@ class GrammarEvaluator:
             )
 
             content = response["content"]
+            logger.info(f"Grammar LLM response content: {content}")
+            
             # 모델이 문자열 JSON을 줄 수도 있음
             if isinstance(content, str):
                 content = json.loads(content)
+
+            # 빈 content 체크
+            if not content or content == {}:
+                logger.warning("Empty content received from LLM for grammar evaluation")
+                return {
+                    "rubric_item": "grammar",
+                    "score": 0,
+                    "corrections": [],
+                    "feedback": "Grammar evaluation failed - empty response from AI model",
+                    "token_usage": response.get("usage", {}),
+                    "evaluation_type": "grammar_check"
+                }
 
             # Pydantic 검증/파싱
             parsed = RubricItemResult(**content)
@@ -60,9 +74,9 @@ class GrammarEvaluator:
             logger.exception("Grammar evaluation failed")
             return {
                 "rubric_item": "grammar",
-                "score": 0,
+                "score": 1,  # Give a neutral score instead of 0
                 "corrections": [],
-                "feedback": f"문법 검사 중 오류 발생: {exc}",
+                "feedback": "문법 검사 중 기술적 문제가 발생했습니다. 다시 시도해 주세요.",
                 "error": str(exc),
                 "evaluation_type": "grammar_check",
                 "token_usage": {

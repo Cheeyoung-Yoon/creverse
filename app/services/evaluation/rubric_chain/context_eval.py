@@ -55,19 +55,44 @@ class StructureEvaluator:
             )
 
             content = response["content"]
+            usage = response.get("usage", {})
+            logger.info(f"📥 Received LLM response for {rubric_item} - tokens: {usage.get('total_tokens', 'unknown')}")
+            
             if isinstance(content, str):
                 content = json.loads(content)
 
+            # 빈 content 체크
+            if not content or content == {}:
+                logger.error(f"❌ Empty content received from LLM for {rubric_item} evaluation")
+                logger.debug(f"Full response: {response}")
+                return {
+                    "rubric_item": rubric_item,
+                    "score": 0,
+                    "corrections": [],
+                    "feedback": f"{rubric_item} evaluation failed - empty response from AI model",
+                    "token_usage": usage,
+                    "evaluation_type": "structure_chain"
+                }
+
+            logger.debug(f"Parsing {rubric_item} response content: {content}")
             parsed = RubricItemResult(**content)
             result = parsed.model_dump()
-            result["token_usage"] = response.get("usage", {})
+            result["token_usage"] = usage
             result["evaluation_type"] = "structure_chain"
+            
+            logger.info(f"✅ {rubric_item} evaluation completed - score: {result['score']}, corrections: {len(result['corrections'])}")
             return result
 
         except Exception as exc:  # noqa: BLE001
-            logger.exception("Structure evaluation failed for %s", rubric_item)
+            logger.error(f"💥 Structure evaluation FAILED for {rubric_item}: {type(exc).__name__}: {exc}")
+            logger.exception("Full exception details for %s", rubric_item)
             return {
                 "rubric_item": rubric_item,
+                "score": 1,  # Give a neutral score instead of 0
+                "corrections": [],
+                "feedback": f"{rubric_item} 평가 중 기술적 문제가 발생했습니다. 다시 시도해 주세요.",
+                "error": str(exc),
+                "evaluation_type": "structure_chain",
                 "score": 0,
                 "corrections": [],
                 "feedback": f"구조 평가 중 오류 발생: {exc}",

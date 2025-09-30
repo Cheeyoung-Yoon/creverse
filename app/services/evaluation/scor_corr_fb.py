@@ -22,23 +22,30 @@ def _dedup_corrections(corrections: Iterable[Correction]) -> List[Correction]:
     return out
 
 
-def _compute_overall_score(items: Sequence[RubricItemResult], pre: PreProcessResult | None) -> int:
-    """Compute overall 0–2 score from rubric item scores with light pre-check adjustments.
-
-    Heuristic:
-    - Base = average of item scores (0–2 range)
-    - If length requirement not met: -0.5
-    - If non-English text: -0.5
-    - Clamp to [0, 2] and round to nearest int
+def _compute_average_score(items: Sequence[RubricItemResult], pre: PreProcessResult | None) -> int:
+    """Compute average score from rubric items (traditional 0-2 scale).
+    
+    Args:
+        items: Rubric evaluation results
+        pre: Pre-processing results
+    
+    Returns:
+        Average score clamped to 0-2 range
     """
     if not items:
         return 0
+    
+    # Average of all section scores
     base = sum(i.score for i in items) / len(items)
+    
+    # Apply pre-processing penalties
     if pre is not None:
         if not pre.meets_length_req:
             base -= 0.5
         if not pre.is_english:
             base -= 0.5
+    
+    # Clamp to 0-2 and round
     base = max(0.0, min(2.0, base))
     return int(round(base))
 
@@ -60,8 +67,8 @@ def aggregate_scf(
     ]
     pre = pre_process
 
-    # Score
-    score = _compute_overall_score(norm_items, pre)
+    # Score (traditional average)
+    score = _compute_average_score(norm_items, pre)
 
     # Corrections: merge and dedup across all items
     merged_corrections = _dedup_corrections(

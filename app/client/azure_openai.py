@@ -15,7 +15,7 @@ class AzureOpenAILLM(LLM):
             azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
         )
         self.deployment = settings.AZURE_OPENAI_DEPLOYMENT
-        self.default_max_output_tokens = 800
+        self.default_max_output_tokens = 1500  # Increased from 800 to allow complete responses
 
     def _ensure_strict_json_schema(self, schema: Dict[str, Any]) -> Dict[str, Any]:
         """Recursively enforce additionalProperties=false on all object schemas.
@@ -83,14 +83,20 @@ class AzureOpenAILLM(LLM):
                         "strict": True,
                     },
                 },
-                max_completion_tokens=self.default_max_output_tokens,
+                # max_completion_tokens 제거 - 토큰 제한 없음
             )
             
             # Parse the response content
             content = resp.choices[0].message.content
             if content:
-                parsed_content = json.loads(content)
+                try:
+                    parsed_content = json.loads(content)
+                except json.JSONDecodeError as e:
+                    print(f"Failed to parse JSON response: {content}")
+                    print(f"JSON decode error: {e}")
+                    parsed_content = {}
             else:
+                print(f"Empty content received from Azure OpenAI. Full response: {resp}")
                 parsed_content = {}
             
             result = {

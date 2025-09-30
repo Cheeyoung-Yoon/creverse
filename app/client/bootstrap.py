@@ -1,12 +1,13 @@
+# app/factory/llm_factory.py  (경로는 상황에 맞게)
+from typing import Optional
 from app.client.azure_openai import AzureOpenAILLM
-from app.utils.tracer import ObservedLLM
+from app.utils.tracer import ObservedLLM, LLM
 
-# 필요 시 싱글턴/캐시
-_llm = None
+_llm_singleton: Optional[LLM] = None
 
-def build_llm():
-    global _llm
-    if _llm is None:
-        base = AzureOpenAILLM()     # 순수 LLM 클라이언트
-        _llm = ObservedLLM(base)    # Langfuse v3 관측 래퍼로 감싸기
-    return _llm
+def build_llm() -> LLM:
+    global _llm_singleton
+    if _llm_singleton is None:
+        base = AzureOpenAILLM()       # 순수 LLM 클라이언트
+        _llm_singleton = ObservedLLM(base)  # Langfuse 관측 래퍼
+    return _llm_singleton

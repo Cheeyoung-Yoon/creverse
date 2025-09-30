@@ -29,11 +29,7 @@ class StructureEvaluator:
         level: str = "Basic",
         previous_summary: Optional[str] = None,
     ) -> Dict[str, Any]:
-        logger.info(f"🏗️ [STRUCTURE] Starting {rubric_item} evaluation for level: {level}")
-        logger.debug(f"Text length: {len(text)}, has_previous_summary: {bool(previous_summary)}")
-        
         try:
-            logger.debug(f"Loading {rubric_item} prompt for level: {level}")
             system_message = self.prompt_loader.load_prompt(rubric_item, level)
             # 이전 섹션 요약을 사용자 메시지 컨텍스트로 첨부(있을 경우)
             if previous_summary:
@@ -44,7 +40,6 @@ class StructureEvaluator:
 [Current section]
 {text}"""
                 )
-                logger.debug(f"Added previous context for {rubric_item}")
             else:
                 user_content = text
 
@@ -53,45 +48,48 @@ class StructureEvaluator:
                 {"role": "user", "content": user_content},
             ]
 
-            logger.info(f"🤖 [STRUCTURE] Sending {rubric_item} evaluation request to LLM...")
             response = await self.client.run_azure_openai(
                 messages=messages,
                 json_schema=self._get_schema(),
                 name=f"structure_{rubric_item}",
+                prompt_key=rubric_item,
+                prompt_meta={
+                    "evaluation_type": "structure_chain",
+                    "level": level,
+                    "section": rubric_item,
+                    "text_length": len(text),
+                    "has_previous_context": previous_summary is not None,
+                    "prompt_source": "local_file",
+                    "prompt_file": f"{rubric_item}_{level.lower()}",
+                }
             )
 
             content = response["content"]
-            usage = response.get("usage", {})
-            logger.info(f"📥 [STRUCTURE] Received LLM response for {rubric_item} - tokens: {usage.get('total_tokens', 'unknown')}")
+            logger.info(f"Structure LLM response content for {rubric_item}: {content}")
             
             if isinstance(content, str):
                 content = json.loads(content)
 
             # 빈 content 체크
             if not content or content == {}:
-                logger.error(f"❌ [STRUCTURE] Empty content received from LLM for {rubric_item} evaluation")
-                logger.debug(f"Full response: {response}")
+                logger.warning("Empty content received from LLM for %s evaluation", rubric_item)
                 return {
                     "rubric_item": rubric_item,
                     "score": 0,
                     "corrections": [],
                     "feedback": f"{rubric_item} evaluation failed - empty response from AI model",
-                    "token_usage": usage,
+                    "token_usage": response.get("usage", {}),
                     "evaluation_type": "structure_chain"
                 }
 
-            logger.debug(f"Parsing {rubric_item} response: {content}")
             parsed = RubricItemResult(**content)
             result = parsed.model_dump()
-            result["token_usage"] = usage
+            result["token_usage"] = response.get("usage", {})
             result["evaluation_type"] = "structure_chain"
-            
-            logger.info(f"✅ [STRUCTURE] {rubric_item} evaluation completed - score: {result['score']}, corrections: {len(result['corrections'])}")
             return result
 
         except Exception as exc:  # noqa: BLE001
-            logger.error(f"💥 [STRUCTURE] Structure evaluation FAILED for {rubric_item}: {type(exc).__name__}: {exc}")
-            logger.exception(f"Full exception details for {rubric_item}")
+            logger.exception("Structure evaluation failed for %s", rubric_item)
             return {
                 "rubric_item": rubric_item,
                 "score": 1,  # Give a neutral score instead of 0

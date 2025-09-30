@@ -5,43 +5,36 @@ import sys
 
 from app.services.evaluation.rubric_chain.grammar_eval import GrammarEvaluator
 from app.services.evaluation.rubric_chain.context_eval import StructureEvaluator
-from app.utils.tracer import get_tracer
 
 
 async def _amain(text: str, level: str) -> int:
-    tracer = get_tracer()
-    with tracer.traced(name="cli.rubric_chain", input={"level": level, "text_len": len(text)}) as tr:
-        trace_id = getattr(tr, "id", "")
 
-        # Prepare evaluators
-        grammar = GrammarEvaluator()
-        structure = StructureEvaluator()
 
-        # Use full text for each section (no splitting)
-        intro = body = conclusion = text
+    # Prepare evaluators
+    grammar = GrammarEvaluator()
+    structure = StructureEvaluator()
 
-        # Run in parallel
-        grammar_task = asyncio.create_task(grammar.check_grammar(text, level=level, trace_id=trace_id))
-        structure_task = asyncio.create_task(
-            structure.run_structure_chain(intro=intro, body=body, conclusion=conclusion, level=level, trace_id=trace_id)
-        )
+    # Use full text for each section (no splitting)
+    intro = body = conclusion = text
 
-        grammar_res, structure_res = await asyncio.gather(grammar_task, structure_task)
+    # Run in parallel
+    grammar_task = asyncio.create_task(grammar.check_grammar(text, level=level))
+    structure_task = asyncio.create_task(
+        structure.run_structure_chain(intro=intro, body=body, conclusion=conclusion, level=level, trace_id=trace_id)
+    )
+    
+    grammar_res, structure_res = await asyncio.gather(grammar_task, structure_task)
 
-        # We only create a parent trace and pass trace_id to client calls.
-        # Client logs the generations; avoid duplicate logging here.
-        try:
-            tr.update(output={"level": level})
-        except Exception:
-            pass
+    # We only create a parent trace and pass trace_id to client calls.
+    # Client logs the generations; avoid duplicate logging here
 
-        output = {
-            "level": level,
-            "grammar": grammar_res,
-            "structure": structure_res,
-        }
-        print(json.dumps(output, ensure_ascii=False, indent=2))
-        return 0
+    output = {
+        "level": level,
+        "grammar": grammar_res,
+        "structure": structure_res,
+    }
+    print(json.dumps(output, ensure_ascii=False, indent=2))
+    return 0
 
 
 def main(argv=None) -> int:
@@ -71,6 +64,3 @@ def main(argv=None) -> int:
 
     return asyncio.run(_amain(text=text, level=args.level))
 
-
-# if __name__ == "__main__":
-#     raise SystemExit(main())

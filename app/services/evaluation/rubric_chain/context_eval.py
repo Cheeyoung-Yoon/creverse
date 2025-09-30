@@ -1,5 +1,5 @@
 from typing import Dict, Any, Optional
-from app.client.azure_openai import AzureOpenAILLM
+from app.client.bootstrap import build_llm
 from app.utils.prompt_loader import PromptLoader
 from app.models.rubric import RubricItemResult
 
@@ -7,8 +7,8 @@ from app.models.rubric import RubricItemResult
 class StructureEvaluator:
     """서론/본론/결론 구조 평가 체인 (PromptLoader + AzureOpenAI)"""
 
-    def __init__(self, client: Optional[AzureOpenAILLM] = None):
-        self.client = client or AzureOpenAILLM()
+    def __init__(self, client: Optional[build_llm] = None):
+        self.client = client or build_llm()
         self.prompt_loader = PromptLoader()
 
     def _get_schema(self) -> Dict[str, Any]:
@@ -38,7 +38,7 @@ class StructureEvaluator:
                 {"role": "user", "content": user_content},
             ]
 
-            response = await self.client.generate_json(
+            response = await self.client.run_azure_openai(
                 messages=messages,
                 json_schema=self._get_schema(),
                 trace_id=trace_id,

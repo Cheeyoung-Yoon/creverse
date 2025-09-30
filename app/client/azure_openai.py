@@ -1,9 +1,8 @@
-# app/client/azure_openai.py
 import asyncio, json
 from typing import Any, Dict, Optional
 from openai import AzureOpenAI
 from app.core.config import settings
-from app.utils.tracer import get_tracer
+
 
 class AzureOpenAILLM:
     """GPT-5용 최소 래퍼: JSON 스키마 강제 제어"""
@@ -58,7 +57,7 @@ class AzureOpenAILLM:
             patched.setdefault("additionalProperties", False)
         return patched
 
-    async def generate_json(
+    async def run_azure_openai(
         self,
         *,
         messages: list[dict[str, str]],
@@ -92,23 +91,6 @@ class AzureOpenAILLM:
                     "total_tokens": resp.usage.total_tokens,
                 }
             }
-            # Optional tracing at client layer; attach to provided trace if any
-            if trace_id:
-                tracer = get_tracer()
-                try:
-                    tracer.log_generation(
-                        trace_id=trace_id,
-                        name=name or "azure.chat.completions",
-                        model=self.deployment,
-                        input={"messages": messages},
-                        output=result["content"],
-                        usage=result["usage"],
-                        metadata={"provider": "azure-openai"},
-                        tags=["azure", "client"],
-                    )
-                except Exception:
-                    # Do not fail the call if tracing errors
-                    pass
             return result
 
         return await asyncio.to_thread(_invoke_sync)

@@ -1,6 +1,6 @@
 from typing import Dict, Any, Optional
 import json
-from app.client.azure_openai import AzureOpenAILLM
+from app.client.bootstrap import build_llm
 from app.utils.prompt_loader import PromptLoader
 from app.models.rubric import RubricItemResult
 
@@ -8,8 +8,8 @@ from app.models.rubric import RubricItemResult
 class GrammarEvaluator:
     """문법 검수를 위한 평가자 클래스"""
     
-    def __init__(self, client: Optional[AzureOpenAILLM] = None):
-        self.client = client or AzureOpenAILLM()
+    def __init__(self, client: Optional[build_llm] = None):
+        self.client = client or build_llm()
         self.prompt_loader = PromptLoader()
     
     def _get_grammar_schema(self) -> Dict[str, Any]:
@@ -32,7 +32,7 @@ class GrammarEvaluator:
             ]
             
             # Azure OpenAI 호출
-            response = await self.client.generate_json(
+            response = await self.client.run_azure_openai(
                 messages=messages,
                 json_schema=self._get_grammar_schema(),
                 trace_id=trace_id,

@@ -92,3 +92,12 @@ essay-eval/
   API 경계에서 명확한 계약(Contract)을 정의하여, 내부 로직과 분리된 안정적인 개발이 가능합니다.
 
 ⚡ 내부 서비스 로직에서는 불필요한 오버헤드를 줄이기 위해 **dict 또는 dataclass**를 활용하며, **Pydantic은 API 경계에서만 사용**합니다.
+
+
+gpt 5 paramter: 
+reasoning={"effort": "minimal"},
+text={"verbosity": "low"},
+
+문장이 복잡하거나 길지 않은 500자 이하의 문장들이여서 reasoning을 사용할 필요성 없음
+오히려 속도 저하 이슈를 발생시킴. 
+결과 값 비교하여도 차이가 없음으로 minial 사용 

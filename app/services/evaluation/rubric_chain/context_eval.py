@@ -1,5 +1,6 @@
 import json
 import logging
+import time
 from typing import Any, Dict, Optional
 
 from app.client.bootstrap import build_llm
@@ -48,6 +49,9 @@ class StructureEvaluator:
                 {"role": "user", "content": user_content},
             ]
 
+            # 실행 시간 측정 시작
+            start_time = time.time()
+            
             response = await self.client.run_azure_openai(
                 messages=messages,
                 json_schema=self._get_schema(),
@@ -63,6 +67,18 @@ class StructureEvaluator:
                     "prompt_file": f"{rubric_item}_{level.lower()}",
                 }
             )
+            
+            # 실행 시간 측정 종료 및 출력
+            end_time = time.time()
+            execution_time = end_time - start_time
+            print(f"LLM execution time for {rubric_item}: {execution_time:.3f} seconds")
+            
+            # 토큰 사용량 로깅 (가격 추적용)
+            token_usage = response.get("usage", {})
+            if token_usage:
+                print(f"Token usage for {rubric_item} - Prompt: {token_usage.get('prompt_tokens', 0)}, "
+                      f"Completion: {token_usage.get('completion_tokens', 0)}, "
+                      f"Total: {token_usage.get('total_tokens', 0)}")
 
             content = response["content"]
             logger.info(f"Structure LLM response content for {rubric_item}: {content}")
@@ -78,13 +94,11 @@ class StructureEvaluator:
                     "score": 0,
                     "corrections": [],
                     "feedback": f"{rubric_item} evaluation failed - empty response from AI model",
-                    "token_usage": response.get("usage", {}),
                     "evaluation_type": "structure_chain"
                 }
 
             parsed = RubricItemResult(**content)
             result = parsed.model_dump()
-            result["token_usage"] = response.get("usage", {})
             result["evaluation_type"] = "structure_chain"
             return result
 
@@ -92,21 +106,11 @@ class StructureEvaluator:
             logger.exception("Structure evaluation failed for %s", rubric_item)
             return {
                 "rubric_item": rubric_item,
-                "score": 1,  # Give a neutral score instead of 0
+                "score": 0,
                 "corrections": [],
                 "feedback": f"{rubric_item} 평가 중 기술적 문제가 발생했습니다. 다시 시도해 주세요.",
                 "error": str(exc),
-                "evaluation_type": "structure_chain",
-                "score": 0,
-                "corrections": [],
-                "feedback": f"구조 평가 중 오류 발생: {exc}",
-                "error": str(exc),
-                "evaluation_type": "structure_chain",
-                "token_usage": {
-                    "prompt_tokens": 0,
-                    "completion_tokens": 0,
-                    "total_tokens": 0,
-                },
+                "evaluation_type": "structure_chain"
             }
 
     async def run_structure_chain(
@@ -134,21 +138,10 @@ class StructureEvaluator:
             previous_summary=body_res.get("feedback"),
         )
 
-        def _usage(component: Dict[str, Any], key: str) -> int:
-            usage = component.get("token_usage", {})
-            return int(usage.get(key, 0))
-
-        total_usage = {
-            "prompt_tokens": sum(_usage(section, "prompt_tokens") for section in (intro_res, body_res, concl_res)),
-            "completion_tokens": sum(_usage(section, "completion_tokens") for section in (intro_res, body_res, concl_res)),
-            "total_tokens": sum(_usage(section, "total_tokens") for section in (intro_res, body_res, concl_res)),
-        }
-
         return {
             "introduction": intro_res,
             "body": body_res,
             "conclusion": concl_res,
-            "token_usage_total": total_usage,
             "evaluation_type": "structure_chain",
         }
 

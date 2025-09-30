@@ -1,5 +1,6 @@
 import json
 import logging
+import time
 from typing import Any, Dict, Optional
 
 from app.client.bootstrap import build_llm
@@ -25,7 +26,7 @@ class GrammarEvaluator:
     async def check_grammar(self, text: str, level: str = "Basic") -> Dict[str, Any]:
         """
         텍스트의 문법을 검사합니다.
-        Returns: GrammarRubricResult + 메타데이터(token_usage, evaluation_type)
+        Returns: GrammarRubricResult + 메타데이터(evaluation_type)
         """
         try:
             # 프롬프트 구성
@@ -34,6 +35,9 @@ class GrammarEvaluator:
                 {"role": "system", "content": system_message},
                 {"role": "user", "content": text},
             ]
+
+            # 실행 시간 측정 시작
+            start_time = time.time()
 
             # Azure OpenAI 호출 with enhanced tracing
             response = await self.client.run_azure_openai(
@@ -49,6 +53,18 @@ class GrammarEvaluator:
                     "prompt_file": f"grammar_{level.lower()}",
                 }
             )
+            
+            # 실행 시간 측정 종료 및 출력
+            end_time = time.time()
+            execution_time = end_time - start_time
+            print(f"LLM execution time for grammar: {execution_time:.3f} seconds")
+            
+            # 토큰 사용량 로깅 (가격 추적용)
+            token_usage = response.get("usage", {})
+            if token_usage:
+                print(f"Token usage for grammar - Prompt: {token_usage.get('prompt_tokens', 0)}, "
+                      f"Completion: {token_usage.get('completion_tokens', 0)}, "
+                      f"Total: {token_usage.get('total_tokens', 0)}")
 
             content = response["content"]
             logger.info(f"Grammar LLM response content: {content}")
@@ -65,7 +81,6 @@ class GrammarEvaluator:
                     "score": 0,
                     "corrections": [],
                     "feedback": "Grammar evaluation failed - empty response from AI model",
-                    "token_usage": response.get("usage", {}),
                     "evaluation_type": "grammar_check"
                 }
 
@@ -74,7 +89,6 @@ class GrammarEvaluator:
             result = parsed.model_dump()
 
             # 메타데이터 부가
-            result["token_usage"] = response.get("usage", {})
             result["evaluation_type"] = "grammar_check"
             return result
 
@@ -82,14 +96,9 @@ class GrammarEvaluator:
             logger.exception("Grammar evaluation failed")
             return {
                 "rubric_item": "grammar",
-                "score": 1,  # Give a neutral score instead of 0
+                "score": 0,
                 "corrections": [],
                 "feedback": "문법 검사 중 기술적 문제가 발생했습니다. 다시 시도해 주세요.",
                 "error": str(exc),
-                "evaluation_type": "grammar_check",
-                "token_usage": {
-                    "prompt_tokens": 0,
-                    "completion_tokens": 0,
-                    "total_tokens": 0,
-                },
+                "evaluation_type": "grammar_check"
             }

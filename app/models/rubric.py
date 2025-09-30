@@ -16,3 +16,17 @@ class RubricItemResult(BaseModel):
     feedback: str
 
 # 전체 결과는 List[RubricItemResult]
+
+
+class ScoreCorrectionFeedback(BaseModel):
+    """Aggregated score, merged corrections, and combined feedback."""
+    score: int = Field(ge=0, le=2)
+    corrections: List[Correction]
+    feedback: str
+
+
+class PreProcessResult(BaseModel):
+    """Optional pre-processing metadata for context (length, language, etc.)."""
+    word_count: int
+    meets_length_req: bool
+    is_english: bool

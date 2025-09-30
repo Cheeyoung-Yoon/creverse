@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from fastapi.testclient import TestClient
 
-from app.main import app
+from creverse2.main import app
 
 
 def _require_azure():

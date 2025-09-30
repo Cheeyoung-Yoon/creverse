@@ -1,4 +1,3 @@
-from __future__ import annotations
 
 import os
 from contextlib import contextmanager
@@ -32,33 +31,44 @@ class _NoopClient:
 class Tracer:
     """Lightweight Langfuse wrapper with safe no-op fallback.
 
-    Always attempts to initialize Langfuse when keys are present; if the package
-    is unavailable or keys are missing, the tracer operates as a no-op.
-
     Env vars used when available:
       - LANGFUSE_PUBLIC_KEY
       - LANGFUSE_SECRET_KEY
       - LANGFUSE_BASE_URL (optional)
+      - LANGFUSE_ENABLED ("1"/"true" to force on, "0"/"false" to force off)
     """
 
-    def __init__(self) -> None:
-        self._client = self._build_client()
+    def __init__(self, enabled: Optional[bool] = None) -> None:
+        self._enabled = self._resolve_enabled(enabled)
+        self._client = self._build_client() if self._enabled else _NoopClient()
+
+    def _resolve_enabled(self, enabled: Optional[bool]) -> bool:
+        if enabled is not None:
+            return enabled
+        flag = os.getenv("LANGFUSE_ENABLED")
+        if flag is not None:
+            return flag.lower() in {"1", "true", "yes", "on"}
+        # Default: enable only if credentials are present and import works
+        have_keys = bool(os.getenv("LANGFUSE_PUBLIC_KEY") and os.getenv("LANGFUSE_SECRET_KEY"))
+        if not have_keys:
+            return False
+        # Try import to confirm availability
+        try:
+            from langfuse import Langfuse  # type: ignore
+            _ = Langfuse  # silence linter
+            return True
+        except Exception:
+            return False
 
     def _build_client(self):  # type: ignore[no-untyped-def]
-        # Only create a real client when keys are provided and import succeeds
-        public = os.getenv("LANGFUSE_PUBLIC_KEY")
-        secret = os.getenv("LANGFUSE_SECRET_KEY")
-        if not public or not secret:
-            return _NoopClient()
-
         try:
             from langfuse import Langfuse  # type: ignore
         except Exception:
             return _NoopClient()
 
         return Langfuse(
-            secret_key=secret,
-            public_key=public,
+            secret_key=os.getenv("LANGFUSE_SECRET_KEY", ""),
+            public_key=os.getenv("LANGFUSE_PUBLIC_KEY", ""),
             host=os.getenv("LANGFUSE_BASE_URL", None),
         )
 
@@ -162,3 +172,4 @@ def get_tracer() -> Tracer:
     if _GLOBAL is None:
         _GLOBAL = Tracer()
     return _GLOBAL
+

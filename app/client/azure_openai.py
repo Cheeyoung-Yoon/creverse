@@ -1,8 +1,9 @@
 # app/client/azure_openai.py
 import asyncio, json
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 from openai import AzureOpenAI
 from app.core.config import settings
+from app.utils.tracer import get_tracer
 
 class AzureOpenAILLM:
     """GPT-5용 최소 래퍼: JSON 스키마 강제 제어"""
@@ -62,15 +63,17 @@ class AzureOpenAILLM:
         *,
         messages: list[dict[str, str]],
         json_schema: dict[str, Any],
+        trace_id: Optional[str] = None,
+        name: Optional[str] = None,
     ) -> dict[str, Any]:
 
         def _invoke_sync() -> dict[str, Any]:
             # Patch schema to satisfy OpenAI strict JSON Schema requirements
             strict_schema = self._ensure_strict_json_schema(json_schema)
-            resp = self.client.chat.completions.create(
+            resp = self.client.responses.parse(
                 model=self.deployment,
-                messages=messages,
-                response_format={
+                input=messages,
+                text_format={
                     "type": "json_schema",
                     "json_schema": {
                         "name": json_schema.get("title", json_schema.get("name", "EvalSchema")),
@@ -78,6 +81,8 @@ class AzureOpenAILLM:
                         "strict": True,
                     },
                 },
+                reasoning={"effort": "minimal"},
+                text={"verbosity": "low"},
             )
             result = {
                 "content": json.loads(resp.choices[0].message.content),
@@ -87,6 +92,23 @@ class AzureOpenAILLM:
                     "total_tokens": resp.usage.total_tokens,
                 }
             }
+            # Optional tracing at client layer; attach to provided trace if any
+            if trace_id:
+                tracer = get_tracer()
+                try:
+                    tracer.log_generation(
+                        trace_id=trace_id,
+                        name=name or "azure.chat.completions",
+                        model=self.deployment,
+                        input={"messages": messages},
+                        output=result["content"],
+                        usage=result["usage"],
+                        metadata={"provider": "azure-openai"},
+                        tags=["azure", "client"],
+                    )
+                except Exception:
+                    # Do not fail the call if tracing errors
+                    pass
             return result
 
         return await asyncio.to_thread(_invoke_sync)

@@ -21,6 +21,7 @@ class StructureEvaluator:
         text: str,
         level: str = "Basic",
         previous_summary: Optional[str] = None,
+        trace_id: Optional[str] = None,
     ) -> Dict[str, Any]:
         try:
             system_message = self.prompt_loader.load_prompt(rubric_item, level)
@@ -40,6 +41,8 @@ class StructureEvaluator:
             response = await self.client.generate_json(
                 messages=messages,
                 json_schema=self._get_schema(),
+                trace_id=trace_id,
+                name=f"structure_{rubric_item}",
             )
 
             content = response["content"]
@@ -71,22 +74,25 @@ class StructureEvaluator:
         body: str,
         conclusion: str,
         level: str = "Basic",
+        trace_id: Optional[str] = None,
     ) -> Dict[str, Any]:
         """서론→본론→결론 순으로 평가하며, 이전 섹션 요약(피드백)을 다음 섹션 컨텍스트로 제공."""
         intro_res = await self._evaluate_section(
-            rubric_item="introduction", text=intro, level=level
+            rubric_item="introduction", text=intro, level=level, trace_id=trace_id
         )
         body_res = await self._evaluate_section(
             rubric_item="body",
             text=body,
             level=level,
             previous_summary=intro_res.get("feedback"),
+            trace_id=trace_id,
         )
         concl_res = await self._evaluate_section(
             rubric_item="conclusion",
             text=conclusion,
             level=level,
             previous_summary=body_res.get("feedback"),
+            trace_id=trace_id,
         )
 
         total_usage = {

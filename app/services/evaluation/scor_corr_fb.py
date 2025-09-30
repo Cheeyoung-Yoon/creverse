@@ -46,23 +46,19 @@ def _compute_overall_score(items: Sequence[RubricItemResult], pre: PreProcessRes
 def aggregate_scf(
     *,
     items: Sequence[RubricItemResult] | Sequence[Dict[str, Any]],
-    pre_process: Dict[str, Any] | PreProcessResult | None = None,
+    pre_process: PreProcessResult | None = None,
 ) -> ScoreCorrectionFeedback:
     """Aggregate rubric results and optional pre-process metadata to Score/Corrections/Feedback.
 
     - items: sequence of section results (introduction, body, conclusion, grammar)
              as dicts or RubricItemResult objects.
-    - pre_process: dict or PreProcessResult with keys (word_count, meets_length_req, is_english)
+    - pre_process: PreProcessResult with keys (word_count, meets_length_req, is_english, is_valid)
     """
     # Normalize to Pydantic models
     norm_items: List[RubricItemResult] = [
         i if isinstance(i, RubricItemResult) else RubricItemResult(**i) for i in items
     ]
-    pre = (
-        pre_process
-        if isinstance(pre_process, PreProcessResult)
-        else (PreProcessResult(**pre_process) if pre_process else None)
-    )
+    pre = pre_process
 
     # Score
     score = _compute_overall_score(norm_items, pre)
@@ -77,7 +73,7 @@ def aggregate_scf(
     if pre is not None:
         pre_prefix = (
             f"[Pre-check] words={pre.word_count}, "
-            f"meets_length={pre.meets_length_req}, english={pre.is_english}.\n"
+            f"meets_length={pre.meets_length_req}, english={pre.is_english}, valid={pre.is_valid}.\n"
         )
     joined_feedback = pre_prefix + "\n".join(
         f"[{it.rubric_item}] {it.feedback}" for it in norm_items
@@ -92,7 +88,7 @@ def aggregate_scf(
 
 def aggregate_from_run_outputs(
     *,
-    pre_process: Dict[str, Any] | PreProcessResult | None,
+    pre_process: PreProcessResult | None,
     grammar_result: Dict[str, Any],
     structure_result: Dict[str, Any],
 ) -> ScoreCorrectionFeedback:
@@ -104,4 +100,3 @@ def aggregate_from_run_outputs(
         grammar_result,
     ]
     return aggregate_scf(items=items, pre_process=pre_process)
-

@@ -85,11 +85,12 @@ class AzureOpenAILLM:
             )
             result = {
                 "content": json.loads(resp.choices[0].message.content),
-                "usage": {
-                    "prompt_tokens": resp.usage.prompt_tokens,
-                    "completion_tokens": resp.usage.completion_tokens,
-                    "total_tokens": resp.usage.total_tokens,
-                }
+                # langfuse에서 이미 기록하므로 주석 처리
+                # "usage": {
+                #     "prompt_tokens": resp.usage.prompt_tokens,
+                #     "completion_tokens": resp.usage.completion_tokens,
+                #     "total_tokens": resp.usage.total_tokens,
+                # } 
             }
             return result
 

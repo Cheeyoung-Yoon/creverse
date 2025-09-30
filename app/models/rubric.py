@@ -26,7 +26,14 @@ class ScoreCorrectionFeedback(BaseModel):
 
 
 class PreProcessResult(BaseModel):
-    """Optional pre-processing metadata for context (length, language, etc.)."""
+    """Optional pre-processing metadata for context (length, language, etc.).
+
+    - word_count: total tokenized words in the submission
+    - meets_length_req: whether word_count falls within the level's range
+    - is_english: naive heuristic for English detection
+    - is_valid: convenience flag (meets_length_req AND is_english)
+    """
     word_count: int
     meets_length_req: bool
     is_english: bool
+    is_valid: bool

@@ -10,6 +10,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")
 from app.services.evaluation.pre_process import (
     pre_process_essay, LEVEL_WORD_REQUIREMENTS
 )
+from app.models.rubric import PreProcessResult
 
 
 class TestPreProcessEssay:
@@ -20,17 +21,18 @@ class TestPreProcessEssay:
         submit = "I will move to a higher ground. I have two reasons. First, Because tsunamis are dangerous. Because tsunamis can sweep us away. Second, tsunamis are big waves. But it can't come at the high ground. For these reasons, I will move to a higher ground."
         
         result = pre_process_essay(submit, topic, "Basic")
-        
-        assert "is_valid" in result
-        assert "word_count" in result
-        assert "meets_length_req" in result
-        assert "is_english" in result
+        assert isinstance(result, PreProcessResult)
+        dumped = result.model_dump()
+        assert "is_valid" in dumped
+        assert "word_count" in dumped
+        assert "meets_length_req" in dumped
+        assert "is_english" in dumped
     
     def test_too_short_essay(self):
         submit = "I like reading."
         result = pre_process_essay(submit, "Describe your hobby", "Basic")
-        
-        assert result["meets_length_req"] is False
+        assert result.meets_length_req is False
+        assert result.is_valid is False
     
     def test_different_levels(self):
         topic = "Describe your hobby"
@@ -38,8 +40,7 @@ class TestPreProcessEssay:
         
         for level in ["Basic", "Intermediate", "Advanced", "Expert"]:
             result = pre_process_essay(submit, topic, level)
-            assert "word_count" in result
-            assert result["word_count"] > 0
+            assert result.word_count > 0
     
     def test_level_requirements_exist(self):
         """Test that all level requirements are properly defined."""

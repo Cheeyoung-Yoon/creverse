@@ -1,5 +1,6 @@
 import re
 from typing import Dict, Any
+from app.models.rubric import PreProcessResult
 
 LEVEL_WORD_REQUIREMENTS = {
     "Basic": {"min_words": 50, "max_words": 100},
@@ -17,7 +18,7 @@ def define_english_check(text: str) -> bool:
     ascii_ratio = sum(1 for c in text if ord(c) < 128) / len(text) if text else 0
     return ascii_ratio > 0.8
 
-def pre_process_essay(essay_text: str, topic_prompt: str, level_group: str):
+def pre_process_essay(essay_text: str, topic_prompt: str, level_group: str) -> PreProcessResult:
     
     word_count = len(re.findall(r'\b\w+\b', essay_text))
 
@@ -26,9 +27,13 @@ def pre_process_essay(essay_text: str, topic_prompt: str, level_group: str):
 
     
     is_english = define_english_check(essay_text)
-    
-    return {
-        "word_count": word_count,
-        "meets_length_req": meets_length_req,
-        "is_english": is_english
-    }
+
+    # Overall validity flag for simple gating
+    is_valid = bool(meets_length_req and is_english)
+
+    return PreProcessResult(
+        word_count=word_count,
+        meets_length_req=meets_length_req,
+        is_english=is_english,
+        is_valid=is_valid,
+    )

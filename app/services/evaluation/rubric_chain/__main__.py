@@ -1,35 +1,41 @@
+
 import argparse
 import asyncio
 import json
+import logging
 import sys
 
 from app.services.evaluation.rubric_chain.grammar_eval import GrammarEvaluator
 from app.services.evaluation.rubric_chain.context_eval import StructureEvaluator
+from app.services.evaluation.rubric_chain.section_splitter import SectionSplitter
+
+logger = logging.getLogger(__name__)
 
 
 async def _amain(text: str, level: str) -> int:
-
-
-    # Prepare evaluators
     grammar = GrammarEvaluator()
     structure = StructureEvaluator()
+    splitter = SectionSplitter(client=structure.client, loader=structure.prompt_loader)
 
-    # Use full text for each section (no splitting)
-    intro = body = conclusion = text
+    try:
+        sections = await splitter.split(text, level)
+        intro = sections.introduction
+        body = sections.body
+        conclusion = sections.conclusion
+    except Exception:  # noqa: BLE001
+        logger.exception("Section splitting failed; falling back to full text")
+        intro = body = conclusion = text
 
-    # Run in parallel
     grammar_task = asyncio.create_task(grammar.check_grammar(text, level=level))
     structure_task = asyncio.create_task(
-        structure.run_structure_chain(intro=intro, body=body, conclusion=conclusion, level=level, trace_id=trace_id)
+        structure.run_structure_chain(intro=intro, body=body, conclusion=conclusion, level=level)
     )
-    
-    grammar_res, structure_res = await asyncio.gather(grammar_task, structure_task)
 
-    # We only create a parent trace and pass trace_id to client calls.
-    # Client logs the generations; avoid duplicate logging here
+    grammar_res, structure_res = await asyncio.gather(grammar_task, structure_task)
 
     output = {
         "level": level,
+        "intro_sample": intro[:120],
         "grammar": grammar_res,
         "structure": structure_res,
     }
@@ -51,11 +57,10 @@ def main(argv=None) -> int:
         try:
             with open(args.file, "r", encoding="utf-8") as f:
                 text = f.read()
-        except Exception as e:
-            print(f"Failed to read file: {e}", file=sys.stderr)
+        except Exception as exc:  # noqa: BLE001
+            print(f"Failed to read file: {exc}", file=sys.stderr)
             return 2
     else:
-        # Read from stdin
         text = sys.stdin.read()
 
     if not text.strip():
@@ -64,3 +69,6 @@ def main(argv=None) -> int:
 
     return asyncio.run(_amain(text=text, level=args.level))
 
+
+if __name__ == "__main__":
+    raise SystemExit(main())

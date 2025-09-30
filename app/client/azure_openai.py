@@ -98,7 +98,36 @@ class AzureOpenAILLM(LLM):
         return await asyncio.to_thread(_invoke_sync)
 
     
-    
+    async def pure_message(
+        self,
+        *,
+        messages: list[dict[str, str]],
+        trace_id: Optional[str] = None,
+        name: Optional[str] = None,
+    ) -> dict[str, Any]:
+
+        def _invoke_sync() -> dict[str, Any]:
+            # Patch schema to satisfy OpenAI strict JSON Schema requirements
+            strict_schema = self._ensure_strict_json_schema(json_schema)
+            resp = self.client.responses.parse(
+                model=self.deployment,
+                input=messages,
+                reasoning={"effort": "minimal"},
+                text={"verbosity": "low"},
+            )
+            result = {
+                "content": json.loads(resp.choices[0].message.content),
+                # langfuse에서 이미 기록하므로 주석 처리
+                # "usage": {
+                #     "prompt_tokens": resp.usage.prompt_tokens,
+                #     "completion_tokens": resp.usage.completion_tokens,
+                #     "total_tokens": resp.usage.total_tokens,
+                # }
+            }
+            return result
+
+        return await asyncio.to_thread(_invoke_sync)
+
     
     
 

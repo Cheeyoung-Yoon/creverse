@@ -1,0 +1,429 @@
+2025-10-01 00:01:00,248 - INFO - 🔄 Loading sample data...
+2025-10-01 00:01:00,275 - INFO - ✅ Loaded 41 essays from /home/ycy/work_dir/creverse/data/essay_writing_40_sample.xlsx
+2025-10-01 00:01:00,276 - INFO - Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 00:01:00,276 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 00:01:00,276 - INFO - 🚀 Starting batch evaluation: 41 essays × 4 levels = 164 API calls
+2025-10-01 00:01:00,276 - INFO - 📊 Processing level: Basic
+2025-10-01 00:01:00,280 - WARNING - ⚠️ Empty essay text at row 0
+2025-10-01 00:01:00,281 - WARNING - ⚠️ Empty essay text at row 1
+2025-10-01 00:01:00,281 - WARNING - ⚠️ Empty essay text at row 2
+2025-10-01 00:01:00,281 - WARNING - ⚠️ Empty essay text at row 3
+2025-10-01 00:01:00,281 - WARNING - ⚠️ Empty essay text at row 4
+2025-10-01 00:01:00,282 - WARNING - ⚠️ Empty essay text at row 5
+2025-10-01 00:01:00,282 - WARNING - ⚠️ Empty essay text at row 6
+2025-10-01 00:01:00,282 - WARNING - ⚠️ Empty essay text at row 7
+2025-10-01 00:01:00,283 - WARNING - ⚠️ Empty essay text at row 8
+2025-10-01 00:01:00,283 - WARNING - ⚠️ Empty essay text at row 9
+2025-10-01 00:01:00,283 - WARNING - ⚠️ Empty essay text at row 10
+2025-10-01 00:01:00,284 - WARNING - ⚠️ Empty essay text at row 11
+2025-10-01 00:01:00,284 - WARNING - ⚠️ Empty essay text at row 12
+2025-10-01 00:01:00,284 - WARNING - ⚠️ Empty essay text at row 13
+2025-10-01 00:01:00,285 - WARNING - ⚠️ Empty essay text at row 14
+2025-10-01 00:01:00,285 - WARNING - ⚠️ Empty essay text at row 15
+2025-10-01 00:01:00,285 - WARNING - ⚠️ Empty essay text at row 16
+2025-10-01 00:01:00,286 - WARNING - ⚠️ Empty essay text at row 17
+2025-10-01 00:01:00,286 - WARNING - ⚠️ Empty essay text at row 18
+2025-10-01 00:01:00,286 - WARNING - ⚠️ Empty essay text at row 19
+2025-10-01 00:01:00,287 - WARNING - ⚠️ Empty essay text at row 20
+2025-10-01 00:01:00,287 - WARNING - ⚠️ Empty essay text at row 21
+2025-10-01 00:01:00,287 - WARNING - ⚠️ Empty essay text at row 22
+2025-10-01 00:01:00,288 - WARNING - ⚠️ Empty essay text at row 23
+2025-10-01 00:01:00,288 - WARNING - ⚠️ Empty essay text at row 24
+2025-10-01 00:01:00,288 - WARNING - ⚠️ Empty essay text at row 25
+2025-10-01 00:01:00,289 - WARNING - ⚠️ Empty essay text at row 26
+2025-10-01 00:01:00,289 - WARNING - ⚠️ Empty essay text at row 27
+2025-10-01 00:01:00,289 - WARNING - ⚠️ Empty essay text at row 28
+2025-10-01 00:01:00,289 - WARNING - ⚠️ Empty essay text at row 29
+2025-10-01 00:01:00,290 - WARNING - ⚠️ Empty essay text at row 30
+2025-10-01 00:01:00,290 - WARNING - ⚠️ Empty essay text at row 31
+2025-10-01 00:01:00,291 - WARNING - ⚠️ Empty essay text at row 32
+2025-10-01 00:01:00,291 - WARNING - ⚠️ Empty essay text at row 33
+2025-10-01 00:01:00,291 - WARNING - ⚠️ Empty essay text at row 34
+2025-10-01 00:01:00,291 - WARNING - ⚠️ Empty essay text at row 35
+2025-10-01 00:01:00,292 - WARNING - ⚠️ Empty essay text at row 36
+2025-10-01 00:01:00,292 - WARNING - ⚠️ Empty essay text at row 37
+2025-10-01 00:01:00,292 - WARNING - ⚠️ Empty essay text at row 38
+2025-10-01 00:01:00,292 - WARNING - ⚠️ Empty essay text at row 39
+2025-10-01 00:01:00,293 - WARNING - ⚠️ Empty essay text at row 40
+2025-10-01 00:01:00,293 - INFO - 📊 Processing level: Intermediate
+2025-10-01 00:01:00,293 - WARNING - ⚠️ Empty essay text at row 0
+2025-10-01 00:01:00,293 - WARNING - ⚠️ Empty essay text at row 1
+2025-10-01 00:01:00,294 - WARNING - ⚠️ Empty essay text at row 2
+2025-10-01 00:01:00,294 - WARNING - ⚠️ Empty essay text at row 3
+2025-10-01 00:01:00,294 - WARNING - ⚠️ Empty essay text at row 4
+2025-10-01 00:01:00,295 - WARNING - ⚠️ Empty essay text at row 5
+2025-10-01 00:01:00,295 - WARNING - ⚠️ Empty essay text at row 6
+2025-10-01 00:01:00,295 - WARNING - ⚠️ Empty essay text at row 7
+2025-10-01 00:01:00,296 - WARNING - ⚠️ Empty essay text at row 8
+2025-10-01 00:01:00,296 - WARNING - ⚠️ Empty essay text at row 9
+2025-10-01 00:01:00,296 - WARNING - ⚠️ Empty essay text at row 10
+2025-10-01 00:01:00,297 - WARNING - ⚠️ Empty essay text at row 11
+2025-10-01 00:01:00,297 - WARNING - ⚠️ Empty essay text at row 12
+2025-10-01 00:01:00,298 - WARNING - ⚠️ Empty essay text at row 13
+2025-10-01 00:01:00,298 - WARNING - ⚠️ Empty essay text at row 14
+2025-10-01 00:01:00,298 - WARNING - ⚠️ Empty essay text at row 15
+2025-10-01 00:01:00,299 - WARNING - ⚠️ Empty essay text at row 16
+2025-10-01 00:01:00,299 - WARNING - ⚠️ Empty essay text at row 17
+2025-10-01 00:01:00,299 - WARNING - ⚠️ Empty essay text at row 18
+2025-10-01 00:01:00,300 - WARNING - ⚠️ Empty essay text at row 19
+2025-10-01 00:01:00,300 - WARNING - ⚠️ Empty essay text at row 20
+2025-10-01 00:01:00,300 - WARNING - ⚠️ Empty essay text at row 21
+2025-10-01 00:01:00,300 - WARNING - ⚠️ Empty essay text at row 22
+2025-10-01 00:01:00,301 - WARNING - ⚠️ Empty essay text at row 23
+2025-10-01 00:01:00,301 - WARNING - ⚠️ Empty essay text at row 24
+2025-10-01 00:01:00,301 - WARNING - ⚠️ Empty essay text at row 25
+2025-10-01 00:01:00,302 - WARNING - ⚠️ Empty essay text at row 26
+2025-10-01 00:01:00,302 - WARNING - ⚠️ Empty essay text at row 27
+2025-10-01 00:01:00,302 - WARNING - ⚠️ Empty essay text at row 28
+2025-10-01 00:01:00,303 - WARNING - ⚠️ Empty essay text at row 29
+2025-10-01 00:01:00,303 - WARNING - ⚠️ Empty essay text at row 30
+2025-10-01 00:01:00,304 - WARNING - ⚠️ Empty essay text at row 31
+2025-10-01 00:01:00,304 - WARNING - ⚠️ Empty essay text at row 32
+2025-10-01 00:01:00,305 - WARNING - ⚠️ Empty essay text at row 33
+2025-10-01 00:01:00,305 - WARNING - ⚠️ Empty essay text at row 34
+2025-10-01 00:01:00,305 - WARNING - ⚠️ Empty essay text at row 35
+2025-10-01 00:01:00,306 - WARNING - ⚠️ Empty essay text at row 36
+2025-10-01 00:01:00,306 - WARNING - ⚠️ Empty essay text at row 37
+2025-10-01 00:01:00,307 - WARNING - ⚠️ Empty essay text at row 38
+2025-10-01 00:01:00,307 - WARNING - ⚠️ Empty essay text at row 39
+2025-10-01 00:01:00,307 - WARNING - ⚠️ Empty essay text at row 40
+2025-10-01 00:01:00,308 - INFO - 📊 Processing level: Advanced
+2025-10-01 00:01:00,308 - WARNING - ⚠️ Empty essay text at row 0
+2025-10-01 00:01:00,308 - WARNING - ⚠️ Empty essay text at row 1
+2025-10-01 00:01:00,309 - WARNING - ⚠️ Empty essay text at row 2
+2025-10-01 00:01:00,309 - WARNING - ⚠️ Empty essay text at row 3
+2025-10-01 00:01:00,310 - WARNING - ⚠️ Empty essay text at row 4
+2025-10-01 00:01:00,310 - WARNING - ⚠️ Empty essay text at row 5
+2025-10-01 00:01:00,310 - WARNING - ⚠️ Empty essay text at row 6
+2025-10-01 00:01:00,311 - WARNING - ⚠️ Empty essay text at row 7
+2025-10-01 00:01:00,311 - WARNING - ⚠️ Empty essay text at row 8
+2025-10-01 00:01:00,311 - WARNING - ⚠️ Empty essay text at row 9
+2025-10-01 00:01:00,312 - WARNING - ⚠️ Empty essay text at row 10
+2025-10-01 00:01:00,312 - WARNING - ⚠️ Empty essay text at row 11
+2025-10-01 00:01:00,313 - WARNING - ⚠️ Empty essay text at row 12
+2025-10-01 00:01:00,313 - WARNING - ⚠️ Empty essay text at row 13
+2025-10-01 00:01:00,313 - WARNING - ⚠️ Empty essay text at row 14
+2025-10-01 00:01:00,314 - WARNING - ⚠️ Empty essay text at row 15
+2025-10-01 00:01:00,314 - WARNING - ⚠️ Empty essay text at row 16
+2025-10-01 00:01:00,315 - WARNING - ⚠️ Empty essay text at row 17
+2025-10-01 00:01:00,315 - WARNING - ⚠️ Empty essay text at row 18
+2025-10-01 00:01:00,315 - WARNING - ⚠️ Empty essay text at row 19
+2025-10-01 00:01:00,316 - WARNING - ⚠️ Empty essay text at row 20
+2025-10-01 00:01:00,316 - WARNING - ⚠️ Empty essay text at row 21
+2025-10-01 00:01:00,317 - WARNING - ⚠️ Empty essay text at row 22
+2025-10-01 00:01:00,317 - WARNING - ⚠️ Empty essay text at row 23
+2025-10-01 00:01:00,318 - WARNING - ⚠️ Empty essay text at row 24
+2025-10-01 00:01:00,318 - WARNING - ⚠️ Empty essay text at row 25
+2025-10-01 00:01:00,319 - WARNING - ⚠️ Empty essay text at row 26
+2025-10-01 00:01:00,319 - WARNING - ⚠️ Empty essay text at row 27
+2025-10-01 00:01:00,319 - WARNING - ⚠️ Empty essay text at row 28
+2025-10-01 00:01:00,320 - WARNING - ⚠️ Empty essay text at row 29
+2025-10-01 00:01:00,320 - WARNING - ⚠️ Empty essay text at row 30
+2025-10-01 00:01:00,321 - WARNING - ⚠️ Empty essay text at row 31
+2025-10-01 00:01:00,321 - WARNING - ⚠️ Empty essay text at row 32
+2025-10-01 00:01:00,322 - WARNING - ⚠️ Empty essay text at row 33
+2025-10-01 00:01:00,322 - WARNING - ⚠️ Empty essay text at row 34
+2025-10-01 00:01:00,322 - WARNING - ⚠️ Empty essay text at row 35
+2025-10-01 00:01:00,323 - WARNING - ⚠️ Empty essay text at row 36
+2025-10-01 00:01:00,323 - WARNING - ⚠️ Empty essay text at row 37
+2025-10-01 00:01:00,323 - WARNING - ⚠️ Empty essay text at row 38
+2025-10-01 00:01:00,324 - WARNING - ⚠️ Empty essay text at row 39
+2025-10-01 00:01:00,325 - WARNING - ⚠️ Empty essay text at row 40
+2025-10-01 00:01:00,325 - INFO - 📊 Processing level: Expert
+2025-10-01 00:01:00,326 - WARNING - ⚠️ Empty essay text at row 0
+2025-10-01 00:01:00,326 - WARNING - ⚠️ Empty essay text at row 1
+2025-10-01 00:01:00,327 - WARNING - ⚠️ Empty essay text at row 2
+2025-10-01 00:01:00,327 - WARNING - ⚠️ Empty essay text at row 3
+2025-10-01 00:01:00,328 - WARNING - ⚠️ Empty essay text at row 4
+2025-10-01 00:01:00,328 - WARNING - ⚠️ Empty essay text at row 5
+2025-10-01 00:01:00,328 - WARNING - ⚠️ Empty essay text at row 6
+2025-10-01 00:01:00,329 - WARNING - ⚠️ Empty essay text at row 7
+2025-10-01 00:01:00,329 - WARNING - ⚠️ Empty essay text at row 8
+2025-10-01 00:01:00,329 - WARNING - ⚠️ Empty essay text at row 9
+2025-10-01 00:01:00,330 - WARNING - ⚠️ Empty essay text at row 10
+2025-10-01 00:01:00,330 - WARNING - ⚠️ Empty essay text at row 11
+2025-10-01 00:01:00,330 - WARNING - ⚠️ Empty essay text at row 12
+2025-10-01 00:01:00,331 - WARNING - ⚠️ Empty essay text at row 13
+2025-10-01 00:01:00,331 - WARNING - ⚠️ Empty essay text at row 14
+2025-10-01 00:01:00,331 - WARNING - ⚠️ Empty essay text at row 15
+2025-10-01 00:01:00,332 - WARNING - ⚠️ Empty essay text at row 16
+2025-10-01 00:01:00,332 - WARNING - ⚠️ Empty essay text at row 17
+2025-10-01 00:01:00,333 - WARNING - ⚠️ Empty essay text at row 18
+2025-10-01 00:01:00,333 - WARNING - ⚠️ Empty essay text at row 19
+2025-10-01 00:01:00,333 - WARNING - ⚠️ Empty essay text at row 20
+2025-10-01 00:01:00,334 - WARNING - ⚠️ Empty essay text at row 21
+2025-10-01 00:01:00,334 - WARNING - ⚠️ Empty essay text at row 22
+2025-10-01 00:01:00,335 - WARNING - ⚠️ Empty essay text at row 23
+2025-10-01 00:01:00,335 - WARNING - ⚠️ Empty essay text at row 24
+2025-10-01 00:01:00,335 - WARNING - ⚠️ Empty essay text at row 25
+2025-10-01 00:01:00,336 - WARNING - ⚠️ Empty essay text at row 26
+2025-10-01 00:01:00,336 - WARNING - ⚠️ Empty essay text at row 27
+2025-10-01 00:01:00,336 - WARNING - ⚠️ Empty essay text at row 28
+2025-10-01 00:01:00,337 - WARNING - ⚠️ Empty essay text at row 29
+2025-10-01 00:01:00,337 - WARNING - ⚠️ Empty essay text at row 30
+2025-10-01 00:01:00,338 - WARNING - ⚠️ Empty essay text at row 31
+2025-10-01 00:01:00,338 - WARNING - ⚠️ Empty essay text at row 32
+2025-10-01 00:01:00,338 - WARNING - ⚠️ Empty essay text at row 33
+2025-10-01 00:01:00,339 - WARNING - ⚠️ Empty essay text at row 34
+2025-10-01 00:01:00,339 - WARNING - ⚠️ Empty essay text at row 35
+2025-10-01 00:01:00,339 - WARNING - ⚠️ Empty essay text at row 36
+2025-10-01 00:01:00,340 - WARNING - ⚠️ Empty essay text at row 37
+2025-10-01 00:01:00,340 - WARNING - ⚠️ Empty essay text at row 38
+2025-10-01 00:01:00,340 - WARNING - ⚠️ Empty essay text at row 39
+2025-10-01 00:01:00,341 - WARNING - ⚠️ Empty essay text at row 40
+2025-10-01 00:01:00,341 - INFO - ✅ Batch evaluation completed!
+2025-10-01 00:01:00,341 - INFO - 🔄 Creating Excel report...
+2025-10-01 00:01:00,341 - INFO - 📝 Creating Excel report: /home/ycy/work_dir/creverse/excel_creation.xlsx
+2025-10-01 00:01:00,343 - WARNING - ⚠️ No results for level Basic
+2025-10-01 00:01:00,343 - WARNING - ⚠️ No results for level Intermediate
+2025-10-01 00:01:00,344 - WARNING - ⚠️ No results for level Advanced
+2025-10-01 00:01:00,345 - WARNING - ⚠️ No results for level Expert
+2025-10-01 00:01:00,367 - INFO - ✅ Created Summary sheet
+2025-10-01 00:01:00,379 - INFO - ✅ Excel report saved: /home/ycy/work_dir/creverse/excel_creation.xlsx
+2025-10-01 00:01:00,379 - INFO - 🎉 Batch evaluation completed successfully!
+2025-10-01 00:01:00,379 - INFO - 📊 Results saved to: /home/ycy/work_dir/creverse/excel_creation.xlsx
+2025-10-01 00:01:46,742 - INFO - 🔄 Loading sample data...
+2025-10-01 00:01:46,753 - INFO - ✅ Loaded 41 essays from /home/ycy/work_dir/creverse/data/essay_writing_40_sample.xlsx
+2025-10-01 00:01:46,753 - INFO - Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 00:01:46,753 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 00:01:46,753 - INFO - 🚀 Starting batch evaluation: 41 essays × 4 levels = 164 API calls
+2025-10-01 00:01:46,753 - INFO - 📊 Processing level: Basic
+2025-10-01 00:01:46,754 - WARNING - ⚠️ Empty essay text at row 0
+2025-10-01 00:01:46,754 - WARNING - ⚠️ Empty essay text at row 1
+2025-10-01 00:01:46,754 - WARNING - ⚠️ Empty essay text at row 2
+2025-10-01 00:01:46,754 - WARNING - ⚠️ Empty essay text at row 3
+2025-10-01 00:01:46,755 - WARNING - ⚠️ Empty essay text at row 4
+2025-10-01 00:01:46,755 - WARNING - ⚠️ Empty essay text at row 5
+2025-10-01 00:01:46,755 - WARNING - ⚠️ Empty essay text at row 6
+2025-10-01 00:01:46,755 - WARNING - ⚠️ Empty essay text at row 7
+2025-10-01 00:01:46,755 - WARNING - ⚠️ Empty essay text at row 8
+2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 9
+2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 10
+2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 11
+2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 12
+2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 13
+2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 14
+2025-10-01 00:01:46,757 - WARNING - ⚠️ Empty essay text at row 15
+2025-10-01 00:01:46,757 - WARNING - ⚠️ Empty essay text at row 16
+2025-10-01 00:01:46,757 - WARNING - ⚠️ Empty essay text at row 17
+2025-10-01 00:01:46,757 - WARNING - ⚠️ Empty essay text at row 18
+2025-10-01 00:01:46,757 - WARNING - ⚠️ Empty essay text at row 19
+2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 20
+2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 21
+2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 22
+2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 23
+2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 24
+2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 25
+2025-10-01 00:01:46,759 - WARNING - ⚠️ Empty essay text at row 26
+2025-10-01 00:01:46,759 - WARNING - ⚠️ Empty essay text at row 27
+2025-10-01 00:01:46,759 - WARNING - ⚠️ Empty essay text at row 28
+2025-10-01 00:01:46,759 - WARNING - ⚠️ Empty essay text at row 29
+2025-10-01 00:01:46,759 - WARNING - ⚠️ Empty essay text at row 30
+2025-10-01 00:01:46,760 - WARNING - ⚠️ Empty essay text at row 31
+2025-10-01 00:01:46,760 - WARNING - ⚠️ Empty essay text at row 32
+2025-10-01 00:01:46,760 - WARNING - ⚠️ Empty essay text at row 33
+2025-10-01 00:01:46,760 - WARNING - ⚠️ Empty essay text at row 34
+2025-10-01 00:01:46,761 - WARNING - ⚠️ Empty essay text at row 35
+2025-10-01 00:01:46,761 - WARNING - ⚠️ Empty essay text at row 36
+2025-10-01 00:01:46,761 - WARNING - ⚠️ Empty essay text at row 37
+2025-10-01 00:01:46,761 - WARNING - ⚠️ Empty essay text at row 38
+2025-10-01 00:01:46,762 - WARNING - ⚠️ Empty essay text at row 39
+2025-10-01 00:01:46,762 - WARNING - ⚠️ Empty essay text at row 40
+2025-10-01 00:01:46,762 - INFO - 📊 Processing level: Intermediate
+2025-10-01 00:01:46,763 - WARNING - ⚠️ Empty essay text at row 0
+2025-10-01 00:01:46,763 - WARNING - ⚠️ Empty essay text at row 1
+2025-10-01 00:01:46,763 - WARNING - ⚠️ Empty essay text at row 2
+2025-10-01 00:01:46,763 - WARNING - ⚠️ Empty essay text at row 3
+2025-10-01 00:01:46,763 - WARNING - ⚠️ Empty essay text at row 4
+2025-10-01 00:01:46,764 - WARNING - ⚠️ Empty essay text at row 5
+2025-10-01 00:01:46,764 - WARNING - ⚠️ Empty essay text at row 6
+2025-10-01 00:01:46,764 - WARNING - ⚠️ Empty essay text at row 7
+2025-10-01 00:01:46,764 - WARNING - ⚠️ Empty essay text at row 8
+2025-10-01 00:01:46,765 - WARNING - ⚠️ Empty essay text at row 9
+2025-10-01 00:01:46,765 - WARNING - ⚠️ Empty essay text at row 10
+2025-10-01 00:01:46,765 - WARNING - ⚠️ Empty essay text at row 11
+2025-10-01 00:01:46,765 - WARNING - ⚠️ Empty essay text at row 12
+2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 13
+2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 14
+2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 15
+2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 16
+2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 17
+2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 18
+2025-10-01 00:01:46,767 - WARNING - ⚠️ Empty essay text at row 19
+2025-10-01 00:01:46,767 - WARNING - ⚠️ Empty essay text at row 20
+2025-10-01 00:01:46,767 - WARNING - ⚠️ Empty essay text at row 21
+2025-10-01 00:01:46,767 - WARNING - ⚠️ Empty essay text at row 22
+2025-10-01 00:01:46,767 - WARNING - ⚠️ Empty essay text at row 23
+2025-10-01 00:01:46,768 - WARNING - ⚠️ Empty essay text at row 24
+2025-10-01 00:01:46,768 - WARNING - ⚠️ Empty essay text at row 25
+2025-10-01 00:01:46,768 - WARNING - ⚠️ Empty essay text at row 26
+2025-10-01 00:01:46,768 - WARNING - ⚠️ Empty essay text at row 27
+2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 28
+2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 29
+2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 30
+2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 31
+2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 32
+2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 33
+2025-10-01 00:01:46,770 - WARNING - ⚠️ Empty essay text at row 34
+2025-10-01 00:01:46,770 - WARNING - ⚠️ Empty essay text at row 35
+2025-10-01 00:01:46,770 - WARNING - ⚠️ Empty essay text at row 36
+2025-10-01 00:01:46,770 - WARNING - ⚠️ Empty essay text at row 37
+2025-10-01 00:01:46,770 - WARNING - ⚠️ Empty essay text at row 38
+2025-10-01 00:01:46,771 - WARNING - ⚠️ Empty essay text at row 39
+2025-10-01 00:01:46,771 - WARNING - ⚠️ Empty essay text at row 40
+2025-10-01 00:01:46,771 - INFO - 📊 Processing level: Advanced
+2025-10-01 00:01:46,771 - WARNING - ⚠️ Empty essay text at row 0
+2025-10-01 00:01:46,771 - WARNING - ⚠️ Empty essay text at row 1
+2025-10-01 00:01:46,771 - WARNING - ⚠️ Empty essay text at row 2
+2025-10-01 00:01:46,772 - WARNING - ⚠️ Empty essay text at row 3
+2025-10-01 00:01:46,772 - WARNING - ⚠️ Empty essay text at row 4
+2025-10-01 00:01:46,772 - WARNING - ⚠️ Empty essay text at row 5
+2025-10-01 00:01:46,772 - WARNING - ⚠️ Empty essay text at row 6
+2025-10-01 00:01:46,772 - WARNING - ⚠️ Empty essay text at row 7
+2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 8
+2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 9
+2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 10
+2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 11
+2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 12
+2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 13
+2025-10-01 00:01:46,774 - WARNING - ⚠️ Empty essay text at row 14
+2025-10-01 00:01:46,774 - WARNING - ⚠️ Empty essay text at row 15
+2025-10-01 00:01:46,774 - WARNING - ⚠️ Empty essay text at row 16
+2025-10-01 00:01:46,774 - WARNING - ⚠️ Empty essay text at row 17
+2025-10-01 00:01:46,774 - WARNING - ⚠️ Empty essay text at row 18
+2025-10-01 00:01:46,775 - WARNING - ⚠️ Empty essay text at row 19
+2025-10-01 00:01:46,775 - WARNING - ⚠️ Empty essay text at row 20
+2025-10-01 00:01:46,775 - WARNING - ⚠️ Empty essay text at row 21
+2025-10-01 00:01:46,776 - WARNING - ⚠️ Empty essay text at row 22
+2025-10-01 00:01:46,776 - WARNING - ⚠️ Empty essay text at row 23
+2025-10-01 00:01:46,776 - WARNING - ⚠️ Empty essay text at row 24
+2025-10-01 00:01:46,776 - WARNING - ⚠️ Empty essay text at row 25
+2025-10-01 00:01:46,777 - WARNING - ⚠️ Empty essay text at row 26
+2025-10-01 00:01:46,777 - WARNING - ⚠️ Empty essay text at row 27
+2025-10-01 00:01:46,777 - WARNING - ⚠️ Empty essay text at row 28
+2025-10-01 00:01:46,777 - WARNING - ⚠️ Empty essay text at row 29
+2025-10-01 00:01:46,778 - WARNING - ⚠️ Empty essay text at row 30
+2025-10-01 00:01:46,778 - WARNING - ⚠️ Empty essay text at row 31
+2025-10-01 00:01:46,778 - WARNING - ⚠️ Empty essay text at row 32
+2025-10-01 00:01:46,778 - WARNING - ⚠️ Empty essay text at row 33
+2025-10-01 00:01:46,779 - WARNING - ⚠️ Empty essay text at row 34
+2025-10-01 00:01:46,779 - WARNING - ⚠️ Empty essay text at row 35
+2025-10-01 00:01:46,779 - WARNING - ⚠️ Empty essay text at row 36
+2025-10-01 00:01:46,779 - WARNING - ⚠️ Empty essay text at row 37
+2025-10-01 00:01:46,780 - WARNING - ⚠️ Empty essay text at row 38
+2025-10-01 00:01:46,780 - WARNING - ⚠️ Empty essay text at row 39
+2025-10-01 00:01:46,780 - WARNING - ⚠️ Empty essay text at row 40
+2025-10-01 00:01:46,780 - INFO - 📊 Processing level: Expert
+2025-10-01 00:01:46,780 - WARNING - ⚠️ Empty essay text at row 0
+2025-10-01 00:01:46,781 - WARNING - ⚠️ Empty essay text at row 1
+2025-10-01 00:01:46,781 - WARNING - ⚠️ Empty essay text at row 2
+2025-10-01 00:01:46,781 - WARNING - ⚠️ Empty essay text at row 3
+2025-10-01 00:01:46,781 - WARNING - ⚠️ Empty essay text at row 4
+2025-10-01 00:01:46,782 - WARNING - ⚠️ Empty essay text at row 5
+2025-10-01 00:01:46,782 - WARNING - ⚠️ Empty essay text at row 6
+2025-10-01 00:01:46,782 - WARNING - ⚠️ Empty essay text at row 7
+2025-10-01 00:01:46,782 - WARNING - ⚠️ Empty essay text at row 8
+2025-10-01 00:01:46,783 - WARNING - ⚠️ Empty essay text at row 9
+2025-10-01 00:01:46,783 - WARNING - ⚠️ Empty essay text at row 10
+2025-10-01 00:01:46,783 - WARNING - ⚠️ Empty essay text at row 11
+2025-10-01 00:01:46,783 - WARNING - ⚠️ Empty essay text at row 12
+2025-10-01 00:01:46,784 - WARNING - ⚠️ Empty essay text at row 13
+2025-10-01 00:01:46,784 - WARNING - ⚠️ Empty essay text at row 14
+2025-10-01 00:01:46,784 - WARNING - ⚠️ Empty essay text at row 15
+2025-10-01 00:01:46,784 - WARNING - ⚠️ Empty essay text at row 16
+2025-10-01 00:01:46,784 - WARNING - ⚠️ Empty essay text at row 17
+2025-10-01 00:01:46,785 - WARNING - ⚠️ Empty essay text at row 18
+2025-10-01 00:01:46,785 - WARNING - ⚠️ Empty essay text at row 19
+2025-10-01 00:01:46,785 - WARNING - ⚠️ Empty essay text at row 20
+2025-10-01 00:01:46,785 - WARNING - ⚠️ Empty essay text at row 21
+2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 22
+2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 23
+2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 24
+2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 25
+2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 26
+2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 27
+2025-10-01 00:01:46,787 - WARNING - ⚠️ Empty essay text at row 28
+2025-10-01 00:01:46,787 - WARNING - ⚠️ Empty essay text at row 29
+2025-10-01 00:01:46,787 - WARNING - ⚠️ Empty essay text at row 30
+2025-10-01 00:01:46,787 - WARNING - ⚠️ Empty essay text at row 31
+2025-10-01 00:01:46,787 - WARNING - ⚠️ Empty essay text at row 32
+2025-10-01 00:01:46,788 - WARNING - ⚠️ Empty essay text at row 33
+2025-10-01 00:01:46,788 - WARNING - ⚠️ Empty essay text at row 34
+2025-10-01 00:01:46,788 - WARNING - ⚠️ Empty essay text at row 35
+2025-10-01 00:01:46,788 - WARNING - ⚠️ Empty essay text at row 36
+2025-10-01 00:01:46,789 - WARNING - ⚠️ Empty essay text at row 37
+2025-10-01 00:01:46,789 - WARNING - ⚠️ Empty essay text at row 38
+2025-10-01 00:01:46,789 - WARNING - ⚠️ Empty essay text at row 39
+2025-10-01 00:01:46,790 - WARNING - ⚠️ Empty essay text at row 40
+2025-10-01 00:01:46,790 - INFO - ✅ Batch evaluation completed!
+2025-10-01 00:01:46,790 - INFO - 🔄 Creating Excel report...
+2025-10-01 00:01:46,790 - INFO - 📝 Creating Excel report: /home/ycy/work_dir/creverse/excel_creation.xlsx
+2025-10-01 00:01:46,791 - WARNING - ⚠️ No results for level Basic
+2025-10-01 00:01:46,791 - WARNING - ⚠️ No results for level Intermediate
+2025-10-01 00:01:46,791 - WARNING - ⚠️ No results for level Advanced
+2025-10-01 00:01:46,791 - WARNING - ⚠️ No results for level Expert
+2025-10-01 00:01:46,794 - INFO - ✅ Created Summary sheet
+2025-10-01 00:01:46,804 - INFO - ✅ Excel report saved: /home/ycy/work_dir/creverse/excel_creation.xlsx
+2025-10-01 00:01:46,804 - INFO - 🎉 Batch evaluation completed successfully!
+2025-10-01 00:01:46,804 - INFO - 📊 Results saved to: /home/ycy/work_dir/creverse/excel_creation.xlsx
+2025-10-01 00:12:43,960 - INFO - ✅ Loaded 40 essays from /home/ycy/work_dir/creverse/data/essay_writing_40_sample.xlsx
+2025-10-01 00:12:43,960 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 00:12:43,960 - INFO - 📋 Original levels distribution:
+2025-10-01 00:12:43,967 - INFO -    basic: 10 essays
+2025-10-01 00:12:43,968 - INFO -    intermediate: 10 essays
+2025-10-01 00:12:43,968 - INFO -    advanced: 10 essays
+2025-10-01 00:12:43,968 - INFO -    expert: 10 essays
+2025-10-01 00:12:43,968 - INFO - 🧪 Testing with 1 essay for all 4 levels
+2025-10-01 00:12:43,969 - INFO - 🚀 Starting batch evaluation: 1 essays × 4 levels = 4 API calls
+2025-10-01 00:12:43,969 - INFO - 📊 Processing level: Basic
+2025-10-01 00:12:43,969 - INFO - [1/4] Evaluating essay 0 (original: basic) with level Basic
+2025-10-01 00:13:30,035 - INFO - 📊 Processing level: Intermediate
+2025-10-01 00:13:30,036 - INFO - [2/4] Evaluating essay 0 (original: basic) with level Intermediate
+2025-10-01 00:14:30,099 - ERROR - ❌ API call timed out
+2025-10-01 00:14:31,099 - INFO - 📊 Processing level: Advanced
+2025-10-01 00:14:31,101 - INFO - [3/4] Evaluating essay 0 (original: basic) with level Advanced
+2025-10-01 00:15:18,259 - INFO - 📊 Processing level: Expert
+2025-10-01 00:15:18,264 - INFO - [4/4] Evaluating essay 0 (original: basic) with level Expert
+2025-10-01 00:16:11,397 - INFO - ✅ Batch evaluation completed!
+2025-10-01 00:16:11,398 - INFO - 
+📊 Level: Basic
+2025-10-01 00:16:11,398 - INFO -    Essay ID: 0
+2025-10-01 00:16:11,398 - INFO -    Total Score: 2
+2025-10-01 00:16:11,399 - INFO -    Grammar Score: 2
+2025-10-01 00:16:11,399 - INFO -    Introduction Score: 2
+2025-10-01 00:16:11,400 - INFO -    Body Score: 2
+2025-10-01 00:16:11,401 - INFO -    Conclusion Score: 1
+2025-10-01 00:16:11,401 - INFO -    Processing Time: 44.900864236000416s
+2025-10-01 00:16:11,402 - INFO - 
+📊 Level: Intermediate
+2025-10-01 00:16:11,402 - INFO -    Essay ID: 0
+2025-10-01 00:16:11,402 - INFO -    Total Score: N/A
+2025-10-01 00:16:11,403 - INFO -    Grammar Score: N/A
+2025-10-01 00:16:11,403 - INFO -    Introduction Score: N/A
+2025-10-01 00:16:11,404 - INFO -    Body Score: N/A
+2025-10-01 00:16:11,404 - INFO -    Conclusion Score: N/A
+2025-10-01 00:16:11,405 - INFO -    Processing Time: N/As
+2025-10-01 00:16:11,405 - ERROR -    Error: Request timed out
+2025-10-01 00:16:11,405 - INFO - 
+📊 Level: Advanced
+2025-10-01 00:16:11,406 - INFO -    Essay ID: 0
+2025-10-01 00:16:11,407 - INFO -    Total Score: 0
+2025-10-01 00:16:11,407 - INFO -    Grammar Score: 0
+2025-10-01 00:16:11,408 - INFO -    Introduction Score: 1
+2025-10-01 00:16:11,408 - INFO -    Body Score: 0
+2025-10-01 00:16:11,409 - INFO -    Conclusion Score: 0
+2025-10-01 00:16:11,409 - INFO -    Processing Time: 46.13790603200141s
+2025-10-01 00:16:11,410 - INFO - 
+📊 Level: Expert
+2025-10-01 00:16:11,410 - INFO -    Essay ID: 0
+2025-10-01 00:16:11,411 - INFO -    Total Score: 0
+2025-10-01 00:16:11,412 - INFO -    Grammar Score: 0
+2025-10-01 00:16:11,412 - INFO -    Introduction Score: 0
+2025-10-01 00:16:11,413 - INFO -    Body Score: 0
+2025-10-01 00:16:11,413 - INFO -    Conclusion Score: 0
+2025-10-01 00:16:11,413 - INFO -    Processing Time: 52.10865841600025s
+2025-10-01 00:16:11,415 - INFO - 💾 Saving test results to CSV...
+2025-10-01 00:16:11,457 - INFO -    Saved: test_result_basic.csv
+2025-10-01 00:16:11,466 - INFO -    Saved: test_result_intermediate.csv
+2025-10-01 00:16:11,476 - INFO -    Saved: test_result_advanced.csv
+2025-10-01 00:16:11,485 - INFO -    Saved: test_result_expert.csv

@@ -20,7 +20,7 @@ class ObservedLLM:
         self.inner = inner
         self.service = service
 
-    @observe(name="llm.run_azure_openai", as_type="generation")  # v3
+    @observe(name="llm.run_azure_openai", as_type="span")  # v3
     async def run_azure_openai(self, *, messages, json_schema, trace_id=None, name=None):
         # 추가 수동 generation 없음 (중복 관찰 방지)
         return await self.inner.run_azure_openai(

@@ -1,11 +1,12 @@
 import json
-from typing import Dict, Any, Optional
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
+
 
 class PromptLoader:
     """Load and manage versioned prompts for essay evaluation."""
 
-    def __init__(self, prompts_dir: Optional[str] = None, version: str = "v1.0.0"):
+    def __init__(self, prompts_dir: Optional[str] = None, version: str = "v1.0.0") -> None:
         """
         Initialize the prompt loader.
 
@@ -18,51 +19,56 @@ class PromptLoader:
 
         if prompts_dir is None:
             # Default to the prompts directory inside the package root (creverse2/prompts)
-            self.prompts_dir = package_root / "prompts"
+            self.prompts_dir: Path = package_root / "prompts"
         else:
             # Try as provided first
-            p = Path(prompts_dir)
+            candidate = Path(prompts_dir)
             # If not exists, try relative to package root
-            self.prompts_dir = p if p.exists() else (package_root / p)
+            self.prompts_dir = candidate if candidate.exists() else (package_root / candidate)
 
         self.version = version
         self._prompts_cache: Dict[str, Dict[str, str]] = {}
         self._load_prompts()
-    
-    def _load_prompts(self):
+
+    def _load_prompts(self) -> None:
         """Load all prompts from the versioned directory."""
         version_dir = self.prompts_dir / self.version
-        
+
         if not version_dir.exists():
             raise FileNotFoundError(
                 f"Prompts directory not found: {version_dir}. "
                 f"Please ensure the prompts are properly set up in {version_dir}"
             )
-        
+
         # Load prompts from JSON files
         required_files = ["introduction.json", "body.json", "conclusion.json", "grammar.json"]
-        
+
         for filename in required_files:
             json_file = version_dir / filename
             if not json_file.exists():
                 raise FileNotFoundError(f"Required prompt file not found: {json_file}")
-                
+
             try:
-                with open(json_file, 'r', encoding='utf-8') as f:
-                    prompts_data = json.load(f)
+                with open(json_file, "r", encoding="utf-8") as file:
+                    prompts_data: Dict[str, str] = json.load(file)
                     rubric_item = json_file.stem
                     self._prompts_cache[rubric_item] = prompts_data
-                    
+
                 # Validate that all required levels are present
                 required_levels = ["Basic", "Intermediate", "Advanced", "Expert"]
                 for level in required_levels:
                     if level not in prompts_data:
                         raise ValueError(f"Missing level '{level}' in {json_file}")
-                        
-            except Exception as e:
-                raise RuntimeError(f"Error loading prompts from {json_file}: {e}")
-    
-    def load_prompt(self, rubric_item: str, level_or_params: Any = None, params: Optional[Dict[str, Any]] = None) -> str:
+
+            except Exception as exc:  # noqa: BLE001
+                raise RuntimeError(f"Error loading prompts from {json_file}: {exc}") from exc
+
+    def load_prompt(
+        self,
+        rubric_item: str,
+        level_or_params: Optional[Union[str, Dict[str, Any]]] = None,
+        params: Optional[Dict[str, Any]] = None,
+    ) -> str:
         """Load a specific prompt.
 
         This method is lenient to ease test/dev usage:
@@ -91,7 +97,7 @@ class PromptLoader:
             _ = {**level_or_params, **(params or {})}
         else:
             # Use provided level or default to Basic
-            level_group = level_or_params or "Basic"
+            level_group = (level_or_params or "Basic")
 
         if level_group not in level_prompts:
             available_levels = list(level_prompts.keys())
@@ -101,18 +107,18 @@ class PromptLoader:
             )
 
         return level_prompts[level_group]
-    
-    def get_available_rubric_items(self) -> list:
+
+    def get_available_rubric_items(self) -> List[str]:
         """Get list of available rubric items."""
         return list(self._prompts_cache.keys())
-    
-    def get_available_levels(self, rubric_item: str) -> list:
+
+    def get_available_levels(self, rubric_item: str) -> List[str]:
         """Get list of available levels for a specific rubric item."""
         if rubric_item not in self._prompts_cache:
             return []
         return list(self._prompts_cache[rubric_item].keys())
-    
-    def reload_prompts(self):
+
+    def reload_prompts(self) -> None:
         """Reload prompts from files (useful for development/testing)."""
         self._prompts_cache.clear()
         self._load_prompts()

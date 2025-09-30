@@ -1,17 +1,24 @@
+from __future__ import annotations
 
 import asyncio
+from datetime import datetime, timezone
+from time import perf_counter
 from typing import Any, Dict
 
-from app.utils.tracer import LLM
-from app.utils.prompt_loader import PromptLoader
 from app.models.request import EssayEvalRequest
-from app.services.evaluation.pre_process import pre_process_essay
-from app.services.evaluation.rubric_chain.grammar_eval import GrammarEvaluator
-from app.services.evaluation.rubric_chain.context_eval import StructureEvaluator
-from app.services.evaluation.scor_corr_fb import aggregate_from_run_outputs
+from app.models.response import (
+    EssayEvalResponse,
+    EvaluationTimeline,
+    RubricItemPayload,
+    StructureChainResult,
+)
 from app.services.evaluation.post_process import finalize_scf
-from time import perf_counter
-from datetime import datetime, timezone
+from app.services.evaluation.pre_process import pre_process_essay
+from app.services.evaluation.rubric_chain.context_eval import StructureEvaluator
+from app.services.evaluation.rubric_chain.grammar_eval import GrammarEvaluator
+from app.services.evaluation.scor_corr_fb import aggregate_from_run_outputs
+from app.utils.prompt_loader import PromptLoader
+from app.utils.tracer import LLM
 
 
 class EssayEvaluator:
@@ -25,14 +32,14 @@ class EssayEvaluator:
         self.llm = llm
         self.loader = loader
 
-    async def evaluate(self, req: EssayEvalRequest) -> Dict[str, Any]:
+    async def evaluate(self, req: EssayEvalRequest) -> EssayEvalResponse:
         # No manual tracing; ObservedLLM handles generation-level tracing.
         return await self._evaluate_impl(req)
 
-    async def _evaluate_impl(self, req: EssayEvalRequest) -> Dict[str, Any]:
+    async def _evaluate_impl(self, req: EssayEvalRequest) -> EssayEvalResponse:
         # Timings
         t0 = perf_counter()
-        timeline = {"start": datetime.now(timezone.utc).isoformat()}
+        timeline: Dict[str, str] = {"start": datetime.now(timezone.utc).isoformat()}
         timings_ms: Dict[str, float] = {}
 
         # Pre-process
@@ -48,13 +55,13 @@ class EssayEvaluator:
         intro = body = conclusion = req.submit_text
 
         # Run grammar + structure in parallel with individual timings
-        async def _timed_grammar():
+        async def _timed_grammar() -> Dict[str, Any]:
             tg0 = perf_counter()
             res = await grammar_eval.check_grammar(req.submit_text, level=req.level_group)
             timings_ms["grammar"] = (perf_counter() - tg0) * 1000.0
             return res
 
-        async def _timed_structure():
+        async def _timed_structure() -> Dict[str, Any]:
             ts0 = perf_counter()
             res = await structure_eval.run_structure_chain(
                 intro=intro, body=body, conclusion=conclusion, level=req.level_group
@@ -88,13 +95,16 @@ class EssayEvaluator:
         timings_ms["total"] = (t5 - t0) * 1000.0
         timeline["end"] = datetime.now(timezone.utc).isoformat()
 
+        grammar_model = RubricItemPayload.model_validate(grammar_res)
+        structure_model = StructureChainResult.model_validate(structure_res)
+        timeline_model = EvaluationTimeline.model_validate(timeline)
 
-        return {
-            "level_group": req.level_group,
-            "pre_process": pre,
-            "grammar": grammar_res,
-            "structure": structure_res,
-            "aggregated": final.model_dump(),
-            "timings": timings_ms,
-            "timeline": timeline,
-        }
+        return EssayEvalResponse(
+            level_group=req.level_group,
+            pre_process=pre,
+            grammar=grammar_model,
+            structure=structure_model,
+            aggregated=final,
+            timings=timings_ms,
+            timeline=timeline_model,
+        )

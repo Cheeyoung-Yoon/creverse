@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  essay-eval-api:
+    build: .
+    container_name: essay-evaluation-api
+    ports:
+      - "8000:8000"
+    environment:
+      # Azure OpenAI Configuration
+      - AZURE_OPENAI_ENDPOINT=${AZURE_OPENAI_ENDPOINT}
+      - AZURE_OPENAI_API_KEY=${AZURE_OPENAI_API_KEY}
+      - AZURE_OPENAI_DEPLOYMENT=${AZURE_OPENAI_DEPLOYMENT}
+      - AZURE_OPENAI_API_VERSION=${AZURE_OPENAI_API_VERSION:-2024-12-01-preview}
+      
+      # API Configuration
+      - API_TIMEOUT_S=${API_TIMEOUT_S:-15.0}
+      
+      # Langfuse Configuration (optional)
+      - LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY:-}
+      - LANGFUSE_SECRET_KEY=${LANGFUSE_SECRET_KEY:-}
+      - LANGFUSE_HOST=${LANGFUSE_HOST:-https://cloud.langfuse.com}
+      
+      # Application Settings
+      - PYTHONPATH=/app
+      - TZ=UTC
+    
+    volumes:
+      # Mount prompts directory for prompt management
+      - ./prompts:/app/prompts
+      # Mount data directory for evaluation scripts
+      - ./data:/app/data
+      # Mount output directory for results
+      - ./output:/app/output
+    
+    restart: unless-stopped
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  default:
+    name: essay-eval-network

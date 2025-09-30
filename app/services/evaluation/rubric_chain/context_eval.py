@@ -1,14 +1,19 @@
-from typing import Dict, Any, Optional
+import json
+import logging
+from typing import Any, Dict, Optional
+
 from app.client.bootstrap import build_llm
-from app.utils.prompt_loader import PromptLoader
 from app.models.rubric import RubricItemResult
+from app.utils.prompt_loader import PromptLoader
 from app.utils.tracer import LLM
+
+logger = logging.getLogger(__name__)
 
 
 class StructureEvaluator:
     """서론/본론/결론 구조 평가 체인 (PromptLoader + AzureOpenAI)"""
 
-    def __init__(self, client: Optional[LLM] = None, loader: Optional[PromptLoader] = None):
+    def __init__(self, client: Optional[LLM] = None, loader: Optional[PromptLoader] = None) -> None:
         self.client = client or build_llm()
         # Use provided PromptLoader if given; otherwise create a new one.
         self.prompt_loader = loader or PromptLoader()
@@ -22,14 +27,18 @@ class StructureEvaluator:
         rubric_item: str,
         text: str,
         level: str = "Basic",
-        previous_summary: Optional[str] = None
+        previous_summary: Optional[str] = None,
     ) -> Dict[str, Any]:
         try:
             system_message = self.prompt_loader.load_prompt(rubric_item, level)
             # 이전 섹션 요약을 사용자 메시지 컨텍스트로 첨부(있을 경우)
             if previous_summary:
                 user_content = (
-                    f"[Previous section summary]\n{previous_summary}\n\n[Current section]\n{text}"
+                    f"[Previous section summary]
+{previous_summary}
+
+[Current section]
+{text}"
                 )
             else:
                 user_content = text
@@ -47,8 +56,7 @@ class StructureEvaluator:
 
             content = response["content"]
             if isinstance(content, str):
-                import json as _json
-                content = _json.loads(content)
+                content = json.loads(content)
 
             parsed = RubricItemResult(**content)
             result = parsed.model_dump()
@@ -56,15 +64,20 @@ class StructureEvaluator:
             result["evaluation_type"] = "structure_chain"
             return result
 
-        except Exception as e:
+        except Exception as exc:  # noqa: BLE001
+            logger.exception("Structure evaluation failed for %s", rubric_item)
             return {
                 "rubric_item": rubric_item,
                 "score": 0,
                 "corrections": [],
-                "feedback": f"구조 평가 중 오류 발생: {str(e)}",
-                "error": str(e),
+                "feedback": f"구조 평가 중 오류 발생: {exc}",
+                "error": str(exc),
                 "evaluation_type": "structure_chain",
-                "token_usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
+                "token_usage": {
+                    "prompt_tokens": 0,
+                    "completion_tokens": 0,
+                    "total_tokens": 0,
+                },
             }
 
     async def run_structure_chain(
@@ -83,7 +96,7 @@ class StructureEvaluator:
             rubric_item="body",
             text=body,
             level=level,
-            previous_summary=intro_res.get("feedback")
+            previous_summary=intro_res.get("feedback"),
         )
         concl_res = await self._evaluate_section(
             rubric_item="conclusion",
@@ -92,10 +105,14 @@ class StructureEvaluator:
             previous_summary=body_res.get("feedback"),
         )
 
+        def _usage(component: Dict[str, Any], key: str) -> int:
+            usage = component.get("token_usage", {})
+            return int(usage.get(key, 0))
+
         total_usage = {
-            "prompt_tokens": sum(x.get("token_usage", {}).get("prompt_tokens", 0) for x in [intro_res, body_res, concl_res]),
-            "completion_tokens": sum(x.get("token_usage", {}).get("completion_tokens", 0) for x in [intro_res, body_res, concl_res]),
-            "total_tokens": sum(x.get("token_usage", {}).get("total_tokens", 0) for x in [intro_res, body_res, concl_res]),
+            "prompt_tokens": sum(_usage(section, "prompt_tokens") for section in (intro_res, body_res, concl_res)),
+            "completion_tokens": sum(_usage(section, "completion_tokens") for section in (intro_res, body_res, concl_res)),
+            "total_tokens": sum(_usage(section, "total_tokens") for section in (intro_res, body_res, concl_res)),
         }
 
         return {

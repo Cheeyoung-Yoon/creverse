@@ -1,10 +1,25 @@
-fastapi
-uvicorn
-openai
-langfuse
-pandas
-openpyxl
-pytest
-pytest-asyncio 
-jsonschema
-python-dotenv
+# Core FastAPI dependencies
+fastapi==0.118.0
+uvicorn==0.37.0
+pydantic==2.11.9
+
+# OpenAI and AI services
+openai==1.109.1
+langfuse==3.5.2
+
+# Data processing
+pandas==2.3.2
+openpyxl==3.1.5
+
+# Testing dependencies
+pytest==8.4.2
+pytest-asyncio==1.2.0
+coverage==7.10.7
+
+# HTTP client and utilities
+httpx==0.28.1
+python-dotenv==1.1.1
+
+# Additional dependencies for async and typing
+anyio==4.11.0
+typing-extensions==4.15.0

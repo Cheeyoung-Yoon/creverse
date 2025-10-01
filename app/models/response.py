@@ -32,7 +32,7 @@ class StructureChainResult(BaseModel):
 
 
 class EssayEvalResponse(BaseModel):
-    level_group: Level
+    rubric_level: Level
     pre_process: PreProcessResult
     grammar: RubricItemPayload
     structure: StructureChainResult

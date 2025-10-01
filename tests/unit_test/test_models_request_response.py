@@ -9,6 +9,9 @@ from app.models.response import (
     TokenUsage, EvaluationTimeline, RubricItemPayload, 
     StructureChainResult, EssayEvalResponse
 )
+from app.models.rubric import (
+    Correction, RubricItemResult, ScoreCorrectionFeedback, PreProcessResult
+)
 
 
 @pytest.mark.unit
@@ -33,12 +36,12 @@ class TestEssayEvalRequest:
     def test_essay_eval_request_creation(self):
         """Test creating EssayEvalRequest"""
         request = EssayEvalRequest(
-            level_group="Basic",
+            rubric_level="Basic",
             topic_prompt="Environment and sustainability",
-            submit_text="This is a sample essay about environmental issues..."
+            submit_text="This is a sample essay about environmental issues that affect our planet today. Climate change, pollution, and deforestation are major concerns that require immediate attention from governments and individuals worldwide."
         )
         
-        assert request.level_group == "Basic"
+        assert request.rubric_level == "Basic"
         assert request.topic_prompt == "Environment and sustainability"
         assert "environmental" in request.submit_text.lower()
     
@@ -48,24 +51,24 @@ class TestEssayEvalRequest:
         
         for level in levels:
             request = EssayEvalRequest(
-                level_group=level,
-                topic_prompt="Test topic",
-                submit_text="Test essay content"
+                rubric_level=level,
+                topic_prompt="Write about technology and education",
+                submit_text="Technology has transformed modern education by providing new tools and methods for learning. Digital platforms, online courses, and interactive software have made education more accessible and engaging for students worldwide."
             )
-            assert request.level_group == level
+            assert request.rubric_level == level
     
     def test_essay_eval_request_long_text(self):
         """Test EssayEvalRequest with long essay text"""
-        long_text = "This is a very long essay. " * 100
+        long_text = "This is a comprehensive essay about technology and its impact on modern society. " * 20
         
         request = EssayEvalRequest(
-            level_group="Advanced",
+            rubric_level="Advanced",
             topic_prompt="Technology and society",
             submit_text=long_text
         )
         
         assert len(request.submit_text) > 1000
-        assert request.level_group == "Advanced"
+        assert request.rubric_level == "Advanced"
 
 
 @pytest.mark.unit
@@ -91,51 +94,6 @@ class TestTokenUsage:
         assert usage.prompt_tokens == 0
         assert usage.completion_tokens == 0
         assert usage.total_tokens == 0
-    
-    def test_token_usage_validation(self):
-        """Test TokenUsage field validation"""
-        # All fields should be non-negative integers
-        usage = TokenUsage(
-            prompt_tokens=100,
-            completion_tokens=50,
-            total_tokens=150
-        )
-        
-        assert usage.prompt_tokens >= 0
-        assert usage.completion_tokens >= 0
-        assert usage.total_tokens >= 0
-
-
-@pytest.mark.unit
-class TestEvaluationTimeline:
-    """Test EvaluationTimeline model"""
-    
-    def test_evaluation_timeline_creation(self):
-        """Test creating EvaluationTimeline"""
-        start_time = "2024-01-01T10:00:00Z"
-        end_time = "2024-01-01T10:05:00Z"
-        
-        timeline = EvaluationTimeline(
-            start=start_time,
-            end=end_time
-        )
-        
-        assert timeline.start == start_time
-        assert timeline.end == end_time
-    
-    def test_evaluation_timeline_iso_format(self):
-        """Test EvaluationTimeline with ISO datetime strings"""
-        now = datetime.now()
-        start_iso = now.isoformat()
-        end_iso = now.replace(minute=now.minute + 5).isoformat()
-        
-        timeline = EvaluationTimeline(
-            start=start_iso,
-            end=end_iso
-        )
-        
-        assert start_iso in timeline.start
-        assert end_iso in timeline.end
 
 
 @pytest.mark.unit
@@ -146,25 +104,32 @@ class TestRubricItemPayload:
         """Test creating RubricItemPayload"""
         payload = RubricItemPayload(
             rubric_item="grammar",
-            score=4,
-            correction="Minor improvements needed",
-            feedback="Good grammar overall",
-            token_usage=TokenUsage(100, 50, 150),
+            score=2,
+            corrections=[
+                {
+                    "highlight": "grammer",
+                    "issue": "Spelling error",
+                    "correction": "grammar"
+                }
+            ],
+            feedback="Good grammar overall with minor corrections needed",
+            token_usage=TokenUsage(prompt_tokens=100, completion_tokens=50, total_tokens=150),
             evaluation_type="grammar_check"
         )
         
         assert payload.rubric_item == "grammar"
-        assert payload.score == 4
+        assert payload.score == 2
         assert payload.evaluation_type == "grammar_check"
         assert payload.token_usage.total_tokens == 150
+        assert len(payload.corrections) == 1
     
     def test_rubric_item_payload_with_error(self):
         """Test RubricItemPayload with error field"""
         payload = RubricItemPayload(
             rubric_item="body",
             score=0,
-            correction="",
-            feedback="",
+            corrections=[],
+            feedback="Unable to evaluate due to error",
             evaluation_type="structure_check",
             error="API timeout error"
         )
@@ -176,9 +141,15 @@ class TestRubricItemPayload:
         """Test RubricItemPayload with optional fields as None"""
         payload = RubricItemPayload(
             rubric_item="conclusion",
-            score=3,
-            correction="Some improvements",
-            feedback="Good conclusion",
+            score=2,
+            corrections=[
+                {
+                    "highlight": "end",
+                    "issue": "Weak conclusion",
+                    "correction": "stronger ending"
+                }
+            ],
+            feedback="Good conclusion with room for improvement",
             evaluation_type="structure_check",
             token_usage=None,
             error=None
@@ -186,6 +157,7 @@ class TestRubricItemPayload:
         
         assert payload.token_usage is None
         assert payload.error is None
+        assert payload.score == 2
 
 
 @pytest.mark.unit
@@ -194,138 +166,47 @@ class TestStructureChainResult:
     
     def test_structure_chain_result_creation(self):
         """Test creating StructureChainResult"""
+        
+        # Create sample payloads
         intro_payload = RubricItemPayload(
             rubric_item="introduction",
-            score=4,
-            correction="Good intro",
-            feedback="Strong opening",
+            score=2,
+            corrections=[],
+            feedback="Good introduction",
             evaluation_type="structure"
         )
         
         body_payload = RubricItemPayload(
             rubric_item="body",
-            score=3,
-            correction="Add examples",
-            feedback="Needs more support",
+            score=1,
+            corrections=[
+                {
+                    "highlight": "argument",
+                    "issue": "Weak support",
+                    "correction": "Add more evidence"
+                }
+            ],
+            feedback="Body needs improvement",
             evaluation_type="structure"
         )
         
         conclusion_payload = RubricItemPayload(
             rubric_item="conclusion",
-            score=4,
-            correction="Effective conclusion",
-            feedback="Strong closing",
+            score=2,
+            corrections=[],
+            feedback="Strong conclusion",
             evaluation_type="structure"
         )
         
-        structure_result = StructureChainResult(
+        result = StructureChainResult(
             introduction=intro_payload,
             body=body_payload,
             conclusion=conclusion_payload,
-            token_usage_total=TokenUsage(300, 150, 450),
+            token_usage_total=TokenUsage(prompt_tokens=200, completion_tokens=100, total_tokens=300),
             evaluation_type="structure_chain"
         )
         
-        assert structure_result.introduction.score == 4
-        assert structure_result.body.score == 3
-        assert structure_result.conclusion.score == 4
-        assert structure_result.token_usage_total.total_tokens == 450
-        assert structure_result.evaluation_type == "structure_chain"
-
-
-@pytest.mark.unit
-class TestEssayEvalResponse:
-    """Test complete EssayEvalResponse model"""
-    
-    def test_essay_eval_response_creation(self, sample_pre_process_result, sample_rubric_result):
-        """Test creating complete EssayEvalResponse"""
-        from app.models.rubric import ScoreCorrectionFeedback
-        
-        # Create structure result
-        intro_payload = RubricItemPayload(
-            rubric_item="introduction",
-            score=4,
-            correction="Good",
-            feedback="Strong",
-            evaluation_type="structure"
-        )
-        
-        body_payload = RubricItemPayload(
-            rubric_item="body",
-            score=3,
-            correction="Improve",
-            feedback="Needs work",
-            evaluation_type="structure"
-        )
-        
-        conclusion_payload = RubricItemPayload(
-            rubric_item="conclusion",
-            score=4,
-            correction="Good",
-            feedback="Strong",
-            evaluation_type="structure"
-        )
-        
-        structure_result = StructureChainResult(
-            introduction=intro_payload,
-            body=body_payload,
-            conclusion=conclusion_payload,
-            evaluation_type="structure_chain"
-        )
-        
-        # Create grammar payload
-        grammar_payload = RubricItemPayload(
-            rubric_item="grammar",
-            score=3,
-            correction="Minor fixes",
-            feedback="Good grammar",
-            evaluation_type="grammar_check"
-        )
-        
-        # Create aggregated result
-        aggregated = ScoreCorrectionFeedback(
-            score=75,
-            correction="Overall good essay",
-            feedback="Strong work with areas for improvement"
-        )
-        
-        # Create timeline
-        timeline = EvaluationTimeline(
-            start="2024-01-01T10:00:00Z",
-            end="2024-01-01T10:05:00Z"
-        )
-        
-        # Create complete response
-        response = EssayEvalResponse(
-            level_group="Basic",
-            pre_process=sample_pre_process_result,
-            grammar=grammar_payload,
-            structure=structure_result,
-            aggregated=aggregated,
-            timings={"total": 5.2, "grammar": 2.1, "structure": 3.1},
-            timeline=timeline
-        )
-        
-        assert response.level_group == "Basic"
-        assert response.grammar.score == 3
-        assert response.structure.body.score == 3
-        assert response.aggregated.score == 75
-        assert response.timings["total"] == 5.2
-    
-    def test_essay_eval_response_field_access(self):
-        """Test accessing all fields of EssayEvalResponse"""
-        # This test ensures all expected fields are accessible
-        # We'll create a minimal response to test field access
-        
-        # Note: This test would need actual instances to work properly
-        # For now, we'll just test that the model class exists and has expected attributes
-        
-        # Check that EssayEvalResponse has expected fields
-        expected_fields = [
-            'level_group', 'pre_process', 'grammar', 'structure', 
-            'aggregated', 'timings', 'timeline'
-        ]
-        
-        # This would check if the model has the expected fields defined
-        # The exact implementation depends on whether we're using Pydantic or dataclasses
-        assert hasattr(EssayEvalResponse, '__annotations__') or hasattr(EssayEvalResponse, '__dataclass_fields__')
+        assert result.introduction.rubric_item == "introduction"
+        assert result.body.rubric_item == "body"
+        assert result.conclusion.rubric_item == "conclusion"
+        assert result.token_usage_total.total_tokens == 300

@@ -1,11 +1,4 @@
 # %%
-"""
-Essay Evaluation Batch Processing Script
-
-이 스크립트는 40개 샘플 에세이를 4개 레벨(Basic, Intermediate, Advanced, Expert)로 
-각각 평가하여 총 160개의 결과를 엑셀 파일로 생성합니다.
-"""
-
 import asyncio
 import json
 import logging

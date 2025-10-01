@@ -338,7 +338,7 @@ async def essay_eval(
         logger.error(f"[{request_id}] Traceback: {traceback.format_exc()}")
         raise create_error_response(
             HTTP_INTERNAL_SERVER_ERROR, "InternalError", "Internal server error", request_id,
-            message=str(e)
+            exception_details=str(e)
         )
 
 
@@ -452,7 +452,7 @@ def handle_ping_exception(e: Exception, ping_id: str, start_time: float) -> HTTP
         logger.error(f"[{ping_id}] Traceback: {traceback.format_exc()}")
         return create_error_response(
             HTTP_SERVICE_UNAVAILABLE, "ServiceError", "Health check failed", ping_id,
-            status="error", message=str(e), response_time_ms=round(response_time, 1)
+            status="error", exception_details=str(e), response_time_ms=round(response_time, 1)
         )
 @router.get("/ping")
 @async_timeout(MAX_PING_TIMEOUT)

@@ -12,215 +12,8 @@
 
 ---
 
-## 2. 시스템 아키텍처
 
-### 2.1 전체 시스템 구조
-```mermaid
-flowchart TB
-    subgraph "Client Layer"
-        A[HTTP Client Request]
-    end
-    
-    subgraph "API Layer"
-        B[FastAPI Router]
-        C[Request Validation]
-        D[Response Formatting]
-    end
-    
-    subgraph "Service Layer"
-        E[EssayEvaluator]
-        F[Pre-Process]
-        G[Grammar Evaluator]
-        H[Structure Evaluator]
-        I[Post-Process]
-    end
-    
-    subgraph "Infrastructure Layer"
-        J[PromptLoader]
-        K[Azure OpenAI Client]
-        L[Langfuse Tracer]
-    end
-    
-    subgraph "External Services"
-        M[Azure OpenAI GPT-4o-mini]
-        N[Langfuse Cloud]
-    end
-    
-    A --> B
-    B --> C
-    C --> E
-    E --> F
-    F --> G
-    F --> H
-    G --> I
-    H --> I
-    I --> D
-    D --> A
-    
-    G --> J
-    H --> J
-    G --> K
-    H --> K
-    K --> M
-    E --> L
-    L --> N
-````
-
-### 2.2 핵심 컴포넌트
-
-#### **API Layer**
-- **FastAPI Router**: RESTful API 엔드포인트 제공 (`/v1/evaluate`)
-- **Dependency Injection**: LLM, PromptLoader, EssayEvaluator 인스턴스 관리
-- **Request/Response Models**: Pydantic 기반 데이터 검증
-
-#### **Service Layer** 
-- **EssayEvaluator**: 전체 평가 프로세스 오케스트레이션
-- **GrammarEvaluator**: 문법 평가 전담 서비스
-- **StructureEvaluator**: 서론/본론/결론 구조 평가 전담 서비스
-
-#### **Infrastructure Layer**
-- **PromptLoader**: 버전별 프롬프트 관리 (`prompts/v1.x.x/`)
-- **ObservedLLM**: Azure OpenAI 클라이언트 + Langfuse 추적 래퍼
-- **Price Tracker**: 토큰 사용량 및 비용 추적
-
-#### **Data Flow**
-1. **입력 검증**: 텍스트 길이, 언어 체크
-2. **병렬 평가**: 문법 평가와 구조 평가 동시 실행
-3. **결과 집계**: 개별 점수 통합 및 피드백 생성
-4. **후처리**: 레벨별 가중치 적용 및 최종 스코어링
-
----
-
-## 3. Evaluation Workflow
-
-### 3.1 전체 처리 흐름
-```mermaid
-sequenceDiagram
-    participant Client
-    participant API as FastAPI Router
-    participant Eval as EssayEvaluator
-    participant Pre as Pre-Process
-    participant Grammar as GrammarEvaluator
-    participant Structure as StructureEvaluator
-    participant Azure as Azure OpenAI
-    participant Langfuse
-    participant Post as Post-Process
-
-    Client->>API: POST /v1/evaluate
-    API->>Eval: evaluate(request)
-    
-    Eval->>Pre: pre_process_essay()
-    Pre-->>Eval: validation result
-    
-    par 병렬 평가
-        Eval->>Grammar: check_grammar()
-        Grammar->>Azure: LLM 호출 (문법)
-        Grammar->>Langfuse: 추적 로깅
-        Azure-->>Grammar: 평가 결과
-        Grammar-->>Eval: grammar_result
-    and
-        Eval->>Structure: run_structure_chain()
-        loop 서론, 본론, 결론
-            Structure->>Azure: LLM 호출 (구조)
-            Structure->>Langfuse: 추적 로깅
-            Azure-->>Structure: 섹션 평가
-        end
-        Structure-->>Eval: structure_result
-    end
-    
-    Eval->>Post: finalize_scf()
-    Post-->>Eval: 최종 점수/피드백
-    Eval-->>API: EssayEvalResponse
-    API-->>Client: JSON Response
-```
-
-### 3.2 세부 처리 단계
-
-#### **3.2.1 Pre-Processing**
-```python
-# app/services/evaluation/pre_process.py
-def pre_process_essay(text: str, topic: str, level: str) -> PreProcessResult:
-    word_count = len(text.split())
-    is_english = detect_language(text) == 'en'
-    meets_length_req = check_length_requirement(word_count, level)
-    
-    return PreProcessResult(
-        word_count=word_count,
-        meets_length_req=meets_length_req,
-        is_english=is_english,
-        is_valid=meets_length_req and is_english
-    )
-```
-
-#### **3.2.2 병렬 평가 실행**
-```python
-# app/services/essay_evaluator.py
-async def _evaluate_impl(self, req: EssayEvalRequest) -> EssayEvalResponse:
-    # 평가기 초기화
-    grammar_eval = GrammarEvaluator(client=self.llm, loader=self.loader)
-    structure_eval = StructureEvaluator(client=self.llm, loader=self.loader)
-    
-    # 병렬 실행으로 성능 최적화
-    grammar_res, structure_res = await asyncio.gather(
-        grammar_eval.check_grammar(req.submit_text, level=req.rubric_level),
-        structure_eval.run_structure_chain(
-            intro=req.submit_text, 
-            body=req.submit_text, 
-            conclusion=req.submit_text, 
-            level=req.rubric_level
-        )
-    )
-```
-
-#### **3.2.3 구조 평가 체인**
-```python
-# app/services/evaluation/rubric_chain/context_eval.py
-async def run_structure_chain(self, intro: str, body: str, conclusion: str, level: str):
-    results = {}
-    previous_summary = None
-    
-    # 순차적 구조 평가 (컨텍스트 연결)
-    for section, text in [("introduction", intro), ("body", body), ("conclusion", conclusion)]:
-        result = await self._evaluate_section(
-            rubric_item=section,
-            text=text,
-            level=level,
-            previous_summary=previous_summary
-        )
-        results[section] = result
-        previous_summary = result.get("feedback", "")
-    
-    return results
-```
-
-#### **3.2.4 Langfuse 추적 통합**
-```python
-# app/utils/tracer.py
-@observe(name="llm.client", as_type="span")
-async def run_azure_openai(self, *, messages, json_schema, prompt_key="generate", **kwargs):
-    with lf.start_as_current_generation(name=f"llm.{prompt_key}") as gen:
-        gen.update(input={"messages": messages}, metadata={
-            "service": "azure-openai",
-            "prompt_key": prompt_key,
-            "prompt_version": prompt_version
-        })
-        
-        result = await self.inner.run_azure_openai(messages, json_schema, **kwargs)
-        gen.update(output=result)
-        return result
-```
-
-### 3.3 성능 최적화 특징
-
-- **비동기 처리**: `asyncio.gather()`로 문법/구조 평가 병렬 실행
-- **프롬프트 캐싱**: `@lru_cache`를 통한 PromptLoader 인스턴스 재사용
-- **연결 풀링**: 단일 Azure OpenAI 클라이언트 인스턴스 공유
-- **타이밍 측정**: 각 단계별 처리 시간 추적 및 분석
-- **지연 로딩**: Langfuse 클라이언트 조건부 초기화
-
----
-
-## 4. 데이터 및 평가 기준
+## 2. 데이터 및 평가 기준
 
 * 입력 데이터: 40개 (레벨별 10개씩, Basic/Intermediate/Advanced/Expert)
 * 평가 Rubric:
@@ -228,34 +21,17 @@ async def run_azure_openai(self, *, messages, json_schema, prompt_key="generate"
   * 서론 / 본론 / 결론 / 문법 (각 0~2점)
 
 ---
+## 3. 실험 환경
 
-## 4. 구현 내용
+- FastAPI 기반 API 서비스
+- Prompt Ops 기반 버전 관리 (v1.0.0 ~ v1.5.0)
+- Langfuse를 통한 LLM 호출 로그 및 추적 관리
+- 주요 버전: v1.5.0 (최종)
 
-### 4.1 Pre-Processing
 
-* 텍스트 길이 및 언어 체크
-* 입력 데이터 정규화
+## 4. 결과 분석
 
-### 4.2 Rubric Evaluation
-
-* **순차 평가**: 서론 → 본론 → 결론
-* **병렬 평가**: 문법
-
-### 4.3 Post-Evaluation
-
-* 레벨 그룹별 기준 적용 (길이/어휘 난이도)
-* 점수 스케일링 및 가중치 반영
-
-### 4.4 Trace 관리
-
-* Langfuse 프로젝트: `essay-eval`
-* Prompt 버전 관리: `prompt/` 폴더
-
----
-
-## 5. 결과 분석
-
-### 5.1 레벨 그룹별 변화
+### 4.1 레벨 그룹별 변화
 
 * 동일 데이터셋을 평가했을 때 레벨 기준이 올라감에 따라 점수가 점차 하락
 
@@ -312,7 +88,7 @@ async def run_azure_openai(self, *, messages, json_schema, prompt_key="generate"
 | Conclusion   | 38 | 1  | -  | 0.03 |
 
 
-### 5.2 항목별 난이도 차이
+### 4.2 항목별 난이도 차이
 
 항목별 점수 분포는 학생 성취도가 아니라 Prompt 기반 체점 로직이 어떻게 작동하는지를 반영한 결과임.  
 이를 통해 항목별 난이도 설정과 Prompt 설계 방향성을 파악할 수 있음.
@@ -364,7 +140,7 @@ Prompt 설계가 본문 평가에서 단순 이분법적 판단에 의존하고 
 
 
 
-### 5.3 오류
+### 4.3 오류
 - submet text에서 json이 받지 못하는 특수 문자 ASCII 가 섞여잇는경우 Fail Calls 발생 
 
 예) \x00, \u0000, \uD800 등
@@ -372,7 +148,7 @@ Prompt 설계가 본문 평가에서 단순 이분법적 판단에 의존하고 
 
 ---
 
-## 6. 성능 리포트
+## 5. 성능 리포트
 
 * 평균 처리 시간: 9,324 ms
 * 요청당 API 비용: $0.0222 (gpt-5-mini 기준)
@@ -399,7 +175,7 @@ Prompt 설계가 본문 평가에서 단순 이분법적 판단에 의존하고 
 
 ---
 
-## 7. 개선 제안
+## 6. 개선 제안
 
 1. **Prompt 개선**: Expert의 체점 강도 조절. 
 
@@ -424,22 +200,13 @@ Prompt 설계가 본문 평가에서 단순 이분법적 판단에 의존하고 
 
 ---
 
-## 8. 결론
+## 7. 결론
 
-## 8. 결론
+본 프로젝트는 Rubric 기반 자동 에세이 평가 시스템을 구현하고, Prompt 버전 관리 및 Langfuse 추적을 통해 실험 가능한 환경을 확보함.
 
-본 프로젝트를 통해 Rubric 기반의 자동 에세이 평가 서비스를 성공적으로 구현함.  
-Prompt Ops를 통한 버전 관리, FastAPI 기반 비동기 처리, Langfuse 추적 통합을 결합하여 안정적이고 확장 가능한 아키텍처를 확보함.  
+실험 결과, 레벨 상승에 따른 점수 하락이라는 기대된 패턴을 확인하였고, Grammar 항목은 안정적으로 작동했음. 반면 Introduction·Body·Conclusion 항목에서는 상위 레벨에서 편중된 결과가 발생하여 개선 필요성이 도출됨.
 
-실험 결과, 레벨 그룹이 상승할수록 점수가 체계적으로 감소하는 패턴을 확인함.  
-이는 평가 기준이 난이도별로 차등 적용되고 있음을 보여주는 동시에, Prompt 설계가 문법 평가에서는 안정적으로 작동하지만 구조 평가에서는 다소 편중된 결과를 유발함을 시사함.  
-
-향후 개선 방향은 다음과 같음.  
-- Prompt 기준의 세분화 및 가중치 조정을 통한 항목별 균형성 확보  
-- Langfuse 로그 기반 성능 분석 강화 및 운영 자동화 확립  
-- 후처리 로직 확장을 통한 점수 해석력 제고 및 교육적 활용성 강화  
-
-종합적으로, 본 프로젝트는 에세이 자동 평가 시스템의 기본 골격을 확립.
+향후에는 Prompt 설계의 균형 조정, Langfuse 기반 성능 분석 자동화, 후처리 강화를 통해 보다 교육적으로 활용 가능한 평가 시스템으로 발전 가능성을 확보함.
 
 
 ---

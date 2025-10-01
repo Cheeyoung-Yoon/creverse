@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-"""
-Excel-Based Batch Version Testing Script
-
-Read scenarios from the Excel file and run version comparisons for one sample
-from each rubric level, saving detailed logs.
-"""
-
 import asyncio
 import json
 import os

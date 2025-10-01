@@ -100,7 +100,7 @@ class EssayEvaluator:
         timeline_model = EvaluationTimeline.model_validate(timeline)
 
         return EssayEvalResponse(
-            level_group=req.rubric_level,
+            rubric_level=req.rubric_level,
             pre_process=pre,
             grammar=grammar_model,
             structure=structure_model,

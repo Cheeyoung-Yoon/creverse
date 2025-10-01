@@ -5,7 +5,7 @@ import logging
 import traceback
 from collections.abc import AsyncIterator
 from functools import lru_cache
-from typing import Optional
+from typing import Optional, Any, Tuple
 
 from fastapi import APIRouter, Depends, HTTPException, Request, Response, BackgroundTasks
 
@@ -29,6 +29,21 @@ from app.core.dependencies import (
 )
 
 logger = logging.getLogger(__name__)
+
+# Constants for better readability
+MAX_EVALUATION_TIMEOUT = 1000.0  # seconds
+MAX_PING_TIMEOUT = 45.0  # seconds
+MAX_RETRY_ATTEMPTS = 2
+RETRY_DELAY = 1.0  # seconds
+VALIDATION_TIMEOUT = 15.0  # seconds
+METRICS_TIMEOUT = 300.0  # seconds
+
+# HTTP Status constants
+HTTP_UNPROCESSABLE_ENTITY = 422
+HTTP_SERVICE_UNAVAILABLE = 503
+HTTP_TOO_MANY_REQUESTS = 429
+HTTP_INTERNAL_SERVER_ERROR = 500
+HTTP_REQUEST_TIMEOUT = 408
 
 # Custom Exception Classes
 class EvaluationException(Exception):
@@ -117,6 +132,69 @@ async def enhanced_route_timer(request: Request) -> AsyncIterator[None]:
         print(f"[API] [{request_id}] ← {method} {path} {dur_ms:.1f}ms{slow_tag}", flush=True)
 
 
+# Error response helper functions
+def create_error_response(status_code: int, error_type: str, message: str, request_id: str, **extra_details) -> HTTPException:
+    """Create standardized error response"""
+    detail = {
+        "error": message,
+        "type": error_type,
+        "request_id": request_id,
+        **extra_details
+    }
+    return HTTPException(status_code=status_code, detail=detail)
+
+def create_error_response_with_headers(status_code: int, error_type: str, message: str, request_id: str, headers: dict, **extra_details) -> HTTPException:
+    """Create standardized error response with custom headers"""
+    detail = {
+        "error": message,
+        "type": error_type,
+        "request_id": request_id,
+        **extra_details
+    }
+    return HTTPException(status_code=status_code, detail=detail, headers=headers)
+
+async def handle_evaluation_execution(evaluator: EssayEvaluator, req: EssayEvalRequest, request_id: str) -> Tuple[Any, float]:
+    """Execute evaluation and return result with timing"""
+    evaluation_start = time.time()
+    try:
+        result = await evaluator.evaluate(req)
+        evaluation_time = time.time() - evaluation_start
+        return result, evaluation_time
+    except Exception as e:
+        evaluation_time = time.time() - evaluation_start
+        logger.error(f"[{request_id}] Evaluation failed after {evaluation_time:.2f}s: {e}")
+        await _handle_evaluation_error(e, req, request_id, evaluation_time)
+        raise
+
+async def process_evaluation_result(result: Any, response: Response, request_id: str, evaluation_time: float, background_tasks: BackgroundTasks, metrics_task_id: str) -> Any:
+    """Process and validate evaluation results"""
+    # Validate result
+    if not result or not hasattr(result, 'timings'):
+        logger.error(f"[{request_id}] Invalid evaluation result")
+        raise EvaluationException(
+            "Invalid evaluation result",
+            details={"result_type": type(result).__name__, "request_id": request_id}
+        )
+    
+    # Enhanced response processing
+    await _process_evaluation_response(
+        result, response, request_id, evaluation_time, background_tasks
+    )
+    
+    # Background cleanup task
+    background_tasks.add_task(
+        _post_evaluation_cleanup,
+        request_id, metrics_task_id, evaluation_time
+    )
+    
+    logger.info(
+        f"[{request_id}] Evaluation completed successfully in {evaluation_time:.2f}s "
+        f"for level: {result.level_group if hasattr(result, 'level_group') else 'unknown'}"
+    )
+    
+    return result
+
+
 router = APIRouter(dependencies=[Depends(enhanced_route_timer)])
 
 
@@ -185,8 +263,8 @@ async def _validate_loader_comprehensive(loader: PromptLoader) -> None:
 
 
 @router.post("/essay-eval", response_model=EssayEvalResponse)
-@async_timeout(1000.0)  # 1000초 타임아웃 (장시간 처리 허용)
-@async_retry(max_attempts=2, delay=1.0)  # 최대 2회 재시도
+@async_timeout(MAX_EVALUATION_TIMEOUT)
+@async_retry(max_attempts=MAX_RETRY_ATTEMPTS, delay=RETRY_DELAY)
 async def essay_eval(
     req: EssayEvalRequest,
     response: Response,
@@ -214,117 +292,170 @@ async def essay_eval(
             
             logger.info(f"[{request_id}] Using prompt version: {FIXED_PROMPT_VERSION}")
             
-            # 백그라운드에서 성능 메트릭 수집 시작
+            # Start background metrics collection
             metrics_task_id = await task_manager.run_in_background(
                 _collect_evaluation_metrics(req, request_id),
                 task_id=f"metrics_{request_id}",
-                timeout=300.0
+                timeout=METRICS_TIMEOUT
             )
             
-            # Run evaluation with enhanced timeout and monitoring
-            evaluation_start = time.time()
-            try:
-                # 평가 실행 (이미 타임아웃과 재시도가 데코레이터로 적용됨)
-                result = await evaluator.evaluate(req)
-                
-            except Exception as e:
-                evaluation_time = time.time() - evaluation_start
-                logger.error(f"[{request_id}] Evaluation failed after {evaluation_time:.2f}s: {e}")
-                
-                # 구체적인 에러 분류 및 처리
-                await _handle_evaluation_error(e, req, request_id, evaluation_time)
-                raise  # 위의 함수에서 적절한 HTTPException이 발생됨
-            
-            evaluation_time = time.time() - evaluation_start
+            # Execute evaluation
+            result, evaluation_time = await handle_evaluation_execution(evaluator, req, request_id)
             
             # Process and validate results
-            if not result or not hasattr(result, 'timings'):
-                logger.error(f"[{request_id}] Invalid evaluation result")
-                raise EvaluationException(
-                    "Invalid evaluation result",
-                    details={"result_type": type(result).__name__, "request_id": request_id}
-                )
-            
-            # Enhanced response processing
-            await _process_evaluation_response(
-                result, response, request_id, evaluation_time, background_tasks
+            final_result = await process_evaluation_result(
+                result, response, request_id, evaluation_time, background_tasks, metrics_task_id
             )
             
-            # 백그라운드에서 후처리 작업 시작
-            background_tasks.add_task(
-                _post_evaluation_cleanup,
-                request_id, metrics_task_id, evaluation_time
-            )
-            
-            logger.info(
-                f"[{request_id}] Evaluation completed successfully in {evaluation_time:.2f}s "
-                f"for level: {req.rubric_level}"
-            )
-            return result
+            return final_result
     
     except ValidationException as e:
         logger.error(f"[{request_id}] Validation error: {e.message}")
-        raise HTTPException(
-            status_code=422,
-            detail={
-                "error": e.message,
-                "type": "ValidationError",
-                "field": e.field,
-                "request_id": request_id,
-                "details": e.details
-            }
+        raise create_error_response(
+            HTTP_UNPROCESSABLE_ENTITY, "ValidationError", e.message, request_id,
+            field=e.field, details=e.details
         )
     except PromptLoadException as e:
         logger.error(f"[{request_id}] Prompt loading error: {e.message}")
-        raise HTTPException(
-            status_code=503,
-            detail={
-                "error": "Prompt system unavailable",
-                "type": "PromptLoadError",
-                "version": e.version,
-                "request_id": request_id
-            }
+        raise create_error_response(
+            HTTP_SERVICE_UNAVAILABLE, "PromptLoadError", "Prompt system unavailable", request_id,
+            version=e.version
         )
     except LLMConnectionException as e:
         logger.error(f"[{request_id}] LLM connection error: {e.message}")
-        raise HTTPException(
-            status_code=503,
-            detail={
-                "error": "AI service unavailable",
-                "type": "LLMConnectionError",
-                "retry_after": e.retry_after,
-                "request_id": request_id
-            },
-            headers={"Retry-After": str(e.retry_after)}
+        raise create_error_response_with_headers(
+            HTTP_SERVICE_UNAVAILABLE, "LLMConnectionError", "AI service unavailable", request_id,
+            headers={"Retry-After": str(e.retry_after)}, retry_after=e.retry_after
         )
     except RateLimitException as e:
         logger.warning(f"[{request_id}] Rate limit error: {e.message}")
-        raise HTTPException(
-            status_code=429,
-            detail={
-                "error": "Rate limit exceeded",
-                "type": "RateLimitError",
-                "retry_after": e.retry_after,
-                "request_id": request_id
-            },
-            headers={"Retry-After": str(e.retry_after)}
+        raise create_error_response_with_headers(
+            HTTP_TOO_MANY_REQUESTS, "RateLimitError", "Rate limit exceeded", request_id,
+            headers={"Retry-After": str(e.retry_after)}, retry_after=e.retry_after
         )
     except Exception as e:
         logger.error(f"[{request_id}] Unexpected error: {e}")
         logger.error(f"[{request_id}] Traceback: {traceback.format_exc()}")
-        raise HTTPException(
-            status_code=500,
-            detail={
-                "error": "Internal server error",
-                "type": "InternalError",
-                "message": str(e),
-                "request_id": request_id
-            }
+        raise create_error_response(
+            HTTP_INTERNAL_SERVER_ERROR, "InternalError", "Internal server error", request_id,
+            message=str(e)
         )
 
 
+# Ping endpoint helper functions
+async def perform_health_checks(ping_id: str, connection_pool, task_manager) -> Tuple[Any, float]:
+    """Perform comprehensive health checks and return LLM response and connection time"""
+    # Test LLM initialization
+    try:
+        llm = await get_async_llm()
+        logger.info(f"[{ping_id}] LLM type: {type(llm)}")
+    except Exception as e:
+        logger.error(f"[{ping_id}] LLM initialization failed: {e}")
+        raise LLMConnectionException(
+            "Failed to initialize LLM client",
+            details={"initialization_error": str(e), "ping_id": ping_id}
+        )
+    
+    # Test prompt loading with validation
+    try:
+        loader = await get_async_prompt_loader(FIXED_PROMPT_VERSION)
+        validation_task_id = await task_manager.run_in_background(
+            _validate_all_prompts(loader, ping_id),
+            task_id=f"validation_{ping_id}",
+            timeout=VALIDATION_TIMEOUT
+        )
+        logger.info(f"[{ping_id}] Prompt validation started: {validation_task_id}")
+    except Exception as e:
+        logger.error(f"[{ping_id}] Prompt validation failed: {e}")
+        raise PromptLoadException(
+            "Prompt validation failed",
+            version=FIXED_PROMPT_VERSION,
+            details={"validation_error": str(e), "ping_id": ping_id}
+        )
+    
+    # Test LLM connection with enhanced monitoring
+    try:
+        connection_start = time.time()
+        res = await llm.run_azure_openai(
+            messages=[{"role": "user", "content": "health check ping"}],
+            json_schema={
+                "type": "object",
+                "properties": {"status": {"type": "string"}, "ok": {"type": "boolean"}},
+                "required": ["status", "ok"],
+                "additionalProperties": False,
+                "title": "HealthCheck",
+            },
+            name="api.ping.health_check",
+        )
+        connection_time = (time.time() - connection_start) * 1000
+        return res, connection_time
+        
+    except Exception as e:
+        connection_time = (time.time() - connection_start) * 1000
+        logger.error(f"[{ping_id}] LLM connection test failed after {connection_time:.1f}ms: {e}")
+        await _handle_ping_error(e, ping_id, connection_time)
+        raise  # _handle_ping_error will raise appropriate exception
+
+def create_ping_response(ping_id: str, response_time: float, connection_time: float, res: Any, system_stats: dict) -> dict[str, Any]:
+    """Create standardized ping response"""
+    return {
+        "status": "healthy",
+        "ok": True,
+        "raw": bool(res),
+        "prompt_version": FIXED_PROMPT_VERSION,
+        "response_time_ms": round(response_time, 1),
+        "connection_time_ms": round(connection_time, 1),
+        "timestamp": time.time(),
+        "ping_id": ping_id,
+        "services": {
+            "llm": "connected",
+            "prompts": "loaded",
+            "api": "operational",
+            "connection_pool": "active",
+            "task_manager": "operational"
+        },
+        "system_stats": system_stats
+    }
+
+def handle_ping_exception(e: Exception, ping_id: str, start_time: float) -> HTTPException:
+    """Handle ping-specific exceptions with appropriate error responses"""
+    response_time = (time.time() - start_time) * 1000
+    
+    if isinstance(e, ValidationException):
+        logger.error(f"[{ping_id}] Validation error during ping: {e.message}")
+        return create_error_response(
+            HTTP_UNPROCESSABLE_ENTITY, "ValidationError", e.message, ping_id,
+            status="unhealthy", response_time_ms=round(response_time, 1)
+        )
+    elif isinstance(e, PromptLoadException):
+        logger.error(f"[{ping_id}] Prompt loading error during ping: {e.message}")
+        return create_error_response(
+            HTTP_SERVICE_UNAVAILABLE, "PromptLoadError", "Prompt system unavailable", ping_id,
+            status="unhealthy", version=e.version, response_time_ms=round(response_time, 1)
+        )
+    elif isinstance(e, LLMConnectionException):
+        logger.error(f"[{ping_id}] LLM connection error during ping: {e.message}")
+        return create_error_response_with_headers(
+            HTTP_SERVICE_UNAVAILABLE, "LLMConnectionError", "AI service unavailable", ping_id,
+            headers={"Retry-After": str(e.retry_after)},
+            status="unhealthy", retry_after=e.retry_after, response_time_ms=round(response_time, 1)
+        )
+    elif isinstance(e, RateLimitException):
+        logger.warning(f"[{ping_id}] Rate limit during ping: {e.message}")
+        return create_error_response_with_headers(
+            HTTP_TOO_MANY_REQUESTS, "RateLimitError", "Rate limit exceeded", ping_id,
+            headers={"Retry-After": str(e.retry_after)},
+            status="rate_limited", retry_after=e.retry_after, response_time_ms=round(response_time, 1)
+        )
+    else:
+        logger.error(f"[{ping_id}] Unexpected error during ping: {e}")
+        logger.error(f"[{ping_id}] Traceback: {traceback.format_exc()}")
+        return create_error_response(
+            HTTP_SERVICE_UNAVAILABLE, "ServiceError", "Health check failed", ping_id,
+            status="error", message=str(e), response_time_ms=round(response_time, 1)
+        )
 @router.get("/ping")
-@async_timeout(45.0)  # 45초 타임아웃
+@async_timeout(MAX_PING_TIMEOUT)
 async def ping(
     background_tasks: BackgroundTasks,
     performance_monitor: PerformanceMonitor = Depends(get_performance_monitor)
@@ -338,68 +469,20 @@ async def ping(
     try:
         logger.info(f"[{ping_id}] Starting comprehensive health check")
         
-        # 비동기 리소스 상태 체크
+        # Perform health checks with connection pooling
         async with connection_pool.acquire():
-            # Test LLM initialization
-            try:
-                llm = await get_async_llm()
-                logger.info(f"[{ping_id}] LLM type: {type(llm)}")
-            except Exception as e:
-                logger.error(f"[{ping_id}] LLM initialization failed: {e}")
-                raise LLMConnectionException(
-                    "Failed to initialize LLM client",
-                    details={"initialization_error": str(e), "ping_id": ping_id}
-                )
-            
-            # Test prompt loading with validation
-            try:
-                loader = await get_async_prompt_loader(FIXED_PROMPT_VERSION)
-                # 백그라운드에서 상세 검증 실행
-                validation_task_id = await task_manager.run_in_background(
-                    _validate_all_prompts(loader, ping_id),
-                    task_id=f"validation_{ping_id}",
-                    timeout=15.0
-                )
-                logger.info(f"[{ping_id}] Prompt validation started: {validation_task_id}")
-            except Exception as e:
-                logger.error(f"[{ping_id}] Prompt validation failed: {e}")
-                raise PromptLoadException(
-                    "Prompt validation failed",
-                    version=FIXED_PROMPT_VERSION,
-                    details={"validation_error": str(e), "ping_id": ping_id}
-                )
-            
-            # Test LLM connection with enhanced monitoring
-            try:
-                connection_start = time.time()
-                res = await llm.run_azure_openai(
-                    messages=[{"role": "user", "content": "health check ping"}],
-                    json_schema={
-                        "type": "object",
-                        "properties": {"status": {"type": "string"}, "ok": {"type": "boolean"}},
-                        "required": ["status", "ok"],
-                        "additionalProperties": False,
-                        "title": "HealthCheck",
-                    },
-                    name="api.ping.health_check",
-                )
-                connection_time = (time.time() - connection_start) * 1000
-                
-            except Exception as e:
-                connection_time = (time.time() - connection_start) * 1000
-                logger.error(f"[{ping_id}] LLM connection test failed after {connection_time:.1f}ms: {e}")
-                await _handle_ping_error(e, ping_id, connection_time)
+            res, connection_time = await perform_health_checks(ping_id, connection_pool, task_manager)
         
         response_time = (time.time() - start_time) * 1000  # milliseconds
         
-        # 시스템 상태 수집
+        # Collect system statistics
         system_stats = {
             "connection_pool": connection_pool.get_stats(),
             "task_manager": task_manager.get_all_tasks_status(),
             "performance": performance_monitor.get_stats()
         }
         
-        # 백그라운드에서 상세 시스템 모니터링
+        # Start background detailed system monitoring
         background_tasks.add_task(
             _detailed_system_monitoring,
             ping_id, response_time, system_stats
@@ -407,97 +490,10 @@ async def ping(
         
         logger.info(f"[{ping_id}] Health check completed successfully in {response_time:.1f}ms")
         
-        return {
-            "status": "healthy",
-            "ok": True, 
-            "raw": bool(res),
-            "prompt_version": FIXED_PROMPT_VERSION,
-            "response_time_ms": round(response_time, 1),
-            "connection_time_ms": round(connection_time, 1),
-            "timestamp": time.time(),
-            "ping_id": ping_id,
-            "services": {
-                "llm": "connected",
-                "prompts": "loaded",
-                "api": "operational",
-                "connection_pool": "active",
-                "task_manager": "operational"
-            },
-            "system_stats": system_stats
-        }
+        return create_ping_response(ping_id, response_time, connection_time, res, system_stats)
         
-    except ValidationException as e:
-        response_time = (time.time() - start_time) * 1000
-        logger.error(f"[{ping_id}] Validation error during ping: {e.message}")
-        raise HTTPException(
-            status_code=422,
-            detail={
-                "status": "unhealthy",
-                "error": e.message,
-                "type": "ValidationError",
-                "ping_id": ping_id,
-                "response_time_ms": round(response_time, 1)
-            }
-        )
-    except PromptLoadException as e:
-        response_time = (time.time() - start_time) * 1000
-        logger.error(f"[{ping_id}] Prompt loading error during ping: {e.message}")
-        raise HTTPException(
-            status_code=503,
-            detail={
-                "status": "unhealthy",
-                "error": "Prompt system unavailable",
-                "type": "PromptLoadError",
-                "version": e.version,
-                "ping_id": ping_id,
-                "response_time_ms": round(response_time, 1)
-            }
-        )
-    except LLMConnectionException as e:
-        response_time = (time.time() - start_time) * 1000
-        logger.error(f"[{ping_id}] LLM connection error during ping: {e.message}")
-        raise HTTPException(
-            status_code=503,
-            detail={
-                "status": "unhealthy",
-                "error": "AI service unavailable",
-                "type": "LLMConnectionError",
-                "retry_after": e.retry_after,
-                "ping_id": ping_id,
-                "response_time_ms": round(response_time, 1)
-            },
-            headers={"Retry-After": str(e.retry_after)}
-        )
-    except RateLimitException as e:
-        response_time = (time.time() - start_time) * 1000
-        logger.warning(f"[{ping_id}] Rate limit during ping: {e.message}")
-        raise HTTPException(
-            status_code=429,
-            detail={
-                "status": "rate_limited",
-                "error": "Rate limit exceeded",
-                "type": "RateLimitError",
-                "retry_after": e.retry_after,
-                "ping_id": ping_id,
-                "response_time_ms": round(response_time, 1)
-            },
-            headers={"Retry-After": str(e.retry_after)}
-        )
-    except Exception as e:
-        response_time = (time.time() - start_time) * 1000
-        logger.error(f"[{ping_id}] Unexpected error during ping: {e}")
-        logger.error(f"[{ping_id}] Traceback: {traceback.format_exc()}")
-        raise HTTPException(
-            status_code=503, 
-            detail={
-                "status": "error",
-                "error": "Health check failed",
-                "type": "ServiceError",
-                "message": str(e),
-                "ping_id": ping_id,
-                "response_time_ms": round(response_time, 1)
-            }
-        )
+    except (ValidationException, PromptLoadException, LLMConnectionException, RateLimitException, Exception) as e:
+        raise handle_ping_exception(e, ping_id, start_time)
 
 
 # Helper functions for enhanced async processing

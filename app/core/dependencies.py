@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 class AsyncLLMManager:
     """비동기 LLM 클라이언트 매니저"""
     
-    def __init__(self):
+    def __init__(self) -> None:
         self._llm_instance: Optional[LLM] = None
         self._initialization_lock = asyncio.Lock()
         self._is_initializing = False
@@ -67,7 +67,7 @@ class AsyncLLMManager:
 class AsyncPromptManager:
     """비동기 프롬프트 매니저"""
     
-    def __init__(self, fixed_version: str = "v1.5.0"):
+    def __init__(self, fixed_version: str = "v1.5.0") -> None:
         self.fixed_version = fixed_version
         self._loader_cache: Dict[str, PromptLoader] = {}
         self._cache_lock = asyncio.Lock()
@@ -108,7 +108,7 @@ class AsyncPromptManager:
                     }
                 )
     
-    async def _validate_prompts(self, loader: PromptLoader):
+    async def _validate_prompts(self, loader: PromptLoader) -> None:
         """프롬프트 유효성 검증"""
         try:
             test_sections = ["grammar", "introduction", "body", "conclusion"]
@@ -182,13 +182,13 @@ async def get_async_evaluator(
 class PerformanceMonitor:
     """성능 모니터링 클래스"""
     
-    def __init__(self):
+    def __init__(self) -> None:
         self.request_count = 0
         self.total_response_time = 0.0
         self.slow_requests = 0
         self.error_count = 0
         
-    def record_request(self, response_time: float, success: bool = True):
+    def record_request(self, response_time: float, success: bool = True) -> None:
         """요청 기록"""
         self.request_count += 1
         self.total_response_time += response_time
@@ -226,7 +226,7 @@ def get_performance_monitor() -> PerformanceMonitor:
     return _performance_monitor
 
 # 리소스 정리 함수
-async def cleanup_async_resources():
+async def cleanup_async_resources() -> None:
     """비동기 리소스 정리"""
     logger.info("Starting async resource cleanup")
     

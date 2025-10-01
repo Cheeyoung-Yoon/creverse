@@ -28,7 +28,7 @@ class EssayEvaluator:
       pre_process → (grammar | structure) in parallel → aggregate → post_process
     """
 
-    def __init__(self, llm: LLM, loader: PromptLoader):
+    def __init__(self, llm: LLM, loader: PromptLoader) -> None:
         self.llm = llm
         self.loader = loader
 

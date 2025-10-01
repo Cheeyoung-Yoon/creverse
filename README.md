@@ -97,6 +97,60 @@ essay-eval/
 └── .env.example
 ```
 
+### 5.1 전체 시스템 국조
+```mermaid
+flowchart TB
+    subgraph "Client Layer"
+        A[HTTP Client Request]
+    end
+    
+    subgraph "API Layer"
+        B[FastAPI Router]
+        C[Request Validation]
+        D[Response Formatting]
+    end
+    
+    subgraph "Service Layer"
+        E[EssayEvaluator]
+        F[Pre-Process]
+        G[Grammar Evaluator]
+        H[Structure Evaluator]
+        I[Post-Process]
+    end
+    
+    subgraph "Infrastructure Layer"
+        J[PromptLoader]
+        K[Azure OpenAI Client]
+        L[Langfuse Tracer]
+    end
+    
+    subgraph "External Services"
+        M[Azure OpenAI GPT-4o-mini]
+        N[Langfuse Cloud]
+    end
+    
+    A --> B
+    B --> C
+    C --> E
+    E --> F
+    F --> G
+    F --> H
+    G --> I
+    H --> I
+    I --> D
+    D --> A
+    
+    G --> J
+    H --> J
+    G --> K
+    H --> K
+    K --> M
+    E --> L
+    L --> N
+```
+
+
+
 ---
 
 ## 6. 평가 로직

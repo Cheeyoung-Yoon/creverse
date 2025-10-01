@@ -43,7 +43,7 @@ class EssayEvaluator:
         timings_ms: Dict[str, float] = {}
 
         # Pre-process
-        pre = pre_process_essay(req.submit_text, req.topic_prompt, req.level_group)
+        pre = pre_process_essay(req.submit_text, req.topic_prompt, req.rubric_level)
         t1 = perf_counter()
         timings_ms["pre_process"] = (t1 - t0) * 1000.0
 
@@ -57,14 +57,14 @@ class EssayEvaluator:
         # Run grammar + structure in parallel with individual timings
         async def _timed_grammar() -> Dict[str, Any]:
             tg0 = perf_counter()
-            res = await grammar_eval.check_grammar(req.submit_text, level=req.level_group)
+            res = await grammar_eval.check_grammar(req.submit_text, level=req.rubric_level)
             timings_ms["grammar"] = (perf_counter() - tg0) * 1000.0
             return res
 
         async def _timed_structure() -> Dict[str, Any]:
             ts0 = perf_counter()
             res = await structure_eval.run_structure_chain(
-                intro=intro, body=body, conclusion=conclusion, level=req.level_group
+                intro=intro, body=body, conclusion=conclusion, level=req.rubric_level
             )
             timings_ms["structure"] = (perf_counter() - ts0) * 1000.0
             return res
@@ -89,7 +89,7 @@ class EssayEvaluator:
 
         # Post-process with level weighting and validation
         t4 = perf_counter()
-        final = finalize_scf(items=items, scf=scf, level_group=req.level_group)
+        final = finalize_scf(items=items, scf=scf, level_group=req.rubric_level)
         t5 = perf_counter()
         timings_ms["post_process"] = (t5 - t4) * 1000.0
         timings_ms["total"] = (t5 - t0) * 1000.0
@@ -100,7 +100,7 @@ class EssayEvaluator:
         timeline_model = EvaluationTimeline.model_validate(timeline)
 
         return EssayEvalResponse(
-            level_group=req.level_group,
+            level_group=req.rubric_level,
             pre_process=pre,
             grammar=grammar_model,
             structure=structure_model,

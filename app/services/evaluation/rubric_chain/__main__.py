@@ -20,7 +20,7 @@ async def _amain(text: str, level: str) -> int:
     # Run in parallel
     grammar_task = asyncio.create_task(grammar.check_grammar(text, level=level))
     structure_task = asyncio.create_task(
-        structure.run_structure_chain(intro=intro, body=body, conclusion=conclusion, level=level, trace_id=trace_id)
+        structure.run_structure_chain(intro=intro, body=body, conclusion=conclusion, level=level)
     )
     
     grammar_res, structure_res = await asyncio.gather(grammar_task, structure_task)

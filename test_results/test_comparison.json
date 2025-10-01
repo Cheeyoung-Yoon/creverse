@@ -1,0 +1,1827 @@
+{
+  "comparison_summary": {
+    "version_comparison": {
+      "v1.3.0": {
+        "scores": {
+          "introduction": {
+            "average": 1.0,
+            "min": 0,
+            "max": 2,
+            "count": 4
+          },
+          "body": {
+            "average": 1.0,
+            "min": 0,
+            "max": 2,
+            "count": 4
+          },
+          "conclusion": {
+            "average": 0.75,
+            "min": 0,
+            "max": 1,
+            "count": 4
+          },
+          "grammar": {
+            "average": 0.75,
+            "min": 0,
+            "max": 1,
+            "count": 4
+          },
+          "total": {
+            "average": 3.5,
+            "min": 0,
+            "max": 6,
+            "count": 4
+          }
+        },
+        "timing": {
+          "introduction": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          },
+          "body": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          },
+          "conclusion": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          },
+          "grammar": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          },
+          "total": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          }
+        },
+        "tokens": {
+          "introduction": {
+            "average": 0,
+            "min": 0,
+            "max": 0,
+            "count": 0
+          },
+          "body": {
+            "average": 0,
+            "min": 0,
+            "max": 0,
+            "count": 0
+          },
+          "conclusion": {
+            "average": 0,
+            "min": 0,
+            "max": 0,
+            "count": 0
+          },
+          "grammar": {
+            "average": 0,
+            "min": 0,
+            "max": 0,
+            "count": 0
+          },
+          "total": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          }
+        },
+        "success_rate": 1.0,
+        "total_essays": 4
+      },
+      "v1.4.0": {
+        "scores": {
+          "introduction": {
+            "average": 1.0,
+            "min": 0,
+            "max": 2,
+            "count": 4
+          },
+          "body": {
+            "average": 1.0,
+            "min": 0,
+            "max": 2,
+            "count": 4
+          },
+          "conclusion": {
+            "average": 1.0,
+            "min": 0,
+            "max": 2,
+            "count": 4
+          },
+          "grammar": {
+            "average": 0.5,
+            "min": 0,
+            "max": 1,
+            "count": 4
+          },
+          "total": {
+            "average": 3.5,
+            "min": 0,
+            "max": 7,
+            "count": 4
+          }
+        },
+        "timing": {
+          "introduction": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          },
+          "body": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          },
+          "conclusion": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          },
+          "grammar": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          },
+          "total": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          }
+        },
+        "tokens": {
+          "introduction": {
+            "average": 0,
+            "min": 0,
+            "max": 0,
+            "count": 0
+          },
+          "body": {
+            "average": 0,
+            "min": 0,
+            "max": 0,
+            "count": 0
+          },
+          "conclusion": {
+            "average": 0,
+            "min": 0,
+            "max": 0,
+            "count": 0
+          },
+          "grammar": {
+            "average": 0,
+            "min": 0,
+            "max": 0,
+            "count": 0
+          },
+          "total": {
+            "average": 0.0,
+            "min": 0,
+            "max": 0,
+            "count": 4
+          }
+        },
+        "success_rate": 1.0,
+        "total_essays": 4
+      }
+    },
+    "rubric_level_breakdown": {
+      "basic": {
+        "v1.3.0": {
+          "score": 6,
+          "time": 0,
+          "tokens": 0,
+          "success": true
+        },
+        "v1.4.0": {
+          "score": 7,
+          "time": 0,
+          "tokens": 0,
+          "success": true
+        }
+      },
+      "intermediate": {
+        "v1.3.0": {
+          "score": 4,
+          "time": 0,
+          "tokens": 0,
+          "success": true
+        },
+        "v1.4.0": {
+          "score": 3,
+          "time": 0,
+          "tokens": 0,
+          "success": true
+        }
+      },
+      "advanced": {
+        "v1.3.0": {
+          "score": 4,
+          "time": 0,
+          "tokens": 0,
+          "success": true
+        },
+        "v1.4.0": {
+          "score": 4,
+          "time": 0,
+          "tokens": 0,
+          "success": true
+        }
+      },
+      "expert": {
+        "v1.3.0": {
+          "score": 0,
+          "time": 0,
+          "tokens": 0,
+          "success": true
+        },
+        "v1.4.0": {
+          "score": 0,
+          "time": 0,
+          "tokens": 0,
+          "success": true
+        }
+      }
+    },
+    "performance_metrics": {}
+  },
+  "detailed_results": [
+    {
+      "rubric_level": "basic",
+      "essay_data": {
+        "essay_id": "0",
+        "rubric_level": "Basic",
+        "topic_prompt": "Imagine you were surfing with your friend and a tsunami started to form. If you knew a tsunami was forming like the video, what would you do first? Write a paragraph with two reasons to support your answer.",
+        "submit_text": "I will move to a higher ground. I have two reasons. First, Because tsunamis are dangerous. Because tsunamis can sweep us away. Second, tsunamis are big waves. But it can't come at the high ground. For these reasons, I will move to a higher ground."
+      },
+      "results": {
+        "v1.3.0": {
+          "version": "v1.3.0",
+          "essay_id": "0",
+          "rubric_level": "Basic",
+          "success": true,
+          "total_evaluation_time": 23.166,
+          "api_response": {
+            "level_group": "Basic",
+            "pre_process": {
+              "word_count": 46,
+              "meets_length_req": false,
+              "is_english": true,
+              "is_valid": false
+            },
+            "grammar": {
+              "rubric_item": "grammar",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "First, Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                  "issue": "Sentence fragments and unnecessary capitalization",
+                  "correction": "First, tsunamis are dangerous because they can sweep us away."
+                },
+                {
+                  "highlight": "Second, tsunamis are big waves. But it can't come at the high ground.",
+                  "issue": "Pronoun, article, and awkward phrasing",
+                  "correction": "Second, tsunamis are big waves, but they cannot reach higher ground."
+                }
+              ],
+              "feedback": "Clear meaning but noticeable beginner errors—fix sentence fragments, capitalization, pronouns, and articles.",
+              "token_usage": null,
+              "evaluation_type": "grammar_check",
+              "error": null
+            },
+            "structure": {
+              "introduction": {
+                "rubric_item": "introduction",
+                "score": 2,
+                "corrections": [
+                  {
+                    "highlight": "Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                    "issue": "sentence fragments and repetition",
+                    "correction": "Combine into one sentence: 'Tsunamis are dangerous because they can sweep people away.'"
+                  },
+                  {
+                    "highlight": "But it can't come at the high ground.",
+                    "issue": "unclear and grammatically incorrect",
+                    "correction": "Rewrite as: 'Tsunamis cannot reach high ground.'"
+                  }
+                ],
+                "feedback": "Topic and direction are clear; fix fragments and the unclear sentence for smoother introduction.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "body": {
+                "rubric_item": "body",
+                "score": 2,
+                "corrections": [
+                  {
+                    "highlight": "First, Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                    "issue": "fragment",
+                    "correction": "Combine and rewrite: \"First, tsunamis are dangerous because they can sweep us away.\""
+                  },
+                  {
+                    "highlight": "But it can't come at the high ground.",
+                    "issue": "unclear",
+                    "correction": "Clarify and correct: \"Second, tsunamis are big waves, but they can't reach high ground.\""
+                  }
+                ],
+                "feedback": "Clear main idea with reasons; fix fragments and clarify the high-ground sentence for smoother flow.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "conclusion": {
+                "rubric_item": "conclusion",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "First, Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                    "issue": "fragmented/redundant",
+                    "correction": "Combine: \"First, tsunamis are dangerous because they can sweep us away.\""
+                  },
+                  {
+                    "highlight": "But it can't come at the high ground.",
+                    "issue": "unclear/incorrect",
+                    "correction": "Clarify: \"A tsunami cannot reach high ground.\""
+                  }
+                ],
+                "feedback": "Restates main idea but is fragmented and unclear; fix sentence structure for a stronger ending.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "token_usage_total": null,
+              "evaluation_type": "structure_chain"
+            },
+            "aggregated": {
+              "score": 2,
+              "corrections": [
+                {
+                  "highlight": "Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                  "issue": "sentence fragments and repetition",
+                  "correction": "Combine into one sentence: 'Tsunamis are dangerous because they can sweep people away.'"
+                },
+                {
+                  "highlight": "But it can't come at the high ground.",
+                  "issue": "unclear and grammatically incorrect",
+                  "correction": "Rewrite as: 'Tsunamis cannot reach high ground.'"
+                },
+                {
+                  "highlight": "First, Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                  "issue": "fragment",
+                  "correction": "Combine and rewrite: \"First, tsunamis are dangerous because they can sweep us away.\""
+                },
+                {
+                  "highlight": "But it can't come at the high ground.",
+                  "issue": "unclear",
+                  "correction": "Clarify and correct: \"Second, tsunamis are big waves, but they can't reach high ground.\""
+                },
+                {
+                  "highlight": "First, Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                  "issue": "fragmented/redundant",
+                  "correction": "Combine: \"First, tsunamis are dangerous because they can sweep us away.\""
+                },
+                {
+                  "highlight": "But it can't come at the high ground.",
+                  "issue": "unclear/incorrect",
+                  "correction": "Clarify: \"A tsunami cannot reach high ground.\""
+                },
+                {
+                  "highlight": "First, Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                  "issue": "Sentence fragments and unnecessary capitalization",
+                  "correction": "First, tsunamis are dangerous because they can sweep us away."
+                },
+                {
+                  "highlight": "Second, tsunamis are big waves. But it can't come at the high ground.",
+                  "issue": "Pronoun, article, and awkward phrasing",
+                  "correction": "Second, tsunamis are big waves, but they cannot reach higher ground."
+                }
+              ],
+              "feedback": "[Pre-check] words=46, meets_length=False, english=True, valid=False.\n[introduction] Topic and direction are clear; fix fragments and the unclear sentence for smoother introduction.\n[body] Clear main idea with reasons; fix fragments and clarify the high-ground sentence for smoother flow.\n[conclusion] Restates main idea but is fragmented and unclear; fix sentence structure for a stronger ending.\n[grammar] Clear meaning but noticeable beginner errors—fix sentence fragments, capitalization, pronouns, and articles."
+            },
+            "timings": {
+              "pre_process": 0.10905999806709588,
+              "grammar": 8652.978719001112,
+              "structure": 22087.72938799666,
+              "aggregate": 0.04644800355890766,
+              "post_process": 0.046137996832840145,
+              "total": 22091.60320099909
+            },
+            "timeline": {
+              "start": "2025-10-01T01:02:16.090096+00:00",
+              "end": "2025-10-01T01:02:39.248106+00:00"
+            }
+          },
+          "metrics": {
+            "timing": {},
+            "tokens": {
+              "introduction": null,
+              "body": null,
+              "conclusion": null,
+              "grammar": null
+            },
+            "scores": {
+              "introduction": 2,
+              "body": 2,
+              "conclusion": 1,
+              "grammar": 1
+            },
+            "feedback": {
+              "introduction": "Topic and direction are clear; fix fragments and the unclear sentence for smoother introduction.",
+              "body": "Clear main idea with reasons; fix fragments and clarify the high-ground sentence for smoother flow.",
+              "conclusion": "Restates main idea but is fragmented and unclear; fix sentence structure for a stronger ending.",
+              "grammar": "Clear meaning but noticeable beginner errors—fix sentence fragments, capitalization, pronouns, and articles."
+            },
+            "total_score": 6,
+            "total_time": 0,
+            "total_tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            }
+          },
+          "timestamp": "2025-10-01T10:02:39.249121"
+        },
+        "v1.4.0": {
+          "version": "v1.4.0",
+          "essay_id": "0",
+          "rubric_level": "Basic",
+          "success": true,
+          "total_evaluation_time": 29.841,
+          "api_response": {
+            "level_group": "Basic",
+            "pre_process": {
+              "word_count": 46,
+              "meets_length_req": false,
+              "is_english": true,
+              "is_valid": false
+            },
+            "grammar": {
+              "rubric_item": "grammar",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "First, Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                  "issue": "sentence fragments",
+                  "correction": "\"First, Because tsunamis are dangerous. Because tsunamis can sweep us away.\" -> \"First, tsunamis are dangerous because they can sweep us away.\""
+                },
+                {
+                  "highlight": "But it can't come at the high ground.",
+                  "issue": "wrong pronoun/phrasing",
+                  "correction": "\"But it can't come at the high ground.\" -> \"But they cannot reach higher ground.\""
+                }
+              ],
+              "feedback": "Fix fragments and pronoun; use plural 'they' and 'reach higher ground.'",
+              "token_usage": null,
+              "evaluation_type": "grammar_check",
+              "error": null
+            },
+            "structure": {
+              "introduction": {
+                "rubric_item": "introduction",
+                "score": 2,
+                "corrections": [
+                  {
+                    "highlight": "I will move to a higher ground. I have two reasons.",
+                    "issue": "Choppy and redundant; merge into single thesis.",
+                    "correction": "I will move to higher ground for two reasons."
+                  },
+                  {
+                    "highlight": "But it can't come at the high ground.",
+                    "issue": "Awkward/ungrammatical and unclear.",
+                    "correction": "But tsunamis can't reach higher ground."
+                  }
+                ],
+                "feedback": "Clear topic and direction; tighten wording and fix grammar.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "body": {
+                "rubric_item": "body",
+                "score": 2,
+                "corrections": [
+                  {
+                    "highlight": "Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                    "issue": "Sentence fragments and unclear pronoun; awkward repetition.",
+                    "correction": "Tsunamis are dangerous because they can sweep people away."
+                  },
+                  {
+                    "highlight": "I will move to a higher ground.",
+                    "issue": "Awkward wording and article use; not canonical.",
+                    "correction": "I will reach higher ground."
+                  }
+                ],
+                "feedback": "Good main idea and support; fix fragments and wording for clarity.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "conclusion": {
+                "rubric_item": "conclusion",
+                "score": 2,
+                "corrections": [
+                  {
+                    "highlight": "First, Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                    "issue": "fragment and redundant 'Because'",
+                    "correction": "First, tsunamis are dangerous because they can sweep us away."
+                  },
+                  {
+                    "highlight": "But it can't come at the high ground.",
+                    "issue": "unclear pronoun and awkward phrasing",
+                    "correction": "But they can't reach higher ground."
+                  }
+                ],
+                "feedback": "Restates main idea and ends clearly; fix fragments and unclear pronoun.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "token_usage_total": null,
+              "evaluation_type": "structure_chain"
+            },
+            "aggregated": {
+              "score": 2,
+              "corrections": [
+                {
+                  "highlight": "I will move to a higher ground. I have two reasons.",
+                  "issue": "Choppy and redundant; merge into single thesis.",
+                  "correction": "I will move to higher ground for two reasons."
+                },
+                {
+                  "highlight": "But it can't come at the high ground.",
+                  "issue": "Awkward/ungrammatical and unclear.",
+                  "correction": "But tsunamis can't reach higher ground."
+                },
+                {
+                  "highlight": "Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                  "issue": "Sentence fragments and unclear pronoun; awkward repetition.",
+                  "correction": "Tsunamis are dangerous because they can sweep people away."
+                },
+                {
+                  "highlight": "I will move to a higher ground.",
+                  "issue": "Awkward wording and article use; not canonical.",
+                  "correction": "I will reach higher ground."
+                },
+                {
+                  "highlight": "First, Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                  "issue": "fragment and redundant 'Because'",
+                  "correction": "First, tsunamis are dangerous because they can sweep us away."
+                },
+                {
+                  "highlight": "But it can't come at the high ground.",
+                  "issue": "unclear pronoun and awkward phrasing",
+                  "correction": "But they can't reach higher ground."
+                },
+                {
+                  "highlight": "First, Because tsunamis are dangerous. Because tsunamis can sweep us away.",
+                  "issue": "sentence fragments",
+                  "correction": "\"First, Because tsunamis are dangerous. Because tsunamis can sweep us away.\" -> \"First, tsunamis are dangerous because they can sweep us away.\""
+                },
+                {
+                  "highlight": "But it can't come at the high ground.",
+                  "issue": "wrong pronoun/phrasing",
+                  "correction": "\"But it can't come at the high ground.\" -> \"But they cannot reach higher ground.\""
+                }
+              ],
+              "feedback": "[Pre-check] words=46, meets_length=False, english=True, valid=False.\n[introduction] Clear topic and direction; tighten wording and fix grammar.\n[body] Good main idea and support; fix fragments and wording for clarity.\n[conclusion] Restates main idea and ends clearly; fix fragments and unclear pronoun.\n[grammar] Fix fragments and pronoun; use plural 'they' and 'reach higher ground.'"
+            },
+            "timings": {
+              "pre_process": 0.03399299748707563,
+              "grammar": 7320.235958999547,
+              "structure": 28752.287132003403,
+              "aggregate": 0.03799000114668161,
+              "post_process": 0.02832000609487295,
+              "total": 28753.328147999127
+            },
+            "timeline": {
+              "start": "2025-10-01T01:02:39.250783+00:00",
+              "end": "2025-10-01T01:03:09.089442+00:00"
+            }
+          },
+          "metrics": {
+            "timing": {},
+            "tokens": {
+              "introduction": null,
+              "body": null,
+              "conclusion": null,
+              "grammar": null
+            },
+            "scores": {
+              "introduction": 2,
+              "body": 2,
+              "conclusion": 2,
+              "grammar": 1
+            },
+            "feedback": {
+              "introduction": "Clear topic and direction; tighten wording and fix grammar.",
+              "body": "Good main idea and support; fix fragments and wording for clarity.",
+              "conclusion": "Restates main idea and ends clearly; fix fragments and unclear pronoun.",
+              "grammar": "Fix fragments and pronoun; use plural 'they' and 'reach higher ground.'"
+            },
+            "total_score": 7,
+            "total_time": 0,
+            "total_tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            }
+          },
+          "timestamp": "2025-10-01T10:03:09.090311"
+        }
+      }
+    },
+    {
+      "rubric_level": "intermediate",
+      "essay_data": {
+        "essay_id": "10",
+        "rubric_level": "Intermediate",
+        "topic_prompt": "If you could visit any planet in the solar system, which planet would you want to visit?",
+        "submit_text": "Do you know good at planet? I not good. But, I want to go a mar. If I could visit any planet, then I would visit mars.\n\nFirst, mars can almost people leave on this planet. Because, here has a little water and people need things. And also mars is not long to go.\n\nSecond, Mar's is not hot and cold. So, the people can go and explore the Martian. But, I have car, head ack so I think go a mars is very hard to go for me.\n\nIn conclusion, I want to go a mar. Because, mars is almost good to live in here and temperatures are okay for people."
+      },
+      "results": {
+        "v1.3.0": {
+          "version": "v1.3.0",
+          "essay_id": "10",
+          "rubric_level": "Intermediate",
+          "success": true,
+          "total_evaluation_time": 21.719,
+          "api_response": {
+            "level_group": "Intermediate",
+            "pre_process": {
+              "word_count": 113,
+              "meets_length_req": true,
+              "is_english": true,
+              "is_valid": true
+            },
+            "grammar": {
+              "rubric_item": "grammar",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "I want to go a mar.",
+                  "issue": "article/preposition and capitalization",
+                  "correction": "I want to go to Mars."
+                },
+                {
+                  "highlight": "mars can almost people leave on this planet.",
+                  "issue": "word order/verb choice",
+                  "correction": "Mars could nearly support human life."
+                }
+              ],
+              "feedback": "Article/preposition misuse and verb form problems recur; meaning is usually clear but grammar needs consistent fixing.",
+              "token_usage": null,
+              "evaluation_type": "grammar_check",
+              "error": null
+            },
+            "structure": {
+              "introduction": {
+                "rubric_item": "introduction",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "Do you know good at planet? I not good.",
+                    "issue": "Unclear and grammatically incorrect; weak hook",
+                    "correction": "Are you familiar with planets? I'm not very knowledgeable."
+                  },
+                  {
+                    "highlight": "If I could visit any planet, then I would visit mars.",
+                    "issue": "Capitalization and awkward phrasing; thesis could be clearer",
+                    "correction": "If I could visit any planet, I would choose Mars."
+                  }
+                ],
+                "feedback": "Thesis is clear—you want to visit Mars—but the introduction lacks a roadmap and needs grammar and clarity fixes.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "body": {
+                "rubric_item": "body",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "If I could visit any planet, then I would visit mars.",
+                    "issue": "grammar",
+                    "correction": "If I could visit any planet, I would visit Mars."
+                  },
+                  {
+                    "highlight": "First, mars can almost people leave on this planet. Because, here has a little water and people need things. And also mars is not long to go.",
+                    "issue": "unclear",
+                    "correction": "First, Mars could be habitable because it has some water and resources, and travel to Mars is relatively achievable."
+                  }
+                ],
+                "feedback": "Reasons are weak and repetitive; clarify claims, fix grammar, and provide specific, logical evidence for each point.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "conclusion": {
+                "rubric_item": "conclusion",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "I want to go a mar.",
+                    "issue": "grammar/spelling",
+                    "correction": "I want to go to Mars."
+                  },
+                  {
+                    "highlight": "mars is almost good to live in here and temperatures are okay for people.",
+                    "issue": "vague and awkward phrasing",
+                    "correction": "Mars could be suitable for people because it has some water and potentially tolerable temperatures."
+                  }
+                ],
+                "feedback": "Conclusion repeats thesis with grammar errors; add clearer summary and a stronger closing thought.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "token_usage_total": null,
+              "evaluation_type": "structure_chain"
+            },
+            "aggregated": {
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "Do you know good at planet? I not good.",
+                  "issue": "Unclear and grammatically incorrect; weak hook",
+                  "correction": "Are you familiar with planets? I'm not very knowledgeable."
+                },
+                {
+                  "highlight": "If I could visit any planet, then I would visit mars.",
+                  "issue": "Capitalization and awkward phrasing; thesis could be clearer",
+                  "correction": "If I could visit any planet, I would choose Mars."
+                },
+                {
+                  "highlight": "If I could visit any planet, then I would visit mars.",
+                  "issue": "grammar",
+                  "correction": "If I could visit any planet, I would visit Mars."
+                },
+                {
+                  "highlight": "First, mars can almost people leave on this planet. Because, here has a little water and people need things. And also mars is not long to go.",
+                  "issue": "unclear",
+                  "correction": "First, Mars could be habitable because it has some water and resources, and travel to Mars is relatively achievable."
+                },
+                {
+                  "highlight": "I want to go a mar.",
+                  "issue": "grammar/spelling",
+                  "correction": "I want to go to Mars."
+                },
+                {
+                  "highlight": "mars is almost good to live in here and temperatures are okay for people.",
+                  "issue": "vague and awkward phrasing",
+                  "correction": "Mars could be suitable for people because it has some water and potentially tolerable temperatures."
+                },
+                {
+                  "highlight": "I want to go a mar.",
+                  "issue": "article/preposition and capitalization",
+                  "correction": "I want to go to Mars."
+                },
+                {
+                  "highlight": "mars can almost people leave on this planet.",
+                  "issue": "word order/verb choice",
+                  "correction": "Mars could nearly support human life."
+                }
+              ],
+              "feedback": "[Pre-check] words=113, meets_length=True, english=True, valid=True.\n[introduction] Thesis is clear—you want to visit Mars—but the introduction lacks a roadmap and needs grammar and clarity fixes.\n[body] Reasons are weak and repetitive; clarify claims, fix grammar, and provide specific, logical evidence for each point.\n[conclusion] Conclusion repeats thesis with grammar errors; add clearer summary and a stronger closing thought.\n[grammar] Article/preposition misuse and verb form problems recur; meaning is usually clear but grammar needs consistent fixing."
+            },
+            "timings": {
+              "pre_process": 0.0503919945913367,
+              "grammar": 7809.926761001407,
+              "structure": 21716.095394003787,
+              "aggregate": 0.03365400334587321,
+              "post_process": 0.02554799721110612,
+              "total": 21717.32836499723
+            },
+            "timeline": {
+              "start": "2025-10-01T01:03:09.091406+00:00",
+              "end": "2025-10-01T01:03:30.808736+00:00"
+            }
+          },
+          "metrics": {
+            "timing": {},
+            "tokens": {
+              "introduction": null,
+              "body": null,
+              "conclusion": null,
+              "grammar": null
+            },
+            "scores": {
+              "introduction": 1,
+              "body": 1,
+              "conclusion": 1,
+              "grammar": 1
+            },
+            "feedback": {
+              "introduction": "Thesis is clear—you want to visit Mars—but the introduction lacks a roadmap and needs grammar and clarity fixes.",
+              "body": "Reasons are weak and repetitive; clarify claims, fix grammar, and provide specific, logical evidence for each point.",
+              "conclusion": "Conclusion repeats thesis with grammar errors; add clearer summary and a stronger closing thought.",
+              "grammar": "Article/preposition misuse and verb form problems recur; meaning is usually clear but grammar needs consistent fixing."
+            },
+            "total_score": 4,
+            "total_time": 0,
+            "total_tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            }
+          },
+          "timestamp": "2025-10-01T10:03:30.809614"
+        },
+        "v1.4.0": {
+          "version": "v1.4.0",
+          "essay_id": "10",
+          "rubric_level": "Intermediate",
+          "success": true,
+          "total_evaluation_time": 33.888,
+          "api_response": {
+            "level_group": "Intermediate",
+            "pre_process": {
+              "word_count": 113,
+              "meets_length_req": true,
+              "is_english": true,
+              "is_valid": true
+            },
+            "grammar": {
+              "rubric_item": "grammar",
+              "score": 0,
+              "corrections": [
+                {
+                  "highlight": "Do you know good at planet?",
+                  "issue": "wrong phrasing/article",
+                  "correction": "Do you know about planets?"
+                },
+                {
+                  "highlight": "mars can almost people leave on this planet.",
+                  "issue": "word choice/order ('leave'→'live')",
+                  "correction": "People could almost live on Mars."
+                }
+              ],
+              "feedback": "Frequent article, verb, and word-order errors make meaning unclear.",
+              "token_usage": null,
+              "evaluation_type": "grammar_check",
+              "error": null
+            },
+            "structure": {
+              "introduction": {
+                "rubric_item": "introduction",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "Do you know good at planet?",
+                    "issue": "awkward and unclear phrasing",
+                    "correction": "Do you know much about planets?"
+                  },
+                  {
+                    "highlight": "If I could visit any planet, then I would visit mars.",
+                    "issue": "wording and capitalization of thesis",
+                    "correction": "If I could visit any planet, I would visit Mars."
+                  }
+                ],
+                "feedback": "Thesis appears but introduction lacks a clear roadmap and needs grammatical fixes.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "body": {
+                "rubric_item": "body",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "Do you know good at planet? I not good.",
+                    "issue": "Ungrammatical and unclear subject",
+                    "correction": "Are you familiar with planets? I'm not very familiar."
+                  },
+                  {
+                    "highlight": "mars can almost people leave on this planet.",
+                    "issue": "Wrong verbs and unclear meaning",
+                    "correction": "Mars could potentially support human life."
+                  }
+                ],
+                "feedback": "Weak, unclear arguments and poor grammar; strengthen claims and logical support.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "conclusion": {
+                "rubric_item": "conclusion",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "I want to go a mar.",
+                    "issue": "grammar and word choice",
+                    "correction": "I want to visit Mars."
+                  },
+                  {
+                    "highlight": "Because, mars is almost good to live in here and temperatures are okay for people.",
+                    "issue": "unclear summary and poor grammar",
+                    "correction": "Mars could be habitable because it has some water and moderate temperatures; therefore, I hope to visit and learn more."
+                  }
+                ],
+                "feedback": "Restates desire but needs clearer summary and a stronger closing thought.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "token_usage_total": null,
+              "evaluation_type": "structure_chain"
+            },
+            "aggregated": {
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "Do you know good at planet?",
+                  "issue": "awkward and unclear phrasing",
+                  "correction": "Do you know much about planets?"
+                },
+                {
+                  "highlight": "If I could visit any planet, then I would visit mars.",
+                  "issue": "wording and capitalization of thesis",
+                  "correction": "If I could visit any planet, I would visit Mars."
+                },
+                {
+                  "highlight": "Do you know good at planet? I not good.",
+                  "issue": "Ungrammatical and unclear subject",
+                  "correction": "Are you familiar with planets? I'm not very familiar."
+                },
+                {
+                  "highlight": "mars can almost people leave on this planet.",
+                  "issue": "Wrong verbs and unclear meaning",
+                  "correction": "Mars could potentially support human life."
+                },
+                {
+                  "highlight": "I want to go a mar.",
+                  "issue": "grammar and word choice",
+                  "correction": "I want to visit Mars."
+                },
+                {
+                  "highlight": "Because, mars is almost good to live in here and temperatures are okay for people.",
+                  "issue": "unclear summary and poor grammar",
+                  "correction": "Mars could be habitable because it has some water and moderate temperatures; therefore, I hope to visit and learn more."
+                },
+                {
+                  "highlight": "Do you know good at planet?",
+                  "issue": "wrong phrasing/article",
+                  "correction": "Do you know about planets?"
+                },
+                {
+                  "highlight": "mars can almost people leave on this planet.",
+                  "issue": "word choice/order ('leave'→'live')",
+                  "correction": "People could almost live on Mars."
+                }
+              ],
+              "feedback": "[Pre-check] words=113, meets_length=True, english=True, valid=True.\n[introduction] Thesis appears but introduction lacks a clear roadmap and needs grammatical fixes.\n[body] Weak, unclear arguments and poor grammar; strengthen claims and logical support.\n[conclusion] Restates desire but needs clearer summary and a stronger closing thought.\n[grammar] Frequent article, verb, and word-order errors make meaning unclear."
+            },
+            "timings": {
+              "pre_process": 0.0490140009787865,
+              "grammar": 10778.362766002829,
+              "structure": 32748.86760699883,
+              "aggregate": 0.032912997994571924,
+              "post_process": 0.025991001166403294,
+              "total": 32749.922233997495
+            },
+            "timeline": {
+              "start": "2025-10-01T01:03:30.810705+00:00",
+              "end": "2025-10-01T01:04:04.696550+00:00"
+            }
+          },
+          "metrics": {
+            "timing": {},
+            "tokens": {
+              "introduction": null,
+              "body": null,
+              "conclusion": null,
+              "grammar": null
+            },
+            "scores": {
+              "introduction": 1,
+              "body": 1,
+              "conclusion": 1,
+              "grammar": 0
+            },
+            "feedback": {
+              "introduction": "Thesis appears but introduction lacks a clear roadmap and needs grammatical fixes.",
+              "body": "Weak, unclear arguments and poor grammar; strengthen claims and logical support.",
+              "conclusion": "Restates desire but needs clearer summary and a stronger closing thought.",
+              "grammar": "Frequent article, verb, and word-order errors make meaning unclear."
+            },
+            "total_score": 3,
+            "total_time": 0,
+            "total_tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            }
+          },
+          "timestamp": "2025-10-01T10:04:04.697382"
+        }
+      }
+    },
+    {
+      "rubric_level": "advanced",
+      "essay_data": {
+        "essay_id": "20",
+        "rubric_level": "Advanced",
+        "topic_prompt": "Do you think it is possible to reunify North and South Korea?",
+        "submit_text": "Do you believe that reunification of Korea is possible? Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying. I think that reunification of North and South Korea is not possible\n\nFirst of all, there are political differences between North and South Korea. North and South Korea has very different political systems and ideologies. North Korea's system is centralized and authoritarian, with a unique political system that combines elements of communism and totalitarianism. North Korea's political system is primarily based on a one-man leadership system and the Juche ideology. South Korea, on the other hand, is a liberal democracy based on a presidential system in which representatives elected by the people from the National Assembly and the government to make and enforce laws. Democratic principles such as a free press, freedom of expression, and fair elections are guaranteed.\n\nAdditionally, there are social and cultural barriers between Koreas. Korean War has led to different political systems and social and cultural characteristics of two Koreas. North Korea maintains a communist system in which the state controls all industries and agriculture, but South Korea has a free market economy and guarantees individual economic freedom. These differences have a major impact on the structure of society and the standard of living. North and South Korea also differ in language and cultural expression. North and South Korea use different Koreans. Also, North Korea emphasizes communist education and culture, while South Korea respects diverse cultures and arts.\n\nTo conclude, I think that reunification of two Koreas is impossible because there are political differences and political differences between North and South Korea."
+      },
+      "results": {
+        "v1.3.0": {
+          "version": "v1.3.0",
+          "essay_id": "20",
+          "rubric_level": "Advanced",
+          "success": true,
+          "total_evaluation_time": 25.304,
+          "api_response": {
+            "level_group": "Advanced",
+            "pre_process": {
+              "word_count": 275,
+              "meets_length_req": false,
+              "is_english": true,
+              "is_valid": false
+            },
+            "grammar": {
+              "rubric_item": "grammar",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "North and South Korea has very different political systems and ideologies.",
+                  "issue": "subject-verb agreement (plural subject requires plural verb)",
+                  "correction": "North and South Korea have very different political systems and ideologies."
+                },
+                {
+                  "highlight": "North and South Korea use different Koreans.",
+                  "issue": "word choice/unclear meaning",
+                  "correction": "North and South Korea use different dialects (varieties) of Korean."
+                }
+              ],
+              "feedback": "Meaning is clear but agreement, article, and word-choice errors reduce sophistication; focus on accuracy and concision.",
+              "token_usage": null,
+              "evaluation_type": "grammar_check",
+              "error": null
+            },
+            "structure": {
+              "introduction": {
+                "rubric_item": "introduction",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "I think that reunification of North and South Korea is not possible",
+                    "issue": "Vague thesis lacking precise reasons or nuance",
+                    "correction": "Make a precise, arguable thesis that names main reasons: e.g., 'Reunification is unlikely due to entrenched political systems, vast economic disparities, and deep socio-cultural divergence.'"
+                  },
+                  {
+                    "highlight": "Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying.",
+                    "issue": "Weak, generic context and no structural preview",
+                    "correction": "Give a concise contextual hook (historical division and stakes) and preview the essay's structure (political, economic, social-cultural obstacles)."
+                  }
+                ],
+                "feedback": "Clear position but needs a sharper thesis and brief roadmap explaining how you'll support that claim.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "body": {
+                "rubric_item": "body",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "To conclude, I think that reunification of two Koreas is impossible because there are political differences and political differences between North and South Korea.",
+                    "issue": "repetition and weak thesis",
+                    "correction": "Replace with a concise thesis specifying which political differences impede reunification and briefly preview the supporting reasons."
+                  },
+                  {
+                    "highlight": "North and South Korea also differ in language and cultural expression. North and South Korea use different Koreans.",
+                    "issue": "unclear and inaccurate phrasing about language",
+                    "correction": "Clarify that decades of separation produced dialectal and cultural divergence; use 'different dialects and cultural practices' instead."
+                  }
+                ],
+                "feedback": "Sharpen the thesis, add concrete evidence, and clarify language and cultural claims for stronger analysis.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "conclusion": {
+                "rubric_item": "conclusion",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "To conclude, I think that reunification of two Koreas is impossible because there are political differences and political differences between North and South Korea.",
+                    "issue": "repetition and lack of synthesis",
+                    "correction": "Revise to synthesize reasons and avoid repetition: \"In sum, deep ideological, political, economic, and cultural divisions make reunification unlikely without major transformation; focus should be on pragmatic cooperation and humanitarian steps.\""
+                  },
+                  {
+                    "highlight": "Do you believe that reunification of Korea is possible? Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying. I think that reunification of North and South Korea is not possible",
+                    "issue": "weak opening and no purposeful closing",
+                    "correction": "Replace with a concise closing that reflects the essay's evidence and suggests implications or next steps for policy or research."
+                  }
+                ],
+                "feedback": "Clear position but repetitive and shallow; strengthen synthesis and end with a purposeful, implication-driven closing.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "token_usage_total": null,
+              "evaluation_type": "structure_chain"
+            },
+            "aggregated": {
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "I think that reunification of North and South Korea is not possible",
+                  "issue": "Vague thesis lacking precise reasons or nuance",
+                  "correction": "Make a precise, arguable thesis that names main reasons: e.g., 'Reunification is unlikely due to entrenched political systems, vast economic disparities, and deep socio-cultural divergence.'"
+                },
+                {
+                  "highlight": "Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying.",
+                  "issue": "Weak, generic context and no structural preview",
+                  "correction": "Give a concise contextual hook (historical division and stakes) and preview the essay's structure (political, economic, social-cultural obstacles)."
+                },
+                {
+                  "highlight": "To conclude, I think that reunification of two Koreas is impossible because there are political differences and political differences between North and South Korea.",
+                  "issue": "repetition and weak thesis",
+                  "correction": "Replace with a concise thesis specifying which political differences impede reunification and briefly preview the supporting reasons."
+                },
+                {
+                  "highlight": "North and South Korea also differ in language and cultural expression. North and South Korea use different Koreans.",
+                  "issue": "unclear and inaccurate phrasing about language",
+                  "correction": "Clarify that decades of separation produced dialectal and cultural divergence; use 'different dialects and cultural practices' instead."
+                },
+                {
+                  "highlight": "To conclude, I think that reunification of two Koreas is impossible because there are political differences and political differences between North and South Korea.",
+                  "issue": "repetition and lack of synthesis",
+                  "correction": "Revise to synthesize reasons and avoid repetition: \"In sum, deep ideological, political, economic, and cultural divisions make reunification unlikely without major transformation; focus should be on pragmatic cooperation and humanitarian steps.\""
+                },
+                {
+                  "highlight": "Do you believe that reunification of Korea is possible? Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying. I think that reunification of North and South Korea is not possible",
+                  "issue": "weak opening and no purposeful closing",
+                  "correction": "Replace with a concise closing that reflects the essay's evidence and suggests implications or next steps for policy or research."
+                },
+                {
+                  "highlight": "North and South Korea has very different political systems and ideologies.",
+                  "issue": "subject-verb agreement (plural subject requires plural verb)",
+                  "correction": "North and South Korea have very different political systems and ideologies."
+                },
+                {
+                  "highlight": "North and South Korea use different Koreans.",
+                  "issue": "word choice/unclear meaning",
+                  "correction": "North and South Korea use different dialects (varieties) of Korean."
+                }
+              ],
+              "feedback": "[Pre-check] words=275, meets_length=False, english=True, valid=False.\n[introduction] Clear position but needs a sharper thesis and brief roadmap explaining how you'll support that claim.\n[body] Sharpen the thesis, add concrete evidence, and clarify language and cultural claims for stronger analysis.\n[conclusion] Clear position but repetitive and shallow; strengthen synthesis and end with a purposeful, implication-driven closing.\n[grammar] Meaning is clear but agreement, article, and word-choice errors reduce sophistication; focus on accuracy and concision."
+            },
+            "timings": {
+              "pre_process": 0.11587899643927813,
+              "grammar": 6012.770014996931,
+              "structure": 24228.23162200075,
+              "aggregate": 0.03131600533379242,
+              "post_process": 0.02458400558680296,
+              "total": 24229.36556700006
+            },
+            "timeline": {
+              "start": "2025-10-01T01:04:04.698455+00:00",
+              "end": "2025-10-01T01:04:30.001170+00:00"
+            }
+          },
+          "metrics": {
+            "timing": {},
+            "tokens": {
+              "introduction": null,
+              "body": null,
+              "conclusion": null,
+              "grammar": null
+            },
+            "scores": {
+              "introduction": 1,
+              "body": 1,
+              "conclusion": 1,
+              "grammar": 1
+            },
+            "feedback": {
+              "introduction": "Clear position but needs a sharper thesis and brief roadmap explaining how you'll support that claim.",
+              "body": "Sharpen the thesis, add concrete evidence, and clarify language and cultural claims for stronger analysis.",
+              "conclusion": "Clear position but repetitive and shallow; strengthen synthesis and end with a purposeful, implication-driven closing.",
+              "grammar": "Meaning is clear but agreement, article, and word-choice errors reduce sophistication; focus on accuracy and concision."
+            },
+            "total_score": 4,
+            "total_time": 0,
+            "total_tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            }
+          },
+          "timestamp": "2025-10-01T10:04:30.001920"
+        },
+        "v1.4.0": {
+          "version": "v1.4.0",
+          "essay_id": "20",
+          "rubric_level": "Advanced",
+          "success": true,
+          "total_evaluation_time": 39.017,
+          "api_response": {
+            "level_group": "Advanced",
+            "pre_process": {
+              "word_count": 275,
+              "meets_length_req": false,
+              "is_english": true,
+              "is_valid": false
+            },
+            "grammar": {
+              "rubric_item": "grammar",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "North and South Korea has very different political systems and ideologies.",
+                  "issue": "subject-verb agreement",
+                  "correction": "North and South Korea have very different political systems and ideologies."
+                },
+                {
+                  "highlight": "South Korea, on the other hand, is a liberal democracy based on a presidential system in which representatives elected by the people from the National Assembly and the government to make and enforce laws.",
+                  "issue": "sentence fragment/missing verbs",
+                  "correction": "South Korea, on the other hand, is a liberal democracy based on a presidential system in which representatives are elected by the people to the National Assembly, and the government makes and enforces laws."
+                }
+              ],
+              "feedback": "Good organization, but agreement, fragments, and awkward collocations weaken advanced grammar.",
+              "token_usage": null,
+              "evaluation_type": "grammar_check",
+              "error": null
+            },
+            "structure": {
+              "introduction": {
+                "rubric_item": "introduction",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "Do you believe that reunification of Korea is possible? Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying.",
+                    "issue": "generic opening, lacks concise context and precise stance",
+                    "correction": "Decades of division since the 1953 armistice have left the Korean Peninsula politically and economically divided; despite ongoing efforts, reunification remains unlikely."
+                  },
+                  {
+                    "highlight": "I think that reunification of North and South Korea is not possible",
+                    "issue": "clear thesis but no roadmap or tightened phrasing",
+                    "correction": "I argue reunification is currently infeasible due to deep political, economic, and social obstacles, which this essay will examine."
+                  }
+                ],
+                "feedback": "Thesis exists but needs a concise contextual opener and a one‑sentence roadmap.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "body": {
+                "rubric_item": "body",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "Do you believe that reunification of Korea is possible? Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying. I think that reunification of North and South Korea is not possible",
+                    "issue": "weak, repetitive thesis and awkward phrasing",
+                    "correction": "Rewrite to a concise thesis and roadmap: 'Korean reunification is unlikely due to deep political and socio‑cultural divergences.'"
+                  },
+                  {
+                    "highlight": "North and South Korea use different Koreans.",
+                    "issue": "nonsensical phrasing about language",
+                    "correction": "Replace with a clear statement: 'The two Koreas have diverged linguistically—different dialects, vocabulary, and orthographic conventions.'"
+                  }
+                ],
+                "feedback": "Underdeveloped and repetitive; tighten thesis, correct phrasing, and add specific evidence.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "conclusion": {
+                "rubric_item": "conclusion",
+                "score": 1,
+                "corrections": [
+                  {
+                    "highlight": "Do you believe that reunification of Korea is possible? Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying. I think that reunification of North and South Korea is not possible",
+                    "issue": "lacks synthesis and purposeful closing",
+                    "correction": "Replace with a concise synthesis linking key tensions to a broader implication, e.g.: \"Although many pursue reunification, entrenched ideological, institutional, and socioeconomic divides make Korean reunification unlikely; prioritizing pragmatic cooperation may better secure peace and stability.\""
+                  },
+                  {
+                    "highlight": "To conclude, I think that reunification of two Koreas is impossible because there are political differences and political differences between North and South Korea.",
+                    "issue": "redundant phrasing and grammatical errors",
+                    "correction": "Rewrite to avoid repetition and canonicalize phrasing, e.g.: \"In conclusion, Korean reunification is unlikely because profound political, economic, and cultural divisions persist between North and South Korea.\""
+                  }
+                ],
+                "feedback": "Gives closure but repeats points; needs a synthesized, purposeful final takeaway.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "token_usage_total": null,
+              "evaluation_type": "structure_chain"
+            },
+            "aggregated": {
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "Do you believe that reunification of Korea is possible? Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying.",
+                  "issue": "generic opening, lacks concise context and precise stance",
+                  "correction": "Decades of division since the 1953 armistice have left the Korean Peninsula politically and economically divided; despite ongoing efforts, reunification remains unlikely."
+                },
+                {
+                  "highlight": "I think that reunification of North and South Korea is not possible",
+                  "issue": "clear thesis but no roadmap or tightened phrasing",
+                  "correction": "I argue reunification is currently infeasible due to deep political, economic, and social obstacles, which this essay will examine."
+                },
+                {
+                  "highlight": "Do you believe that reunification of Korea is possible? Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying. I think that reunification of North and South Korea is not possible",
+                  "issue": "weak, repetitive thesis and awkward phrasing",
+                  "correction": "Rewrite to a concise thesis and roadmap: 'Korean reunification is unlikely due to deep political and socio‑cultural divergences.'"
+                },
+                {
+                  "highlight": "North and South Korea use different Koreans.",
+                  "issue": "nonsensical phrasing about language",
+                  "correction": "Replace with a clear statement: 'The two Koreas have diverged linguistically—different dialects, vocabulary, and orthographic conventions.'"
+                },
+                {
+                  "highlight": "Do you believe that reunification of Korea is possible? Many people are putting efforts on reunification, but there are very hard problems to solve for reunifying. I think that reunification of North and South Korea is not possible",
+                  "issue": "lacks synthesis and purposeful closing",
+                  "correction": "Replace with a concise synthesis linking key tensions to a broader implication, e.g.: \"Although many pursue reunification, entrenched ideological, institutional, and socioeconomic divides make Korean reunification unlikely; prioritizing pragmatic cooperation may better secure peace and stability.\""
+                },
+                {
+                  "highlight": "To conclude, I think that reunification of two Koreas is impossible because there are political differences and political differences between North and South Korea.",
+                  "issue": "redundant phrasing and grammatical errors",
+                  "correction": "Rewrite to avoid repetition and canonicalize phrasing, e.g.: \"In conclusion, Korean reunification is unlikely because profound political, economic, and cultural divisions persist between North and South Korea.\""
+                },
+                {
+                  "highlight": "North and South Korea has very different political systems and ideologies.",
+                  "issue": "subject-verb agreement",
+                  "correction": "North and South Korea have very different political systems and ideologies."
+                },
+                {
+                  "highlight": "South Korea, on the other hand, is a liberal democracy based on a presidential system in which representatives elected by the people from the National Assembly and the government to make and enforce laws.",
+                  "issue": "sentence fragment/missing verbs",
+                  "correction": "South Korea, on the other hand, is a liberal democracy based on a presidential system in which representatives are elected by the people to the National Assembly, and the government makes and enforces laws."
+                }
+              ],
+              "feedback": "[Pre-check] words=275, meets_length=False, english=True, valid=False.\n[introduction] Thesis exists but needs a concise contextual opener and a one‑sentence roadmap.\n[body] Underdeveloped and repetitive; tighten thesis, correct phrasing, and add specific evidence.\n[conclusion] Gives closure but repeats points; needs a synthesized, purposeful final takeaway.\n[grammar] Good organization, but agreement, fragments, and awkward collocations weaken advanced grammar."
+            },
+            "timings": {
+              "pre_process": 0.10058400221168995,
+              "grammar": 6957.219181000255,
+              "structure": 37951.89522399596,
+              "aggregate": 0.035272998502478004,
+              "post_process": 0.02535199746489525,
+              "total": 37953.0927329979
+            },
+            "timeline": {
+              "start": "2025-10-01T01:04:30.002899+00:00",
+              "end": "2025-10-01T01:05:09.018255+00:00"
+            }
+          },
+          "metrics": {
+            "timing": {},
+            "tokens": {
+              "introduction": null,
+              "body": null,
+              "conclusion": null,
+              "grammar": null
+            },
+            "scores": {
+              "introduction": 1,
+              "body": 1,
+              "conclusion": 1,
+              "grammar": 1
+            },
+            "feedback": {
+              "introduction": "Thesis exists but needs a concise contextual opener and a one‑sentence roadmap.",
+              "body": "Underdeveloped and repetitive; tighten thesis, correct phrasing, and add specific evidence.",
+              "conclusion": "Gives closure but repeats points; needs a synthesized, purposeful final takeaway.",
+              "grammar": "Good organization, but agreement, fragments, and awkward collocations weaken advanced grammar."
+            },
+            "total_score": 4,
+            "total_time": 0,
+            "total_tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            }
+          },
+          "timestamp": "2025-10-01T10:05:09.019120"
+        }
+      }
+    },
+    {
+      "rubric_level": "expert",
+      "essay_data": {
+        "essay_id": "30",
+        "rubric_level": "Expert",
+        "topic_prompt": "Do you agree or disagree with the following statement? Teenagers should not have cosmetic surgery._x000D_\n",
+        "submit_text": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.\n\nFirst, teenagers can do cosmetic surgery. Because these days many teenagers bully other kid with their face or their body. So the bullied kid could get stressed. When they get a lot of stress the bullied kid would think that she really face and bad and she is fat. But when they do cosmetic surgery they don't have to bleed by shoal classmate. They don't have to be afraid.\n\nSecond, I think teenagers can't do cosmetic surgery is a discrimination because teenagers is being an adult. The are not young. So I think teenagers can do cosmetic surgery. Also, these days, there have many safety cosmetic surgery equipments and these they science has developed so there have a lot of smart robots. So, I think cosmetic surgery for teenagers is safe and not have sideffects.\n\nThird, when teenagers do cosmetic surgery it is their choice when they don't like it, they can't turn it back. Teenagers had developed brain so their choice and the result is their fault or their good. When they go out in soical they will have to choose more big thing then cosmetic surgery. Their choose would change their life or better or become worse. So, teenagers could practice with this cosmetic surgery. When they want to do surgery.\n\nThese are the reason that I think teenagers should have cosmetic surgery."
+      },
+      "results": {
+        "v1.3.0": {
+          "version": "v1.3.0",
+          "essay_id": "30",
+          "rubric_level": "Expert",
+          "success": true,
+          "total_evaluation_time": 28.046,
+          "api_response": {
+            "level_group": "Expert",
+            "pre_process": {
+              "word_count": 249,
+              "meets_length_req": true,
+              "is_english": true,
+              "is_valid": true
+            },
+            "grammar": {
+              "rubric_item": "grammar",
+              "score": 0,
+              "corrections": [
+                {
+                  "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.",
+                  "issue": "awkward question form and word order; incorrect sentence structure",
+                  "correction": "Do you agree or disagree that teenagers should be allowed to have cosmetic surgery? I believe they should."
+                },
+                {
+                  "highlight": "When they get a lot of stress the bullied kid would think that she really face and bad and she is fat.",
+                  "issue": "run-on sentence, incorrect pronouns and word choice",
+                  "correction": "When they become very stressed, a bullied child may feel ugly and believe they are fat."
+                }
+              ],
+              "feedback": "Frequent grammar errors: fragments, agreement, articles, and spelling; rewrite sentences and correct verb/pronoun choices.",
+              "token_usage": null,
+              "evaluation_type": "grammar_check",
+              "error": null
+            },
+            "structure": {
+              "introduction": {
+                "rubric_item": "introduction",
+                "score": 0,
+                "corrections": [
+                  {
+                    "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.",
+                    "issue": "awkward phrasing, grammatical errors, no compelling hook or expert context",
+                    "correction": "Rewrite to open with a clear, expert-level hook and context, for example: \"Cosmetic surgery for adolescents is increasingly contested: critics cite developmental and ethical risks, while advocates emphasize autonomy and mental-health benefits. I argue that, under strict age limits, robust informed consent, and clear medical-necessity criteria, older teenagers should be eligible for limited cosmetic procedures.\""
+                  },
+                  {
+                    "highlight": "I think teenagers can do cosmetic surgery.",
+                    "issue": "simple assertion lacks nuance and roadmap of the essay's arguments",
+                    "correction": "Turn the thesis into a nuanced claim and add a brief roadmap: \"I contend that, with safeguards (psychological screening, parental involvement when appropriate, and regulatory oversight), teenagers may access certain procedures — I will address bullying/mental health, autonomy/legal status, and safety/technology advances.\""
+                  }
+                ],
+                "feedback": "Revise for a stronger hook, clearer thesis, and a concise expert roadmap with confident, nuanced language.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "body": {
+                "rubric_item": "body",
+                "score": 0,
+                "corrections": [
+                  {
+                    "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.",
+                    "issue": "unclear hook and thesis",
+                    "correction": "Begin with a strong, concise thesis and roadmap: e.g., 'Teenagers should be permitted cosmetic surgery in carefully regulated circumstances because it can reduce bullying harm, respect emerging autonomy, and benefit from medical advances.'"
+                  },
+                  {
+                    "highlight": "First, teenagers can do cosmetic surgery. Because these days many teenagers bully other kid with their face or their body. ... Also, these days, there have many safety cosmetic surgery equipments and these they science has developed so there have a lot of smart robots.",
+                    "issue": "weak, unsupported, and ungrammatical reasoning lacking nuance",
+                    "correction": "Rewrite points with evidence and nuance: acknowledge risks, require psychological assessment and parental consent, prioritize non‑surgical remedies, and note medical advances as a conditional safety factor."
+                  }
+                ],
+                "feedback": "Rewrite for a clear thesis, structured reasons, evidence, and nuanced language; fix grammar and add consent/risk considerations.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "conclusion": {
+                "rubric_item": "conclusion",
+                "score": 0,
+                "corrections": [
+                  {
+                    "highlight": "These are the reason that I think teenagers should have cosmetic surgery.",
+                    "issue": "grammatical errors and vague, weak closing; fails to synthesize essay points",
+                    "correction": "In conclusion, while cosmetic procedures can reduce bullying-related distress and benefit some youths, such decisions require careful, individualized evaluation."
+                  },
+                  {
+                    "highlight": "These are the reason that I think teenagers should have cosmetic surgery.",
+                    "issue": "omits consent, risk, and safeguard considerations expected of an expert conclusion",
+                    "correction": "Add: teenagers should undergo surgery only after psychological assessment, informed consent with parental and clinical involvement, and clear discussion of long-term risks and alternatives."
+                  }
+                ],
+                "feedback": "Revise to synthesize arguments and add consent, safety, and forward-looking recommendations.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "token_usage_total": null,
+              "evaluation_type": "structure_chain"
+            },
+            "aggregated": {
+              "score": 0,
+              "corrections": [
+                {
+                  "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.",
+                  "issue": "awkward phrasing, grammatical errors, no compelling hook or expert context",
+                  "correction": "Rewrite to open with a clear, expert-level hook and context, for example: \"Cosmetic surgery for adolescents is increasingly contested: critics cite developmental and ethical risks, while advocates emphasize autonomy and mental-health benefits. I argue that, under strict age limits, robust informed consent, and clear medical-necessity criteria, older teenagers should be eligible for limited cosmetic procedures.\""
+                },
+                {
+                  "highlight": "I think teenagers can do cosmetic surgery.",
+                  "issue": "simple assertion lacks nuance and roadmap of the essay's arguments",
+                  "correction": "Turn the thesis into a nuanced claim and add a brief roadmap: \"I contend that, with safeguards (psychological screening, parental involvement when appropriate, and regulatory oversight), teenagers may access certain procedures — I will address bullying/mental health, autonomy/legal status, and safety/technology advances.\""
+                },
+                {
+                  "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.",
+                  "issue": "unclear hook and thesis",
+                  "correction": "Begin with a strong, concise thesis and roadmap: e.g., 'Teenagers should be permitted cosmetic surgery in carefully regulated circumstances because it can reduce bullying harm, respect emerging autonomy, and benefit from medical advances.'"
+                },
+                {
+                  "highlight": "First, teenagers can do cosmetic surgery. Because these days many teenagers bully other kid with their face or their body. ... Also, these days, there have many safety cosmetic surgery equipments and these they science has developed so there have a lot of smart robots.",
+                  "issue": "weak, unsupported, and ungrammatical reasoning lacking nuance",
+                  "correction": "Rewrite points with evidence and nuance: acknowledge risks, require psychological assessment and parental consent, prioritize non‑surgical remedies, and note medical advances as a conditional safety factor."
+                },
+                {
+                  "highlight": "These are the reason that I think teenagers should have cosmetic surgery.",
+                  "issue": "grammatical errors and vague, weak closing; fails to synthesize essay points",
+                  "correction": "In conclusion, while cosmetic procedures can reduce bullying-related distress and benefit some youths, such decisions require careful, individualized evaluation."
+                },
+                {
+                  "highlight": "These are the reason that I think teenagers should have cosmetic surgery.",
+                  "issue": "omits consent, risk, and safeguard considerations expected of an expert conclusion",
+                  "correction": "Add: teenagers should undergo surgery only after psychological assessment, informed consent with parental and clinical involvement, and clear discussion of long-term risks and alternatives."
+                },
+                {
+                  "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.",
+                  "issue": "awkward question form and word order; incorrect sentence structure",
+                  "correction": "Do you agree or disagree that teenagers should be allowed to have cosmetic surgery? I believe they should."
+                },
+                {
+                  "highlight": "When they get a lot of stress the bullied kid would think that she really face and bad and she is fat.",
+                  "issue": "run-on sentence, incorrect pronouns and word choice",
+                  "correction": "When they become very stressed, a bullied child may feel ugly and believe they are fat."
+                }
+              ],
+              "feedback": "[Pre-check] words=249, meets_length=True, english=True, valid=True.\n[introduction] Revise for a stronger hook, clearer thesis, and a concise expert roadmap with confident, nuanced language.\n[body] Rewrite for a clear thesis, structured reasons, evidence, and nuanced language; fix grammar and add consent/risk considerations.\n[conclusion] Revise to synthesize arguments and add consent, safety, and forward-looking recommendations.\n[grammar] Frequent grammar errors: fragments, agreement, articles, and spelling; rewrite sentences and correct verb/pronoun choices."
+            },
+            "timings": {
+              "pre_process": 0.09013000089908019,
+              "grammar": 11379.367870998976,
+              "structure": 26983.91596399597,
+              "aggregate": 0.037343001167755574,
+              "post_process": 0.025500004994682968,
+              "total": 26985.065597000357
+            },
+            "timeline": {
+              "start": "2025-10-01T01:05:09.020181+00:00",
+              "end": "2025-10-01T01:05:37.064804+00:00"
+            }
+          },
+          "metrics": {
+            "timing": {},
+            "tokens": {
+              "introduction": null,
+              "body": null,
+              "conclusion": null,
+              "grammar": null
+            },
+            "scores": {
+              "introduction": 0,
+              "body": 0,
+              "conclusion": 0,
+              "grammar": 0
+            },
+            "feedback": {
+              "introduction": "Revise for a stronger hook, clearer thesis, and a concise expert roadmap with confident, nuanced language.",
+              "body": "Rewrite for a clear thesis, structured reasons, evidence, and nuanced language; fix grammar and add consent/risk considerations.",
+              "conclusion": "Revise to synthesize arguments and add consent, safety, and forward-looking recommendations.",
+              "grammar": "Frequent grammar errors: fragments, agreement, articles, and spelling; rewrite sentences and correct verb/pronoun choices."
+            },
+            "total_score": 0,
+            "total_time": 0,
+            "total_tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            }
+          },
+          "timestamp": "2025-10-01T10:05:37.065777"
+        },
+        "v1.4.0": {
+          "version": "v1.4.0",
+          "essay_id": "30",
+          "rubric_level": "Expert",
+          "success": true,
+          "total_evaluation_time": 38.169,
+          "api_response": {
+            "level_group": "Expert",
+            "pre_process": {
+              "word_count": 249,
+              "meets_length_req": true,
+              "is_english": true,
+              "is_valid": true
+            },
+            "grammar": {
+              "rubric_item": "grammar",
+              "score": 0,
+              "corrections": [
+                {
+                  "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery?",
+                  "issue": "sentence structure/modal verb",
+                  "correction": "Do you agree or disagree that teenagers should not have cosmetic surgery?"
+                },
+                {
+                  "highlight": "Because these days many teenagers bully other kid with their face or their body. So the bullied kid could get stressed. When they get a lot of stress the bullied kid would think that she really face and bad and she is fat.",
+                  "issue": "fragments, agreement, pronouns",
+                  "correction": "These days many teenagers bully other kids about their faces or bodies, which can make victims feel stressed and believe they are ugly or overweight."
+                }
+              ],
+              "feedback": "Frequent agreement, article, and fragment errors; revise sentences and pronouns for clarity.",
+              "token_usage": null,
+              "evaluation_type": "grammar_check",
+              "error": null
+            },
+            "structure": {
+              "introduction": {
+                "rubric_item": "introduction",
+                "score": 0,
+                "corrections": [
+                  {
+                    "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.",
+                    "issue": "awkward, unidiomatic phrasing; no hook, context, or roadmap; hedged stance",
+                    "correction": "Cosmetic surgery for adolescents provokes heated debate; I argue that, with proper safeguards, teenagers should be allowed access because it can reduce bullying-related harm, respect emerging autonomy, and is increasingly safe."
+                  },
+                  {
+                    "highlight": "I think teenagers can do cosmetic surgery.",
+                    "issue": "weak, informal hedging; not a confident, precise thesis",
+                    "correction": "Replace with a clear thesis: 'I argue adolescents should be permitted cosmetic procedures under medical and legal safeguards.'"
+                  }
+                ],
+                "feedback": "Rewrite introduction with a confident thesis, brief context, and a precise three-point roadmap.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "body": {
+                "rubric_item": "body",
+                "score": 0,
+                "corrections": [
+                  {
+                    "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.",
+                    "issue": "confused thesis",
+                    "correction": "Replace with: \"I disagree that teenagers should be categorically barred from cosmetic surgery; I will argue this with three points: bullying and mental health, adolescent autonomy, and medical safety and regulation.\""
+                  },
+                  {
+                    "highlight": "When they do cosmetic surgery they don't have to bleed by shoal classmate.",
+                    "issue": "nonsensical phrase",
+                    "correction": "\"bleed by shoal classmate\" → \"be bullied by classmates\" (e.g., \"surgery may reduce visible features that trigger bullying, lowering social stress\")."
+                  }
+                ],
+                "feedback": "Unclear, error-filled, and unsupported; needs coherent thesis, evidence, and precise language.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "conclusion": {
+                "rubric_item": "conclusion",
+                "score": 0,
+                "corrections": [
+                  {
+                    "highlight": "These are the reason that I think teenagers should have cosmetic surgery.",
+                    "issue": "grammatical error and vague, weak close lacking synthesis or forward-looking guidance",
+                    "correction": "Replace with: 'These reasons show why I support allowing teenagers to choose cosmetic surgery, provided they receive medical guidance, parental consent, and clear safeguards.'"
+                  },
+                  {
+                    "highlight": "So, teenagers could practice with this cosmetic surgery. When they want to do surgery.",
+                    "issue": "fragmentary, unclear, and omits ethical/policy safeguards",
+                    "correction": "Replace with: 'If teenagers consider surgery, they should complete counseling, a cooling-off period, and clinical assessment to ensure informed, safe decisions.'"
+                  }
+                ],
+                "feedback": "Conclusion is unpolished and unsupported; add synthesis and concrete safeguards.",
+                "token_usage": null,
+                "evaluation_type": "structure_chain",
+                "error": null
+              },
+              "token_usage_total": null,
+              "evaluation_type": "structure_chain"
+            },
+            "aggregated": {
+              "score": 0,
+              "corrections": [
+                {
+                  "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.",
+                  "issue": "awkward, unidiomatic phrasing; no hook, context, or roadmap; hedged stance",
+                  "correction": "Cosmetic surgery for adolescents provokes heated debate; I argue that, with proper safeguards, teenagers should be allowed access because it can reduce bullying-related harm, respect emerging autonomy, and is increasingly safe."
+                },
+                {
+                  "highlight": "I think teenagers can do cosmetic surgery.",
+                  "issue": "weak, informal hedging; not a confident, precise thesis",
+                  "correction": "Replace with a clear thesis: 'I argue adolescents should be permitted cosmetic procedures under medical and legal safeguards.'"
+                },
+                {
+                  "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery? I think teenagers can do cosmetic surgery.",
+                  "issue": "confused thesis",
+                  "correction": "Replace with: \"I disagree that teenagers should be categorically barred from cosmetic surgery; I will argue this with three points: bullying and mental health, adolescent autonomy, and medical safety and regulation.\""
+                },
+                {
+                  "highlight": "When they do cosmetic surgery they don't have to bleed by shoal classmate.",
+                  "issue": "nonsensical phrase",
+                  "correction": "\"bleed by shoal classmate\" → \"be bullied by classmates\" (e.g., \"surgery may reduce visible features that trigger bullying, lowering social stress\")."
+                },
+                {
+                  "highlight": "These are the reason that I think teenagers should have cosmetic surgery.",
+                  "issue": "grammatical error and vague, weak close lacking synthesis or forward-looking guidance",
+                  "correction": "Replace with: 'These reasons show why I support allowing teenagers to choose cosmetic surgery, provided they receive medical guidance, parental consent, and clear safeguards.'"
+                },
+                {
+                  "highlight": "So, teenagers could practice with this cosmetic surgery. When they want to do surgery.",
+                  "issue": "fragmentary, unclear, and omits ethical/policy safeguards",
+                  "correction": "Replace with: 'If teenagers consider surgery, they should complete counseling, a cooling-off period, and clinical assessment to ensure informed, safe decisions.'"
+                },
+                {
+                  "highlight": "Do you agree or disagree about teenagers should not have cosmetic surgery?",
+                  "issue": "sentence structure/modal verb",
+                  "correction": "Do you agree or disagree that teenagers should not have cosmetic surgery?"
+                },
+                {
+                  "highlight": "Because these days many teenagers bully other kid with their face or their body. So the bullied kid could get stressed. When they get a lot of stress the bullied kid would think that she really face and bad and she is fat.",
+                  "issue": "fragments, agreement, pronouns",
+                  "correction": "These days many teenagers bully other kids about their faces or bodies, which can make victims feel stressed and believe they are ugly or overweight."
+                }
+              ],
+              "feedback": "[Pre-check] words=249, meets_length=True, english=True, valid=True.\n[introduction] Rewrite introduction with a confident thesis, brief context, and a precise three-point roadmap.\n[body] Unclear, error-filled, and unsupported; needs coherent thesis, evidence, and precise language.\n[conclusion] Conclusion is unpolished and unsupported; add synthesis and concrete safeguards.\n[grammar] Frequent agreement, article, and fragment errors; revise sentences and pronouns for clarity."
+            },
+            "timings": {
+              "pre_process": 0.10168799781240523,
+              "grammar": 9902.948552000453,
+              "structure": 37011.192378995474,
+              "aggregate": 0.0351169946952723,
+              "post_process": 0.025430999812670052,
+              "total": 37012.8335210029
+            },
+            "timeline": {
+              "start": "2025-10-01T01:05:37.067721+00:00",
+              "end": "2025-10-01T01:06:15.234536+00:00"
+            }
+          },
+          "metrics": {
+            "timing": {},
+            "tokens": {
+              "introduction": null,
+              "body": null,
+              "conclusion": null,
+              "grammar": null
+            },
+            "scores": {
+              "introduction": 0,
+              "body": 0,
+              "conclusion": 0,
+              "grammar": 0
+            },
+            "feedback": {
+              "introduction": "Rewrite introduction with a confident thesis, brief context, and a precise three-point roadmap.",
+              "body": "Unclear, error-filled, and unsupported; needs coherent thesis, evidence, and precise language.",
+              "conclusion": "Conclusion is unpolished and unsupported; add synthesis and concrete safeguards.",
+              "grammar": "Frequent agreement, article, and fragment errors; revise sentences and pronouns for clarity."
+            },
+            "total_score": 0,
+            "total_time": 0,
+            "total_tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            }
+          },
+          "timestamp": "2025-10-01T10:06:15.235311"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "versions_tested": [
+      "v1.3.0",
+      "v1.4.0"
+    ],
+    "rubric_levels_tested": [
+      "basic",
+      "intermediate",
+      "advanced",
+      "expert"
+    ],
+    "test_timestamp": "2025-10-01T10:06:15.235462",
+    "api_base_url": "http://localhost:8000",
+    "test_configuration": {
+      "data_source": "/home/cyyoon/test_area/ai_text_classification/creverse2/data/essay_writing_40_sample.xlsx",
+      "api_endpoint": "http://localhost:8000/v1/essay-eval",
+      "test_type": "enhanced_prompt_version_comparison",
+      "script_version": "1.0.0"
+    }
+  }
+}

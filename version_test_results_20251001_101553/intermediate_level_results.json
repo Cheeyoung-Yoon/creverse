@@ -1,0 +1,376 @@
+{
+  "comparison_summary": {
+    "score_comparison": {
+      "v1.3.0": {
+        "introduction": 1.0,
+        "body": 1.0,
+        "conclusion": 1.0,
+        "grammar": 1.0,
+        "total": 4.0
+      },
+      "v1.4.0": {
+        "introduction": 1.0,
+        "body": 1.0,
+        "conclusion": 1.0,
+        "grammar": 1.0,
+        "total": 4.0
+      }
+    },
+    "time_comparison": {
+      "v1.3.0": 21.72,
+      "v1.4.0": 29.03
+    },
+    "feedback_differences": {
+      "v1.3.0": {
+        "introduction": "Thesis is present but needs a clearer hook and a short roadmap of supporting reasons.",
+        "body": "Basic ideas exist but clarity, evidence, and sentence structure need work for a logical, persuasive body.",
+        "conclusion": "Conclusion restates desire but lacks synthesis and contains grammar errors; add a clearer summary and final thought.",
+        "grammar": "Recurring errors with articles, prepositions, verb forms, and word choice make writing awkward; work on sentence structure."
+      },
+      "v1.4.0": {
+        "introduction": "Thesis is present but the introduction needs a stronger hook and explicit roadmap.",
+        "body": "Weak, repetitive arguments; improve clarity, grammar, and add specific supporting details.",
+        "conclusion": "Partial closure; needs clearer summary of reasons and a stronger final thought.",
+        "grammar": "Frequent article/preposition and word-order errors; clarify sentences and use correct prepositions."
+      }
+    },
+    "average_scores": {
+      "v1.3.0": 4.0,
+      "v1.4.0": 4.0
+    }
+  },
+  "detailed_results": [
+    {
+      "essay_index": 1,
+      "essay_data": {
+        "rubric_level": "Intermediate",
+        "topic_prompt": "If you could visit any planet in the solar system, which planet would you want to visit?",
+        "submit_text": "Do you know good at planet? I not good. But, I want to go a mar. If I could visit any planet, then I would visit mars.\n\nFirst, mars can almost people leave on this planet. Because, here has a little water and people need things. And also mars is not long to go.\n\nSecond, Mar's is not hot and cold. So, the people can go and explore the Martian. But, I have car, head ack so I think go a mars is very hard to go for me.\n\nIn conclusion, I want to go a mar. Because, mars is almost good to live in here and temperatures are okay for people."
+      },
+      "results": {
+        "v1.3.0": {
+          "level_group": "Intermediate",
+          "pre_process": {
+            "word_count": 113,
+            "meets_length_req": true,
+            "is_english": true,
+            "is_valid": true
+          },
+          "grammar": {
+            "rubric_item": "grammar",
+            "score": 1,
+            "corrections": [
+              {
+                "highlight": "Do you know good at planet?",
+                "issue": "word choice, article and preposition",
+                "correction": "Do you know a lot about planets?"
+              },
+              {
+                "highlight": "I want to go a mar.",
+                "issue": "article, preposition, spelling and capitalization",
+                "correction": "I want to go to Mars."
+              }
+            ],
+            "feedback": "Recurring errors with articles, prepositions, verb forms, and word choice make writing awkward; work on sentence structure.",
+            "token_usage": null,
+            "evaluation_type": "grammar_check",
+            "error": null
+          },
+          "structure": {
+            "introduction": {
+              "rubric_item": "introduction",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "Do you know good at planet? I not good.",
+                  "issue": "unclear and ungrammatical hook",
+                  "correction": "Do you know much about planets? I don't know much, but I'm curious about them."
+                },
+                {
+                  "highlight": "If I could visit any planet, then I would visit mars.",
+                  "issue": "thesis lacks a brief roadmap",
+                  "correction": "If I could visit any planet, I would choose Mars because it may support human life and has manageable temperatures."
+                }
+              ],
+              "feedback": "Thesis is present but needs a clearer hook and a short roadmap of supporting reasons.",
+              "token_usage": null,
+              "evaluation_type": "structure_chain",
+              "error": null
+            },
+            "body": {
+              "rubric_item": "body",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "First, mars can almost people leave on this planet. Because, here has a little water and people need things. And also mars is not long to go.",
+                  "issue": "unclear grammar and weak reasoning",
+                  "correction": "First, Mars might be habitable because it has some water and usable resources, and it is relatively accessible compared with more distant planets."
+                },
+                {
+                  "highlight": "Second, Mar's is not hot and cold. So, the people can go and explore the Martian. But, I have car, head ack so I think go a mars is very hard to go for me.",
+                  "issue": "incoherent and inconsistent details",
+                  "correction": "Second, Mars has milder temperatures than many planets, making exploration possible; however, personal health or travel limitations could make the journey difficult for me."
+                }
+              ],
+              "feedback": "Basic ideas exist but clarity, evidence, and sentence structure need work for a logical, persuasive body.",
+              "token_usage": null,
+              "evaluation_type": "structure_chain",
+              "error": null
+            },
+            "conclusion": {
+              "rubric_item": "conclusion",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "I want to go a mar.",
+                  "issue": "grammar and spelling",
+                  "correction": "I want to visit Mars."
+                },
+                {
+                  "highlight": "Because, mars is almost good to live in here and temperatures are okay for people.",
+                  "issue": "unclear and ungrammatical; lacks synthesis",
+                  "correction": "Mars could be suitable for people because it has some water and reasonable temperatures."
+                }
+              ],
+              "feedback": "Conclusion restates desire but lacks synthesis and contains grammar errors; add a clearer summary and final thought.",
+              "token_usage": null,
+              "evaluation_type": "structure_chain",
+              "error": null
+            },
+            "token_usage_total": null,
+            "evaluation_type": "structure_chain"
+          },
+          "aggregated": {
+            "score": 1,
+            "corrections": [
+              {
+                "highlight": "Do you know good at planet? I not good.",
+                "issue": "unclear and ungrammatical hook",
+                "correction": "Do you know much about planets? I don't know much, but I'm curious about them."
+              },
+              {
+                "highlight": "If I could visit any planet, then I would visit mars.",
+                "issue": "thesis lacks a brief roadmap",
+                "correction": "If I could visit any planet, I would choose Mars because it may support human life and has manageable temperatures."
+              },
+              {
+                "highlight": "First, mars can almost people leave on this planet. Because, here has a little water and people need things. And also mars is not long to go.",
+                "issue": "unclear grammar and weak reasoning",
+                "correction": "First, Mars might be habitable because it has some water and usable resources, and it is relatively accessible compared with more distant planets."
+              },
+              {
+                "highlight": "Second, Mar's is not hot and cold. So, the people can go and explore the Martian. But, I have car, head ack so I think go a mars is very hard to go for me.",
+                "issue": "incoherent and inconsistent details",
+                "correction": "Second, Mars has milder temperatures than many planets, making exploration possible; however, personal health or travel limitations could make the journey difficult for me."
+              },
+              {
+                "highlight": "I want to go a mar.",
+                "issue": "grammar and spelling",
+                "correction": "I want to visit Mars."
+              },
+              {
+                "highlight": "Because, mars is almost good to live in here and temperatures are okay for people.",
+                "issue": "unclear and ungrammatical; lacks synthesis",
+                "correction": "Mars could be suitable for people because it has some water and reasonable temperatures."
+              },
+              {
+                "highlight": "Do you know good at planet?",
+                "issue": "word choice, article and preposition",
+                "correction": "Do you know a lot about planets?"
+              },
+              {
+                "highlight": "I want to go a mar.",
+                "issue": "article, preposition, spelling and capitalization",
+                "correction": "I want to go to Mars."
+              }
+            ],
+            "feedback": "[Pre-check] words=113, meets_length=True, english=True, valid=True.\n[introduction] Thesis is present but needs a clearer hook and a short roadmap of supporting reasons.\n[body] Basic ideas exist but clarity, evidence, and sentence structure need work for a logical, persuasive body.\n[conclusion] Conclusion restates desire but lacks synthesis and contains grammar errors; add a clearer summary and final thought.\n[grammar] Recurring errors with articles, prepositions, verb forms, and word choice make writing awkward; work on sentence structure."
+          },
+          "timings": {
+            "pre_process": 0.06206899706739932,
+            "grammar": 5947.527676005848,
+            "structure": 20651.22709499701,
+            "aggregate": 0.03725500573636964,
+            "post_process": 0.027426998713053763,
+            "total": 20652.65782899951
+          },
+          "timeline": {
+            "start": "2025-10-01T01:16:54.711747+00:00",
+            "end": "2025-10-01T01:17:16.430310+00:00"
+          },
+          "evaluation_time": 21.72,
+          "version": "v1.3.0"
+        },
+        "v1.4.0": {
+          "level_group": "Intermediate",
+          "pre_process": {
+            "word_count": 113,
+            "meets_length_req": true,
+            "is_english": true,
+            "is_valid": true
+          },
+          "grammar": {
+            "rubric_item": "grammar",
+            "score": 1,
+            "corrections": [
+              {
+                "highlight": "Do you know good at planet?",
+                "issue": "word order and preposition",
+                "correction": "Do you know about planets?"
+              },
+              {
+                "highlight": "go a mar",
+                "issue": "article and preposition; planet name form",
+                "correction": "go to Mars"
+              }
+            ],
+            "feedback": "Frequent article/preposition and word-order errors; clarify sentences and use correct prepositions.",
+            "token_usage": null,
+            "evaluation_type": "grammar_check",
+            "error": null
+          },
+          "structure": {
+            "introduction": {
+              "rubric_item": "introduction",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "Do you know good at planet? I not good.",
+                  "issue": "awkward, ungrammatical hook",
+                  "correction": "Do you know much about the planets? I'm not very familiar, but I'm curious about them."
+                },
+                {
+                  "highlight": "If I could visit any planet, then I would visit mars.",
+                  "issue": "thesis uncapitalized and lacks a clear roadmap/preview",
+                  "correction": "If I could visit any planet, I would visit Mars. First, I'll explain why people might live there; second, I'll discuss its climate."
+                }
+              ],
+              "feedback": "Thesis is present but the introduction needs a stronger hook and explicit roadmap.",
+              "token_usage": null,
+              "evaluation_type": "structure_chain",
+              "error": null
+            },
+            "body": {
+              "rubric_item": "body",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "Do you know good at planet? I not good.",
+                  "issue": "grammar and clarity",
+                  "correction": "Do you know much about planets? I'm not good at that."
+                },
+                {
+                  "highlight": "I want to go a mar. If I could visit any planet, then I would visit mars.",
+                  "issue": "article use, capitalization, and phrasing",
+                  "correction": "I want to go to Mars. If I could visit any planet, I would visit Mars."
+                }
+              ],
+              "feedback": "Weak, repetitive arguments; improve clarity, grammar, and add specific supporting details.",
+              "token_usage": null,
+              "evaluation_type": "structure_chain",
+              "error": null
+            },
+            "conclusion": {
+              "rubric_item": "conclusion",
+              "score": 1,
+              "corrections": [
+                {
+                  "highlight": "I want to go a mar.",
+                  "issue": "short",
+                  "correction": "'I want to go a mar.' → 'I want to go to Mars.'"
+                },
+                {
+                  "highlight": "Because, mars is almost good to live in here and temperatures are okay for people.",
+                  "issue": "short",
+                  "correction": "'Because, mars is almost good to live in here and temperatures are okay for people.' → 'Mars is somewhat habitable, and its temperatures are suitable for people.'"
+                }
+              ],
+              "feedback": "Partial closure; needs clearer summary of reasons and a stronger final thought.",
+              "token_usage": null,
+              "evaluation_type": "structure_chain",
+              "error": null
+            },
+            "token_usage_total": null,
+            "evaluation_type": "structure_chain"
+          },
+          "aggregated": {
+            "score": 1,
+            "corrections": [
+              {
+                "highlight": "Do you know good at planet? I not good.",
+                "issue": "awkward, ungrammatical hook",
+                "correction": "Do you know much about the planets? I'm not very familiar, but I'm curious about them."
+              },
+              {
+                "highlight": "If I could visit any planet, then I would visit mars.",
+                "issue": "thesis uncapitalized and lacks a clear roadmap/preview",
+                "correction": "If I could visit any planet, I would visit Mars. First, I'll explain why people might live there; second, I'll discuss its climate."
+              },
+              {
+                "highlight": "Do you know good at planet? I not good.",
+                "issue": "grammar and clarity",
+                "correction": "Do you know much about planets? I'm not good at that."
+              },
+              {
+                "highlight": "I want to go a mar. If I could visit any planet, then I would visit mars.",
+                "issue": "article use, capitalization, and phrasing",
+                "correction": "I want to go to Mars. If I could visit any planet, I would visit Mars."
+              },
+              {
+                "highlight": "I want to go a mar.",
+                "issue": "short",
+                "correction": "'I want to go a mar.' → 'I want to go to Mars.'"
+              },
+              {
+                "highlight": "Because, mars is almost good to live in here and temperatures are okay for people.",
+                "issue": "short",
+                "correction": "'Because, mars is almost good to live in here and temperatures are okay for people.' → 'Mars is somewhat habitable, and its temperatures are suitable for people.'"
+              },
+              {
+                "highlight": "Do you know good at planet?",
+                "issue": "word order and preposition",
+                "correction": "Do you know about planets?"
+              },
+              {
+                "highlight": "go a mar",
+                "issue": "article and preposition; planet name form",
+                "correction": "go to Mars"
+              }
+            ],
+            "feedback": "[Pre-check] words=113, meets_length=True, english=True, valid=True.\n[introduction] Thesis is present but the introduction needs a stronger hook and explicit roadmap.\n[body] Weak, repetitive arguments; improve clarity, grammar, and add specific supporting details.\n[conclusion] Partial closure; needs clearer summary of reasons and a stronger final thought.\n[grammar] Frequent article/preposition and word-order errors; clarify sentences and use correct prepositions."
+          },
+          "timings": {
+            "pre_process": 0.046975997975096107,
+            "grammar": 9135.472361005668,
+            "structure": 27976.548498998454,
+            "aggregate": 0.029422997613437474,
+            "post_process": 0.023915003112051636,
+            "total": 27977.566909001325
+          },
+          "timeline": {
+            "start": "2025-10-01T01:17:16.432013+00:00",
+            "end": "2025-10-01T01:17:45.464174+00:00"
+          },
+          "evaluation_time": 29.034,
+          "version": "v1.4.0"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "versions_tested": [
+      "v1.3.0",
+      "v1.4.0"
+    ],
+    "level": "Intermediate",
+    "essay_count": 1,
+    "test_timestamp": 1759281465.4650285
+  },
+  "sample_metadata": {
+    "essay_id": 10,
+    "original_level": "intermediate",
+    "topic_prompt": "If you could visit any planet in the solar system, which planet would you want to visit?",
+    "submit_text": "Do you know good at planet? I not good. But, I want to go a mar. If I could visit any planet, then I would visit mars.\n\nFirst, mars can almost people leave on this planet. Because, here has a little water and people need things. And also mars is not long to go.\n\nSecond, Mar's is not hot and cold. So, the people can go and explore the Martian. But, I have car, head ack so I think go a mars is very hard to go for me.\n\nIn conclusion, I want to go a mar. Because, mars is almost good to live in here and temperatures are okay for people.",
+    "text_length": 537
+  }
+}

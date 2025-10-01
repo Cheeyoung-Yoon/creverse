@@ -1,0 +1,29 @@
+================================================================================
+COMPREHENSIVE VERSION TESTING SUMMARY
+================================================================================
+Test Timestamp: 20251001_101400
+Versions Tested: v1.0.0, v1.2.0
+Total Essays Tested: 4
+Data Source: data/essay_writing_40_sample.xlsx
+
+OVERALL VERSION PERFORMANCE
+--------------------------------------------------
+Version      Avg Score  Avg Time   Levels              
+------------------------------------------------------------
+
+LEVEL-BY-LEVEL BREAKDOWN
+--------------------------------------------------
+
+BASIC LEVEL:
+  ERROR: PromptVersionTester.compare_versions() got an unexpected keyword argument 'essay_text'
+
+INTERMEDIATE LEVEL:
+  ERROR: PromptVersionTester.compare_versions() got an unexpected keyword argument 'essay_text'
+
+ADVANCED LEVEL:
+  ERROR: PromptVersionTester.compare_versions() got an unexpected keyword argument 'essay_text'
+
+EXPERT LEVEL:
+  ERROR: PromptVersionTester.compare_versions() got an unexpected keyword argument 'essay_text'
+
+================================================================================

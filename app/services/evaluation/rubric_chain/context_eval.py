@@ -31,6 +31,9 @@ class StructureEvaluator:
         previous_summary: Optional[str] = None,
     ) -> Dict[str, Any]:
         try:
+            # Clean text input before processing
+            text = str(text).replace("\r\n", "\n").replace("\r", "\n").strip()
+            
             system_message = self.prompt_loader.load_prompt(rubric_item, level)
             # 이전 섹션 요약을 사용자 메시지 컨텍스트로 첨부(있을 경우)
             if previous_summary:
@@ -84,7 +87,19 @@ class StructureEvaluator:
             logger.info(f"Structure LLM response content for {rubric_item}: {content}")
             
             if isinstance(content, str):
-                content = json.loads(content)
+                try:
+                    content = json.loads(content)
+                except json.JSONDecodeError as e:
+                    logger.error(f"JSON decode error for {rubric_item}: {e}")
+                    logger.error(f"Raw content: {content}")
+                    return {
+                        "rubric_item": rubric_item,
+                        "score": 0,
+                        "corrections": [],
+                        "feedback": f"{rubric_item} evaluation failed - invalid JSON response from AI model",
+                        "evaluation_type": "structure_chain",
+                        "json_error": str(e)
+                    }
 
             # 빈 content 체크
             if not content or content == {}:

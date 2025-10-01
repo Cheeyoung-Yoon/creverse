@@ -37,12 +37,12 @@ def get_llm() -> LLM:
 
 
 @lru_cache
-def _get_prompt_loader() -> PromptLoader:
-    return PromptLoader()
+def _get_prompt_loader(version: str = None) -> PromptLoader:
+    return PromptLoader(version=version)
 
 
-def get_loader() -> PromptLoader:
-    return _get_prompt_loader()
+def get_loader(version: str = None) -> PromptLoader:
+    return _get_prompt_loader(version)
 
 
 def get_evaluator(
@@ -56,8 +56,12 @@ def get_evaluator(
 async def essay_eval(
     req: EssayEvalRequest,
     response: Response,
-    evaluator: EssayEvaluator = Depends(get_evaluator),
 ) -> EssayEvalResponse:
+    # Create evaluator with the specified prompt version
+    llm = get_llm()
+    loader = get_loader(req.prompt_version)
+    evaluator = EssayEvaluator(llm, loader)
+    
     # Start a top-level API trace and pass its id into the evaluator so all spans line up
     try:
         result = await evaluator.evaluate(req)

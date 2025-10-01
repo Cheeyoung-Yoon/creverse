@@ -29,6 +29,9 @@ class GrammarEvaluator:
         Returns: GrammarRubricResult + 메타데이터(evaluation_type)
         """
         try:
+            # Clean text input before processing
+            text = str(text).replace("\r\n", "\n").replace("\r", "\n").strip()
+            
             # 프롬프트 구성
             system_message = self.prompt_loader.load_prompt("grammar", level)
             messages = [
@@ -71,7 +74,19 @@ class GrammarEvaluator:
             
             # 모델이 문자열 JSON을 줄 수도 있음
             if isinstance(content, str):
-                content = json.loads(content)
+                try:
+                    content = json.loads(content)
+                except json.JSONDecodeError as e:
+                    logger.error(f"JSON decode error for grammar: {e}")
+                    logger.error(f"Raw content: {content}")
+                    return {
+                        "rubric_item": "grammar",
+                        "score": 0,
+                        "corrections": [],
+                        "feedback": "Grammar evaluation failed - invalid JSON response from AI model",
+                        "evaluation_type": "grammar_check",
+                        "json_error": str(e)
+                    }
 
             # 빈 content 체크
             if not content or content == {}:

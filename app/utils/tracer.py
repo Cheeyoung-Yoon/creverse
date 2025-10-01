@@ -1,8 +1,8 @@
 # app/utils/tracer.py
 from typing import Any, Dict, Optional, List, Protocol, runtime_checkable
 import logging, os
-from langfuse import Langfuse, observe
 from app.core.config import settings
+from app.utils.price_tracker import track_api_usage
 
 logger = logging.getLogger(__name__)
 
@@ -11,9 +11,22 @@ secret_key = os.getenv("LANGFUSE_SECRET_KEY")
 host = os.getenv("LANGFUSE_HOST", "https://cloud.langfuse.com")
 
 LANGFUSE_AVAILABLE = bool(public_key and secret_key)
-lf = Langfuse(public_key=public_key, secret_key=secret_key, host=host, release="v1.0.0")  # 릴리즈 버전 지정
+
+# Langfuse 관련 import 및 초기화
+lf = None
+observe = None
+
 if LANGFUSE_AVAILABLE:
-    logger.info(f"Langfuse initialized. Host: {host}")
+    try:
+        from langfuse import Langfuse, observe
+        lf = Langfuse(public_key=public_key, secret_key=secret_key, host=host, release="v1.0.0")
+        logger.info(f"Langfuse initialized. Host: {host}")
+    except ImportError:
+        logger.warning("Langfuse not installed. Tracing disabled.")
+        LANGFUSE_AVAILABLE = False
+    except Exception as e:
+        logger.warning(f"Langfuse initialization failed: {e}. Tracing disabled.")
+        LANGFUSE_AVAILABLE = False
 else:
     logger.warning("Langfuse credentials not set. Tracing disabled.")
 
@@ -32,7 +45,6 @@ class ObservedLLM:
         self.inner = inner
         self.service = service
 
-    @observe(name="llm.client", as_type="span")  # 상위 공통 span
     async def run_azure_openai(
         self,
         *,
@@ -101,7 +113,38 @@ class ObservedLLM:
                         trace_id=trace_id,
                         name=name,
                     )
-                    gen.update(output=result)
+                    
+                    # Token usage 정보 추출 및 cost 계산
+                    usage_info = result.get("usage", {})
+                    cost_info = track_api_usage(usage_info, operation=f"llm.{prompt_key}")
+                    
+                    # 기존 metadata에 cost 정보 추가
+                    updated_metadata = {
+                        **md,  # 기존 metadata 포함
+                    }
+                    
+                    # Cost 정보를 metadata에 추가
+                    if cost_info and "cost" in cost_info:
+                        cost_data = cost_info["cost"]
+                        updated_metadata.update({
+                            "cost_usd": cost_data.get("total_cost", 0),
+                            "input_cost_usd": cost_data.get("input_cost", 0),
+                            "output_cost_usd": cost_data.get("output_cost", 0),
+                            "model_pricing": "azure-gpt5-mini"
+                        })
+                    
+                    # Langfuse에 token usage와 cost 정보 전달
+                    gen.update(
+                        output=result,
+                        metadata=updated_metadata,
+                        usage={
+                            "promptTokens": usage_info.get("prompt_tokens", 0),
+                            "completionTokens": usage_info.get("completion_tokens", 0), 
+                            "totalTokens": usage_info.get("total_tokens", 0),
+                            "unit": "TOKENS"
+                        }
+                    )
+                    
                     return result
                 except Exception as e:
                     gen.update(error=str(e))

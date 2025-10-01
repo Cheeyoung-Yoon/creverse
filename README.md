@@ -1,127 +1,174 @@
 
+# 📝 Essay Evaluation Service
 
+AI 기반 **학생 에세이 자동 평가 시스템**
 
-
-
-
-```
-essay-eval/
-├── app/
-│   ├── api/
-│   │   └── v1/
-│   │       └── essay_eval.py          # POST /v1/essay-eval
-│   ├── client/
-│   │   └── azure_openai.py            # Azure OpenAI 어댑터(재시도/타임아웃)
-│   ├── core/
-│   │   ├── config.py                  # .env 로드, Settings
-│   │   └── constants.py               # 레벨/길이/CEFR 등 상수
-│   ├── services/
-│   │   ├── evaluation/
-│   │   │   ├── pre_process.py         # 길이·언어·온토픽 체크 (pure)
-│   │   │   ├── rubric_chain.py        # 서론→본론→결론(순차), 문법(병렬)
-│   │   │   └── post_evaluate.py       # 레벨 가중·정합성 (pure)
-│   │   └── essay_evaluator.py         # 오케스트레이션 (DI)
-│   └── utils/
-│       ├── prompt_loader.py           # prompts/{version}.yaml 로딩
-│       └── tracer.py                  # Langfuse 래퍼(선택)
-├── prompts/
-│   └──              # Prompt Ops (semver)
-├── tests/
-│   ├── unit/                          # pre/post/loader 순수 함수 테스트
-│   └── integration/                   # API/CLI 통합 테스트 (실 Azure 필요)
-├── scripts/                           # (배치/리포트 등 선택)
-├── docker-compose.yml
-├── pyproject.toml
-└── .env.example
-
-
-```
-
-## Design Rationale
-
-본 프로젝트의 아키텍처 설계는 다음과 같은 현실적 제약과 목적을 기반으로 결정되었습니다.
-
-1. **1인 개발 & 제한된 작업 시간**
-
-   * 실제 구현 가능한 시간이 **8시간 이내**이므로, 가장 중요한 목표는 **빠른 코딩 및 단순한 구조**
-   * 복잡한 계층 설계보다는 최소한의 레이어만 두어 개발/디버깅/테스트 속도를 우선의 아키텍팅
-
-2. **명확한 요구사항 & 확장성은 우선 아님**
-
-   * 과제의 요구사항이 **고정된 범위 내에서 명확**하기 때문에, 초기 단계에서 확장성을 고려할 불필요
-   * 추후 확장이 필요하다면 `app/` 내부에 모듈 추가 또는 `client/` 레이어를 통한 외부 서비스 연동으로 충분히 대응 가능
-
-3. **Prompt 버전 관리 & 테스트 용이성 확보**
-
-   * Prompt는 `prompts/` 폴더에서 **버전 관리(semver)**를 적용하여 롤백 및 실험 재현성을 보장
-   * 핵심 비즈니스 로직(`pre_process`, `post_evaluate`, `rubric_chain`)은 **순수 함수화**하여 단위테스트 및 빠른 리팩토링 가능 
-   * 서비스 계층은 `Fake LLM Client`를 주입 가능하도록 설계해 **통합 테스트도 최소 비용**으로 실행
-
-
-
-## 🔑 선택한 아키텍처의 의미
-
-* **Simple Layered Architecture** 채택
-
-  * `api → services → client` 단방향 흐름, `core/utils`는 보조 레이어로만 사용.
-  * 외부 I/O(Azure OpenAI, Langfuse 등)는 `client`에 격리, 나머지는 테스트 가능하게 설계.
-  * `prompts`는 별도 디렉토리에서 버전 관리, `tracer`로 실행 시점 추적.
-
-→ 결과적으로, 이번 과제 목적(제한 시간 내 완성 + 테스트 가능성 + Prompt Ops 관리)에 **최적화된 구조**
-
-
-
-여기 README에 들어갈 **간단한 설명** 버전으로 정리해봤어:
+* FastAPI 비동기 엔드포인트
+* Azure OpenAI (`gpt-5-mini`) 연동
+* Prompt 버전 관리 (Prompt Ops)
+* Langfuse Trace 저장 및 성능 분석 지원
 
 ---
 
-### Why Pydantic?
+## 🚀 프로젝트 개요
 
-**API 입출력(Request/Response) 모델** 정의에 Pydantic을 사용
+학생 제출 에세이를 **4단계 레벨 그룹(Basic · Intermediate · Advanced · Expert)** 기준으로 자동 평가합니다.
+Rubric 체계(서론, 본론, 결론, 문법)에 따라 **점수, 교정, 피드백**을 생성하며, Prompt 버전 관리와 성능 로그(Trace)를 통해 안정적인 실험과 품질 보장을 제공합니다.
 
-* **자동 검증 (Validation)**
-  클라이언트에서 잘못된 데이터(JSON 형식, 타입 불일치 등)가 들어올 경우 FastAPI + Pydantic이 즉시 검증 오류(422)를 반환으로 예상하지 못한 에러 방지. 중복 검증 코드 감소
+---
 
-* **데이터 변환 (Parsing)**
-  문자열 `"123"`을 정수 `123`으로 자동 변환하는 등, 타입 변환을 지원합니다.
+## ⚙️ 환경 세팅
 
-* **문서화 (Docs & Schema)**
-  `response_model`을 지정하면 OpenAPI 스펙 및 API 문서가 자동으로 생성됩니다.
+### 1. 저장소 클론
 
-* **유지보수성 (Maintainability)**
-  API 경계에서 명확한 계약(Contract)을 정의하여, 내부 로직과 분리된 안정적인 개발이 가능합니다.
+```bash
+git clone https://github.com/Cheeyoung-Yoon/creverse.git
+cd creverse
+```
 
-⚡ 내부 서비스 로직에서는 불필요한 오버헤드를 줄이기 위해 **dict 또는 dataclass**를 활용하며, **Pydantic은 API 경계에서만 사용**합니다.
+### 2. 환경 변수 설정
 
+`.env` 파일 생성 (샘플: `.env.example` 참고)
 
+```env
+AZURE_OPENAI_ENDPOINT=https://<YOUR>.openai.azure.com/
+AZURE_OPENAI_API_KEY=<YOUR_KEY>
+AZURE_OPENAI_DEPLOYMENT=gpt-5-mini-<YOURNAME>
+AZURE_OPENAI_API_VERSION=2024-12-01-preview
 
-## 📋 TODO - Advanced Scoring Features
+# 선택 (Langfuse)
+LANGFUSE_PUBLIC_KEY=...
+LANGFUSE_SECRET_KEY=...
+LANGFUSE_HOST=https://cloud.langfuse.com
+```
 
-###  CEFR 기반 어휘 난이도 평가 시스템
-- [ ] Grammar 평가에 어휘 난이도 정보 추가 (A1-A2:1, B1-B2:2, B2-C1:3, C1+:4)
-- [ ] CEFR 레벨별 가중치 계산 로직 구현
-- [ ] 학생 레벨과 어휘 난이도 매칭을 통한 점수 보정
+### 3. 실행 방법
 
-###  길이 기반 점수 시스템
-- [ ] 단어 수 기반 점수 계산 (Basic:50-100=1, Intermediate:100-150=2, Advanced:150-200=3, Expert:200+=4)
-- [ ] 길이 요구사항 충족 여부에 따른 가중치 적용
-- [ ] Pre-process 단계에서 길이 검증 통합
+#### 로컬
 
-###  언어 기반 가중치 시스템
-- [ ] 영어/비영어 텍스트 감지 및 가중치 적용 (영어=1.0, 비영어=0.0)
-- [ ] 언어 검증을 통한 점수 무효화 로직
+```bash
+conda create -n essay-eval python=3.12
+conda activate essay-eval
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
 
-###  적응형 레벨 평가 시스템
-- [ ] 8점 초과 시 자동 레벨 승급 로직 (Basic → Intermediate → Advanced → Expert)
-- [ ] recommended_student_level 및 adj_score 계산
-- [ ] 각 레벨별 최적 점수 범위 내 수렴 알고리즘
+→ Swagger: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-###  통합 점수 계산 공식
-- [ ] 최종점수 = 기본총점 × 어휘가중치 × 길이가중치 × 언어가중치
-- [ ] FinalEvaluation 모델 확장 (vocabulary_weight, length_score, language_weight 등)
-- [ ] 다중 요소 가중치 시스템의 피드백 통합
+#### Docker
 
-###  향상된 피드백 시스템
-- [ ] 레벨 평가 정보 포함 피드백 생성
-- [ ] CEFR 어휘 분석 결과 피드백 추가
-- [ ] 길이 및 언어 검증 결과 상세 정보 제공 
+```bash
+docker compose up --build
+```
+
+---
+
+## 📡 API 사용법
+
+### 요청
+
+```http
+POST /v1/essay-eval
+Content-Type: application/json
+```
+
+```json
+{
+  "rubric_level": "Intermediate",
+  "topic_prompt": "Describe your dream vacation.",
+  "submit_text": "I want to go to...",
+  "prompt_version": "v1.4.1"   # optional
+}
+```
+
+### 응답 (요약)
+
+```json
+{
+  "level_group": "Intermediate",
+  "grammar": {
+    "score": 1,
+    "corrections": [
+      { "highlight": "I want go", "correction": "I want to go" }
+    ]
+  },
+  "structure": {
+    "introduction": { "score": 2, "feedback": "..." }
+  },
+  "aggregated": { "score": 1, "feedback": "..." },
+  "timings": { "total": 1289.4 }
+}
+```
+
+---
+
+## 📂 프로젝트 구조
+
+```bash
+essay-eval/
+├── app/
+│   ├── api/v1/essay_eval.py     # POST /v1/essay-eval
+│   ├── client/azure_openai.py   # Azure OpenAI 어댑터
+│   ├── services/evaluation/     # pre/rubric/post 평가 로직
+│   ├── utils/                   # PromptLoader, Tracer
+│   └── core/                    # 설정, 상수
+├── prompts/                     # Prompt 버전 관리 (semver)
+├── tests/                       # Unit/Integration 테스트
+├── docker-compose.yml
+├── pyproject.toml
+└── .env.example
+```
+
+---
+
+## 🧩 평가 로직
+
+1. **Pre-Process**: 언어/길이 검증
+2. **Rubric Chain**: 서론 → 본론 → 결론 (순차), 문법 (병렬)
+3. **Aggregation**: 점수 합산 및 가중치 반영
+4. **Post-Evaluate**: 레벨 그룹별 기준 적용
+5. **Trace 저장**: Langfuse 기록
+
+---
+
+## 🧪 테스트
+
+```bash
+pytest --maxfail=1 --disable-warnings -q
+pytest --cov=app --cov-report=term-missing
+```
+
+---
+
+## 📊 성능 리포트
+
+* 평균 처리 시간: XX ms
+* 요청당 API 비용: $XX (gpt-5-mini 기준)
+* 점수 분포: 레벨 상승에 따라 평균 점수 점진적 감소
+
+---
+
+## 📌 디자인 결정 근거
+
+* **비동기 FastAPI** → 성능 최적화 (`asyncio.gather`)
+* **Prompt Ops 버전 관리** → `prompts/vX.Y.Z/` 관리 + 누락 즉시 예외
+* **Langfuse Trace 연동** → LLM 호출·프롬프트 기록 자동화
+* **Pydantic** → API 경계 검증, 내부 로직은 순수 함수로 유지
+* **단순 아키텍처** → api → services → client 단방향 설계
+
+---
+
+## 📋 TODO (향후 고도화)
+
+* [ ] **CEFR 기반 어휘 난이도 평가**
+* [ ] **길이 기반 점수 시스템**
+* [ ] **언어 기반 가중치 적용**
+* [ ] **적응형 레벨 평가 로직**
+* [ ] **피드백 고도화 (CEFR/길이/언어 반영)**
+
+---
+
+## 👨‍💻 작성자
+
+* 지원자: 윤치영
+* 포지션: AI Agent Engineer

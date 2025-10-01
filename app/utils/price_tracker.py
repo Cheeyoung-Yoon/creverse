@@ -22,7 +22,7 @@ class TokenUsage:
 class PriceTracker:
     """Track API costs and usage statistics."""
     
-    # GPT-4o mini pricing (as of task date)
+    # Azure GPT-5 mini pricing (as of task date)
     input_cost_per_1m: float = 0.250  # $0.250 per 1M input tokens
     output_cost_per_1m: float = 2.0  # $2.000 per 1M output tokens
     
@@ -102,7 +102,7 @@ class PriceTracker:
             "pricing_info": {
                 "input_cost_per_1m_tokens": self.input_cost_per_1m,
                 "output_cost_per_1m_tokens": self.output_cost_per_1m,
-                "model": "gpt-4o-mini"
+                "model": "azure-gpt5-mini"
             }
         }
     

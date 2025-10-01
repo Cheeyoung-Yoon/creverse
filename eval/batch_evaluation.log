@@ -1,0 +1,1011 @@
+2025-10-01 12:21:43,303 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 12:21:43,303 - INFO - 📊 Total combinations: 4 levels × 2 versions = 8 per essay
+2025-10-01 12:21:43,303 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 12:21:43,303 - INFO - 📝 Prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 12:21:43,304 - INFO - 📁 Data file: test_sample.xlsx
+2025-10-01 12:21:43,304 - INFO - 📁 Output file: comparison_20251001_122143_test_comparison.xlsx
+2025-10-01 12:21:43,304 - INFO - 🔄 Loading sample data...
+2025-10-01 12:21:43,309 - INFO - ✅ Loaded 2 essays from test_sample.xlsx
+2025-10-01 12:21:43,309 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 12:21:43,309 - INFO - 📋 Original levels distribution:
+2025-10-01 12:21:43,310 - INFO -    basic: 2 essays
+2025-10-01 12:21:43,310 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 12:21:43,311 - INFO - 🚀 Starting batch evaluation: 2 essays × 4 levels × 2 versions = 16 API calls
+2025-10-01 12:21:43,311 - INFO - 📊 Processing level: Basic, version: v1.2.0
+2025-10-01 12:21:43,311 - INFO - [1/16] Evaluating essay 0 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:22:12,422 - INFO - [2/16] Evaluating essay 1 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:22:42,355 - INFO - 📊 Processing level: Basic, version: v1.4.1
+2025-10-01 12:22:42,356 - INFO - [3/16] Evaluating essay 0 (original: basic) with level Basic, version v1.4.1
+2025-10-01 12:23:10,425 - INFO - [4/16] Evaluating essay 1 (original: basic) with level Basic, version v1.4.1
+2025-10-01 12:23:43,126 - INFO - 📊 Processing level: Intermediate, version: v1.2.0
+2025-10-01 12:23:43,126 - INFO - [5/16] Evaluating essay 0 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 12:24:22,168 - INFO - [6/16] Evaluating essay 1 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 12:24:55,082 - INFO - 📊 Processing level: Intermediate, version: v1.4.1
+2025-10-01 12:24:55,082 - INFO - [7/16] Evaluating essay 0 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 12:25:30,445 - INFO - [8/16] Evaluating essay 1 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 12:26:04,902 - INFO - 📊 Processing level: Advanced, version: v1.2.0
+2025-10-01 12:26:04,903 - INFO - [9/16] Evaluating essay 0 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 12:26:34,527 - INFO - [10/16] Evaluating essay 1 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 12:27:04,720 - INFO - 📊 Processing level: Advanced, version: v1.4.1
+2025-10-01 12:27:04,720 - INFO - [11/16] Evaluating essay 0 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 12:27:36,648 - INFO - [12/16] Evaluating essay 1 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 12:28:03,898 - INFO - 📊 Processing level: Expert, version: v1.2.0
+2025-10-01 12:28:03,898 - INFO - [13/16] Evaluating essay 0 (original: basic) with level Expert, version v1.2.0
+2025-10-01 12:28:40,077 - INFO - [14/16] Evaluating essay 1 (original: basic) with level Expert, version v1.2.0
+2025-10-01 12:29:08,019 - INFO - 📊 Processing level: Expert, version: v1.4.1
+2025-10-01 12:29:08,020 - INFO - [15/16] Evaluating essay 0 (original: basic) with level Expert, version v1.4.1
+2025-10-01 12:29:46,025 - INFO - [16/16] Evaluating essay 1 (original: basic) with level Expert, version v1.4.1
+2025-10-01 12:30:27,062 - INFO - ✅ Batch evaluation completed!
+2025-10-01 12:30:27,062 - INFO - 🔄 Creating Excel report...
+2025-10-01 12:30:27,062 - INFO - 📝 Creating Excel report: comparison_20251001_122143_test_comparison.xlsx
+2025-10-01 12:30:27,071 - INFO - ✅ Created sheet: Basic_v1_2_0 with 1 records
+2025-10-01 12:30:27,075 - INFO - ✅ Created sheet: Basic_v1_4_1 with 1 records
+2025-10-01 12:30:27,080 - INFO - ✅ Created sheet: Intermediate_v1_2_0 with 1 records
+2025-10-01 12:30:27,084 - INFO - ✅ Created sheet: Intermediate_v1_4_1 with 1 records
+2025-10-01 12:30:27,089 - INFO - ✅ Created sheet: Advanced_v1_2_0 with 1 records
+2025-10-01 12:30:27,095 - INFO - ✅ Created sheet: Advanced_v1_4_1 with 1 records
+2025-10-01 12:30:27,100 - INFO - ✅ Created sheet: Expert_v1_2_0 with 1 records
+2025-10-01 12:30:27,104 - INFO - ✅ Created sheet: Expert_v1_4_1 with 1 records
+2025-10-01 12:30:27,107 - INFO - ✅ Created Summary sheet
+2025-10-01 12:30:27,121 - INFO - ✅ Excel report saved: comparison_20251001_122143_test_comparison.xlsx
+2025-10-01 12:30:27,122 - INFO - 🎉 Batch evaluation comparison completed successfully!
+2025-10-01 12:30:27,122 - INFO - 📊 Results saved to: comparison_20251001_122143_test_comparison.xlsx
+2025-10-01 12:33:31,929 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 12:33:31,929 - INFO - 📊 Total combinations: 4 levels × 2 versions = 8 per essay
+2025-10-01 12:33:31,929 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 12:33:31,929 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 12:33:31,930 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 12:33:31,930 - INFO - 📝 Prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 12:33:31,930 - INFO - 📁 Data file: test_sample.xlsx
+2025-10-01 12:33:31,930 - INFO - 📁 Output file: comparison_20251001_123331_checkpoint_test.xlsx
+2025-10-01 12:33:31,930 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 12:33:31,930 - INFO - 📦 Batch size: 2
+2025-10-01 12:33:31,930 - INFO - 🔄 Loading sample data...
+2025-10-01 12:33:31,935 - INFO - ✅ Loaded 2 essays from test_sample.xlsx
+2025-10-01 12:33:31,935 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 12:33:31,935 - INFO - 📋 Original levels distribution:
+2025-10-01 12:33:31,936 - INFO -    basic: 2 essays
+2025-10-01 12:33:31,936 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 12:33:31,936 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 12:33:31,936 - INFO - 🚀 Starting batch evaluation: 2 essays × 4 levels × 2 versions = 16 API calls
+2025-10-01 12:33:31,936 - INFO - 📊 Processing level: Basic, version: v1.2.0
+2025-10-01 12:33:31,936 - INFO - [1/16] Evaluating essay 0 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:33:59,848 - INFO - [2/16] Evaluating essay 1 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:34:27,658 - INFO - 💾 Checkpoint saved at 2/16 calls
+2025-10-01 12:34:28,658 - INFO - 📊 Processing level: Basic, version: v1.4.1
+2025-10-01 12:34:28,658 - INFO - [3/16] Evaluating essay 0 (original: basic) with level Basic, version v1.4.1
+2025-10-01 12:35:04,174 - INFO - [4/16] Evaluating essay 1 (original: basic) with level Basic, version v1.4.1
+2025-10-01 12:35:36,659 - INFO - 💾 Checkpoint saved at 4/16 calls
+2025-10-01 12:35:37,659 - INFO - 📊 Processing level: Intermediate, version: v1.2.0
+2025-10-01 12:35:37,659 - INFO - [5/16] Evaluating essay 0 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 12:36:04,059 - INFO - [6/16] Evaluating essay 1 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 12:36:27,812 - INFO - 💾 Checkpoint saved at 6/16 calls
+2025-10-01 12:36:28,812 - INFO - 📊 Processing level: Intermediate, version: v1.4.1
+2025-10-01 12:36:28,813 - INFO - [7/16] Evaluating essay 0 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 12:37:11,048 - INFO - [8/16] Evaluating essay 1 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 12:37:45,966 - INFO - 💾 Checkpoint saved at 8/16 calls
+2025-10-01 12:37:46,966 - INFO - 📊 Processing level: Advanced, version: v1.2.0
+2025-10-01 12:37:46,966 - INFO - [9/16] Evaluating essay 0 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 12:38:16,126 - INFO - [10/16] Evaluating essay 1 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 12:38:48,788 - INFO - 💾 Checkpoint saved at 10/16 calls
+2025-10-01 12:38:49,789 - INFO - 📊 Processing level: Advanced, version: v1.4.1
+2025-10-01 12:38:49,789 - INFO - [11/16] Evaluating essay 0 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 12:39:14,623 - INFO - [12/16] Evaluating essay 1 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 12:39:46,658 - INFO - 💾 Checkpoint saved at 12/16 calls
+2025-10-01 12:39:47,658 - INFO - 📊 Processing level: Expert, version: v1.2.0
+2025-10-01 12:39:47,658 - INFO - [13/16] Evaluating essay 0 (original: basic) with level Expert, version v1.2.0
+2025-10-01 12:40:22,055 - INFO - [14/16] Evaluating essay 1 (original: basic) with level Expert, version v1.2.0
+2025-10-01 12:40:47,499 - INFO - 💾 Checkpoint saved at 14/16 calls
+2025-10-01 12:40:48,499 - INFO - 📊 Processing level: Expert, version: v1.4.1
+2025-10-01 12:40:48,500 - INFO - [15/16] Evaluating essay 0 (original: basic) with level Expert, version v1.4.1
+2025-10-01 12:41:34,992 - INFO - [16/16] Evaluating essay 1 (original: basic) with level Expert, version v1.4.1
+2025-10-01 12:42:09,820 - INFO - 💾 Checkpoint saved at 16/16 calls
+2025-10-01 12:42:10,821 - INFO - ✅ Batch evaluation completed!
+2025-10-01 12:42:10,821 - INFO - 🔄 Creating Excel report...
+2025-10-01 12:42:10,821 - INFO - 📝 Creating Excel report: comparison_20251001_123331_checkpoint_test.xlsx
+2025-10-01 12:42:10,829 - INFO - ✅ Created sheet: Basic_v1_2_0 with 1 records
+2025-10-01 12:42:10,834 - INFO - ✅ Created sheet: Basic_v1_4_1 with 1 records
+2025-10-01 12:42:10,839 - INFO - ✅ Created sheet: Intermediate_v1_2_0 with 1 records
+2025-10-01 12:42:10,843 - INFO - ✅ Created sheet: Intermediate_v1_4_1 with 1 records
+2025-10-01 12:42:10,849 - INFO - ✅ Created sheet: Advanced_v1_2_0 with 1 records
+2025-10-01 12:42:10,854 - INFO - ✅ Created sheet: Advanced_v1_4_1 with 1 records
+2025-10-01 12:42:10,859 - INFO - ✅ Created sheet: Expert_v1_2_0 with 1 records
+2025-10-01 12:42:10,863 - INFO - ✅ Created sheet: Expert_v1_4_1 with 1 records
+2025-10-01 12:42:10,866 - INFO - ✅ Created Summary sheet
+2025-10-01 12:42:10,882 - INFO - ✅ Excel report saved: comparison_20251001_123331_checkpoint_test.xlsx
+2025-10-01 12:42:10,882 - INFO - 🗑️ Removed checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 12:42:10,882 - INFO - 🎉 Batch evaluation comparison completed successfully!
+2025-10-01 12:42:10,882 - INFO - 📊 Results saved to: comparison_20251001_123331_checkpoint_test.xlsx
+2025-10-01 12:49:16,313 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 12:49:16,313 - INFO - 📊 Total combinations: 4 levels × 2 versions = 8 per essay
+2025-10-01 12:49:16,313 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 12:49:16,313 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 12:49:16,313 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 12:49:16,313 - INFO - 📝 Prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 12:49:16,313 - INFO - 📁 Data file: ../data/essay_writing_40_sample.xlsx
+2025-10-01 12:49:16,313 - INFO - 📁 Output file: comparison_20251001_124916_batch_evaluation_comparison.xlsx
+2025-10-01 12:49:16,313 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 12:49:16,313 - INFO - 📦 Batch size: 15
+2025-10-01 12:49:16,313 - INFO - 🔄 Loading sample data...
+2025-10-01 12:49:16,320 - INFO - ✅ Loaded 40 essays from ../data/essay_writing_40_sample.xlsx
+2025-10-01 12:49:16,321 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 12:49:16,321 - INFO - 📋 Original levels distribution:
+2025-10-01 12:49:16,322 - INFO -    basic: 10 essays
+2025-10-01 12:49:16,322 - INFO -    intermediate: 10 essays
+2025-10-01 12:49:16,322 - INFO -    advanced: 10 essays
+2025-10-01 12:49:16,322 - INFO -    expert: 10 essays
+2025-10-01 12:49:16,322 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 12:49:16,322 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 12:49:16,322 - INFO - 🚀 Starting batch evaluation: 40 essays × 4 levels × 2 versions = 320 API calls
+2025-10-01 12:49:16,322 - INFO - 📊 Processing level: Basic, version: v1.2.0
+2025-10-01 12:49:16,322 - INFO - [1/320] Evaluating essay 0 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:49:42,518 - INFO - [2/320] Evaluating essay 1 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:50:08,540 - INFO - [3/320] Evaluating essay 2 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:50:36,561 - INFO - [4/320] Evaluating essay 3 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:51:13,612 - INFO - [5/320] Evaluating essay 4 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:51:54,177 - INFO - [6/320] Evaluating essay 5 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:52:19,188 - INFO - [7/320] Evaluating essay 6 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:52:49,540 - INFO - [8/320] Evaluating essay 7 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:52:52,241 - INFO - 
+⏹️ Evaluation interrupted by user
+2025-10-01 12:52:52,241 - INFO - 💾 Progress saved in checkpoint: batch_evaluation_checkpoint.json
+2025-10-01 12:52:52,241 - INFO - 🔄 Resume with: python excel_creation.py --resume
+2025-10-01 12:52:57,441 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 12:52:57,441 - INFO - 📊 Total combinations: 4 levels × 2 versions = 8 per essay
+2025-10-01 12:52:57,441 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 12:52:57,441 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 12:52:57,441 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 12:52:57,441 - INFO - 📝 Prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 12:52:57,441 - INFO - 📁 Data file: ../data/essay_writing_40_sample.xlsx
+2025-10-01 12:52:57,441 - INFO - 📁 Output file: comparison_20251001_125257_batch_evaluation_comparison.xlsx
+2025-10-01 12:52:57,441 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 12:52:57,441 - INFO - 📦 Batch size: 5
+2025-10-01 12:52:57,441 - INFO - 🔄 Loading sample data...
+2025-10-01 12:52:57,448 - INFO - ✅ Loaded 40 essays from ../data/essay_writing_40_sample.xlsx
+2025-10-01 12:52:57,448 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 12:52:57,448 - INFO - 📋 Original levels distribution:
+2025-10-01 12:52:57,448 - INFO -    basic: 10 essays
+2025-10-01 12:52:57,448 - INFO -    intermediate: 10 essays
+2025-10-01 12:52:57,448 - INFO -    advanced: 10 essays
+2025-10-01 12:52:57,448 - INFO -    expert: 10 essays
+2025-10-01 12:52:57,448 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 12:52:57,449 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 12:52:57,449 - INFO - 🚀 Starting batch evaluation: 40 essays × 4 levels × 2 versions = 320 API calls
+2025-10-01 12:52:57,449 - INFO - 📊 Processing level: Basic, version: v1.2.0
+2025-10-01 12:52:57,449 - INFO - [1/320] Evaluating essay 0 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:53:17,007 - INFO - [2/320] Evaluating essay 1 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:53:48,705 - INFO - [3/320] Evaluating essay 2 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:54:19,321 - INFO - [4/320] Evaluating essay 3 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:54:48,512 - INFO - [5/320] Evaluating essay 4 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:55:08,451 - INFO - [6/320] Evaluating essay 5 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:55:36,952 - INFO - [7/320] Evaluating essay 6 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:56:00,093 - INFO - [8/320] Evaluating essay 7 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:56:19,996 - INFO - [9/320] Evaluating essay 8 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:56:43,767 - INFO - [10/320] Evaluating essay 9 (original: basic) with level Basic, version v1.2.0
+2025-10-01 12:57:07,928 - INFO - [11/320] Evaluating essay 10 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 12:57:31,625 - INFO - [12/320] Evaluating essay 11 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 12:58:00,429 - INFO - [13/320] Evaluating essay 12 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 12:58:24,993 - INFO - [14/320] Evaluating essay 13 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 12:58:50,706 - INFO - [15/320] Evaluating essay 14 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 12:59:14,350 - INFO - [16/320] Evaluating essay 15 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 12:59:36,555 - INFO - [17/320] Evaluating essay 16 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:00:02,090 - INFO - [18/320] Evaluating essay 17 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:00:30,669 - INFO - [19/320] Evaluating essay 18 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:00:54,600 - INFO - [20/320] Evaluating essay 19 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:01:19,817 - INFO - [21/320] Evaluating essay 20 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:01:45,973 - INFO - [22/320] Evaluating essay 21 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:02:06,097 - INFO - [23/320] Evaluating essay 22 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:02:24,002 - INFO - [24/320] Evaluating essay 23 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:02:44,670 - INFO - [25/320] Evaluating essay 24 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:03:06,254 - INFO - [26/320] Evaluating essay 25 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:03:29,938 - INFO - [27/320] Evaluating essay 26 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:03:50,249 - INFO - [28/320] Evaluating essay 27 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:04:16,544 - INFO - [29/320] Evaluating essay 28 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:04:36,981 - INFO - [30/320] Evaluating essay 29 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:05:03,492 - INFO - [31/320] Evaluating essay 30 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:05:31,500 - INFO - [32/320] Evaluating essay 31 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:05:55,866 - INFO - [33/320] Evaluating essay 32 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:06:24,259 - INFO - [34/320] Evaluating essay 33 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:06:49,353 - INFO - [35/320] Evaluating essay 34 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:07:07,181 - INFO - [36/320] Evaluating essay 35 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:07:29,732 - INFO - [37/320] Evaluating essay 36 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:07:47,821 - INFO - [38/320] Evaluating essay 37 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:08:08,024 - INFO - [39/320] Evaluating essay 38 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:08:33,795 - INFO - [40/320] Evaluating essay 39 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:08:50,506 - INFO - 💾 Checkpoint saved at 40/320 calls
+2025-10-01 13:08:51,506 - INFO - 📊 Processing level: Basic, version: v1.4.1
+2025-10-01 13:08:51,507 - INFO - [41/320] Evaluating essay 0 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:09:40,394 - INFO - [42/320] Evaluating essay 1 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:10:08,940 - INFO - [43/320] Evaluating essay 2 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:10:38,221 - INFO - [44/320] Evaluating essay 3 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:11:17,930 - INFO - [45/320] Evaluating essay 4 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:11:55,529 - INFO - [46/320] Evaluating essay 5 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:12:35,692 - INFO - [47/320] Evaluating essay 6 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:13:18,851 - INFO - [48/320] Evaluating essay 7 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:13:57,297 - INFO - [49/320] Evaluating essay 8 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:14:31,235 - INFO - [50/320] Evaluating essay 9 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:15:17,799 - INFO - [51/320] Evaluating essay 10 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:15:47,394 - INFO - [52/320] Evaluating essay 11 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:16:21,855 - INFO - [53/320] Evaluating essay 12 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:16:53,068 - INFO - [54/320] Evaluating essay 13 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:17:22,091 - INFO - [55/320] Evaluating essay 14 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:17:53,316 - INFO - [56/320] Evaluating essay 15 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:18:18,055 - INFO - [57/320] Evaluating essay 16 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:18:51,314 - INFO - [58/320] Evaluating essay 17 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:19:30,378 - INFO - [59/320] Evaluating essay 18 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:20:11,085 - INFO - [60/320] Evaluating essay 19 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:20:42,344 - INFO - [61/320] Evaluating essay 20 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:21:09,388 - INFO - [62/320] Evaluating essay 21 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:21:43,084 - INFO - [63/320] Evaluating essay 22 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:22:10,154 - INFO - [64/320] Evaluating essay 23 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:23:12,585 - ERROR - ❌ API call timed out
+2025-10-01 13:23:12,585 - INFO - [65/320] Evaluating essay 24 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:23:34,987 - INFO - [66/320] Evaluating essay 25 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:24:04,698 - INFO - [67/320] Evaluating essay 26 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:24:32,398 - INFO - [68/320] Evaluating essay 27 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:25:00,715 - INFO - [69/320] Evaluating essay 28 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:27:22,129 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 13:27:22,130 - INFO - 📊 Total combinations: 4 levels × 2 versions = 8 per essay
+2025-10-01 13:27:22,130 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 13:27:22,130 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 13:27:22,130 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 13:27:22,130 - INFO - 📝 Prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 13:27:22,130 - INFO - 📁 Data file: ../data/essay_writing_40_sample.xlsx
+2025-10-01 13:27:22,130 - INFO - 📁 Output file: comparison_20251001_132722_batch_evaluation_comparison.xlsx
+2025-10-01 13:27:22,130 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 13:27:22,130 - INFO - 📦 Batch size: 5
+2025-10-01 13:27:22,130 - INFO - 🔄 Resume mode enabled
+2025-10-01 13:27:22,130 - INFO - 🔄 Loading sample data...
+2025-10-01 13:27:22,138 - INFO - ✅ Loaded 40 essays from ../data/essay_writing_40_sample.xlsx
+2025-10-01 13:27:22,138 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 13:27:22,138 - INFO - 📋 Original levels distribution:
+2025-10-01 13:27:22,138 - INFO -    basic: 10 essays
+2025-10-01 13:27:22,138 - INFO -    intermediate: 10 essays
+2025-10-01 13:27:22,138 - INFO -    advanced: 10 essays
+2025-10-01 13:27:22,139 - INFO -    expert: 10 essays
+2025-10-01 13:27:22,139 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 13:27:22,139 - INFO - ✅ Checkpoint loaded: 40/320 calls completed
+2025-10-01 13:27:22,139 - INFO - 📅 Checkpoint timestamp: 2025-10-01T13:08:50.505908
+2025-10-01 13:27:22,139 - INFO - 🚀 Starting batch evaluation: 40 essays × 4 levels × 2 versions = 320 API calls
+2025-10-01 13:27:22,139 - INFO - 🔄 Resuming from checkpoint: 40/320 calls already completed
+2025-10-01 13:27:22,139 - INFO - 📊 Processing level: Basic, version: v1.2.0
+2025-10-01 13:27:22,139 - INFO - [41/320] Evaluating essay 0 (original: basic) with level Basic, version v1.2.0
+2025-10-01 13:27:44,560 - INFO - [42/320] Evaluating essay 1 (original: basic) with level Basic, version v1.2.0
+2025-10-01 13:28:05,688 - INFO - [43/320] Evaluating essay 2 (original: basic) with level Basic, version v1.2.0
+2025-10-01 13:28:41,316 - INFO - [44/320] Evaluating essay 3 (original: basic) with level Basic, version v1.2.0
+2025-10-01 13:29:07,565 - INFO - [45/320] Evaluating essay 4 (original: basic) with level Basic, version v1.2.0
+2025-10-01 13:29:35,064 - INFO - [46/320] Evaluating essay 5 (original: basic) with level Basic, version v1.2.0
+2025-10-01 13:29:57,700 - INFO - [47/320] Evaluating essay 6 (original: basic) with level Basic, version v1.2.0
+2025-10-01 13:30:24,648 - INFO - [48/320] Evaluating essay 7 (original: basic) with level Basic, version v1.2.0
+2025-10-01 13:30:45,312 - INFO - [49/320] Evaluating essay 8 (original: basic) with level Basic, version v1.2.0
+2025-10-01 13:31:10,808 - INFO - [50/320] Evaluating essay 9 (original: basic) with level Basic, version v1.2.0
+2025-10-01 13:31:37,904 - INFO - [51/320] Evaluating essay 10 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:32:07,307 - INFO - [52/320] Evaluating essay 11 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:32:35,598 - INFO - [53/320] Evaluating essay 12 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:32:55,283 - INFO - [54/320] Evaluating essay 13 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:33:22,633 - INFO - [55/320] Evaluating essay 14 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:33:46,468 - INFO - [56/320] Evaluating essay 15 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:34:13,562 - INFO - [57/320] Evaluating essay 16 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:34:40,680 - INFO - [58/320] Evaluating essay 17 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:35:12,491 - INFO - [59/320] Evaluating essay 18 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:35:36,731 - INFO - [60/320] Evaluating essay 19 (original: intermediate) with level Basic, version v1.2.0
+2025-10-01 13:36:04,436 - INFO - [61/320] Evaluating essay 20 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:36:34,914 - INFO - [62/320] Evaluating essay 21 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:36:55,993 - INFO - [63/320] Evaluating essay 22 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:37:20,474 - INFO - [64/320] Evaluating essay 23 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:37:46,542 - INFO - [65/320] Evaluating essay 24 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:38:11,601 - INFO - [66/320] Evaluating essay 25 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:38:40,096 - INFO - [67/320] Evaluating essay 26 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:38:58,979 - INFO - [68/320] Evaluating essay 27 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:39:24,354 - INFO - [69/320] Evaluating essay 28 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:39:44,694 - INFO - [70/320] Evaluating essay 29 (original: advanced) with level Basic, version v1.2.0
+2025-10-01 13:40:15,115 - INFO - [71/320] Evaluating essay 30 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:40:40,936 - INFO - [72/320] Evaluating essay 31 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:41:08,783 - INFO - [73/320] Evaluating essay 32 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:41:38,083 - INFO - [74/320] Evaluating essay 33 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:41:59,718 - INFO - [75/320] Evaluating essay 34 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:42:25,029 - INFO - [76/320] Evaluating essay 35 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:42:50,814 - INFO - [77/320] Evaluating essay 36 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:43:14,278 - INFO - [78/320] Evaluating essay 37 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:43:35,019 - INFO - [79/320] Evaluating essay 38 (original: expert) with level Basic, version v1.2.0
+2025-10-01 13:43:58,135 - INFO - 📊 Processing level: Basic, version: v1.4.1
+2025-10-01 13:43:58,136 - INFO - [80/320] Evaluating essay 0 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:44:44,436 - INFO - [81/320] Evaluating essay 1 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:45:29,988 - INFO - [82/320] Evaluating essay 2 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:46:10,181 - INFO - [83/320] Evaluating essay 3 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:46:53,732 - INFO - [84/320] Evaluating essay 4 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:47:19,448 - INFO - [85/320] Evaluating essay 5 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:47:51,394 - INFO - [86/320] Evaluating essay 6 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:48:33,315 - INFO - [87/320] Evaluating essay 7 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:49:04,435 - INFO - [88/320] Evaluating essay 8 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:49:33,899 - INFO - [89/320] Evaluating essay 9 (original: basic) with level Basic, version v1.4.1
+2025-10-01 13:50:10,015 - INFO - [90/320] Evaluating essay 10 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:50:48,320 - INFO - [91/320] Evaluating essay 11 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:51:22,249 - INFO - [92/320] Evaluating essay 12 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:51:59,730 - INFO - [93/320] Evaluating essay 13 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:52:30,416 - INFO - [94/320] Evaluating essay 14 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:53:05,265 - INFO - [95/320] Evaluating essay 15 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:53:47,111 - INFO - [96/320] Evaluating essay 16 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:54:21,167 - INFO - [97/320] Evaluating essay 17 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:54:56,623 - INFO - [98/320] Evaluating essay 18 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:55:26,545 - INFO - [99/320] Evaluating essay 19 (original: intermediate) with level Basic, version v1.4.1
+2025-10-01 13:55:54,139 - INFO - [100/320] Evaluating essay 20 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:56:21,685 - INFO - [101/320] Evaluating essay 21 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:56:53,858 - INFO - [102/320] Evaluating essay 22 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:57:27,122 - INFO - [103/320] Evaluating essay 23 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:57:54,704 - INFO - [104/320] Evaluating essay 24 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:58:24,213 - INFO - [105/320] Evaluating essay 25 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:58:52,165 - INFO - [106/320] Evaluating essay 26 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:59:26,053 - INFO - [107/320] Evaluating essay 27 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 13:59:55,300 - INFO - [108/320] Evaluating essay 28 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 14:00:21,647 - INFO - [109/320] Evaluating essay 29 (original: advanced) with level Basic, version v1.4.1
+2025-10-01 14:00:47,277 - INFO - [110/320] Evaluating essay 30 (original: expert) with level Basic, version v1.4.1
+2025-10-01 14:01:20,795 - INFO - [111/320] Evaluating essay 31 (original: expert) with level Basic, version v1.4.1
+2025-10-01 14:01:48,715 - INFO - [112/320] Evaluating essay 32 (original: expert) with level Basic, version v1.4.1
+2025-10-01 14:02:21,018 - INFO - [113/320] Evaluating essay 33 (original: expert) with level Basic, version v1.4.1
+2025-10-01 14:02:48,745 - INFO - [114/320] Evaluating essay 34 (original: expert) with level Basic, version v1.4.1
+2025-10-01 14:03:28,769 - INFO - [115/320] Evaluating essay 35 (original: expert) with level Basic, version v1.4.1
+2025-10-01 14:04:07,629 - INFO - [116/320] Evaluating essay 36 (original: expert) with level Basic, version v1.4.1
+2025-10-01 14:04:30,233 - INFO - [117/320] Evaluating essay 37 (original: expert) with level Basic, version v1.4.1
+2025-10-01 14:05:01,097 - INFO - [118/320] Evaluating essay 38 (original: expert) with level Basic, version v1.4.1
+2025-10-01 14:05:22,902 - INFO - [119/320] Evaluating essay 39 (original: expert) with level Basic, version v1.4.1
+2025-10-01 14:05:52,106 - INFO - 📊 Processing level: Intermediate, version: v1.2.0
+2025-10-01 14:05:52,107 - INFO - [120/320] Evaluating essay 0 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 14:06:28,460 - INFO - [121/320] Evaluating essay 1 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 14:07:01,884 - INFO - [122/320] Evaluating essay 2 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 14:07:40,453 - INFO - [123/320] Evaluating essay 3 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 14:08:09,167 - INFO - [124/320] Evaluating essay 4 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 14:08:34,649 - INFO - [125/320] Evaluating essay 5 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 14:09:01,048 - INFO - [126/320] Evaluating essay 6 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 14:09:23,546 - INFO - [127/320] Evaluating essay 7 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 14:09:53,713 - INFO - [128/320] Evaluating essay 8 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 14:10:21,647 - INFO - [129/320] Evaluating essay 9 (original: basic) with level Intermediate, version v1.2.0
+2025-10-01 14:11:02,042 - INFO - [130/320] Evaluating essay 10 (original: intermediate) with level Intermediate, version v1.2.0
+2025-10-01 14:11:30,551 - INFO - [131/320] Evaluating essay 11 (original: intermediate) with level Intermediate, version v1.2.0
+2025-10-01 14:12:02,780 - INFO - [132/320] Evaluating essay 12 (original: intermediate) with level Intermediate, version v1.2.0
+2025-10-01 14:12:30,997 - INFO - [133/320] Evaluating essay 13 (original: intermediate) with level Intermediate, version v1.2.0
+2025-10-01 14:12:59,210 - INFO - [134/320] Evaluating essay 14 (original: intermediate) with level Intermediate, version v1.2.0
+2025-10-01 14:13:28,440 - INFO - [135/320] Evaluating essay 15 (original: intermediate) with level Intermediate, version v1.2.0
+2025-10-01 14:13:56,073 - INFO - [136/320] Evaluating essay 16 (original: intermediate) with level Intermediate, version v1.2.0
+2025-10-01 14:14:30,070 - INFO - [137/320] Evaluating essay 17 (original: intermediate) with level Intermediate, version v1.2.0
+2025-10-01 14:14:57,148 - INFO - [138/320] Evaluating essay 18 (original: intermediate) with level Intermediate, version v1.2.0
+2025-10-01 14:15:25,531 - INFO - [139/320] Evaluating essay 19 (original: intermediate) with level Intermediate, version v1.2.0
+2025-10-01 14:15:55,777 - INFO - [140/320] Evaluating essay 20 (original: advanced) with level Intermediate, version v1.2.0
+2025-10-01 14:16:28,412 - INFO - [141/320] Evaluating essay 21 (original: advanced) with level Intermediate, version v1.2.0
+2025-10-01 14:16:59,534 - INFO - [142/320] Evaluating essay 22 (original: advanced) with level Intermediate, version v1.2.0
+2025-10-01 14:17:23,613 - INFO - [143/320] Evaluating essay 23 (original: advanced) with level Intermediate, version v1.2.0
+2025-10-01 14:17:54,331 - INFO - [144/320] Evaluating essay 24 (original: advanced) with level Intermediate, version v1.2.0
+2025-10-01 14:18:24,160 - INFO - [145/320] Evaluating essay 25 (original: advanced) with level Intermediate, version v1.2.0
+2025-10-01 14:18:53,338 - INFO - [146/320] Evaluating essay 26 (original: advanced) with level Intermediate, version v1.2.0
+2025-10-01 14:19:22,139 - INFO - [147/320] Evaluating essay 27 (original: advanced) with level Intermediate, version v1.2.0
+2025-10-01 14:19:50,850 - INFO - [148/320] Evaluating essay 28 (original: advanced) with level Intermediate, version v1.2.0
+2025-10-01 14:20:15,670 - INFO - [149/320] Evaluating essay 29 (original: advanced) with level Intermediate, version v1.2.0
+2025-10-01 14:20:42,032 - INFO - [150/320] Evaluating essay 30 (original: expert) with level Intermediate, version v1.2.0
+2025-10-01 14:21:03,817 - INFO - [151/320] Evaluating essay 31 (original: expert) with level Intermediate, version v1.2.0
+2025-10-01 14:21:36,297 - INFO - [152/320] Evaluating essay 32 (original: expert) with level Intermediate, version v1.2.0
+2025-10-01 14:22:04,792 - INFO - [153/320] Evaluating essay 33 (original: expert) with level Intermediate, version v1.2.0
+2025-10-01 14:22:29,222 - INFO - [154/320] Evaluating essay 34 (original: expert) with level Intermediate, version v1.2.0
+2025-10-01 14:22:55,891 - INFO - [155/320] Evaluating essay 35 (original: expert) with level Intermediate, version v1.2.0
+2025-10-01 14:23:33,842 - INFO - [156/320] Evaluating essay 36 (original: expert) with level Intermediate, version v1.2.0
+2025-10-01 14:23:55,848 - INFO - [157/320] Evaluating essay 37 (original: expert) with level Intermediate, version v1.2.0
+2025-10-01 14:24:23,574 - INFO - [158/320] Evaluating essay 38 (original: expert) with level Intermediate, version v1.2.0
+2025-10-01 14:24:52,479 - INFO - [159/320] Evaluating essay 39 (original: expert) with level Intermediate, version v1.2.0
+2025-10-01 14:25:26,105 - INFO - 📊 Processing level: Intermediate, version: v1.4.1
+2025-10-01 14:25:26,106 - INFO - [160/320] Evaluating essay 0 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 14:26:02,805 - INFO - [161/320] Evaluating essay 1 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 14:26:51,061 - INFO - [162/320] Evaluating essay 2 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 14:27:39,979 - INFO - [163/320] Evaluating essay 3 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 14:28:39,353 - INFO - [164/320] Evaluating essay 4 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 14:29:15,037 - INFO - [165/320] Evaluating essay 5 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 14:29:52,570 - INFO - [166/320] Evaluating essay 6 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 14:30:33,310 - INFO - [167/320] Evaluating essay 7 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 14:31:15,441 - INFO - [168/320] Evaluating essay 8 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 14:32:02,417 - INFO - [169/320] Evaluating essay 9 (original: basic) with level Intermediate, version v1.4.1
+2025-10-01 14:32:47,626 - INFO - [170/320] Evaluating essay 10 (original: intermediate) with level Intermediate, version v1.4.1
+2025-10-01 14:33:23,171 - INFO - [171/320] Evaluating essay 11 (original: intermediate) with level Intermediate, version v1.4.1
+2025-10-01 14:34:03,556 - INFO - [172/320] Evaluating essay 12 (original: intermediate) with level Intermediate, version v1.4.1
+2025-10-01 14:34:49,076 - INFO - [173/320] Evaluating essay 13 (original: intermediate) with level Intermediate, version v1.4.1
+2025-10-01 14:35:20,233 - INFO - [174/320] Evaluating essay 14 (original: intermediate) with level Intermediate, version v1.4.1
+2025-10-01 14:36:03,834 - INFO - [175/320] Evaluating essay 15 (original: intermediate) with level Intermediate, version v1.4.1
+2025-10-01 14:36:38,578 - INFO - [176/320] Evaluating essay 16 (original: intermediate) with level Intermediate, version v1.4.1
+2025-10-01 14:37:17,168 - INFO - [177/320] Evaluating essay 17 (original: intermediate) with level Intermediate, version v1.4.1
+2025-10-01 14:38:01,285 - INFO - [178/320] Evaluating essay 18 (original: intermediate) with level Intermediate, version v1.4.1
+2025-10-01 14:38:38,241 - INFO - [179/320] Evaluating essay 19 (original: intermediate) with level Intermediate, version v1.4.1
+2025-10-01 14:39:11,714 - INFO - [180/320] Evaluating essay 20 (original: advanced) with level Intermediate, version v1.4.1
+2025-10-01 14:39:43,095 - INFO - [181/320] Evaluating essay 21 (original: advanced) with level Intermediate, version v1.4.1
+2025-10-01 14:40:19,632 - INFO - [182/320] Evaluating essay 22 (original: advanced) with level Intermediate, version v1.4.1
+2025-10-01 14:40:51,100 - INFO - [183/320] Evaluating essay 23 (original: advanced) with level Intermediate, version v1.4.1
+2025-10-01 14:41:28,790 - INFO - [184/320] Evaluating essay 24 (original: advanced) with level Intermediate, version v1.4.1
+2025-10-01 14:42:12,658 - INFO - [185/320] Evaluating essay 25 (original: advanced) with level Intermediate, version v1.4.1
+2025-10-01 14:42:49,150 - INFO - [186/320] Evaluating essay 26 (original: advanced) with level Intermediate, version v1.4.1
+2025-10-01 14:43:31,008 - INFO - [187/320] Evaluating essay 27 (original: advanced) with level Intermediate, version v1.4.1
+2025-10-01 14:44:04,775 - INFO - [188/320] Evaluating essay 28 (original: advanced) with level Intermediate, version v1.4.1
+2025-10-01 14:44:33,618 - INFO - [189/320] Evaluating essay 29 (original: advanced) with level Intermediate, version v1.4.1
+2025-10-01 14:45:06,878 - INFO - [190/320] Evaluating essay 30 (original: expert) with level Intermediate, version v1.4.1
+2025-10-01 14:45:43,181 - INFO - [191/320] Evaluating essay 31 (original: expert) with level Intermediate, version v1.4.1
+2025-10-01 14:46:12,883 - INFO - [192/320] Evaluating essay 32 (original: expert) with level Intermediate, version v1.4.1
+2025-10-01 14:46:45,793 - INFO - [193/320] Evaluating essay 33 (original: expert) with level Intermediate, version v1.4.1
+2025-10-01 14:47:14,355 - INFO - [194/320] Evaluating essay 34 (original: expert) with level Intermediate, version v1.4.1
+2025-10-01 14:47:50,195 - INFO - [195/320] Evaluating essay 35 (original: expert) with level Intermediate, version v1.4.1
+2025-10-01 14:48:26,227 - INFO - [196/320] Evaluating essay 36 (original: expert) with level Intermediate, version v1.4.1
+2025-10-01 14:48:59,788 - INFO - [197/320] Evaluating essay 37 (original: expert) with level Intermediate, version v1.4.1
+2025-10-01 14:49:35,405 - INFO - [198/320] Evaluating essay 38 (original: expert) with level Intermediate, version v1.4.1
+2025-10-01 14:50:08,785 - INFO - [199/320] Evaluating essay 39 (original: expert) with level Intermediate, version v1.4.1
+2025-10-01 14:50:57,637 - INFO - 📊 Processing level: Advanced, version: v1.2.0
+2025-10-01 14:50:57,638 - INFO - [200/320] Evaluating essay 0 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 14:51:33,456 - INFO - [201/320] Evaluating essay 1 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 14:52:06,240 - INFO - [202/320] Evaluating essay 2 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 14:52:43,663 - INFO - [203/320] Evaluating essay 3 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 14:53:12,711 - INFO - [204/320] Evaluating essay 4 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 14:53:37,199 - INFO - [205/320] Evaluating essay 5 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 14:54:06,864 - INFO - [206/320] Evaluating essay 6 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 14:54:37,871 - INFO - [207/320] Evaluating essay 7 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 14:55:13,710 - INFO - [208/320] Evaluating essay 8 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 14:55:34,912 - INFO - [209/320] Evaluating essay 9 (original: basic) with level Advanced, version v1.2.0
+2025-10-01 14:56:04,708 - INFO - [210/320] Evaluating essay 10 (original: intermediate) with level Advanced, version v1.2.0
+2025-10-01 14:56:36,663 - INFO - [211/320] Evaluating essay 11 (original: intermediate) with level Advanced, version v1.2.0
+2025-10-01 14:57:18,662 - INFO - [212/320] Evaluating essay 12 (original: intermediate) with level Advanced, version v1.2.0
+2025-10-01 14:57:51,718 - INFO - [213/320] Evaluating essay 13 (original: intermediate) with level Advanced, version v1.2.0
+2025-10-01 14:58:34,909 - INFO - [214/320] Evaluating essay 14 (original: intermediate) with level Advanced, version v1.2.0
+2025-10-01 14:59:05,999 - INFO - [215/320] Evaluating essay 15 (original: intermediate) with level Advanced, version v1.2.0
+2025-10-01 14:59:36,453 - INFO - [216/320] Evaluating essay 16 (original: intermediate) with level Advanced, version v1.2.0
+2025-10-01 15:00:03,631 - INFO - [217/320] Evaluating essay 17 (original: intermediate) with level Advanced, version v1.2.0
+2025-10-01 15:00:31,689 - INFO - [218/320] Evaluating essay 18 (original: intermediate) with level Advanced, version v1.2.0
+2025-10-01 15:00:56,101 - INFO - [219/320] Evaluating essay 19 (original: intermediate) with level Advanced, version v1.2.0
+2025-10-01 15:01:39,220 - INFO - [220/320] Evaluating essay 20 (original: advanced) with level Advanced, version v1.2.0
+2025-10-01 15:02:18,850 - INFO - [221/320] Evaluating essay 21 (original: advanced) with level Advanced, version v1.2.0
+2025-10-01 15:02:55,158 - INFO - [222/320] Evaluating essay 22 (original: advanced) with level Advanced, version v1.2.0
+2025-10-01 15:03:26,360 - INFO - [223/320] Evaluating essay 23 (original: advanced) with level Advanced, version v1.2.0
+2025-10-01 15:03:56,334 - INFO - [224/320] Evaluating essay 24 (original: advanced) with level Advanced, version v1.2.0
+2025-10-01 15:04:32,311 - INFO - [225/320] Evaluating essay 25 (original: advanced) with level Advanced, version v1.2.0
+2025-10-01 15:05:06,978 - INFO - [226/320] Evaluating essay 26 (original: advanced) with level Advanced, version v1.2.0
+2025-10-01 15:05:41,090 - INFO - [227/320] Evaluating essay 27 (original: advanced) with level Advanced, version v1.2.0
+2025-10-01 15:06:21,178 - INFO - [228/320] Evaluating essay 28 (original: advanced) with level Advanced, version v1.2.0
+2025-10-01 15:06:47,184 - INFO - [229/320] Evaluating essay 29 (original: advanced) with level Advanced, version v1.2.0
+2025-10-01 15:07:26,071 - INFO - [230/320] Evaluating essay 30 (original: expert) with level Advanced, version v1.2.0
+2025-10-01 15:07:56,080 - INFO - [231/320] Evaluating essay 31 (original: expert) with level Advanced, version v1.2.0
+2025-10-01 15:08:22,618 - INFO - [232/320] Evaluating essay 32 (original: expert) with level Advanced, version v1.2.0
+2025-10-01 15:08:54,513 - INFO - [233/320] Evaluating essay 33 (original: expert) with level Advanced, version v1.2.0
+2025-10-01 15:09:27,501 - INFO - [234/320] Evaluating essay 34 (original: expert) with level Advanced, version v1.2.0
+2025-10-01 15:09:51,594 - INFO - [235/320] Evaluating essay 35 (original: expert) with level Advanced, version v1.2.0
+2025-10-01 15:10:24,026 - INFO - [236/320] Evaluating essay 36 (original: expert) with level Advanced, version v1.2.0
+2025-10-01 15:11:00,296 - INFO - [237/320] Evaluating essay 37 (original: expert) with level Advanced, version v1.2.0
+2025-10-01 15:11:27,472 - INFO - [238/320] Evaluating essay 38 (original: expert) with level Advanced, version v1.2.0
+2025-10-01 15:11:57,010 - INFO - [239/320] Evaluating essay 39 (original: expert) with level Advanced, version v1.2.0
+2025-10-01 15:12:20,678 - INFO - 📊 Processing level: Advanced, version: v1.4.1
+2025-10-01 15:12:20,682 - INFO - [240/320] Evaluating essay 0 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 15:13:02,381 - INFO - [241/320] Evaluating essay 1 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 15:13:40,519 - INFO - [242/320] Evaluating essay 2 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 15:14:24,118 - INFO - [243/320] Evaluating essay 3 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 15:15:08,323 - INFO - [244/320] Evaluating essay 4 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 15:15:54,737 - INFO - [245/320] Evaluating essay 5 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 15:16:57,542 - ERROR - ❌ API call timed out
+2025-10-01 15:16:57,543 - INFO - [246/320] Evaluating essay 6 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 15:17:35,560 - INFO - [247/320] Evaluating essay 7 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 15:18:09,826 - INFO - [248/320] Evaluating essay 8 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 15:18:58,427 - INFO - [249/320] Evaluating essay 9 (original: basic) with level Advanced, version v1.4.1
+2025-10-01 15:19:37,990 - INFO - [250/320] Evaluating essay 10 (original: intermediate) with level Advanced, version v1.4.1
+2025-10-01 15:20:24,815 - INFO - [251/320] Evaluating essay 11 (original: intermediate) with level Advanced, version v1.4.1
+2025-10-01 15:21:02,327 - INFO - [252/320] Evaluating essay 12 (original: intermediate) with level Advanced, version v1.4.1
+2025-10-01 15:22:05,188 - ERROR - ❌ API call timed out
+2025-10-01 15:22:05,189 - INFO - [253/320] Evaluating essay 13 (original: intermediate) with level Advanced, version v1.4.1
+2025-10-01 15:23:08,045 - ERROR - ❌ API call timed out
+2025-10-01 15:23:08,046 - INFO - [254/320] Evaluating essay 14 (original: intermediate) with level Advanced, version v1.4.1
+2025-10-01 15:24:10,831 - ERROR - ❌ API call timed out
+2025-10-01 15:24:10,832 - INFO - [255/320] Evaluating essay 15 (original: intermediate) with level Advanced, version v1.4.1
+2025-10-01 15:25:13,870 - ERROR - ❌ API call timed out
+2025-10-01 15:25:13,870 - INFO - [256/320] Evaluating essay 16 (original: intermediate) with level Advanced, version v1.4.1
+2025-10-01 15:26:16,686 - ERROR - ❌ API call timed out
+2025-10-01 15:26:16,687 - INFO - [257/320] Evaluating essay 17 (original: intermediate) with level Advanced, version v1.4.1
+2025-10-01 15:27:18,084 - ERROR - ❌ API call timed out
+2025-10-01 15:27:18,085 - INFO - [258/320] Evaluating essay 18 (original: intermediate) with level Advanced, version v1.4.1
+2025-10-01 15:27:59,523 - INFO - [259/320] Evaluating essay 19 (original: intermediate) with level Advanced, version v1.4.1
+2025-10-01 15:28:37,342 - INFO - [260/320] Evaluating essay 20 (original: advanced) with level Advanced, version v1.4.1
+2025-10-01 15:29:16,135 - INFO - [261/320] Evaluating essay 21 (original: advanced) with level Advanced, version v1.4.1
+2025-10-01 15:29:43,962 - INFO - [262/320] Evaluating essay 22 (original: advanced) with level Advanced, version v1.4.1
+2025-10-01 15:30:15,596 - INFO - [263/320] Evaluating essay 23 (original: advanced) with level Advanced, version v1.4.1
+2025-10-01 15:30:49,526 - INFO - [264/320] Evaluating essay 24 (original: advanced) with level Advanced, version v1.4.1
+2025-10-01 15:31:39,682 - INFO - [265/320] Evaluating essay 25 (original: advanced) with level Advanced, version v1.4.1
+2025-10-01 15:32:16,634 - INFO - [266/320] Evaluating essay 26 (original: advanced) with level Advanced, version v1.4.1
+2025-10-01 15:32:54,444 - INFO - [267/320] Evaluating essay 27 (original: advanced) with level Advanced, version v1.4.1
+2025-10-01 15:33:30,562 - INFO - [268/320] Evaluating essay 28 (original: advanced) with level Advanced, version v1.4.1
+2025-10-01 15:34:08,988 - INFO - [269/320] Evaluating essay 29 (original: advanced) with level Advanced, version v1.4.1
+2025-10-01 15:34:45,594 - INFO - [270/320] Evaluating essay 30 (original: expert) with level Advanced, version v1.4.1
+2025-10-01 15:35:24,228 - INFO - [271/320] Evaluating essay 31 (original: expert) with level Advanced, version v1.4.1
+2025-10-01 15:35:53,111 - INFO - [272/320] Evaluating essay 32 (original: expert) with level Advanced, version v1.4.1
+2025-10-01 15:36:33,354 - INFO - [273/320] Evaluating essay 33 (original: expert) with level Advanced, version v1.4.1
+2025-10-01 15:37:01,811 - INFO - [274/320] Evaluating essay 34 (original: expert) with level Advanced, version v1.4.1
+2025-10-01 15:37:38,707 - INFO - [275/320] Evaluating essay 35 (original: expert) with level Advanced, version v1.4.1
+2025-10-01 15:38:07,314 - INFO - [276/320] Evaluating essay 36 (original: expert) with level Advanced, version v1.4.1
+2025-10-01 15:38:30,172 - INFO - [277/320] Evaluating essay 37 (original: expert) with level Advanced, version v1.4.1
+2025-10-01 15:38:56,939 - INFO - [278/320] Evaluating essay 38 (original: expert) with level Advanced, version v1.4.1
+2025-10-01 15:39:28,540 - INFO - [279/320] Evaluating essay 39 (original: expert) with level Advanced, version v1.4.1
+2025-10-01 15:40:10,357 - INFO - 📊 Processing level: Expert, version: v1.2.0
+2025-10-01 15:40:10,359 - INFO - [280/320] Evaluating essay 0 (original: basic) with level Expert, version v1.2.0
+2025-10-01 15:40:57,725 - INFO - [281/320] Evaluating essay 1 (original: basic) with level Expert, version v1.2.0
+2025-10-01 15:41:32,797 - INFO - [282/320] Evaluating essay 2 (original: basic) with level Expert, version v1.2.0
+2025-10-01 15:42:07,457 - INFO - [283/320] Evaluating essay 3 (original: basic) with level Expert, version v1.2.0
+2025-10-01 15:42:52,051 - INFO - [284/320] Evaluating essay 4 (original: basic) with level Expert, version v1.2.0
+2025-10-01 15:43:37,387 - INFO - [285/320] Evaluating essay 5 (original: basic) with level Expert, version v1.2.0
+2025-10-01 15:44:19,799 - INFO - [286/320] Evaluating essay 6 (original: basic) with level Expert, version v1.2.0
+2025-10-01 15:45:05,867 - INFO - [287/320] Evaluating essay 7 (original: basic) with level Expert, version v1.2.0
+2025-10-01 15:45:39,491 - INFO - [288/320] Evaluating essay 8 (original: basic) with level Expert, version v1.2.0
+2025-10-01 15:46:21,921 - INFO - [289/320] Evaluating essay 9 (original: basic) with level Expert, version v1.2.0
+2025-10-01 15:46:51,244 - INFO - [290/320] Evaluating essay 10 (original: intermediate) with level Expert, version v1.2.0
+2025-10-01 15:47:28,161 - INFO - [291/320] Evaluating essay 11 (original: intermediate) with level Expert, version v1.2.0
+2025-10-01 15:48:18,934 - INFO - [292/320] Evaluating essay 12 (original: intermediate) with level Expert, version v1.2.0
+2025-10-01 15:49:00,090 - INFO - [293/320] Evaluating essay 13 (original: intermediate) with level Expert, version v1.2.0
+2025-10-01 15:49:36,378 - INFO - [294/320] Evaluating essay 14 (original: intermediate) with level Expert, version v1.2.0
+2025-10-01 15:50:16,152 - INFO - [295/320] Evaluating essay 15 (original: intermediate) with level Expert, version v1.2.0
+2025-10-01 15:51:07,070 - INFO - [296/320] Evaluating essay 16 (original: intermediate) with level Expert, version v1.2.0
+2025-10-01 15:51:43,324 - INFO - [297/320] Evaluating essay 17 (original: intermediate) with level Expert, version v1.2.0
+2025-10-01 15:52:23,365 - INFO - [298/320] Evaluating essay 18 (original: intermediate) with level Expert, version v1.2.0
+2025-10-01 15:53:14,281 - INFO - [299/320] Evaluating essay 19 (original: intermediate) with level Expert, version v1.2.0
+2025-10-01 15:54:01,073 - INFO - [300/320] Evaluating essay 20 (original: advanced) with level Expert, version v1.2.0
+2025-10-01 15:54:35,023 - INFO - [301/320] Evaluating essay 21 (original: advanced) with level Expert, version v1.2.0
+2025-10-01 15:55:17,391 - INFO - [302/320] Evaluating essay 22 (original: advanced) with level Expert, version v1.2.0
+2025-10-01 15:55:51,229 - INFO - [303/320] Evaluating essay 23 (original: advanced) with level Expert, version v1.2.0
+2025-10-01 15:56:26,442 - INFO - [304/320] Evaluating essay 24 (original: advanced) with level Expert, version v1.2.0
+2025-10-01 15:57:03,737 - INFO - [305/320] Evaluating essay 25 (original: advanced) with level Expert, version v1.2.0
+2025-10-01 15:57:47,384 - INFO - [306/320] Evaluating essay 26 (original: advanced) with level Expert, version v1.2.0
+2025-10-01 15:58:27,254 - INFO - [307/320] Evaluating essay 27 (original: advanced) with level Expert, version v1.2.0
+2025-10-01 15:59:06,478 - INFO - [308/320] Evaluating essay 28 (original: advanced) with level Expert, version v1.2.0
+2025-10-01 15:59:55,755 - INFO - [309/320] Evaluating essay 29 (original: advanced) with level Expert, version v1.2.0
+2025-10-01 16:00:32,537 - INFO - [310/320] Evaluating essay 30 (original: expert) with level Expert, version v1.2.0
+2025-10-01 16:01:17,897 - INFO - [311/320] Evaluating essay 31 (original: expert) with level Expert, version v1.2.0
+2025-10-01 16:02:05,481 - INFO - [312/320] Evaluating essay 32 (original: expert) with level Expert, version v1.2.0
+2025-10-01 16:02:46,405 - INFO - [313/320] Evaluating essay 33 (original: expert) with level Expert, version v1.2.0
+2025-10-01 16:03:22,370 - INFO - [314/320] Evaluating essay 34 (original: expert) with level Expert, version v1.2.0
+2025-10-01 16:04:04,124 - INFO - [315/320] Evaluating essay 35 (original: expert) with level Expert, version v1.2.0
+2025-10-01 16:04:43,172 - INFO - [316/320] Evaluating essay 36 (original: expert) with level Expert, version v1.2.0
+2025-10-01 16:05:21,872 - INFO - [317/320] Evaluating essay 37 (original: expert) with level Expert, version v1.2.0
+2025-10-01 16:06:03,607 - INFO - [318/320] Evaluating essay 38 (original: expert) with level Expert, version v1.2.0
+2025-10-01 16:06:48,403 - INFO - [319/320] Evaluating essay 39 (original: expert) with level Expert, version v1.2.0
+2025-10-01 16:07:51,289 - ERROR - ❌ API call timed out
+2025-10-01 16:07:52,292 - INFO - 📊 Processing level: Expert, version: v1.4.1
+2025-10-01 16:07:52,305 - INFO - [320/320] Evaluating essay 0 (original: basic) with level Expert, version v1.4.1
+2025-10-01 16:08:47,341 - INFO - [321/320] Evaluating essay 1 (original: basic) with level Expert, version v1.4.1
+2025-10-01 16:09:32,037 - INFO - [322/320] Evaluating essay 2 (original: basic) with level Expert, version v1.4.1
+2025-10-01 16:10:24,888 - INFO - [323/320] Evaluating essay 3 (original: basic) with level Expert, version v1.4.1
+2025-10-01 16:11:27,643 - ERROR - ❌ API call timed out
+2025-10-01 16:11:27,644 - INFO - [324/320] Evaluating essay 4 (original: basic) with level Expert, version v1.4.1
+2025-10-01 16:12:11,689 - INFO - [325/320] Evaluating essay 5 (original: basic) with level Expert, version v1.4.1
+2025-10-01 16:13:06,379 - INFO - [326/320] Evaluating essay 6 (original: basic) with level Expert, version v1.4.1
+2025-10-01 16:13:52,647 - INFO - [327/320] Evaluating essay 7 (original: basic) with level Expert, version v1.4.1
+2025-10-01 16:14:42,906 - INFO - [328/320] Evaluating essay 8 (original: basic) with level Expert, version v1.4.1
+2025-10-01 16:15:24,190 - INFO - [329/320] Evaluating essay 9 (original: basic) with level Expert, version v1.4.1
+2025-10-01 16:16:15,611 - INFO - [330/320] Evaluating essay 10 (original: intermediate) with level Expert, version v1.4.1
+2025-10-01 16:17:02,607 - INFO - [331/320] Evaluating essay 11 (original: intermediate) with level Expert, version v1.4.1
+2025-10-01 16:17:49,440 - INFO - [332/320] Evaluating essay 12 (original: intermediate) with level Expert, version v1.4.1
+2025-10-01 16:18:32,636 - INFO - [333/320] Evaluating essay 13 (original: intermediate) with level Expert, version v1.4.1
+2025-10-01 16:19:22,085 - INFO - [334/320] Evaluating essay 14 (original: intermediate) with level Expert, version v1.4.1
+2025-10-01 16:19:59,175 - INFO - [335/320] Evaluating essay 15 (original: intermediate) with level Expert, version v1.4.1
+2025-10-01 16:20:42,103 - INFO - [336/320] Evaluating essay 16 (original: intermediate) with level Expert, version v1.4.1
+2025-10-01 16:21:27,410 - INFO - [337/320] Evaluating essay 17 (original: intermediate) with level Expert, version v1.4.1
+2025-10-01 16:22:16,819 - INFO - [338/320] Evaluating essay 18 (original: intermediate) with level Expert, version v1.4.1
+2025-10-01 16:23:09,950 - INFO - [339/320] Evaluating essay 19 (original: intermediate) with level Expert, version v1.4.1
+2025-10-01 16:23:47,392 - INFO - [340/320] Evaluating essay 20 (original: advanced) with level Expert, version v1.4.1
+2025-10-01 16:24:28,341 - INFO - [341/320] Evaluating essay 21 (original: advanced) with level Expert, version v1.4.1
+2025-10-01 16:25:16,853 - INFO - [342/320] Evaluating essay 22 (original: advanced) with level Expert, version v1.4.1
+2025-10-01 16:26:18,223 - ERROR - ❌ API call timed out
+2025-10-01 16:26:18,223 - INFO - [343/320] Evaluating essay 23 (original: advanced) with level Expert, version v1.4.1
+2025-10-01 16:27:14,439 - INFO - [344/320] Evaluating essay 24 (original: advanced) with level Expert, version v1.4.1
+2025-10-01 16:27:56,713 - INFO - [345/320] Evaluating essay 25 (original: advanced) with level Expert, version v1.4.1
+2025-10-01 16:28:43,154 - INFO - [346/320] Evaluating essay 26 (original: advanced) with level Expert, version v1.4.1
+2025-10-01 16:29:32,457 - INFO - [347/320] Evaluating essay 27 (original: advanced) with level Expert, version v1.4.1
+2025-10-01 16:30:25,795 - INFO - [348/320] Evaluating essay 28 (original: advanced) with level Expert, version v1.4.1
+2025-10-01 16:31:11,005 - INFO - [349/320] Evaluating essay 29 (original: advanced) with level Expert, version v1.4.1
+2025-10-01 16:31:58,358 - INFO - [350/320] Evaluating essay 30 (original: expert) with level Expert, version v1.4.1
+2025-10-01 16:32:59,786 - ERROR - ❌ API call timed out
+2025-10-01 16:32:59,787 - INFO - [351/320] Evaluating essay 31 (original: expert) with level Expert, version v1.4.1
+2025-10-01 16:33:50,276 - INFO - [352/320] Evaluating essay 32 (original: expert) with level Expert, version v1.4.1
+2025-10-01 16:34:36,095 - INFO - [353/320] Evaluating essay 33 (original: expert) with level Expert, version v1.4.1
+2025-10-01 16:35:20,948 - INFO - [354/320] Evaluating essay 34 (original: expert) with level Expert, version v1.4.1
+2025-10-01 16:36:08,948 - INFO - [355/320] Evaluating essay 35 (original: expert) with level Expert, version v1.4.1
+2025-10-01 16:36:55,149 - INFO - [356/320] Evaluating essay 36 (original: expert) with level Expert, version v1.4.1
+2025-10-01 16:37:53,412 - INFO - [357/320] Evaluating essay 37 (original: expert) with level Expert, version v1.4.1
+2025-10-01 16:38:56,142 - ERROR - ❌ API call timed out
+2025-10-01 16:38:56,143 - INFO - [358/320] Evaluating essay 38 (original: expert) with level Expert, version v1.4.1
+2025-10-01 16:39:32,010 - INFO - [359/320] Evaluating essay 39 (original: expert) with level Expert, version v1.4.1
+2025-10-01 16:40:06,464 - INFO - ✅ Batch evaluation completed!
+2025-10-01 16:40:06,465 - INFO - 🔄 Creating Excel report...
+2025-10-01 16:40:06,465 - INFO - 📝 Creating Excel report: comparison_20251001_132722_batch_evaluation_comparison.xlsx
+2025-10-01 16:40:06,888 - INFO - ✅ Created sheet: Basic_v1_2_0 with 2 records
+2025-10-01 16:40:06,893 - INFO - ✅ Created sheet: Basic_v1_4_1 with 1 records
+2025-10-01 16:40:06,897 - INFO - ✅ Created sheet: Intermediate_v1_2_0 with 1 records
+2025-10-01 16:40:06,901 - INFO - ✅ Created sheet: Intermediate_v1_4_1 with 1 records
+2025-10-01 16:40:06,905 - INFO - ✅ Created sheet: Advanced_v1_2_0 with 1 records
+2025-10-01 16:40:06,909 - INFO - ✅ Created sheet: Advanced_v1_4_1 with 1 records
+2025-10-01 16:40:06,912 - INFO - ✅ Created sheet: Expert_v1_2_0 with 1 records
+2025-10-01 16:40:06,917 - INFO - ✅ Created sheet: Expert_v1_4_1 with 1 records
+2025-10-01 16:40:06,920 - INFO - ✅ Created Summary sheet
+2025-10-01 16:40:06,966 - INFO - ✅ Excel report saved: comparison_20251001_132722_batch_evaluation_comparison.xlsx
+2025-10-01 16:40:06,967 - INFO - 🗑️ Removed checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:40:06,967 - INFO - 🎉 Batch evaluation comparison completed successfully!
+2025-10-01 16:40:06,967 - INFO - 📊 Results saved to: comparison_20251001_132722_batch_evaluation_comparison.xlsx
+2025-10-01 16:45:54,463 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 16:45:54,463 - INFO - 📊 Total combinations: 4 levels × 2 versions = 8 per essay
+2025-10-01 16:45:54,463 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:45:54,463 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 16:45:54,463 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 16:45:54,463 - INFO - 📝 Prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 16:45:54,463 - INFO - 📁 Data file: test_sample.xlsx
+2025-10-01 16:45:54,463 - INFO - 📁 Output file: comparison_20251001_164554_debug_test.xlsx
+2025-10-01 16:45:54,463 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:45:54,463 - INFO - 📦 Batch size: 2
+2025-10-01 16:45:54,463 - INFO - 🔄 Loading sample data...
+2025-10-01 16:45:54,477 - INFO - ✅ Loaded 2 essays from test_sample.xlsx
+2025-10-01 16:45:54,477 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 16:45:54,477 - INFO - 📋 Original levels distribution:
+2025-10-01 16:45:54,478 - INFO -    basic: 2 essays
+2025-10-01 16:45:54,478 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 16:45:54,478 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 16:45:54,478 - INFO - 📊 Current results status:
+2025-10-01 16:45:54,478 - INFO -   Basic_v1.2.0: 0 completed essays
+2025-10-01 16:45:54,478 - INFO -   Basic_v1.4.1: 0 completed essays
+2025-10-01 16:45:54,478 - INFO -   Intermediate_v1.2.0: 0 completed essays
+2025-10-01 16:45:54,478 - INFO -   Intermediate_v1.4.1: 0 completed essays
+2025-10-01 16:45:54,479 - INFO -   Advanced_v1.2.0: 0 completed essays
+2025-10-01 16:45:54,479 - INFO -   Advanced_v1.4.1: 0 completed essays
+2025-10-01 16:45:54,479 - INFO -   Expert_v1.2.0: 0 completed essays
+2025-10-01 16:45:54,479 - INFO -   Expert_v1.4.1: 0 completed essays
+2025-10-01 16:45:54,479 - INFO - 🚀 Starting batch evaluation: 2 essays × 4 levels × 2 versions = 16 API calls
+2025-10-01 16:45:54,479 - INFO - 📊 Processing level: Basic, version: v1.2.0
+2025-10-01 16:45:54,479 - INFO - [1/16] Evaluating essay 0 (original: basic) with level Basic, version v1.2.0
+2025-10-01 16:46:24,306 - INFO - [2/16] Evaluating essay 1 (original: basic) with level Basic, version v1.2.0
+2025-10-01 16:46:55,044 - INFO - 💾 Checkpoint saved at 2/16 calls
+2025-10-01 16:46:55,044 - INFO -   Basic_v1.2.0: 1 results
+2025-10-01 16:46:55,044 - INFO -   Basic_v1.4.1: 0 results
+2025-10-01 16:46:55,044 - INFO -   Intermediate_v1.2.0: 0 results
+2025-10-01 16:46:55,044 - INFO -   Intermediate_v1.4.1: 0 results
+2025-10-01 16:46:55,044 - INFO -   Advanced_v1.2.0: 0 results
+2025-10-01 16:46:55,044 - INFO -   Advanced_v1.4.1: 0 results
+2025-10-01 16:46:55,044 - INFO -   Expert_v1.2.0: 0 results
+2025-10-01 16:46:55,044 - INFO -   Expert_v1.4.1: 0 results
+2025-10-01 16:46:56,044 - INFO - 📊 Processing level: Basic, version: v1.4.1
+2025-10-01 16:46:56,045 - INFO - [3/16] Evaluating essay 0 (original: basic) with level Basic, version v1.4.1
+2025-10-01 16:49:09,326 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 16:49:09,326 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 16:49:09,326 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:49:09,326 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 16:49:09,326 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 16:49:09,326 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 16:49:09,326 - INFO - 📁 Data file: ../data/essay_writing_4_sample.xlsx
+2025-10-01 16:49:09,326 - INFO - 📁 Output file: comparison_20251001_164909_batch_evaluation_comparison.xlsx
+2025-10-01 16:49:09,326 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:49:09,326 - INFO - 📦 Batch size: 5
+2025-10-01 16:49:09,326 - INFO - 🔄 Loading sample data...
+2025-10-01 16:49:09,332 - INFO - ✅ Loaded 4 essays from ../data/essay_writing_4_sample.xlsx
+2025-10-01 16:49:09,333 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 16:49:09,333 - INFO - 📋 Original levels distribution:
+2025-10-01 16:49:09,334 - INFO -    basic: 1 essays
+2025-10-01 16:49:09,334 - INFO -    intermediate: 1 essays
+2025-10-01 16:49:09,334 - INFO -    advanced: 1 essays
+2025-10-01 16:49:09,334 - INFO -    expert: 1 essays
+2025-10-01 16:49:09,334 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 16:49:09,334 - INFO - ✅ Checkpoint loaded: 2/16 calls completed
+2025-10-01 16:49:09,334 - INFO - 📅 Checkpoint timestamp: 2025-10-01T16:46:55.043852
+2025-10-01 16:49:09,334 - INFO - 🔧 Initialized missing key: Basic_v1.5.0
+2025-10-01 16:49:09,334 - INFO - 🔧 Initialized missing key: Intermediate_v1.5.0
+2025-10-01 16:49:09,334 - INFO - 🔧 Initialized missing key: Advanced_v1.5.0
+2025-10-01 16:49:09,334 - INFO - 🔧 Initialized missing key: Expert_v1.5.0
+2025-10-01 16:49:09,334 - INFO - 📊 Current results status:
+2025-10-01 16:49:09,334 - INFO -   Basic_v1.2.0: 1 completed essays
+2025-10-01 16:49:09,335 - INFO -   Basic_v1.4.1: 0 completed essays
+2025-10-01 16:49:09,335 - INFO -   Intermediate_v1.2.0: 0 completed essays
+2025-10-01 16:49:09,335 - INFO -   Intermediate_v1.4.1: 0 completed essays
+2025-10-01 16:49:09,335 - INFO -   Advanced_v1.2.0: 0 completed essays
+2025-10-01 16:49:09,335 - INFO -   Advanced_v1.4.1: 0 completed essays
+2025-10-01 16:49:09,335 - INFO -   Expert_v1.2.0: 0 completed essays
+2025-10-01 16:49:09,335 - INFO -   Expert_v1.4.1: 0 completed essays
+2025-10-01 16:49:09,335 - INFO -   Basic_v1.5.0: 0 completed essays
+2025-10-01 16:49:09,335 - INFO -   Intermediate_v1.5.0: 0 completed essays
+2025-10-01 16:49:09,335 - INFO -   Advanced_v1.5.0: 0 completed essays
+2025-10-01 16:49:09,335 - INFO -   Expert_v1.5.0: 0 completed essays
+2025-10-01 16:49:09,335 - INFO - 🚀 Starting batch evaluation: 4 essays × 4 levels × 1 versions = 16 API calls
+2025-10-01 16:49:09,335 - INFO - 🔄 Resuming from checkpoint: 2/16 calls already completed
+2025-10-01 16:49:09,335 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 16:49:09,335 - INFO - [3/16] Evaluating essay 0 (original: basic) with level Basic, version v1.5.0
+2025-10-01 16:49:28,092 - INFO - 
+⏹️ Evaluation interrupted by user
+2025-10-01 16:49:28,092 - INFO - 💾 Progress saved in checkpoint: batch_evaluation_checkpoint.json
+2025-10-01 16:49:28,092 - INFO - 🔄 Resume with: python excel_creation.py --resume
+2025-10-01 16:49:29,977 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 16:49:29,977 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 16:49:29,977 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:49:29,977 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 16:49:29,977 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 16:49:29,977 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 16:49:29,977 - INFO - 📁 Data file: ../data/essay_writing_4_sample.xlsx
+2025-10-01 16:49:29,977 - INFO - 📁 Output file: comparison_20251001_164929_batch_evaluation_comparison.xlsx
+2025-10-01 16:49:29,977 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:49:29,977 - INFO - 📦 Batch size: 5
+2025-10-01 16:49:29,977 - INFO - 🔄 Loading sample data...
+2025-10-01 16:49:29,982 - INFO - ✅ Loaded 4 essays from ../data/essay_writing_4_sample.xlsx
+2025-10-01 16:49:29,982 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 16:49:29,982 - INFO - 📋 Original levels distribution:
+2025-10-01 16:49:29,983 - INFO -    basic: 1 essays
+2025-10-01 16:49:29,983 - INFO -    intermediate: 1 essays
+2025-10-01 16:49:29,983 - INFO -    advanced: 1 essays
+2025-10-01 16:49:29,983 - INFO -    expert: 1 essays
+2025-10-01 16:49:29,983 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 16:49:29,983 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 16:49:29,983 - INFO - 📊 Current results status:
+2025-10-01 16:49:29,983 - INFO -   Basic_v1.5.0: 0 completed essays
+2025-10-01 16:49:29,983 - INFO -   Intermediate_v1.5.0: 0 completed essays
+2025-10-01 16:49:29,983 - INFO -   Advanced_v1.5.0: 0 completed essays
+2025-10-01 16:49:29,983 - INFO -   Expert_v1.5.0: 0 completed essays
+2025-10-01 16:49:29,983 - INFO - 🚀 Starting batch evaluation: 4 essays × 4 levels × 1 versions = 16 API calls
+2025-10-01 16:49:29,983 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 16:49:29,984 - INFO - [1/16] Evaluating essay 0 (original: basic) with level Basic, version v1.5.0
+2025-10-01 16:50:04,650 - INFO - [2/16] Evaluating essay 19 (original: intermediate) with level Basic, version v1.5.0
+2025-10-01 16:50:39,071 - INFO - [3/16] Evaluating essay 20 (original: advanced) with level Basic, version v1.5.0
+2025-10-01 16:51:16,972 - INFO - [4/16] Evaluating essay 32 (original: expert) with level Basic, version v1.5.0
+2025-10-01 16:51:49,536 - INFO - 📊 Processing level: Intermediate, version: v1.5.0
+2025-10-01 16:51:49,537 - INFO - [5/16] Evaluating essay 0 (original: basic) with level Intermediate, version v1.5.0
+2025-10-01 16:52:33,275 - INFO - [6/16] Evaluating essay 19 (original: intermediate) with level Intermediate, version v1.5.0
+2025-10-01 16:53:15,908 - INFO - [7/16] Evaluating essay 20 (original: advanced) with level Intermediate, version v1.5.0
+2025-10-01 16:53:54,304 - INFO - [8/16] Evaluating essay 32 (original: expert) with level Intermediate, version v1.5.0
+2025-10-01 16:54:00,374 - INFO - 
+⏹️ Evaluation interrupted by user
+2025-10-01 16:54:00,374 - INFO - 💾 Progress saved in checkpoint: batch_evaluation_checkpoint.json
+2025-10-01 16:54:00,374 - INFO - 🔄 Resume with: python excel_creation.py --resume
+2025-10-01 16:54:54,365 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 16:54:54,365 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 16:54:54,365 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:54:54,365 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 16:54:54,365 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 16:54:54,365 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 16:54:54,365 - INFO - 📁 Data file: ../data/essay_writing_40_sample.xlsx
+2025-10-01 16:54:54,365 - INFO - 📁 Output file: comparison_20251001_165454_batch_evaluation_comparison.xlsx
+2025-10-01 16:54:54,365 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:54:54,365 - INFO - 📦 Batch size: 5
+2025-10-01 16:54:54,366 - INFO - 🔄 Loading sample data...
+2025-10-01 16:54:54,376 - INFO - ✅ Loaded 40 essays from ../data/essay_writing_40_sample.xlsx
+2025-10-01 16:54:54,376 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 16:54:54,376 - INFO - 📋 Original levels distribution:
+2025-10-01 16:54:54,376 - INFO -    basic: 10 essays
+2025-10-01 16:54:54,376 - INFO -    intermediate: 10 essays
+2025-10-01 16:54:54,376 - INFO -    advanced: 10 essays
+2025-10-01 16:54:54,376 - INFO -    expert: 10 essays
+2025-10-01 16:54:54,376 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 16:54:54,377 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 16:54:54,377 - INFO - 📊 Current results status:
+2025-10-01 16:54:54,377 - INFO -   Basic_v1.5.0: 0 completed essays
+2025-10-01 16:54:54,377 - INFO -   Intermediate_v1.5.0: 0 completed essays
+2025-10-01 16:54:54,377 - INFO -   Advanced_v1.5.0: 0 completed essays
+2025-10-01 16:54:54,377 - INFO -   Expert_v1.5.0: 0 completed essays
+2025-10-01 16:54:54,377 - INFO - 🚀 Starting batch evaluation: 40 essays × 4 levels × 1 versions = 160 API calls
+2025-10-01 16:54:54,377 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 16:54:54,377 - INFO - [1/160] Evaluating essay 0 (original: basic) with level Basic, version v1.5.0
+2025-10-01 16:55:08,854 - INFO - 
+⏹️ Evaluation interrupted by user
+2025-10-01 16:55:08,854 - INFO - 💾 Progress saved in checkpoint: batch_evaluation_checkpoint.json
+2025-10-01 16:55:08,854 - INFO - 🔄 Resume with: python excel_creation.py --resume
+2025-10-01 16:55:17,445 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 16:55:17,445 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 16:55:17,445 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:55:17,446 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 16:55:17,446 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 16:55:17,446 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 16:55:17,446 - INFO - 📁 Data file: ../data/essay_writing_40_sample.xlsx
+2025-10-01 16:55:17,446 - INFO - 📁 Output file: comparison_20251001_165517_batch_evaluation_comparison.xlsx
+2025-10-01 16:55:17,446 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:55:17,446 - INFO - 📦 Batch size: 5
+2025-10-01 16:55:17,446 - INFO - 🔄 Loading sample data...
+2025-10-01 16:55:17,453 - INFO - ✅ Loaded 40 essays from ../data/essay_writing_40_sample.xlsx
+2025-10-01 16:55:17,454 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 16:55:17,454 - INFO - 📋 Original levels distribution:
+2025-10-01 16:55:17,454 - INFO -    basic: 10 essays
+2025-10-01 16:55:17,454 - INFO -    intermediate: 10 essays
+2025-10-01 16:55:17,454 - INFO -    advanced: 10 essays
+2025-10-01 16:55:17,454 - INFO -    expert: 10 essays
+2025-10-01 16:55:17,454 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 16:55:17,454 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 16:55:17,454 - INFO - 📊 Current results status:
+2025-10-01 16:55:17,454 - INFO -   Basic_v1.5.0: 0 completed essays
+2025-10-01 16:55:17,455 - INFO -   Intermediate_v1.5.0: 0 completed essays
+2025-10-01 16:55:17,455 - INFO -   Advanced_v1.5.0: 0 completed essays
+2025-10-01 16:55:17,455 - INFO -   Expert_v1.5.0: 0 completed essays
+2025-10-01 16:55:17,455 - INFO - 🚀 Starting batch evaluation: 40 essays × 4 levels × 1 versions = 160 API calls
+2025-10-01 16:55:17,455 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 16:55:17,455 - INFO - [1/160] Evaluating essay 0 (original: basic) with level Basic, version v1.5.0
+2025-10-01 16:56:18,029 - INFO - [2/160] Evaluating essay 1 (original: basic) with level Basic, version v1.5.0
+2025-10-01 16:56:30,306 - INFO - 
+⏹️ Evaluation interrupted by user
+2025-10-01 16:56:30,306 - INFO - 💾 Progress saved in checkpoint: batch_evaluation_checkpoint.json
+2025-10-01 16:56:30,306 - INFO - 🔄 Resume with: python excel_creation.py --resume
+2025-10-01 17:00:21,057 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 17:00:21,057 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 17:00:21,057 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:00:21,057 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 17:00:21,057 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 17:00:21,057 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 17:00:21,057 - INFO - 📁 Data file: ../data/essay_writing_40_sample.xlsx
+2025-10-01 17:00:21,057 - INFO - 📁 Output file: comparison_20251001_170021_batch_evaluation_comparison.xlsx
+2025-10-01 17:00:21,057 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:00:21,057 - INFO - 📦 Batch size: 5
+2025-10-01 17:00:21,057 - INFO - 🔄 Loading sample data...
+2025-10-01 17:00:21,063 - INFO - ✅ Loaded 40 essays from ../data/essay_writing_40_sample.xlsx
+2025-10-01 17:00:21,064 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 17:00:21,064 - INFO - 📋 Original levels distribution:
+2025-10-01 17:00:21,064 - INFO -    basic: 10 essays
+2025-10-01 17:00:21,064 - INFO -    intermediate: 10 essays
+2025-10-01 17:00:21,064 - INFO -    advanced: 10 essays
+2025-10-01 17:00:21,064 - INFO -    expert: 10 essays
+2025-10-01 17:00:21,064 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 17:00:21,064 - ERROR - ❌ Failed to load checkpoint: Expecting value: line 1 column 1 (char 0)
+2025-10-01 17:00:21,065 - INFO - 📊 Current results status:
+2025-10-01 17:00:21,065 - INFO -   Basic_v1.5.0: 0 completed essays
+2025-10-01 17:00:21,065 - INFO -   Intermediate_v1.5.0: 0 completed essays
+2025-10-01 17:00:21,065 - INFO -   Advanced_v1.5.0: 0 completed essays
+2025-10-01 17:00:21,065 - INFO -   Expert_v1.5.0: 0 completed essays
+2025-10-01 17:00:21,065 - INFO - 🚀 Starting batch evaluation: 40 essays × 4 levels × 1 versions = 160 API calls
+2025-10-01 17:00:21,065 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 17:00:21,065 - INFO - [1/160] Evaluating essay 0 (original: basic) with level Basic, version v1.5.0
+2025-10-01 17:00:58,280 - INFO - [2/160] Evaluating essay 1 (original: basic) with level Basic, version v1.5.0
+2025-10-01 17:01:27,441 - INFO - [3/160] Evaluating essay 2 (original: basic) with level Basic, version v1.5.0
+2025-10-01 17:01:28,911 - INFO - 
+⏹️ Evaluation interrupted by user
+2025-10-01 17:01:28,912 - INFO - 💾 Progress saved in checkpoint: batch_evaluation_checkpoint.json
+2025-10-01 17:01:28,912 - INFO - 🔄 Resume with: python excel_creation.py --resume
+2025-10-01 17:06:06,255 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 17:06:06,255 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 17:06:06,255 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:06:06,255 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 17:06:06,255 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 17:06:06,255 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 17:06:06,255 - INFO - 📁 Data file: ../data/essay_writing_40_sample.xlsx
+2025-10-01 17:06:06,255 - INFO - 📁 Output file: comparison_20251001_170606_batch_evaluation_comparison.xlsx
+2025-10-01 17:06:06,255 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:06:06,255 - INFO - 📦 Batch size: 5
+2025-10-01 17:06:06,255 - INFO - 🔄 Loading sample data...
+2025-10-01 17:06:06,262 - INFO - ✅ Loaded 40 essays from ../data/essay_writing_40_sample.xlsx
+2025-10-01 17:06:06,262 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 17:06:06,262 - INFO - 📋 Original levels distribution:
+2025-10-01 17:06:06,262 - INFO -    basic: 10 essays
+2025-10-01 17:06:06,262 - INFO -    intermediate: 10 essays
+2025-10-01 17:06:06,263 - INFO -    advanced: 10 essays
+2025-10-01 17:06:06,263 - INFO -    expert: 10 essays
+2025-10-01 17:06:06,263 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 17:06:06,263 - ERROR - ❌ Failed to load checkpoint: Expecting value: line 1 column 1 (char 0)
+2025-10-01 17:06:06,263 - INFO - 📊 Current results status:
+2025-10-01 17:06:06,263 - INFO -   Basic_v1.5.0: 0 completed essays
+2025-10-01 17:06:06,263 - INFO -   Intermediate_v1.5.0: 0 completed essays
+2025-10-01 17:06:06,263 - INFO -   Advanced_v1.5.0: 0 completed essays
+2025-10-01 17:06:06,263 - INFO -   Expert_v1.5.0: 0 completed essays
+2025-10-01 17:06:06,263 - INFO - 🚀 Starting batch evaluation: 40 essays × 4 levels × 1 versions = 160 API calls
+2025-10-01 17:06:06,264 - INFO - 💾 Initial checkpoint saved
+2025-10-01 17:06:06,264 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 17:06:06,265 - INFO - [40/160] Evaluating essay 39 (original: expert) with level Basic, version v1.5.0
+2025-10-01 17:06:32,302 - INFO - 💾 Checkpoint saved at 40/160 calls
+2025-10-01 17:06:32,302 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:06:33,302 - INFO -   Intermediate_v1.5.0: 0 results
+2025-10-01 17:06:34,302 - INFO -   Advanced_v1.5.0: 0 results
+2025-10-01 17:06:35,303 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:06:36,303 - INFO - 📊 Processing level: Intermediate, version: v1.5.0
+2025-10-01 17:06:36,304 - INFO - [80/160] Evaluating essay 39 (original: expert) with level Intermediate, version v1.5.0
+2025-10-01 17:07:06,571 - INFO - 💾 Checkpoint saved at 80/160 calls
+2025-10-01 17:07:06,571 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:07:07,571 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:07:08,572 - INFO -   Advanced_v1.5.0: 0 results
+2025-10-01 17:07:09,572 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:07:10,572 - INFO - 📊 Processing level: Advanced, version: v1.5.0
+2025-10-01 17:07:10,573 - INFO - [120/160] Evaluating essay 39 (original: expert) with level Advanced, version v1.5.0
+2025-10-01 17:07:42,496 - INFO - 💾 Checkpoint saved at 120/160 calls
+2025-10-01 17:07:42,496 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:07:43,496 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:07:44,496 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:07:45,497 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:07:46,497 - INFO - 📊 Processing level: Expert, version: v1.5.0
+2025-10-01 17:07:46,498 - INFO - [160/160] Evaluating essay 39 (original: expert) with level Expert, version v1.5.0
+2025-10-01 17:08:23,948 - INFO - 💾 Checkpoint saved at 160/160 calls
+2025-10-01 17:08:23,948 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:08:24,948 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:08:25,948 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:08:26,948 - INFO -   Expert_v1.5.0: 1 results
+2025-10-01 17:08:29,381 - INFO - ✅ Batch evaluation completed!
+2025-10-01 17:08:29,381 - INFO - 🔄 Creating Excel report...
+2025-10-01 17:08:29,381 - INFO - 📝 Creating Excel report: comparison_20251001_170606_batch_evaluation_comparison.xlsx
+2025-10-01 17:08:29,382 - INFO - 🔍 Available result keys: ['Basic_v1.5.0', 'Intermediate_v1.5.0', 'Advanced_v1.5.0', 'Expert_v1.5.0']
+2025-10-01 17:08:29,382 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:08:29,382 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:08:29,382 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:08:29,382 - INFO -   Expert_v1.5.0: 1 results
+2025-10-01 17:08:29,382 - INFO - ✓ Found data for key: Basic_v1.5.0
+2025-10-01 17:08:29,383 - INFO - 📊 Creating sheet 'Basic_v1_5_0' using key 'Basic_v1.5.0' with 1 results
+2025-10-01 17:08:29,387 - INFO - ✅ Created sheet: Basic_v1_5_0 with 1 records
+2025-10-01 17:08:29,387 - INFO - ✓ Found data for key: Intermediate_v1.5.0
+2025-10-01 17:08:29,387 - INFO - 📊 Creating sheet 'Intermediate_v1_5_0' using key 'Intermediate_v1.5.0' with 1 results
+2025-10-01 17:08:29,392 - INFO - ✅ Created sheet: Intermediate_v1_5_0 with 1 records
+2025-10-01 17:08:29,392 - INFO - ✓ Found data for key: Advanced_v1.5.0
+2025-10-01 17:08:29,393 - INFO - 📊 Creating sheet 'Advanced_v1_5_0' using key 'Advanced_v1.5.0' with 1 results
+2025-10-01 17:08:29,397 - INFO - ✅ Created sheet: Advanced_v1_5_0 with 1 records
+2025-10-01 17:08:29,397 - INFO - ✓ Found data for key: Expert_v1.5.0
+2025-10-01 17:08:29,398 - INFO - 📊 Creating sheet 'Expert_v1_5_0' using key 'Expert_v1.5.0' with 1 results
+2025-10-01 17:08:29,401 - INFO - ✅ Created sheet: Expert_v1_5_0 with 1 records
+2025-10-01 17:08:29,403 - INFO - ✅ Created Summary sheet
+2025-10-01 17:08:29,413 - INFO - ✅ Excel report saved: comparison_20251001_170606_batch_evaluation_comparison.xlsx
+2025-10-01 17:08:29,413 - INFO - 🗑️ Removed checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:08:29,413 - INFO - 🎉 Batch evaluation comparison completed successfully!
+2025-10-01 17:08:29,413 - INFO - 📊 Results saved to: comparison_20251001_170606_batch_evaluation_comparison.xlsx
+2025-10-01 17:09:10,220 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 17:09:10,220 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 17:09:10,220 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:09:10,220 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 17:09:10,220 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 17:09:10,220 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 17:09:10,220 - INFO - 📁 Data file: ../data/essay_writing_40_sample.xlsx
+2025-10-01 17:09:10,220 - INFO - 📁 Output file: comparison_20251001_170910_batch_evaluation_comparison.xlsx
+2025-10-01 17:09:10,220 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:09:10,220 - INFO - 📦 Batch size: 5
+2025-10-01 17:09:10,220 - INFO - 🔄 Loading sample data...
+2025-10-01 17:09:10,228 - INFO - ✅ Loaded 40 essays from ../data/essay_writing_40_sample.xlsx
+2025-10-01 17:09:10,228 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 17:09:10,228 - INFO - 📋 Original levels distribution:
+2025-10-01 17:09:10,228 - INFO -    basic: 10 essays
+2025-10-01 17:09:10,228 - INFO -    intermediate: 10 essays
+2025-10-01 17:09:10,229 - INFO -    advanced: 10 essays
+2025-10-01 17:09:10,229 - INFO -    expert: 10 essays
+2025-10-01 17:09:10,229 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 17:09:10,229 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 17:09:10,229 - INFO - 📊 Current results status:
+2025-10-01 17:09:10,229 - INFO -   Basic_v1.5.0: 0 completed essays
+2025-10-01 17:09:10,229 - INFO -   Intermediate_v1.5.0: 0 completed essays
+2025-10-01 17:09:10,229 - INFO -   Advanced_v1.5.0: 0 completed essays
+2025-10-01 17:09:10,229 - INFO -   Expert_v1.5.0: 0 completed essays
+2025-10-01 17:09:10,229 - INFO - 🚀 Starting batch evaluation: 40 essays × 4 levels × 1 versions = 160 API calls
+2025-10-01 17:09:10,229 - INFO - 💾 Initial checkpoint saved
+2025-10-01 17:09:10,229 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 17:09:10,230 - INFO - [40/160] Evaluating essay 39 (original: expert) with level Basic, version v1.5.0
+2025-10-01 17:09:30,361 - INFO - 💾 Checkpoint saved at 40/160 calls
+2025-10-01 17:09:30,361 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:09:31,361 - INFO -   Intermediate_v1.5.0: 0 results
+2025-10-01 17:09:32,361 - INFO -   Advanced_v1.5.0: 0 results
+2025-10-01 17:09:33,361 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:09:34,362 - INFO - 📊 Processing level: Intermediate, version: v1.5.0
+2025-10-01 17:09:34,363 - INFO - [80/160] Evaluating essay 39 (original: expert) with level Intermediate, version v1.5.0
+2025-10-01 17:10:12,664 - INFO - 💾 Checkpoint saved at 80/160 calls
+2025-10-01 17:10:12,664 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:10:13,664 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:10:14,665 - INFO -   Advanced_v1.5.0: 0 results
+2025-10-01 17:10:15,665 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:10:16,665 - INFO - 📊 Processing level: Advanced, version: v1.5.0
+2025-10-01 17:10:16,666 - INFO - [120/160] Evaluating essay 39 (original: expert) with level Advanced, version v1.5.0
+2025-10-01 17:10:42,488 - INFO - 💾 Checkpoint saved at 120/160 calls
+2025-10-01 17:10:42,488 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:10:44,924 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:10:45,924 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:10:46,924 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:10:47,925 - INFO - 📊 Processing level: Expert, version: v1.5.0
+2025-10-01 17:10:47,926 - INFO - [160/160] Evaluating essay 39 (original: expert) with level Expert, version v1.5.0
+2025-10-01 17:11:23,002 - INFO - 💾 Checkpoint saved at 160/160 calls
+2025-10-01 17:11:23,002 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:11:24,002 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:11:25,002 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:11:26,002 - INFO -   Expert_v1.5.0: 1 results
+2025-10-01 17:11:27,003 - INFO - ✅ Batch evaluation completed!
+2025-10-01 17:11:27,003 - INFO - 🔄 Creating Excel report...
+2025-10-01 17:11:27,003 - INFO - 📝 Creating Excel report: comparison_20251001_170910_batch_evaluation_comparison.xlsx
+2025-10-01 17:11:27,004 - INFO - 🔍 Available result keys: ['Basic_v1.5.0', 'Intermediate_v1.5.0', 'Advanced_v1.5.0', 'Expert_v1.5.0']
+2025-10-01 17:11:27,004 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:11:27,004 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:11:27,004 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:11:27,004 - INFO -   Expert_v1.5.0: 1 results
+2025-10-01 17:11:27,005 - INFO - ✓ Found data for key: Basic_v1.5.0
+2025-10-01 17:11:27,006 - INFO - 📊 Creating sheet 'Basic_v1_5_0' using key 'Basic_v1.5.0' with 1 results
+2025-10-01 17:11:27,009 - INFO - ✅ Created sheet: Basic_v1_5_0 with 1 records
+2025-10-01 17:11:27,009 - INFO - ✓ Found data for key: Intermediate_v1.5.0
+2025-10-01 17:11:27,010 - INFO - 📊 Creating sheet 'Intermediate_v1_5_0' using key 'Intermediate_v1.5.0' with 1 results
+2025-10-01 17:11:27,013 - INFO - ✅ Created sheet: Intermediate_v1_5_0 with 1 records
+2025-10-01 17:11:27,013 - INFO - ✓ Found data for key: Advanced_v1.5.0
+2025-10-01 17:11:27,014 - INFO - 📊 Creating sheet 'Advanced_v1_5_0' using key 'Advanced_v1.5.0' with 1 results
+2025-10-01 17:11:27,019 - INFO - ✅ Created sheet: Advanced_v1_5_0 with 1 records
+2025-10-01 17:11:27,019 - INFO - ✓ Found data for key: Expert_v1.5.0
+2025-10-01 17:11:27,019 - INFO - 📊 Creating sheet 'Expert_v1_5_0' using key 'Expert_v1.5.0' with 1 results
+2025-10-01 17:11:27,023 - INFO - ✅ Created sheet: Expert_v1_5_0 with 1 records
+2025-10-01 17:11:27,024 - INFO - ✅ Created Summary sheet
+2025-10-01 17:11:27,033 - INFO - ✅ Excel report saved: comparison_20251001_170910_batch_evaluation_comparison.xlsx
+2025-10-01 17:11:27,033 - INFO - 🗑️ Removed checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:11:27,033 - INFO - 🎉 Batch evaluation comparison completed successfully!
+2025-10-01 17:11:27,033 - INFO - 📊 Results saved to: comparison_20251001_170910_batch_evaluation_comparison.xlsx

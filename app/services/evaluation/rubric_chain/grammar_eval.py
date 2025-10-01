@@ -54,6 +54,7 @@ class GrammarEvaluator:
                     "text_length": len(text),
                     "prompt_source": "local_file",
                     "prompt_file": f"grammar_{level.lower()}",
+                    "prompt_version": self.prompt_loader.version,  # 현재 사용 중인 prompt 버전 추가
                 }
             )
             

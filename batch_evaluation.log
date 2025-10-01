@@ -1,429 +1,338 @@
-2025-10-01 00:01:00,248 - INFO - 🔄 Loading sample data...
-2025-10-01 00:01:00,275 - INFO - ✅ Loaded 41 essays from /home/ycy/work_dir/creverse/data/essay_writing_40_sample.xlsx
-2025-10-01 00:01:00,276 - INFO - Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
-2025-10-01 00:01:00,276 - INFO - 🔄 Starting batch evaluation...
-2025-10-01 00:01:00,276 - INFO - 🚀 Starting batch evaluation: 41 essays × 4 levels = 164 API calls
-2025-10-01 00:01:00,276 - INFO - 📊 Processing level: Basic
-2025-10-01 00:01:00,280 - WARNING - ⚠️ Empty essay text at row 0
-2025-10-01 00:01:00,281 - WARNING - ⚠️ Empty essay text at row 1
-2025-10-01 00:01:00,281 - WARNING - ⚠️ Empty essay text at row 2
-2025-10-01 00:01:00,281 - WARNING - ⚠️ Empty essay text at row 3
-2025-10-01 00:01:00,281 - WARNING - ⚠️ Empty essay text at row 4
-2025-10-01 00:01:00,282 - WARNING - ⚠️ Empty essay text at row 5
-2025-10-01 00:01:00,282 - WARNING - ⚠️ Empty essay text at row 6
-2025-10-01 00:01:00,282 - WARNING - ⚠️ Empty essay text at row 7
-2025-10-01 00:01:00,283 - WARNING - ⚠️ Empty essay text at row 8
-2025-10-01 00:01:00,283 - WARNING - ⚠️ Empty essay text at row 9
-2025-10-01 00:01:00,283 - WARNING - ⚠️ Empty essay text at row 10
-2025-10-01 00:01:00,284 - WARNING - ⚠️ Empty essay text at row 11
-2025-10-01 00:01:00,284 - WARNING - ⚠️ Empty essay text at row 12
-2025-10-01 00:01:00,284 - WARNING - ⚠️ Empty essay text at row 13
-2025-10-01 00:01:00,285 - WARNING - ⚠️ Empty essay text at row 14
-2025-10-01 00:01:00,285 - WARNING - ⚠️ Empty essay text at row 15
-2025-10-01 00:01:00,285 - WARNING - ⚠️ Empty essay text at row 16
-2025-10-01 00:01:00,286 - WARNING - ⚠️ Empty essay text at row 17
-2025-10-01 00:01:00,286 - WARNING - ⚠️ Empty essay text at row 18
-2025-10-01 00:01:00,286 - WARNING - ⚠️ Empty essay text at row 19
-2025-10-01 00:01:00,287 - WARNING - ⚠️ Empty essay text at row 20
-2025-10-01 00:01:00,287 - WARNING - ⚠️ Empty essay text at row 21
-2025-10-01 00:01:00,287 - WARNING - ⚠️ Empty essay text at row 22
-2025-10-01 00:01:00,288 - WARNING - ⚠️ Empty essay text at row 23
-2025-10-01 00:01:00,288 - WARNING - ⚠️ Empty essay text at row 24
-2025-10-01 00:01:00,288 - WARNING - ⚠️ Empty essay text at row 25
-2025-10-01 00:01:00,289 - WARNING - ⚠️ Empty essay text at row 26
-2025-10-01 00:01:00,289 - WARNING - ⚠️ Empty essay text at row 27
-2025-10-01 00:01:00,289 - WARNING - ⚠️ Empty essay text at row 28
-2025-10-01 00:01:00,289 - WARNING - ⚠️ Empty essay text at row 29
-2025-10-01 00:01:00,290 - WARNING - ⚠️ Empty essay text at row 30
-2025-10-01 00:01:00,290 - WARNING - ⚠️ Empty essay text at row 31
-2025-10-01 00:01:00,291 - WARNING - ⚠️ Empty essay text at row 32
-2025-10-01 00:01:00,291 - WARNING - ⚠️ Empty essay text at row 33
-2025-10-01 00:01:00,291 - WARNING - ⚠️ Empty essay text at row 34
-2025-10-01 00:01:00,291 - WARNING - ⚠️ Empty essay text at row 35
-2025-10-01 00:01:00,292 - WARNING - ⚠️ Empty essay text at row 36
-2025-10-01 00:01:00,292 - WARNING - ⚠️ Empty essay text at row 37
-2025-10-01 00:01:00,292 - WARNING - ⚠️ Empty essay text at row 38
-2025-10-01 00:01:00,292 - WARNING - ⚠️ Empty essay text at row 39
-2025-10-01 00:01:00,293 - WARNING - ⚠️ Empty essay text at row 40
-2025-10-01 00:01:00,293 - INFO - 📊 Processing level: Intermediate
-2025-10-01 00:01:00,293 - WARNING - ⚠️ Empty essay text at row 0
-2025-10-01 00:01:00,293 - WARNING - ⚠️ Empty essay text at row 1
-2025-10-01 00:01:00,294 - WARNING - ⚠️ Empty essay text at row 2
-2025-10-01 00:01:00,294 - WARNING - ⚠️ Empty essay text at row 3
-2025-10-01 00:01:00,294 - WARNING - ⚠️ Empty essay text at row 4
-2025-10-01 00:01:00,295 - WARNING - ⚠️ Empty essay text at row 5
-2025-10-01 00:01:00,295 - WARNING - ⚠️ Empty essay text at row 6
-2025-10-01 00:01:00,295 - WARNING - ⚠️ Empty essay text at row 7
-2025-10-01 00:01:00,296 - WARNING - ⚠️ Empty essay text at row 8
-2025-10-01 00:01:00,296 - WARNING - ⚠️ Empty essay text at row 9
-2025-10-01 00:01:00,296 - WARNING - ⚠️ Empty essay text at row 10
-2025-10-01 00:01:00,297 - WARNING - ⚠️ Empty essay text at row 11
-2025-10-01 00:01:00,297 - WARNING - ⚠️ Empty essay text at row 12
-2025-10-01 00:01:00,298 - WARNING - ⚠️ Empty essay text at row 13
-2025-10-01 00:01:00,298 - WARNING - ⚠️ Empty essay text at row 14
-2025-10-01 00:01:00,298 - WARNING - ⚠️ Empty essay text at row 15
-2025-10-01 00:01:00,299 - WARNING - ⚠️ Empty essay text at row 16
-2025-10-01 00:01:00,299 - WARNING - ⚠️ Empty essay text at row 17
-2025-10-01 00:01:00,299 - WARNING - ⚠️ Empty essay text at row 18
-2025-10-01 00:01:00,300 - WARNING - ⚠️ Empty essay text at row 19
-2025-10-01 00:01:00,300 - WARNING - ⚠️ Empty essay text at row 20
-2025-10-01 00:01:00,300 - WARNING - ⚠️ Empty essay text at row 21
-2025-10-01 00:01:00,300 - WARNING - ⚠️ Empty essay text at row 22
-2025-10-01 00:01:00,301 - WARNING - ⚠️ Empty essay text at row 23
-2025-10-01 00:01:00,301 - WARNING - ⚠️ Empty essay text at row 24
-2025-10-01 00:01:00,301 - WARNING - ⚠️ Empty essay text at row 25
-2025-10-01 00:01:00,302 - WARNING - ⚠️ Empty essay text at row 26
-2025-10-01 00:01:00,302 - WARNING - ⚠️ Empty essay text at row 27
-2025-10-01 00:01:00,302 - WARNING - ⚠️ Empty essay text at row 28
-2025-10-01 00:01:00,303 - WARNING - ⚠️ Empty essay text at row 29
-2025-10-01 00:01:00,303 - WARNING - ⚠️ Empty essay text at row 30
-2025-10-01 00:01:00,304 - WARNING - ⚠️ Empty essay text at row 31
-2025-10-01 00:01:00,304 - WARNING - ⚠️ Empty essay text at row 32
-2025-10-01 00:01:00,305 - WARNING - ⚠️ Empty essay text at row 33
-2025-10-01 00:01:00,305 - WARNING - ⚠️ Empty essay text at row 34
-2025-10-01 00:01:00,305 - WARNING - ⚠️ Empty essay text at row 35
-2025-10-01 00:01:00,306 - WARNING - ⚠️ Empty essay text at row 36
-2025-10-01 00:01:00,306 - WARNING - ⚠️ Empty essay text at row 37
-2025-10-01 00:01:00,307 - WARNING - ⚠️ Empty essay text at row 38
-2025-10-01 00:01:00,307 - WARNING - ⚠️ Empty essay text at row 39
-2025-10-01 00:01:00,307 - WARNING - ⚠️ Empty essay text at row 40
-2025-10-01 00:01:00,308 - INFO - 📊 Processing level: Advanced
-2025-10-01 00:01:00,308 - WARNING - ⚠️ Empty essay text at row 0
-2025-10-01 00:01:00,308 - WARNING - ⚠️ Empty essay text at row 1
-2025-10-01 00:01:00,309 - WARNING - ⚠️ Empty essay text at row 2
-2025-10-01 00:01:00,309 - WARNING - ⚠️ Empty essay text at row 3
-2025-10-01 00:01:00,310 - WARNING - ⚠️ Empty essay text at row 4
-2025-10-01 00:01:00,310 - WARNING - ⚠️ Empty essay text at row 5
-2025-10-01 00:01:00,310 - WARNING - ⚠️ Empty essay text at row 6
-2025-10-01 00:01:00,311 - WARNING - ⚠️ Empty essay text at row 7
-2025-10-01 00:01:00,311 - WARNING - ⚠️ Empty essay text at row 8
-2025-10-01 00:01:00,311 - WARNING - ⚠️ Empty essay text at row 9
-2025-10-01 00:01:00,312 - WARNING - ⚠️ Empty essay text at row 10
-2025-10-01 00:01:00,312 - WARNING - ⚠️ Empty essay text at row 11
-2025-10-01 00:01:00,313 - WARNING - ⚠️ Empty essay text at row 12
-2025-10-01 00:01:00,313 - WARNING - ⚠️ Empty essay text at row 13
-2025-10-01 00:01:00,313 - WARNING - ⚠️ Empty essay text at row 14
-2025-10-01 00:01:00,314 - WARNING - ⚠️ Empty essay text at row 15
-2025-10-01 00:01:00,314 - WARNING - ⚠️ Empty essay text at row 16
-2025-10-01 00:01:00,315 - WARNING - ⚠️ Empty essay text at row 17
-2025-10-01 00:01:00,315 - WARNING - ⚠️ Empty essay text at row 18
-2025-10-01 00:01:00,315 - WARNING - ⚠️ Empty essay text at row 19
-2025-10-01 00:01:00,316 - WARNING - ⚠️ Empty essay text at row 20
-2025-10-01 00:01:00,316 - WARNING - ⚠️ Empty essay text at row 21
-2025-10-01 00:01:00,317 - WARNING - ⚠️ Empty essay text at row 22
-2025-10-01 00:01:00,317 - WARNING - ⚠️ Empty essay text at row 23
-2025-10-01 00:01:00,318 - WARNING - ⚠️ Empty essay text at row 24
-2025-10-01 00:01:00,318 - WARNING - ⚠️ Empty essay text at row 25
-2025-10-01 00:01:00,319 - WARNING - ⚠️ Empty essay text at row 26
-2025-10-01 00:01:00,319 - WARNING - ⚠️ Empty essay text at row 27
-2025-10-01 00:01:00,319 - WARNING - ⚠️ Empty essay text at row 28
-2025-10-01 00:01:00,320 - WARNING - ⚠️ Empty essay text at row 29
-2025-10-01 00:01:00,320 - WARNING - ⚠️ Empty essay text at row 30
-2025-10-01 00:01:00,321 - WARNING - ⚠️ Empty essay text at row 31
-2025-10-01 00:01:00,321 - WARNING - ⚠️ Empty essay text at row 32
-2025-10-01 00:01:00,322 - WARNING - ⚠️ Empty essay text at row 33
-2025-10-01 00:01:00,322 - WARNING - ⚠️ Empty essay text at row 34
-2025-10-01 00:01:00,322 - WARNING - ⚠️ Empty essay text at row 35
-2025-10-01 00:01:00,323 - WARNING - ⚠️ Empty essay text at row 36
-2025-10-01 00:01:00,323 - WARNING - ⚠️ Empty essay text at row 37
-2025-10-01 00:01:00,323 - WARNING - ⚠️ Empty essay text at row 38
-2025-10-01 00:01:00,324 - WARNING - ⚠️ Empty essay text at row 39
-2025-10-01 00:01:00,325 - WARNING - ⚠️ Empty essay text at row 40
-2025-10-01 00:01:00,325 - INFO - 📊 Processing level: Expert
-2025-10-01 00:01:00,326 - WARNING - ⚠️ Empty essay text at row 0
-2025-10-01 00:01:00,326 - WARNING - ⚠️ Empty essay text at row 1
-2025-10-01 00:01:00,327 - WARNING - ⚠️ Empty essay text at row 2
-2025-10-01 00:01:00,327 - WARNING - ⚠️ Empty essay text at row 3
-2025-10-01 00:01:00,328 - WARNING - ⚠️ Empty essay text at row 4
-2025-10-01 00:01:00,328 - WARNING - ⚠️ Empty essay text at row 5
-2025-10-01 00:01:00,328 - WARNING - ⚠️ Empty essay text at row 6
-2025-10-01 00:01:00,329 - WARNING - ⚠️ Empty essay text at row 7
-2025-10-01 00:01:00,329 - WARNING - ⚠️ Empty essay text at row 8
-2025-10-01 00:01:00,329 - WARNING - ⚠️ Empty essay text at row 9
-2025-10-01 00:01:00,330 - WARNING - ⚠️ Empty essay text at row 10
-2025-10-01 00:01:00,330 - WARNING - ⚠️ Empty essay text at row 11
-2025-10-01 00:01:00,330 - WARNING - ⚠️ Empty essay text at row 12
-2025-10-01 00:01:00,331 - WARNING - ⚠️ Empty essay text at row 13
-2025-10-01 00:01:00,331 - WARNING - ⚠️ Empty essay text at row 14
-2025-10-01 00:01:00,331 - WARNING - ⚠️ Empty essay text at row 15
-2025-10-01 00:01:00,332 - WARNING - ⚠️ Empty essay text at row 16
-2025-10-01 00:01:00,332 - WARNING - ⚠️ Empty essay text at row 17
-2025-10-01 00:01:00,333 - WARNING - ⚠️ Empty essay text at row 18
-2025-10-01 00:01:00,333 - WARNING - ⚠️ Empty essay text at row 19
-2025-10-01 00:01:00,333 - WARNING - ⚠️ Empty essay text at row 20
-2025-10-01 00:01:00,334 - WARNING - ⚠️ Empty essay text at row 21
-2025-10-01 00:01:00,334 - WARNING - ⚠️ Empty essay text at row 22
-2025-10-01 00:01:00,335 - WARNING - ⚠️ Empty essay text at row 23
-2025-10-01 00:01:00,335 - WARNING - ⚠️ Empty essay text at row 24
-2025-10-01 00:01:00,335 - WARNING - ⚠️ Empty essay text at row 25
-2025-10-01 00:01:00,336 - WARNING - ⚠️ Empty essay text at row 26
-2025-10-01 00:01:00,336 - WARNING - ⚠️ Empty essay text at row 27
-2025-10-01 00:01:00,336 - WARNING - ⚠️ Empty essay text at row 28
-2025-10-01 00:01:00,337 - WARNING - ⚠️ Empty essay text at row 29
-2025-10-01 00:01:00,337 - WARNING - ⚠️ Empty essay text at row 30
-2025-10-01 00:01:00,338 - WARNING - ⚠️ Empty essay text at row 31
-2025-10-01 00:01:00,338 - WARNING - ⚠️ Empty essay text at row 32
-2025-10-01 00:01:00,338 - WARNING - ⚠️ Empty essay text at row 33
-2025-10-01 00:01:00,339 - WARNING - ⚠️ Empty essay text at row 34
-2025-10-01 00:01:00,339 - WARNING - ⚠️ Empty essay text at row 35
-2025-10-01 00:01:00,339 - WARNING - ⚠️ Empty essay text at row 36
-2025-10-01 00:01:00,340 - WARNING - ⚠️ Empty essay text at row 37
-2025-10-01 00:01:00,340 - WARNING - ⚠️ Empty essay text at row 38
-2025-10-01 00:01:00,340 - WARNING - ⚠️ Empty essay text at row 39
-2025-10-01 00:01:00,341 - WARNING - ⚠️ Empty essay text at row 40
-2025-10-01 00:01:00,341 - INFO - ✅ Batch evaluation completed!
-2025-10-01 00:01:00,341 - INFO - 🔄 Creating Excel report...
-2025-10-01 00:01:00,341 - INFO - 📝 Creating Excel report: /home/ycy/work_dir/creverse/excel_creation.xlsx
-2025-10-01 00:01:00,343 - WARNING - ⚠️ No results for level Basic
-2025-10-01 00:01:00,343 - WARNING - ⚠️ No results for level Intermediate
-2025-10-01 00:01:00,344 - WARNING - ⚠️ No results for level Advanced
-2025-10-01 00:01:00,345 - WARNING - ⚠️ No results for level Expert
-2025-10-01 00:01:00,367 - INFO - ✅ Created Summary sheet
-2025-10-01 00:01:00,379 - INFO - ✅ Excel report saved: /home/ycy/work_dir/creverse/excel_creation.xlsx
-2025-10-01 00:01:00,379 - INFO - 🎉 Batch evaluation completed successfully!
-2025-10-01 00:01:00,379 - INFO - 📊 Results saved to: /home/ycy/work_dir/creverse/excel_creation.xlsx
-2025-10-01 00:01:46,742 - INFO - 🔄 Loading sample data...
-2025-10-01 00:01:46,753 - INFO - ✅ Loaded 41 essays from /home/ycy/work_dir/creverse/data/essay_writing_40_sample.xlsx
-2025-10-01 00:01:46,753 - INFO - Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
-2025-10-01 00:01:46,753 - INFO - 🔄 Starting batch evaluation...
-2025-10-01 00:01:46,753 - INFO - 🚀 Starting batch evaluation: 41 essays × 4 levels = 164 API calls
-2025-10-01 00:01:46,753 - INFO - 📊 Processing level: Basic
-2025-10-01 00:01:46,754 - WARNING - ⚠️ Empty essay text at row 0
-2025-10-01 00:01:46,754 - WARNING - ⚠️ Empty essay text at row 1
-2025-10-01 00:01:46,754 - WARNING - ⚠️ Empty essay text at row 2
-2025-10-01 00:01:46,754 - WARNING - ⚠️ Empty essay text at row 3
-2025-10-01 00:01:46,755 - WARNING - ⚠️ Empty essay text at row 4
-2025-10-01 00:01:46,755 - WARNING - ⚠️ Empty essay text at row 5
-2025-10-01 00:01:46,755 - WARNING - ⚠️ Empty essay text at row 6
-2025-10-01 00:01:46,755 - WARNING - ⚠️ Empty essay text at row 7
-2025-10-01 00:01:46,755 - WARNING - ⚠️ Empty essay text at row 8
-2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 9
-2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 10
-2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 11
-2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 12
-2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 13
-2025-10-01 00:01:46,756 - WARNING - ⚠️ Empty essay text at row 14
-2025-10-01 00:01:46,757 - WARNING - ⚠️ Empty essay text at row 15
-2025-10-01 00:01:46,757 - WARNING - ⚠️ Empty essay text at row 16
-2025-10-01 00:01:46,757 - WARNING - ⚠️ Empty essay text at row 17
-2025-10-01 00:01:46,757 - WARNING - ⚠️ Empty essay text at row 18
-2025-10-01 00:01:46,757 - WARNING - ⚠️ Empty essay text at row 19
-2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 20
-2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 21
-2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 22
-2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 23
-2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 24
-2025-10-01 00:01:46,758 - WARNING - ⚠️ Empty essay text at row 25
-2025-10-01 00:01:46,759 - WARNING - ⚠️ Empty essay text at row 26
-2025-10-01 00:01:46,759 - WARNING - ⚠️ Empty essay text at row 27
-2025-10-01 00:01:46,759 - WARNING - ⚠️ Empty essay text at row 28
-2025-10-01 00:01:46,759 - WARNING - ⚠️ Empty essay text at row 29
-2025-10-01 00:01:46,759 - WARNING - ⚠️ Empty essay text at row 30
-2025-10-01 00:01:46,760 - WARNING - ⚠️ Empty essay text at row 31
-2025-10-01 00:01:46,760 - WARNING - ⚠️ Empty essay text at row 32
-2025-10-01 00:01:46,760 - WARNING - ⚠️ Empty essay text at row 33
-2025-10-01 00:01:46,760 - WARNING - ⚠️ Empty essay text at row 34
-2025-10-01 00:01:46,761 - WARNING - ⚠️ Empty essay text at row 35
-2025-10-01 00:01:46,761 - WARNING - ⚠️ Empty essay text at row 36
-2025-10-01 00:01:46,761 - WARNING - ⚠️ Empty essay text at row 37
-2025-10-01 00:01:46,761 - WARNING - ⚠️ Empty essay text at row 38
-2025-10-01 00:01:46,762 - WARNING - ⚠️ Empty essay text at row 39
-2025-10-01 00:01:46,762 - WARNING - ⚠️ Empty essay text at row 40
-2025-10-01 00:01:46,762 - INFO - 📊 Processing level: Intermediate
-2025-10-01 00:01:46,763 - WARNING - ⚠️ Empty essay text at row 0
-2025-10-01 00:01:46,763 - WARNING - ⚠️ Empty essay text at row 1
-2025-10-01 00:01:46,763 - WARNING - ⚠️ Empty essay text at row 2
-2025-10-01 00:01:46,763 - WARNING - ⚠️ Empty essay text at row 3
-2025-10-01 00:01:46,763 - WARNING - ⚠️ Empty essay text at row 4
-2025-10-01 00:01:46,764 - WARNING - ⚠️ Empty essay text at row 5
-2025-10-01 00:01:46,764 - WARNING - ⚠️ Empty essay text at row 6
-2025-10-01 00:01:46,764 - WARNING - ⚠️ Empty essay text at row 7
-2025-10-01 00:01:46,764 - WARNING - ⚠️ Empty essay text at row 8
-2025-10-01 00:01:46,765 - WARNING - ⚠️ Empty essay text at row 9
-2025-10-01 00:01:46,765 - WARNING - ⚠️ Empty essay text at row 10
-2025-10-01 00:01:46,765 - WARNING - ⚠️ Empty essay text at row 11
-2025-10-01 00:01:46,765 - WARNING - ⚠️ Empty essay text at row 12
-2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 13
-2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 14
-2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 15
-2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 16
-2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 17
-2025-10-01 00:01:46,766 - WARNING - ⚠️ Empty essay text at row 18
-2025-10-01 00:01:46,767 - WARNING - ⚠️ Empty essay text at row 19
-2025-10-01 00:01:46,767 - WARNING - ⚠️ Empty essay text at row 20
-2025-10-01 00:01:46,767 - WARNING - ⚠️ Empty essay text at row 21
-2025-10-01 00:01:46,767 - WARNING - ⚠️ Empty essay text at row 22
-2025-10-01 00:01:46,767 - WARNING - ⚠️ Empty essay text at row 23
-2025-10-01 00:01:46,768 - WARNING - ⚠️ Empty essay text at row 24
-2025-10-01 00:01:46,768 - WARNING - ⚠️ Empty essay text at row 25
-2025-10-01 00:01:46,768 - WARNING - ⚠️ Empty essay text at row 26
-2025-10-01 00:01:46,768 - WARNING - ⚠️ Empty essay text at row 27
-2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 28
-2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 29
-2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 30
-2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 31
-2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 32
-2025-10-01 00:01:46,769 - WARNING - ⚠️ Empty essay text at row 33
-2025-10-01 00:01:46,770 - WARNING - ⚠️ Empty essay text at row 34
-2025-10-01 00:01:46,770 - WARNING - ⚠️ Empty essay text at row 35
-2025-10-01 00:01:46,770 - WARNING - ⚠️ Empty essay text at row 36
-2025-10-01 00:01:46,770 - WARNING - ⚠️ Empty essay text at row 37
-2025-10-01 00:01:46,770 - WARNING - ⚠️ Empty essay text at row 38
-2025-10-01 00:01:46,771 - WARNING - ⚠️ Empty essay text at row 39
-2025-10-01 00:01:46,771 - WARNING - ⚠️ Empty essay text at row 40
-2025-10-01 00:01:46,771 - INFO - 📊 Processing level: Advanced
-2025-10-01 00:01:46,771 - WARNING - ⚠️ Empty essay text at row 0
-2025-10-01 00:01:46,771 - WARNING - ⚠️ Empty essay text at row 1
-2025-10-01 00:01:46,771 - WARNING - ⚠️ Empty essay text at row 2
-2025-10-01 00:01:46,772 - WARNING - ⚠️ Empty essay text at row 3
-2025-10-01 00:01:46,772 - WARNING - ⚠️ Empty essay text at row 4
-2025-10-01 00:01:46,772 - WARNING - ⚠️ Empty essay text at row 5
-2025-10-01 00:01:46,772 - WARNING - ⚠️ Empty essay text at row 6
-2025-10-01 00:01:46,772 - WARNING - ⚠️ Empty essay text at row 7
-2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 8
-2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 9
-2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 10
-2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 11
-2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 12
-2025-10-01 00:01:46,773 - WARNING - ⚠️ Empty essay text at row 13
-2025-10-01 00:01:46,774 - WARNING - ⚠️ Empty essay text at row 14
-2025-10-01 00:01:46,774 - WARNING - ⚠️ Empty essay text at row 15
-2025-10-01 00:01:46,774 - WARNING - ⚠️ Empty essay text at row 16
-2025-10-01 00:01:46,774 - WARNING - ⚠️ Empty essay text at row 17
-2025-10-01 00:01:46,774 - WARNING - ⚠️ Empty essay text at row 18
-2025-10-01 00:01:46,775 - WARNING - ⚠️ Empty essay text at row 19
-2025-10-01 00:01:46,775 - WARNING - ⚠️ Empty essay text at row 20
-2025-10-01 00:01:46,775 - WARNING - ⚠️ Empty essay text at row 21
-2025-10-01 00:01:46,776 - WARNING - ⚠️ Empty essay text at row 22
-2025-10-01 00:01:46,776 - WARNING - ⚠️ Empty essay text at row 23
-2025-10-01 00:01:46,776 - WARNING - ⚠️ Empty essay text at row 24
-2025-10-01 00:01:46,776 - WARNING - ⚠️ Empty essay text at row 25
-2025-10-01 00:01:46,777 - WARNING - ⚠️ Empty essay text at row 26
-2025-10-01 00:01:46,777 - WARNING - ⚠️ Empty essay text at row 27
-2025-10-01 00:01:46,777 - WARNING - ⚠️ Empty essay text at row 28
-2025-10-01 00:01:46,777 - WARNING - ⚠️ Empty essay text at row 29
-2025-10-01 00:01:46,778 - WARNING - ⚠️ Empty essay text at row 30
-2025-10-01 00:01:46,778 - WARNING - ⚠️ Empty essay text at row 31
-2025-10-01 00:01:46,778 - WARNING - ⚠️ Empty essay text at row 32
-2025-10-01 00:01:46,778 - WARNING - ⚠️ Empty essay text at row 33
-2025-10-01 00:01:46,779 - WARNING - ⚠️ Empty essay text at row 34
-2025-10-01 00:01:46,779 - WARNING - ⚠️ Empty essay text at row 35
-2025-10-01 00:01:46,779 - WARNING - ⚠️ Empty essay text at row 36
-2025-10-01 00:01:46,779 - WARNING - ⚠️ Empty essay text at row 37
-2025-10-01 00:01:46,780 - WARNING - ⚠️ Empty essay text at row 38
-2025-10-01 00:01:46,780 - WARNING - ⚠️ Empty essay text at row 39
-2025-10-01 00:01:46,780 - WARNING - ⚠️ Empty essay text at row 40
-2025-10-01 00:01:46,780 - INFO - 📊 Processing level: Expert
-2025-10-01 00:01:46,780 - WARNING - ⚠️ Empty essay text at row 0
-2025-10-01 00:01:46,781 - WARNING - ⚠️ Empty essay text at row 1
-2025-10-01 00:01:46,781 - WARNING - ⚠️ Empty essay text at row 2
-2025-10-01 00:01:46,781 - WARNING - ⚠️ Empty essay text at row 3
-2025-10-01 00:01:46,781 - WARNING - ⚠️ Empty essay text at row 4
-2025-10-01 00:01:46,782 - WARNING - ⚠️ Empty essay text at row 5
-2025-10-01 00:01:46,782 - WARNING - ⚠️ Empty essay text at row 6
-2025-10-01 00:01:46,782 - WARNING - ⚠️ Empty essay text at row 7
-2025-10-01 00:01:46,782 - WARNING - ⚠️ Empty essay text at row 8
-2025-10-01 00:01:46,783 - WARNING - ⚠️ Empty essay text at row 9
-2025-10-01 00:01:46,783 - WARNING - ⚠️ Empty essay text at row 10
-2025-10-01 00:01:46,783 - WARNING - ⚠️ Empty essay text at row 11
-2025-10-01 00:01:46,783 - WARNING - ⚠️ Empty essay text at row 12
-2025-10-01 00:01:46,784 - WARNING - ⚠️ Empty essay text at row 13
-2025-10-01 00:01:46,784 - WARNING - ⚠️ Empty essay text at row 14
-2025-10-01 00:01:46,784 - WARNING - ⚠️ Empty essay text at row 15
-2025-10-01 00:01:46,784 - WARNING - ⚠️ Empty essay text at row 16
-2025-10-01 00:01:46,784 - WARNING - ⚠️ Empty essay text at row 17
-2025-10-01 00:01:46,785 - WARNING - ⚠️ Empty essay text at row 18
-2025-10-01 00:01:46,785 - WARNING - ⚠️ Empty essay text at row 19
-2025-10-01 00:01:46,785 - WARNING - ⚠️ Empty essay text at row 20
-2025-10-01 00:01:46,785 - WARNING - ⚠️ Empty essay text at row 21
-2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 22
-2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 23
-2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 24
-2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 25
-2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 26
-2025-10-01 00:01:46,786 - WARNING - ⚠️ Empty essay text at row 27
-2025-10-01 00:01:46,787 - WARNING - ⚠️ Empty essay text at row 28
-2025-10-01 00:01:46,787 - WARNING - ⚠️ Empty essay text at row 29
-2025-10-01 00:01:46,787 - WARNING - ⚠️ Empty essay text at row 30
-2025-10-01 00:01:46,787 - WARNING - ⚠️ Empty essay text at row 31
-2025-10-01 00:01:46,787 - WARNING - ⚠️ Empty essay text at row 32
-2025-10-01 00:01:46,788 - WARNING - ⚠️ Empty essay text at row 33
-2025-10-01 00:01:46,788 - WARNING - ⚠️ Empty essay text at row 34
-2025-10-01 00:01:46,788 - WARNING - ⚠️ Empty essay text at row 35
-2025-10-01 00:01:46,788 - WARNING - ⚠️ Empty essay text at row 36
-2025-10-01 00:01:46,789 - WARNING - ⚠️ Empty essay text at row 37
-2025-10-01 00:01:46,789 - WARNING - ⚠️ Empty essay text at row 38
-2025-10-01 00:01:46,789 - WARNING - ⚠️ Empty essay text at row 39
-2025-10-01 00:01:46,790 - WARNING - ⚠️ Empty essay text at row 40
-2025-10-01 00:01:46,790 - INFO - ✅ Batch evaluation completed!
-2025-10-01 00:01:46,790 - INFO - 🔄 Creating Excel report...
-2025-10-01 00:01:46,790 - INFO - 📝 Creating Excel report: /home/ycy/work_dir/creverse/excel_creation.xlsx
-2025-10-01 00:01:46,791 - WARNING - ⚠️ No results for level Basic
-2025-10-01 00:01:46,791 - WARNING - ⚠️ No results for level Intermediate
-2025-10-01 00:01:46,791 - WARNING - ⚠️ No results for level Advanced
-2025-10-01 00:01:46,791 - WARNING - ⚠️ No results for level Expert
-2025-10-01 00:01:46,794 - INFO - ✅ Created Summary sheet
-2025-10-01 00:01:46,804 - INFO - ✅ Excel report saved: /home/ycy/work_dir/creverse/excel_creation.xlsx
-2025-10-01 00:01:46,804 - INFO - 🎉 Batch evaluation completed successfully!
-2025-10-01 00:01:46,804 - INFO - 📊 Results saved to: /home/ycy/work_dir/creverse/excel_creation.xlsx
-2025-10-01 00:12:43,960 - INFO - ✅ Loaded 40 essays from /home/ycy/work_dir/creverse/data/essay_writing_40_sample.xlsx
-2025-10-01 00:12:43,960 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
-2025-10-01 00:12:43,960 - INFO - 📋 Original levels distribution:
-2025-10-01 00:12:43,967 - INFO -    basic: 10 essays
-2025-10-01 00:12:43,968 - INFO -    intermediate: 10 essays
-2025-10-01 00:12:43,968 - INFO -    advanced: 10 essays
-2025-10-01 00:12:43,968 - INFO -    expert: 10 essays
-2025-10-01 00:12:43,968 - INFO - 🧪 Testing with 1 essay for all 4 levels
-2025-10-01 00:12:43,969 - INFO - 🚀 Starting batch evaluation: 1 essays × 4 levels = 4 API calls
-2025-10-01 00:12:43,969 - INFO - 📊 Processing level: Basic
-2025-10-01 00:12:43,969 - INFO - [1/4] Evaluating essay 0 (original: basic) with level Basic
-2025-10-01 00:13:30,035 - INFO - 📊 Processing level: Intermediate
-2025-10-01 00:13:30,036 - INFO - [2/4] Evaluating essay 0 (original: basic) with level Intermediate
-2025-10-01 00:14:30,099 - ERROR - ❌ API call timed out
-2025-10-01 00:14:31,099 - INFO - 📊 Processing level: Advanced
-2025-10-01 00:14:31,101 - INFO - [3/4] Evaluating essay 0 (original: basic) with level Advanced
-2025-10-01 00:15:18,259 - INFO - 📊 Processing level: Expert
-2025-10-01 00:15:18,264 - INFO - [4/4] Evaluating essay 0 (original: basic) with level Expert
-2025-10-01 00:16:11,397 - INFO - ✅ Batch evaluation completed!
-2025-10-01 00:16:11,398 - INFO - 
-📊 Level: Basic
-2025-10-01 00:16:11,398 - INFO -    Essay ID: 0
-2025-10-01 00:16:11,398 - INFO -    Total Score: 2
-2025-10-01 00:16:11,399 - INFO -    Grammar Score: 2
-2025-10-01 00:16:11,399 - INFO -    Introduction Score: 2
-2025-10-01 00:16:11,400 - INFO -    Body Score: 2
-2025-10-01 00:16:11,401 - INFO -    Conclusion Score: 1
-2025-10-01 00:16:11,401 - INFO -    Processing Time: 44.900864236000416s
-2025-10-01 00:16:11,402 - INFO - 
-📊 Level: Intermediate
-2025-10-01 00:16:11,402 - INFO -    Essay ID: 0
-2025-10-01 00:16:11,402 - INFO -    Total Score: N/A
-2025-10-01 00:16:11,403 - INFO -    Grammar Score: N/A
-2025-10-01 00:16:11,403 - INFO -    Introduction Score: N/A
-2025-10-01 00:16:11,404 - INFO -    Body Score: N/A
-2025-10-01 00:16:11,404 - INFO -    Conclusion Score: N/A
-2025-10-01 00:16:11,405 - INFO -    Processing Time: N/As
-2025-10-01 00:16:11,405 - ERROR -    Error: Request timed out
-2025-10-01 00:16:11,405 - INFO - 
-📊 Level: Advanced
-2025-10-01 00:16:11,406 - INFO -    Essay ID: 0
-2025-10-01 00:16:11,407 - INFO -    Total Score: 0
-2025-10-01 00:16:11,407 - INFO -    Grammar Score: 0
-2025-10-01 00:16:11,408 - INFO -    Introduction Score: 1
-2025-10-01 00:16:11,408 - INFO -    Body Score: 0
-2025-10-01 00:16:11,409 - INFO -    Conclusion Score: 0
-2025-10-01 00:16:11,409 - INFO -    Processing Time: 46.13790603200141s
-2025-10-01 00:16:11,410 - INFO - 
-📊 Level: Expert
-2025-10-01 00:16:11,410 - INFO -    Essay ID: 0
-2025-10-01 00:16:11,411 - INFO -    Total Score: 0
-2025-10-01 00:16:11,412 - INFO -    Grammar Score: 0
-2025-10-01 00:16:11,412 - INFO -    Introduction Score: 0
-2025-10-01 00:16:11,413 - INFO -    Body Score: 0
-2025-10-01 00:16:11,413 - INFO -    Conclusion Score: 0
-2025-10-01 00:16:11,413 - INFO -    Processing Time: 52.10865841600025s
-2025-10-01 00:16:11,415 - INFO - 💾 Saving test results to CSV...
-2025-10-01 00:16:11,457 - INFO -    Saved: test_result_basic.csv
-2025-10-01 00:16:11,466 - INFO -    Saved: test_result_intermediate.csv
-2025-10-01 00:16:11,476 - INFO -    Saved: test_result_advanced.csv
-2025-10-01 00:16:11,485 - INFO -    Saved: test_result_expert.csv
+2025-10-01 16:56:02,909 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 16:56:02,909 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 16:56:02,909 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:56:02,909 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 16:56:02,909 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 16:56:02,909 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 16:56:02,909 - INFO - 📁 Data file: test_sample.xlsx
+2025-10-01 16:56:02,909 - INFO - 📁 Output file: comparison_20251001_165602_batch_evaluation_comparison.xlsx
+2025-10-01 16:56:02,909 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:56:02,909 - INFO - 📦 Batch size: 2
+2025-10-01 16:56:02,909 - INFO - 🔄 Loading sample data...
+2025-10-01 16:56:02,910 - ERROR - ❌ Failed to load Excel file: [Errno 2] No such file or directory: 'test_sample.xlsx'
+2025-10-01 16:56:02,910 - ERROR - ❌ Batch evaluation failed: [Errno 2] No such file or directory: 'test_sample.xlsx'
+2025-10-01 16:56:02,910 - INFO - 💾 Progress may be saved in checkpoint: batch_evaluation_checkpoint.json
+2025-10-01 16:56:16,350 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 16:56:16,351 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 16:56:16,351 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:56:16,351 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 16:56:16,351 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 16:56:16,351 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 16:56:16,351 - INFO - 📁 Data file: data/essay_writing_4_sample.xlsx
+2025-10-01 16:56:16,351 - INFO - 📁 Output file: comparison_20251001_165616_batch_evaluation_comparison.xlsx
+2025-10-01 16:56:16,351 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:56:16,351 - INFO - 📦 Batch size: 2
+2025-10-01 16:56:16,351 - INFO - 🔄 Loading sample data...
+2025-10-01 16:56:16,370 - INFO - ✅ Loaded 4 essays from data/essay_writing_4_sample.xlsx
+2025-10-01 16:56:16,370 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 16:56:16,370 - INFO - 📋 Original levels distribution:
+2025-10-01 16:56:16,372 - INFO -    basic: 1 essays
+2025-10-01 16:56:16,372 - INFO -    intermediate: 1 essays
+2025-10-01 16:56:16,372 - INFO -    advanced: 1 essays
+2025-10-01 16:56:16,372 - INFO -    expert: 1 essays
+2025-10-01 16:56:16,372 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 16:56:16,372 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 16:56:16,372 - INFO - 📊 Current results status:
+2025-10-01 16:56:16,372 - INFO -   Basic_v1.5.0: 0 completed essays
+2025-10-01 16:56:16,372 - INFO -   Intermediate_v1.5.0: 0 completed essays
+2025-10-01 16:56:16,372 - INFO -   Advanced_v1.5.0: 0 completed essays
+2025-10-01 16:56:16,372 - INFO -   Expert_v1.5.0: 0 completed essays
+2025-10-01 16:56:16,372 - INFO - 🚀 Starting batch evaluation: 4 essays × 4 levels × 1 versions = 16 API calls
+2025-10-01 16:56:16,372 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 16:56:16,373 - INFO - [1/16] Evaluating essay 0 (original: basic) with level Basic, version v1.5.0
+2025-10-01 16:56:55,370 - INFO - [2/16] Evaluating essay 19 (original: intermediate) with level Basic, version v1.5.0
+2025-10-01 16:57:28,618 - INFO - [3/16] Evaluating essay 20 (original: advanced) with level Basic, version v1.5.0
+2025-10-01 16:58:01,595 - INFO - [4/16] Evaluating essay 32 (original: expert) with level Basic, version v1.5.0
+2025-10-01 16:58:30,614 - INFO - 
+⏹️ Evaluation interrupted by user
+2025-10-01 16:58:30,614 - INFO - 💾 Progress saved in checkpoint: batch_evaluation_checkpoint.json
+2025-10-01 16:58:30,615 - INFO - 🔄 Resume with: python excel_creation.py --resume
+2025-10-01 16:59:16,386 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 16:59:16,386 - INFO - 📊 Total combinations: 4 levels × 2 versions = 8 per essay
+2025-10-01 16:59:16,387 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:59:16,387 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 16:59:16,387 - INFO - 🧪 Testing Excel generation with output: test_excel_output.xlsx
+2025-10-01 16:59:16,387 - INFO - 📝 Creating Excel report: test_excel_output.xlsx
+2025-10-01 16:59:16,388 - INFO - 🔍 Available result keys: ['Basic_v1.5.0', 'Intermediate_v1.5.0']
+2025-10-01 16:59:16,388 - INFO -   Basic_v1.5.0: 2 results
+2025-10-01 16:59:16,388 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 16:59:16,389 - WARNING - ⚠️ No results for level Basic, version v1.2.0
+2025-10-01 16:59:16,389 - WARNING -    Tried keys: ['Basic_v1.2.0', 'Basic_v1_2_0']
+2025-10-01 16:59:16,389 - WARNING - ⚠️ No results for level Basic, version v1.4.1
+2025-10-01 16:59:16,389 - WARNING -    Tried keys: ['Basic_v1.4.1', 'Basic_v1_4_1']
+2025-10-01 16:59:16,389 - WARNING - ⚠️ No results for level Intermediate, version v1.2.0
+2025-10-01 16:59:16,389 - WARNING -    Tried keys: ['Intermediate_v1.2.0', 'Intermediate_v1_2_0']
+2025-10-01 16:59:16,389 - WARNING - ⚠️ No results for level Intermediate, version v1.4.1
+2025-10-01 16:59:16,389 - WARNING -    Tried keys: ['Intermediate_v1.4.1', 'Intermediate_v1_4_1']
+2025-10-01 16:59:16,389 - WARNING - ⚠️ No results for level Advanced, version v1.2.0
+2025-10-01 16:59:16,389 - WARNING -    Tried keys: ['Advanced_v1.2.0', 'Advanced_v1_2_0']
+2025-10-01 16:59:16,389 - WARNING - ⚠️ No results for level Advanced, version v1.4.1
+2025-10-01 16:59:16,389 - WARNING -    Tried keys: ['Advanced_v1.4.1', 'Advanced_v1_4_1']
+2025-10-01 16:59:16,389 - WARNING - ⚠️ No results for level Expert, version v1.2.0
+2025-10-01 16:59:16,389 - WARNING -    Tried keys: ['Expert_v1.2.0', 'Expert_v1_2_0']
+2025-10-01 16:59:16,389 - WARNING - ⚠️ No results for level Expert, version v1.4.1
+2025-10-01 16:59:16,390 - WARNING -    Tried keys: ['Expert_v1.4.1', 'Expert_v1_4_1']
+2025-10-01 16:59:16,395 - INFO - ✅ Created Summary sheet
+2025-10-01 16:59:16,403 - INFO - ✅ Excel report saved: test_excel_output.xlsx
+2025-10-01 16:59:16,403 - INFO - ✅ Excel generation test completed successfully!
+2025-10-01 16:59:36,835 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.2.0', 'v1.4.1']
+2025-10-01 16:59:36,836 - INFO - 📊 Total combinations: 4 levels × 2 versions = 8 per essay
+2025-10-01 16:59:36,836 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 16:59:36,836 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 16:59:36,836 - INFO - 🧪 Testing Excel generation with output: test_excel_output.xlsx
+2025-10-01 16:59:36,836 - INFO - 📝 Creating Excel report: test_excel_output.xlsx
+2025-10-01 16:59:36,836 - INFO - 🔍 Available result keys: ['Basic_v1.5.0', 'Intermediate_v1.5.0']
+2025-10-01 16:59:36,836 - INFO -   Basic_v1.5.0: 2 results
+2025-10-01 16:59:36,836 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 16:59:36,837 - INFO - ✓ Found data for key: Basic_v1.5.0
+2025-10-01 16:59:36,839 - INFO - 📊 Creating sheet 'Basic_v1_5_0' using key 'Basic_v1.5.0' with 2 results
+2025-10-01 16:59:36,841 - INFO - ✅ Created sheet: Basic_v1_5_0 with 2 records
+2025-10-01 16:59:36,841 - INFO - ✓ Found data for key: Intermediate_v1.5.0
+2025-10-01 16:59:36,842 - INFO - 📊 Creating sheet 'Intermediate_v1_5_0' using key 'Intermediate_v1.5.0' with 1 results
+2025-10-01 16:59:36,843 - INFO - ✅ Created sheet: Intermediate_v1_5_0 with 1 records
+2025-10-01 16:59:36,844 - INFO - ✅ Created Summary sheet
+2025-10-01 16:59:36,853 - INFO - ✅ Excel report saved: test_excel_output.xlsx
+2025-10-01 16:59:36,853 - INFO - ✅ Excel generation test completed successfully!
+2025-10-01 17:04:56,729 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 17:04:56,729 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 17:04:56,729 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:04:56,729 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 17:04:56,729 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 17:04:56,729 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 17:04:56,730 - INFO - 📁 Data file: data/essay_writing_4_sample.xlsx
+2025-10-01 17:04:56,730 - INFO - 📁 Output file: comparison_20251001_170456_batch_evaluation_comparison.xlsx
+2025-10-01 17:04:56,730 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:04:56,730 - INFO - 📦 Batch size: 1
+2025-10-01 17:04:56,730 - INFO - 🔄 Loading sample data...
+2025-10-01 17:04:56,736 - INFO - ✅ Loaded 4 essays from data/essay_writing_4_sample.xlsx
+2025-10-01 17:04:56,736 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 17:04:56,736 - INFO - 📋 Original levels distribution:
+2025-10-01 17:04:56,737 - INFO -    basic: 1 essays
+2025-10-01 17:04:56,737 - INFO -    intermediate: 1 essays
+2025-10-01 17:04:56,737 - INFO -    advanced: 1 essays
+2025-10-01 17:04:56,737 - INFO -    expert: 1 essays
+2025-10-01 17:04:56,737 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 17:04:56,737 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 17:04:56,737 - INFO - 📊 Current results status:
+2025-10-01 17:04:56,737 - INFO -   Basic_v1.5.0: 0 completed essays
+2025-10-01 17:04:56,737 - INFO -   Intermediate_v1.5.0: 0 completed essays
+2025-10-01 17:04:56,737 - INFO -   Advanced_v1.5.0: 0 completed essays
+2025-10-01 17:04:56,738 - INFO -   Expert_v1.5.0: 0 completed essays
+2025-10-01 17:04:56,738 - INFO - 🚀 Starting batch evaluation: 4 essays × 4 levels × 1 versions = 16 API calls
+2025-10-01 17:04:56,738 - INFO - 💾 Initial checkpoint saved
+2025-10-01 17:04:56,738 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 17:04:56,738 - INFO - [4/16] Evaluating essay 32 (original: expert) with level Basic, version v1.5.0
+2025-10-01 17:05:27,228 - INFO - 💾 Checkpoint saved at 4/16 calls
+2025-10-01 17:05:27,228 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:05:28,228 - INFO -   Intermediate_v1.5.0: 0 results
+2025-10-01 17:05:29,228 - INFO -   Advanced_v1.5.0: 0 results
+2025-10-01 17:05:30,229 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:05:31,229 - INFO - 📊 Processing level: Intermediate, version: v1.5.0
+2025-10-01 17:05:31,230 - INFO - [8/16] Evaluating essay 32 (original: expert) with level Intermediate, version v1.5.0
+2025-10-01 17:05:58,569 - INFO - 💾 Checkpoint saved at 8/16 calls
+2025-10-01 17:05:58,569 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:05:59,569 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:06:00,569 - INFO -   Advanced_v1.5.0: 0 results
+2025-10-01 17:06:01,570 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:06:02,570 - INFO - 📊 Processing level: Advanced, version: v1.5.0
+2025-10-01 17:06:02,571 - INFO - [12/16] Evaluating essay 32 (original: expert) with level Advanced, version v1.5.0
+2025-10-01 17:06:36,517 - INFO - 💾 Checkpoint saved at 12/16 calls
+2025-10-01 17:06:36,517 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:06:37,517 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:06:38,517 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:06:39,517 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:06:40,518 - INFO - 📊 Processing level: Expert, version: v1.5.0
+2025-10-01 17:06:40,518 - INFO - [16/16] Evaluating essay 32 (original: expert) with level Expert, version v1.5.0
+2025-10-01 17:07:29,783 - INFO - 💾 Checkpoint saved at 16/16 calls
+2025-10-01 17:07:29,783 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:07:30,783 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:07:31,784 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:07:32,784 - INFO -   Expert_v1.5.0: 1 results
+2025-10-01 17:07:33,785 - INFO - ✅ Batch evaluation completed!
+2025-10-01 17:07:33,785 - INFO - 🔄 Creating Excel report...
+2025-10-01 17:07:33,785 - INFO - 📝 Creating Excel report: comparison_20251001_170456_batch_evaluation_comparison.xlsx
+2025-10-01 17:07:33,785 - INFO - 🔍 Available result keys: ['Basic_v1.5.0', 'Intermediate_v1.5.0', 'Advanced_v1.5.0', 'Expert_v1.5.0']
+2025-10-01 17:07:33,785 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:07:33,785 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:07:33,785 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:07:33,785 - INFO -   Expert_v1.5.0: 1 results
+2025-10-01 17:07:33,786 - INFO - ✓ Found data for key: Basic_v1.5.0
+2025-10-01 17:07:33,787 - INFO - 📊 Creating sheet 'Basic_v1_5_0' using key 'Basic_v1.5.0' with 1 results
+2025-10-01 17:07:33,790 - INFO - ✅ Created sheet: Basic_v1_5_0 with 1 records
+2025-10-01 17:07:33,791 - INFO - ✓ Found data for key: Intermediate_v1.5.0
+2025-10-01 17:07:33,791 - INFO - 📊 Creating sheet 'Intermediate_v1_5_0' using key 'Intermediate_v1.5.0' with 1 results
+2025-10-01 17:07:33,795 - INFO - ✅ Created sheet: Intermediate_v1_5_0 with 1 records
+2025-10-01 17:07:33,795 - INFO - ✓ Found data for key: Advanced_v1.5.0
+2025-10-01 17:07:33,796 - INFO - 📊 Creating sheet 'Advanced_v1_5_0' using key 'Advanced_v1.5.0' with 1 results
+2025-10-01 17:07:33,800 - INFO - ✅ Created sheet: Advanced_v1_5_0 with 1 records
+2025-10-01 17:07:33,800 - INFO - ✓ Found data for key: Expert_v1.5.0
+2025-10-01 17:07:33,800 - INFO - 📊 Creating sheet 'Expert_v1_5_0' using key 'Expert_v1.5.0' with 1 results
+2025-10-01 17:07:33,804 - INFO - ✅ Created sheet: Expert_v1_5_0 with 1 records
+2025-10-01 17:07:33,806 - INFO - ✅ Created Summary sheet
+2025-10-01 17:07:33,816 - INFO - ✅ Excel report saved: comparison_20251001_170456_batch_evaluation_comparison.xlsx
+2025-10-01 17:07:33,816 - INFO - 🗑️ Removed checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:07:33,816 - INFO - 🎉 Batch evaluation comparison completed successfully!
+2025-10-01 17:07:33,816 - INFO - 📊 Results saved to: comparison_20251001_170456_batch_evaluation_comparison.xlsx
+2025-10-01 17:08:15,809 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 17:08:15,809 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 17:08:15,810 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:08:15,810 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 17:08:15,810 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 17:08:15,810 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 17:08:15,810 - INFO - 📁 Data file: data/essay_writing_4_sample.xlsx
+2025-10-01 17:08:15,810 - INFO - 📁 Output file: comparison_20251001_170815_batch_evaluation_comparison.xlsx
+2025-10-01 17:08:15,810 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:08:15,810 - INFO - 📦 Batch size: 1
+2025-10-01 17:08:15,810 - INFO - 🔄 Loading sample data...
+2025-10-01 17:08:15,817 - INFO - ✅ Loaded 4 essays from data/essay_writing_4_sample.xlsx
+2025-10-01 17:08:15,817 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 17:08:15,817 - INFO - 📋 Original levels distribution:
+2025-10-01 17:08:15,817 - INFO -    basic: 1 essays
+2025-10-01 17:08:15,817 - INFO -    intermediate: 1 essays
+2025-10-01 17:08:15,818 - INFO -    advanced: 1 essays
+2025-10-01 17:08:15,818 - INFO -    expert: 1 essays
+2025-10-01 17:08:15,818 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 17:08:15,818 - INFO - 🔄 No existing checkpoint found, starting fresh
+2025-10-01 17:08:15,818 - INFO - 📊 Current results status:
+2025-10-01 17:08:15,818 - INFO -   Basic_v1.5.0: 0 completed essays
+2025-10-01 17:08:15,818 - INFO -   Intermediate_v1.5.0: 0 completed essays
+2025-10-01 17:08:15,818 - INFO -   Advanced_v1.5.0: 0 completed essays
+2025-10-01 17:08:15,818 - INFO -   Expert_v1.5.0: 0 completed essays
+2025-10-01 17:08:15,818 - INFO - 🚀 Starting batch evaluation: 4 essays × 4 levels × 1 versions = 16 API calls
+2025-10-01 17:08:15,818 - INFO - 💾 Initial checkpoint saved
+2025-10-01 17:08:15,818 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 17:08:15,819 - INFO - [4/16] Evaluating essay 32 (original: expert) with level Basic, version v1.5.0
+2025-10-01 17:08:43,095 - INFO - 💾 Checkpoint saved at 4/16 calls
+2025-10-01 17:08:43,095 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:08:44,095 - INFO -   Intermediate_v1.5.0: 0 results
+2025-10-01 17:08:45,095 - INFO -   Advanced_v1.5.0: 0 results
+2025-10-01 17:08:46,096 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:08:47,096 - INFO - 📊 Processing level: Intermediate, version: v1.5.0
+2025-10-01 17:08:47,097 - INFO - [8/16] Evaluating essay 32 (original: expert) with level Intermediate, version v1.5.0
+2025-10-01 17:09:23,595 - INFO - 💾 Checkpoint saved at 8/16 calls
+2025-10-01 17:09:23,595 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:09:24,595 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:09:25,596 - INFO -   Advanced_v1.5.0: 0 results
+2025-10-01 17:09:26,596 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:09:27,596 - INFO - 📊 Processing level: Advanced, version: v1.5.0
+2025-10-01 17:09:27,597 - INFO - [12/16] Evaluating essay 32 (original: expert) with level Advanced, version v1.5.0
+2025-10-01 17:10:05,505 - INFO - 💾 Checkpoint saved at 12/16 calls
+2025-10-01 17:10:05,505 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:10:06,505 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:10:07,506 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:10:08,506 - INFO -   Expert_v1.5.0: 0 results
+2025-10-01 17:10:10,928 - INFO - 📊 Processing level: Expert, version: v1.5.0
+2025-10-01 17:10:10,929 - INFO - [16/16] Evaluating essay 32 (original: expert) with level Expert, version v1.5.0
+2025-10-01 17:10:48,715 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 17:10:48,716 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 17:10:48,716 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:10:48,716 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 17:10:48,716 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 17:10:48,716 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 17:10:48,716 - INFO - 📁 Data file: ../data/essay_writing_40_sample.xlsx
+2025-10-01 17:10:48,716 - INFO - 📁 Output file: comparison_20251001_171048_batch_evaluation_comparison.xlsx
+2025-10-01 17:10:48,716 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:10:48,716 - INFO - 📦 Batch size: 5
+2025-10-01 17:10:48,716 - INFO - 🔄 Resume mode enabled
+2025-10-01 17:10:48,716 - INFO - 🔄 Loading sample data...
+2025-10-01 17:10:48,717 - ERROR - ❌ Failed to load Excel file: [Errno 2] No such file or directory: '../data/essay_writing_40_sample.xlsx'
+2025-10-01 17:10:48,717 - ERROR - ❌ Batch evaluation failed: [Errno 2] No such file or directory: '../data/essay_writing_40_sample.xlsx'
+2025-10-01 17:10:48,717 - INFO - 💾 Progress may be saved in checkpoint: batch_evaluation_checkpoint.json
+2025-10-01 17:10:58,039 - INFO - 💾 Checkpoint saved at 16/16 calls
+2025-10-01 17:10:58,039 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:10:58,420 - INFO - 🔧 Initialized evaluator with prompt versions: ['v1.5.0']
+2025-10-01 17:10:58,420 - INFO - 📊 Total combinations: 4 levels × 1 versions = 4 per essay
+2025-10-01 17:10:58,420 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:10:58,420 - INFO - 📦 Batch size: 5 calls per save
+2025-10-01 17:10:58,420 - INFO - 🚀 Starting batch evaluation comparison
+2025-10-01 17:10:58,420 - INFO - 📝 Prompt versions: ['v1.5.0']
+2025-10-01 17:10:58,420 - INFO - 📁 Data file: data/essay_writing_4_sample.xlsx
+2025-10-01 17:10:58,420 - INFO - 📁 Output file: comparison_20251001_171058_batch_evaluation_comparison.xlsx
+2025-10-01 17:10:58,420 - INFO - 💾 Checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:10:58,420 - INFO - 📦 Batch size: 5
+2025-10-01 17:10:58,420 - INFO - 🔄 Resume mode enabled
+2025-10-01 17:10:58,420 - INFO - 🔄 Loading sample data...
+2025-10-01 17:10:58,426 - INFO - ✅ Loaded 4 essays from data/essay_writing_4_sample.xlsx
+2025-10-01 17:10:58,427 - INFO - 📊 Columns: ['essay_id', 'rubric_level', 'topic_prompt', 'submit_text']
+2025-10-01 17:10:58,427 - INFO - 📋 Original levels distribution:
+2025-10-01 17:10:58,427 - INFO -    basic: 1 essays
+2025-10-01 17:10:58,427 - INFO -    intermediate: 1 essays
+2025-10-01 17:10:58,428 - INFO -    advanced: 1 essays
+2025-10-01 17:10:58,428 - INFO -    expert: 1 essays
+2025-10-01 17:10:58,428 - INFO - 🔄 Starting batch evaluation...
+2025-10-01 17:10:58,428 - INFO - ✅ Checkpoint loaded: 16/16 calls completed
+2025-10-01 17:10:58,428 - INFO - 📅 Checkpoint timestamp: 2025-10-01T17:10:58.038657
+2025-10-01 17:10:58,428 - INFO - 📊 Current results status:
+2025-10-01 17:10:58,428 - INFO -   Basic_v1.5.0: 1 completed essays
+2025-10-01 17:10:58,428 - INFO -   Intermediate_v1.5.0: 1 completed essays
+2025-10-01 17:10:58,429 - INFO -   Advanced_v1.5.0: 1 completed essays
+2025-10-01 17:10:58,429 - INFO -   Expert_v1.5.0: 1 completed essays
+2025-10-01 17:10:58,429 - INFO - 🚀 Starting batch evaluation: 4 essays × 4 levels × 1 versions = 16 API calls
+2025-10-01 17:10:58,429 - INFO - 🔄 Resuming from checkpoint: 16/16 calls already completed
+2025-10-01 17:10:58,429 - INFO - 💾 Initial checkpoint saved
+2025-10-01 17:10:58,430 - INFO - 📊 Processing level: Basic, version: v1.5.0
+2025-10-01 17:10:58,430 - INFO - [19/16] Evaluating essay 32 (original: expert) with level Basic, version v1.5.0
+2025-10-01 17:10:59,039 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:11:00,039 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:11:01,040 - INFO -   Expert_v1.5.0: 1 results
+2025-10-01 17:11:02,040 - INFO - ✅ Batch evaluation completed!
+2025-10-01 17:11:02,041 - INFO - 🔄 Creating Excel report...
+2025-10-01 17:11:02,041 - INFO - 📝 Creating Excel report: comparison_20251001_170815_batch_evaluation_comparison.xlsx
+2025-10-01 17:11:02,041 - INFO - 🔍 Available result keys: ['Basic_v1.5.0', 'Intermediate_v1.5.0', 'Advanced_v1.5.0', 'Expert_v1.5.0']
+2025-10-01 17:11:02,041 - INFO -   Basic_v1.5.0: 1 results
+2025-10-01 17:11:02,041 - INFO -   Intermediate_v1.5.0: 1 results
+2025-10-01 17:11:02,041 - INFO -   Advanced_v1.5.0: 1 results
+2025-10-01 17:11:02,041 - INFO -   Expert_v1.5.0: 1 results
+2025-10-01 17:11:02,042 - INFO - ✓ Found data for key: Basic_v1.5.0
+2025-10-01 17:11:02,044 - INFO - 📊 Creating sheet 'Basic_v1_5_0' using key 'Basic_v1.5.0' with 1 results
+2025-10-01 17:11:02,047 - INFO - ✅ Created sheet: Basic_v1_5_0 with 1 records
+2025-10-01 17:11:02,047 - INFO - ✓ Found data for key: Intermediate_v1.5.0
+2025-10-01 17:11:02,048 - INFO - 📊 Creating sheet 'Intermediate_v1_5_0' using key 'Intermediate_v1.5.0' with 1 results
+2025-10-01 17:11:02,052 - INFO - ✅ Created sheet: Intermediate_v1_5_0 with 1 records
+2025-10-01 17:11:02,052 - INFO - ✓ Found data for key: Advanced_v1.5.0
+2025-10-01 17:11:02,053 - INFO - 📊 Creating sheet 'Advanced_v1_5_0' using key 'Advanced_v1.5.0' with 1 results
+2025-10-01 17:11:02,057 - INFO - ✅ Created sheet: Advanced_v1_5_0 with 1 records
+2025-10-01 17:11:02,058 - INFO - ✓ Found data for key: Expert_v1.5.0
+2025-10-01 17:11:02,059 - INFO - 📊 Creating sheet 'Expert_v1_5_0' using key 'Expert_v1.5.0' with 1 results
+2025-10-01 17:11:02,063 - INFO - ✅ Created sheet: Expert_v1_5_0 with 1 records
+2025-10-01 17:11:02,066 - INFO - ✅ Created Summary sheet
+2025-10-01 17:11:02,077 - INFO - ✅ Excel report saved: comparison_20251001_170815_batch_evaluation_comparison.xlsx
+2025-10-01 17:11:02,077 - INFO - 🗑️ Removed checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:11:02,077 - INFO - 🎉 Batch evaluation comparison completed successfully!
+2025-10-01 17:11:02,077 - INFO - 📊 Results saved to: comparison_20251001_170815_batch_evaluation_comparison.xlsx
+2025-10-01 17:11:29,791 - INFO - 📊 Processing level: Intermediate, version: v1.5.0
+2025-10-01 17:11:29,792 - INFO - [22/16] Evaluating essay 32 (original: expert) with level Intermediate, version v1.5.0
+2025-10-01 17:12:02,849 - INFO - 📊 Processing level: Advanced, version: v1.5.0
+2025-10-01 17:12:02,850 - INFO - [25/16] Evaluating essay 32 (original: expert) with level Advanced, version v1.5.0
+2025-10-01 17:12:42,856 - INFO - 💾 Checkpoint saved at 25/16 calls
+2025-10-01 17:12:42,856 - INFO -   Basic_v1.5.0: 2 results
+2025-10-01 17:12:43,856 - INFO -   Intermediate_v1.5.0: 2 results
+2025-10-01 17:12:44,856 - INFO -   Advanced_v1.5.0: 2 results
+2025-10-01 17:12:45,857 - INFO -   Expert_v1.5.0: 1 results
+2025-10-01 17:12:46,857 - INFO - 📊 Processing level: Expert, version: v1.5.0
+2025-10-01 17:12:46,858 - INFO - [28/16] Evaluating essay 32 (original: expert) with level Expert, version v1.5.0
+2025-10-01 17:13:28,960 - INFO - ✅ Batch evaluation completed!
+2025-10-01 17:13:28,961 - INFO - 🔄 Creating Excel report...
+2025-10-01 17:13:28,961 - INFO - 📝 Creating Excel report: comparison_20251001_171058_batch_evaluation_comparison.xlsx
+2025-10-01 17:13:28,961 - INFO - 🔍 Available result keys: ['Basic_v1.5.0', 'Intermediate_v1.5.0', 'Advanced_v1.5.0', 'Expert_v1.5.0']
+2025-10-01 17:13:28,961 - INFO -   Basic_v1.5.0: 2 results
+2025-10-01 17:13:28,961 - INFO -   Intermediate_v1.5.0: 2 results
+2025-10-01 17:13:28,961 - INFO -   Advanced_v1.5.0: 2 results
+2025-10-01 17:13:28,961 - INFO -   Expert_v1.5.0: 2 results
+2025-10-01 17:13:28,962 - INFO - ✓ Found data for key: Basic_v1.5.0
+2025-10-01 17:13:28,963 - INFO - 📊 Creating sheet 'Basic_v1_5_0' using key 'Basic_v1.5.0' with 2 results
+2025-10-01 17:13:28,967 - INFO - ✅ Created sheet: Basic_v1_5_0 with 2 records
+2025-10-01 17:13:28,967 - INFO - ✓ Found data for key: Intermediate_v1.5.0
+2025-10-01 17:13:28,968 - INFO - 📊 Creating sheet 'Intermediate_v1_5_0' using key 'Intermediate_v1.5.0' with 2 results
+2025-10-01 17:13:28,972 - INFO - ✅ Created sheet: Intermediate_v1_5_0 with 2 records
+2025-10-01 17:13:28,972 - INFO - ✓ Found data for key: Advanced_v1.5.0
+2025-10-01 17:13:28,973 - INFO - 📊 Creating sheet 'Advanced_v1_5_0' using key 'Advanced_v1.5.0' with 2 results
+2025-10-01 17:13:28,976 - INFO - ✅ Created sheet: Advanced_v1_5_0 with 2 records
+2025-10-01 17:13:28,976 - INFO - ✓ Found data for key: Expert_v1.5.0
+2025-10-01 17:13:28,977 - INFO - 📊 Creating sheet 'Expert_v1_5_0' using key 'Expert_v1.5.0' with 2 results
+2025-10-01 17:13:28,981 - INFO - ✅ Created sheet: Expert_v1_5_0 with 2 records
+2025-10-01 17:13:28,985 - INFO - ✅ Created Summary sheet
+2025-10-01 17:13:28,994 - INFO - ✅ Excel report saved: comparison_20251001_171058_batch_evaluation_comparison.xlsx
+2025-10-01 17:13:28,994 - INFO - 🗑️ Removed checkpoint file: batch_evaluation_checkpoint.json
+2025-10-01 17:13:28,994 - INFO - 🎉 Batch evaluation comparison completed successfully!
+2025-10-01 17:13:28,994 - INFO - 📊 Results saved to: comparison_20251001_171058_batch_evaluation_comparison.xlsx

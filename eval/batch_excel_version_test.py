@@ -193,13 +193,14 @@ class ExcelBasedVersionTester:
                     "sample_metadata": sample_data
                 }
         
-        # Save comprehensive results
+        # Save comprehensive results with enhanced structure
+        enhanced_results = self.create_enhanced_comprehensive_results(all_results)
         comprehensive_output = output_dir / "comprehensive_results.json"
         with open(comprehensive_output, 'w', encoding='utf-8') as f:
-            json.dump(all_results, f, indent=2, ensure_ascii=False)
+            json.dump(enhanced_results, f, indent=2, ensure_ascii=False)
         
         # Generate and save summary report
-        summary_report = self.generate_comprehensive_summary(all_results)
+        summary_report = self.generate_comprehensive_summary(enhanced_results)
         summary_output = output_dir / "summary_report.txt"
         with open(summary_output, 'w', encoding='utf-8') as f:
             f.write(summary_report)
@@ -215,6 +216,161 @@ class ExcelBasedVersionTester:
         print(summary_report)
         
         return True
+    
+    def create_enhanced_comprehensive_results(self, all_results):
+        """Create enhanced comprehensive results with unified structure"""
+        enhanced = {
+            "test_metadata": all_results["test_metadata"],
+            "overall_summary": {
+                "versions_comparison": {},
+                "rubric_levels_tested": [],
+                "performance_metrics": {}
+            },
+            "detailed_results_by_level": {},
+            "version_performance_matrix": {},
+            "timing_analysis": {},
+            "score_breakdown": {}
+        }
+        
+        # Process each level's results
+        successful_levels = []
+        version_scores = {}
+        version_times = {}
+        
+        for level, level_data in all_results["results_by_level"].items():
+            if "error" in level_data:
+                enhanced["detailed_results_by_level"][level] = {
+                    "status": "error",
+                    "error_message": level_data["error"],
+                    "sample_metadata": level_data.get("sample_metadata", {})
+                }
+                continue
+            
+            successful_levels.append(level)
+            enhanced["detailed_results_by_level"][level] = {
+                "status": "success",
+                "comparison_data": level_data,
+                "sample_metadata": level_data.get("sample_metadata", {})
+            }
+            
+            # Extract performance data
+            scores = level_data.get("comparison_summary", {}).get("score_comparison", {})
+            times = level_data.get("comparison_summary", {}).get("time_comparison", {})
+            
+            for version in scores:
+                if version not in version_scores:
+                    version_scores[version] = {}
+                    version_times[version] = {}
+                
+                version_scores[version][level] = scores[version]
+                version_times[version][level] = times.get(version, 0)
+        
+        # Create overall summary
+        enhanced["overall_summary"]["rubric_levels_tested"] = successful_levels
+        
+        # Version comparison matrix
+        for version in version_scores:
+            enhanced["version_performance_matrix"][version] = {
+                "levels": {},
+                "averages": {
+                    "avg_total_score": 0,
+                    "avg_time": 0,
+                    "avg_introduction": 0,
+                    "avg_body": 0,
+                    "avg_conclusion": 0,
+                    "avg_grammar": 0
+                }
+            }
+            
+            total_scores = []
+            total_times = []
+            intro_scores = []
+            body_scores = []
+            conclusion_scores = []
+            grammar_scores = []
+            
+            for level in successful_levels:
+                if level in version_scores[version]:
+                    level_score_data = version_scores[version][level]
+                    level_time = version_times[version][level]
+                    
+                    enhanced["version_performance_matrix"][version]["levels"][level] = {
+                        "scores": level_score_data,
+                        "time": level_time
+                    }
+                    
+                    total_scores.append(level_score_data.get("total", 0))
+                    total_times.append(level_time)
+                    intro_scores.append(level_score_data.get("introduction", 0))
+                    body_scores.append(level_score_data.get("body", 0))
+                    conclusion_scores.append(level_score_data.get("conclusion", 0))
+                    grammar_scores.append(level_score_data.get("grammar", 0))
+            
+            # Calculate averages
+            if total_scores:
+                enhanced["version_performance_matrix"][version]["averages"] = {
+                    "avg_total_score": round(sum(total_scores) / len(total_scores), 2),
+                    "avg_time": round(sum(total_times) / len(total_times), 2),
+                    "avg_introduction": round(sum(intro_scores) / len(intro_scores), 2),
+                    "avg_body": round(sum(body_scores) / len(body_scores), 2),
+                    "avg_conclusion": round(sum(conclusion_scores) / len(conclusion_scores), 2),
+                    "avg_grammar": round(sum(grammar_scores) / len(grammar_scores), 2)
+                }
+        
+        # Timing analysis
+        enhanced["timing_analysis"] = {
+            "fastest_version": None,
+            "slowest_version": None,
+            "time_differences": {},
+            "version_timing_breakdown": version_times
+        }
+        
+        if version_times:
+            avg_times_per_version = {}
+            for version, times_dict in version_times.items():
+                if times_dict:
+                    avg_times_per_version[version] = sum(times_dict.values()) / len(times_dict)
+            
+            if avg_times_per_version:
+                fastest = min(avg_times_per_version, key=avg_times_per_version.get)
+                slowest = max(avg_times_per_version, key=avg_times_per_version.get)
+                
+                enhanced["timing_analysis"]["fastest_version"] = {
+                    "version": fastest,
+                    "avg_time": round(avg_times_per_version[fastest], 2)
+                }
+                enhanced["timing_analysis"]["slowest_version"] = {
+                    "version": slowest, 
+                    "avg_time": round(avg_times_per_version[slowest], 2)
+                }
+                
+                enhanced["timing_analysis"]["time_differences"] = avg_times_per_version
+        
+        # Score breakdown
+        enhanced["score_breakdown"] = {
+            "by_section": {
+                "introduction": {},
+                "body": {},
+                "conclusion": {},
+                "grammar": {}
+            },
+            "by_level": {}
+        }
+        
+        for section in ["introduction", "body", "conclusion", "grammar"]:
+            for version in version_scores:
+                section_scores = []
+                for level in successful_levels:
+                    if level in version_scores[version]:
+                        section_scores.append(version_scores[version][level].get(section, 0))
+                
+                if section_scores:
+                    enhanced["score_breakdown"]["by_section"][section][version] = {
+                        "average": round(sum(section_scores) / len(section_scores), 2),
+                        "scores_by_level": dict(zip(successful_levels, section_scores))
+                    }
+        
+        return enhanced
     
     def generate_comprehensive_summary(self, all_results):
         """Generate a comprehensive summary report"""

@@ -68,6 +68,7 @@ class StructureEvaluator:
                     "has_previous_context": previous_summary is not None,
                     "prompt_source": "local_file",
                     "prompt_file": f"{rubric_item}_{level.lower()}",
+                    "prompt_version": self.prompt_loader.version,  # 현재 사용 중인 prompt 버전 추가
                 }
             )
             

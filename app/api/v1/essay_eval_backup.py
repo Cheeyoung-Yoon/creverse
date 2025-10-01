@@ -28,34 +28,35 @@ from app.core.dependencies import (
     PerformanceMonitor
 )
 
+# Setup logger
 logger = logging.getLogger(__name__)
 
-# Custom Exception Classes
+# Custom exceptions with detailed error context
 class EvaluationException(Exception):
     """Base exception for evaluation errors"""
-    def __init__(self, message: str, details: dict = None, error_code: str = "EVALUATION_ERROR"):
+    def __init__(self, message: str, details: dict = None, error_code: str = None):
         self.message = message
         self.details = details or {}
         self.error_code = error_code
-        super().__init__(message)
+        super().__init__(self.message)
+
+class PromptLoadException(EvaluationException):
+    """Prompt loading related errors"""
+    def __init__(self, message: str, version: str = None, details: dict = None):
+        super().__init__(message, details, "PROMPT_LOAD_ERROR")
+        self.version = version
+
+class LLMConnectionException(EvaluationException):
+    """LLM connection/timeout errors"""
+    def __init__(self, message: str, details: dict = None, retry_after: int = 30):
+        super().__init__(message, details, "LLM_CONNECTION_ERROR")
+        self.retry_after = retry_after
 
 class ValidationException(EvaluationException):
     """Input validation errors"""
     def __init__(self, message: str, field: str = None, details: dict = None):
-        self.field = field
         super().__init__(message, details, "VALIDATION_ERROR")
-
-class PromptLoadException(EvaluationException):
-    """Prompt loading errors"""
-    def __init__(self, message: str, version: str = None, details: dict = None):
-        self.version = version
-        super().__init__(message, details, "PROMPT_LOAD_ERROR")
-
-class LLMConnectionException(EvaluationException):
-    """LLM connection and API errors"""
-    def __init__(self, message: str, details: dict = None, retry_after: int = 30):
-        self.retry_after = retry_after
-        super().__init__(message, details, "LLM_CONNECTION_ERROR")
+        self.field = field
 
 class TokenLimitException(EvaluationException):
     """Token limit exceeded errors"""
@@ -120,24 +121,6 @@ async def enhanced_route_timer(request: Request) -> AsyncIterator[None]:
 router = APIRouter(dependencies=[Depends(enhanced_route_timer)])
 
 
-# Basic sync dependencies for compatibility
-@lru_cache()
-def get_loader() -> PromptLoader:
-    """기본 프롬프트 로더 (동기식, 기존 호환성)"""
-    return PromptLoader(version=FIXED_PROMPT_VERSION)
-
-@lru_cache()
-def get_llm() -> LLM:
-    """기본 LLM (동기식, 기존 호환성)"""
-    return build_llm()
-
-def get_evaluator(
-    llm: LLM = Depends(get_llm),
-    loader: PromptLoader = Depends(get_loader),
-) -> EssayEvaluator:
-    return EssayEvaluator(llm, loader)
-
-
 # Enhanced async dependencies with connection pooling
 async def get_llm_with_pool() -> LLM:
     """연결 풀을 사용하는 비동기 LLM 획득"""
@@ -170,7 +153,7 @@ async def get_loader_with_validation() -> PromptLoader:
             details={"error": str(e)}
         )
 
-async def _validate_loader_comprehensive(loader: PromptLoader) -> None:
+async def _validate_loader_comprehensive(loader: PromptLoader):
     """포괄적인 프롬프트 로더 검증"""
     sections = ["grammar", "introduction", "body", "conclusion"]
     levels = ["Basic", "Intermediate", "Advanced", "Expert"]
@@ -184,8 +167,25 @@ async def _validate_loader_comprehensive(loader: PromptLoader) -> None:
     logger.info("Comprehensive prompt validation completed")
 
 
+def get_evaluator(
+    llm: LLM = Depends(get_llm),
+    loader: PromptLoader = Depends(get_loader),
+) -> EssayEvaluator:
+    return EssayEvaluator(llm, loader)
+
+@lru_cache()
+def get_loader() -> PromptLoader:
+    """기본 프롬프트 로더 (동기식, 기존 호환성)"""
+    return PromptLoader(version=FIXED_PROMPT_VERSION)
+
+@lru_cache()
+def get_llm() -> LLM:
+    """기본 LLM (동기식, 기존 호환성)"""
+    return build_llm()
+
+
 @router.post("/essay-eval", response_model=EssayEvalResponse)
-@async_timeout(1000.0)  # 1000초 타임아웃 (장시간 처리 허용)
+@async_timeout(180.0)  # 3분 타임아웃
 @async_retry(max_attempts=2, delay=1.0)  # 최대 2회 재시도
 async def essay_eval(
     req: EssayEvalRequest,
@@ -322,13 +322,290 @@ async def essay_eval(
             }
         )
 
+# Helper functions for enhanced async processing
+async def _validate_request_async(req: EssayEvalRequest, request_id: str):
+    """비동기 요청 검증"""
+    if not req.submit_text or len(req.submit_text.strip()) < 10:
+        raise ValidationException(
+            "Essay text too short", 
+            field="submit_text",
+            details={
+                "min_length": 10, 
+                "actual_length": len(req.submit_text.strip()) if req.submit_text else 0,
+                "request_id": request_id
+            }
+        )
+    
+    # CPU 집약적인 검증 작업을 스레드 풀에서 실행
+    task_manager = get_task_manager()
+    validation_result = await task_manager.run_in_thread(
+        _cpu_intensive_validation, req.submit_text, request_id
+    )
+    
+    if not validation_result["valid"]:
+        raise ValidationException(
+            validation_result["error"],
+            field="submit_text",
+            details=validation_result["details"]
+        )
+
+def _cpu_intensive_validation(text: str, request_id: str) -> dict:
+    """CPU 집약적인 텍스트 검증"""
+    word_count = len(text.split())
+    unique_words = len(set(text.lower().split()))
+    
+    if word_count > 1000:
+        return {
+            "valid": False,
+            "error": "Essay too long",
+            "details": {
+                "word_count": word_count,
+                "max_words": 1000,
+                "request_id": request_id
+            }
+        }
+    
+    if unique_words < word_count * 0.2:
+        return {
+            "valid": False,
+            "error": "Essay appears to have excessive repetition",
+            "details": {
+                "word_count": word_count,
+                "unique_words": unique_words,
+                "repetition_ratio": unique_words / word_count if word_count > 0 else 0,
+                "request_id": request_id
+            }
+        }
+    
+    return {"valid": True}
+
+async def _handle_evaluation_error(error: Exception, req: EssayEvalRequest, request_id: str, evaluation_time: float):
+    """평가 에러 처리"""
+    error_str = str(error).lower()
+    
+    if "token" in error_str and ("limit" in error_str or "too long" in error_str):
+        raise TokenLimitException(
+            "Text too long for processing",
+            max_tokens=4000,
+            actual_tokens=len(req.submit_text.split())
+        )
+    elif "rate limit" in error_str or "quota" in error_str:
+        raise RateLimitException(
+            "API rate limit exceeded",
+            retry_after=60
+        )
+    elif "content filter" in error_str or "inappropriate" in error_str:
+        raise ContentFilterException(
+            "Content was filtered by safety systems"
+        )
+    elif isinstance(error, asyncio.TimeoutError):
+        raise LLMConnectionException(
+            "Evaluation timeout - request took too long",
+            details={
+                "evaluation_time": evaluation_time,
+                "request_id": request_id,
+                "essay_length": len(req.submit_text)
+            },
+            retry_after=60
+        )
+    else:
+        raise LLMConnectionException(
+            "AI service error during evaluation",
+            details={
+                "original_error": str(error),
+                "error_type": type(error).__name__,
+                "request_id": request_id,
+                "evaluation_time": evaluation_time
+            }
+        )
+
+async def _process_evaluation_response(
+    result, response: Response, request_id: str, evaluation_time: float, background_tasks: BackgroundTasks
+):
+    """평가 응답 처리"""
+    timings = result.timings
+    if timings:
+        parts = []
+        for key in ("pre_process", "grammar", "structure", "aggregate", "post_process", "total"):
+            duration = timings.get(key)
+            if duration is not None:
+                parts.append(f"{key};dur={duration:.1f}")
+        
+        header_val = ", ".join(parts)
+        if header_val:
+            response.headers["Server-Timing"] = header_val
+            response.headers["X-Request-ID"] = request_id
+            response.headers["X-Evaluation-Time"] = f"{evaluation_time:.2f}s"
+        
+        # 성능 로깅을 백그라운드에서 처리
+        background_tasks.add_task(
+            _log_performance_metrics,
+            request_id, timings, evaluation_time
+        )
+
+async def _collect_evaluation_metrics(req: EssayEvalRequest, request_id: str):
+    """평가 메트릭 수집 (백그라운드 작업)"""
+    try:
+        metrics = {
+            "request_id": request_id,
+            "level": req.rubric_level,
+            "text_length": len(req.submit_text),
+            "word_count": len(req.submit_text.split()),
+            "timestamp": time.time()
+        }
+        
+        # 메트릭을 로깅 시스템 또는 모니터링 시스템에 전송
+        logger.info(f"[METRICS] {request_id}: {metrics}")
+        
+        # 추가적인 분석을 위해 스레드 풀에서 처리
+        task_manager = get_task_manager()
+        await task_manager.run_in_thread(_analyze_text_complexity, req.submit_text, request_id)
+        
+    except Exception as e:
+        logger.warning(f"[{request_id}] Failed to collect metrics: {e}")
+
+def _analyze_text_complexity(text: str, request_id: str):
+    """텍스트 복잡도 분석 (CPU 집약적 작업)"""
+    try:
+        # 간단한 복잡도 분석
+        sentences = text.split('.')
+        avg_sentence_length = sum(len(s.split()) for s in sentences) / len(sentences) if sentences else 0
+        
+        complexity_metrics = {
+            "avg_sentence_length": avg_sentence_length,
+            "sentence_count": len(sentences),
+            "unique_word_ratio": len(set(text.lower().split())) / len(text.split()) if text.split() else 0
+        }
+        
+        logger.debug(f"[{request_id}] Text complexity: {complexity_metrics}")
+        
+    except Exception as e:
+        logger.warning(f"[{request_id}] Text complexity analysis failed: {e}")
+
+async def _log_performance_metrics(request_id: str, timings: dict, evaluation_time: float):
+    """성능 메트릭 로깅 (백그라운드 작업)"""
+    try:
+        pretty = " ".join([f"{k}={v:.1f}ms" for k, v in timings.items()])
+        total_time = timings.get("total", 0)
+        
+        logger.info(f"[{request_id}] Performance: {pretty}, Total evaluation: {evaluation_time:.2f}s")
+        
+        # 느린 요청 감지
+        if total_time > 60000:  # > 1분
+            logger.warning(f"[{request_id}] Slow evaluation detected: {total_time:.1f}ms")
+        
+        # 모니터링 시스템에 메트릭 전송 (예: Prometheus, DataDog 등)
+        # await send_to_monitoring_system(request_id, timings, evaluation_time)
+        
+    except Exception as e:
+        logger.warning(f"[{request_id}] Failed to log performance metrics: {e}")
+
+async def _post_evaluation_cleanup(request_id: str, metrics_task_id: str, evaluation_time: float):
+    """평가 후 정리 작업 (백그라운드)"""
+    try:
+        # 태스크 매니저에서 완료된 작업들 정리
+        task_manager = get_task_manager()
+        await task_manager.cleanup_completed_tasks()
+        
+        # 메트릭 태스크 상태 확인
+        # 메트릭 태스크 상태 확인
+        metrics_status = task_manager.get_task_status(metrics_task_id)
+        if metrics_status:
+            logger.debug(f"[{request_id}] Metrics task status: {metrics_status}")
+        
+        logger.info(f"[{request_id}] Post-evaluation cleanup completed")
+        
+    except Exception as e:
+        logger.warning(f"[{request_id}] Post-evaluation cleanup failed: {e}")
+
 
 @router.get("/ping")
 @async_timeout(45.0)  # 45초 타임아웃
 async def ping(
     background_tasks: BackgroundTasks,
     performance_monitor: PerformanceMonitor = Depends(get_performance_monitor)
-) -> dict[str, Any]:
+):
+                "error_code": e.error_code,
+                "retry_after": e.retry_after,
+                "details": e.details,
+                "request_id": request_id
+            }
+        )
+    except TokenLimitException as e:
+        logger.warning(f"[{request_id}] Token limit exceeded: {e.message}")
+        raise HTTPException(
+            status_code=413,
+            detail={
+                "error": "Text too long for processing",
+                "type": "TokenLimitExceeded",
+                "error_code": e.error_code,
+                "max_tokens": e.details.get("max_tokens"),
+                "actual_tokens": e.details.get("actual_tokens"),
+                "suggestion": "Please shorten your essay and try again",
+                "request_id": request_id
+            }
+        )
+    except ContentFilterException as e:
+        logger.warning(f"[{request_id}] Content filtered: {e.message}")
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "error": "Content was filtered by safety systems",
+                "type": "ContentFiltered",
+                "error_code": e.error_code,
+                "suggestion": "Please review your content and ensure it follows guidelines",
+                "request_id": request_id
+            }
+        )
+    except RateLimitException as e:
+        logger.warning(f"[{request_id}] Rate limit exceeded: {e.message}")
+        raise HTTPException(
+            status_code=429,
+            detail={
+                "error": "Rate limit exceeded",
+                "type": "RateLimitExceeded",
+                "error_code": e.error_code,
+                "retry_after": e.retry_after,
+                "suggestion": f"Please wait {e.retry_after} seconds before trying again",
+                "request_id": request_id
+            },
+            headers={"Retry-After": str(e.retry_after)}
+        )
+    except EvaluationException as e:
+        logger.error(f"[{request_id}] General evaluation error: {e.message}")
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "error": e.message,
+                "type": "EvaluationError",
+                "error_code": e.error_code,
+                "details": e.details,
+                "request_id": request_id
+            }
+        )
+    except Exception as exc:
+        # Log unexpected errors with full context
+        logger.error(f"[{request_id}] Unexpected error in essay evaluation: {exc}")
+        logger.error(f"[{request_id}] Traceback: {traceback.format_exc()}")
+        
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "error": "Internal server error",
+                "type": "InternalError",
+                "message": "An unexpected error occurred. Please try again later.",
+                "request_id": request_id,
+                "support_info": "If this error persists, please contact support with the request_id"
+            }
+        )
+
+
+@router.get("/ping")
+@async_timeout(45.0)  # 45초 타임아웃
+async def ping(
+    background_tasks: BackgroundTasks,
+    performance_monitor: PerformanceMonitor = Depends(get_performance_monitor)
+):
     """Enhanced health check endpoint with comprehensive monitoring and connection pooling"""
     ping_id = f"ping_{int(time.time() * 1000)}"
     start_time = time.time()
@@ -500,134 +777,8 @@ async def ping(
         )
 
 
-# Helper functions for enhanced async processing
-async def _validate_request_async(req: EssayEvalRequest, request_id: str) -> None:
-    """비동기 요청 검증"""
-    if not req.submit_text or len(req.submit_text.strip()) < 10:
-        raise ValidationException(
-            "Essay text too short", 
-            field="submit_text",
-            details={
-                "min_length": 10, 
-                "actual_length": len(req.submit_text.strip()) if req.submit_text else 0,
-                "request_id": request_id
-            }
-        )
-    
-    if len(req.submit_text) > 50000:  # 50KB 제한
-        raise ValidationException(
-            "Essay text too long",
-            field="submit_text", 
-            details={
-                "max_length": 50000,
-                "actual_length": len(req.submit_text),
-                "request_id": request_id
-            }
-        )
-    
-    # CPU 집약적인 검증을 백그라운드에서 수행
-    task_manager = get_task_manager()
-    await task_manager.run_in_background(
-        _intensive_content_validation(req.submit_text, request_id),
-        task_id=f"content_validation_{request_id}",
-        timeout=30.0
-    )
-
-async def _intensive_content_validation(text: str, request_id: str) -> None:
-    """CPU 집약적인 콘텐츠 검증"""
-    # 언어 감지, 스팸 검사 등
-    import re
-    
-    # 기본적인 패턴 검사
-    suspicious_patterns = [
-        r'(.)\1{50,}',  # 같은 문자 50번 이상 반복
-        r'[^\w\s]{20,}',  # 특수문자만 20개 이상
-    ]
-    
-    for pattern in suspicious_patterns:
-        if re.search(pattern, text):
-            logger.warning(f"[{request_id}] Suspicious pattern detected: {pattern}")
-            raise ValidationException(
-                "Content contains suspicious patterns",
-                field="submit_text",
-                details={"pattern": pattern, "request_id": request_id}
-            )
-
-async def _collect_evaluation_metrics(req: EssayEvalRequest, request_id: str) -> None:
-    """평가 메트릭 수집 (백그라운드 작업)"""
-    try:
-        # 메트릭 수집 로직
-        metrics = {
-            "text_length": len(req.submit_text),
-            "word_count": len(req.submit_text.split()),
-            "rubric_level": req.rubric_level,
-            "timestamp": time.time(),
-            "request_id": request_id
-        }
-        
-        # 외부 메트릭 시스템에 전송
-        logger.info(f"[{request_id}] Metrics collected: {metrics}")
-        
-    except Exception as e:
-        logger.warning(f"[{request_id}] Failed to collect metrics: {e}")
-
-async def _handle_evaluation_error(error: Exception, req: EssayEvalRequest, request_id: str, evaluation_time: float) -> None:
-    """평가 오류 처리"""
-    error_str = str(error).lower()
-    
-    if "timeout" in error_str:
-        raise LLMConnectionException(
-            "Evaluation timeout - please try with shorter text",
-            details={
-                "timeout_duration": evaluation_time,
-                "text_length": len(req.submit_text),
-                "request_id": request_id
-            },
-            retry_after=120
-        )
-    elif "rate limit" in error_str:
-        raise RateLimitException("Service temporarily busy - please try again later")
-    elif "token" in error_str and ("limit" in error_str or "exceed" in error_str):
-        raise TokenLimitException(
-            "Text too long for processing",
-            actual_tokens=len(req.submit_text.split()) * 1.3  # 추정값
-        )
-    else:
-        raise EvaluationException(
-            "Evaluation failed",
-            details={"original_error": str(error), "request_id": request_id}
-        )
-
-async def _process_evaluation_response(
-    result, response: Response, request_id: str, evaluation_time: float, background_tasks: BackgroundTasks
-) -> None:
-    """평가 응답 처리"""
-    # 응답 헤더 설정
-    response.headers["X-Request-ID"] = request_id
-    response.headers["X-Evaluation-Time"] = f"{evaluation_time:.2f}s"
-    response.headers["X-Prompt-Version"] = FIXED_PROMPT_VERSION
-    
-    # 성능 정보 로깅
-    logger.info(f"[{request_id}] Response headers set - evaluation time: {evaluation_time:.2f}s")
-
-async def _post_evaluation_cleanup(request_id: str, metrics_task_id: str, evaluation_time: float) -> None:
-    """평가 후 정리 작업 (백그라운드)"""
-    try:
-        task_manager = get_task_manager()
-        
-        # 메트릭 태스크 상태 확인
-        metrics_status = task_manager.get_task_status(metrics_task_id)
-        if metrics_status:
-            logger.debug(f"[{request_id}] Metrics task status: {metrics_status}")
-        
-        logger.info(f"[{request_id}] Post-evaluation cleanup completed")
-        
-    except Exception as e:
-        logger.warning(f"[{request_id}] Post-evaluation cleanup failed: {e}")
-
-
 # Ping endpoint helper functions
-async def _validate_all_prompts(loader: PromptLoader, ping_id: str) -> None:
+async def _validate_all_prompts(loader: PromptLoader, ping_id: str):
     """모든 프롬프트 유효성 검증 (백그라운드 작업)"""
     try:
         sections = ["grammar", "introduction", "body", "conclusion"]
@@ -655,7 +806,7 @@ async def _validate_all_prompts(loader: PromptLoader, ping_id: str) -> None:
         logger.error(f"[{ping_id}] Comprehensive prompt validation failed: {e}")
         raise
 
-async def _handle_ping_error(error: Exception, ping_id: str, connection_time: float) -> None:
+async def _handle_ping_error(error: Exception, ping_id: str, connection_time: float):
     """핑 에러 처리"""
     error_str = str(error).lower()
     
@@ -678,7 +829,7 @@ async def _handle_ping_error(error: Exception, ping_id: str, connection_time: fl
             details={"connection_error": str(error), "ping_id": ping_id, "connection_time_ms": connection_time}
         )
 
-async def _detailed_system_monitoring(ping_id: str, response_time: float, system_stats: dict) -> None:
+async def _detailed_system_monitoring(ping_id: str, response_time: float, system_stats: dict):
     """상세 시스템 모니터링 (백그라운드 작업)"""
     try:
         # 성능 지표 분석

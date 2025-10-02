@@ -64,7 +64,7 @@ class EssayEvaluator:
         async def _timed_structure() -> Dict[str, Any]:
             ts0 = perf_counter()
             res = await structure_eval.run_structure_chain(
-                intro=intro, body=body, conclusion=conclusion, level=req.rubric_level
+                intro=intro, body=body, conclusion=conclusion, level=req.rubric_level, topic_prompt=req.topic_prompt
             )
             timings_ms["structure"] = (perf_counter() - ts0) * 1000.0
             return res

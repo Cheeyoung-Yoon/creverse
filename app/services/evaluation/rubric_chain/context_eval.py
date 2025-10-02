@@ -28,6 +28,7 @@ class StructureEvaluator:
         rubric_item: str,
         text: str,
         level: str = "Basic",
+        topic_prompt: Optional[str] = None,
         previous_summary: Optional[str] = None,
     ) -> Dict[str, Any]:
         try:
@@ -35,17 +36,19 @@ class StructureEvaluator:
             text = str(text).replace("\r\n", "\n").replace("\r", "\n").strip()
             
             system_message = self.prompt_loader.load_prompt(rubric_item, level)
-            # 이전 섹션 요약을 사용자 메시지 컨텍스트로 첨부(있을 경우)
+            
+            # 사용자 메시지 구성: topic_prompt와 previous_summary 포함
+            user_content_parts = []
+            
+            if topic_prompt:
+                user_content_parts.append(f"[Topic/Prompt]\n{topic_prompt}")
+            
             if previous_summary:
-                user_content = (
-                    f"""[Previous section summary]
-{previous_summary}
-
-[Current section]
-{text}"""
-                )
-            else:
-                user_content = text
+                user_content_parts.append(f"[Previous section summary]\n{previous_summary}")
+            
+            user_content_parts.append(f"[Current section]\n{text}")
+            
+            user_content = "\n\n".join(user_content_parts)
 
             messages = [
                 {"role": "system", "content": system_message},
@@ -65,6 +68,7 @@ class StructureEvaluator:
                     "level": level,
                     "section": rubric_item,
                     "text_length": len(text),
+                    "has_topic_prompt": topic_prompt is not None,
                     "has_previous_context": previous_summary is not None,
                     "prompt_source": "local_file",
                     "prompt_file": f"{rubric_item}_{level.lower()}",
@@ -136,21 +140,24 @@ class StructureEvaluator:
         body: str,
         conclusion: str,
         level: str = "Basic",
+        topic_prompt: Optional[str] = None,
     ) -> Dict[str, Any]:
         """서론→본론→결론 순으로 평가하며, 이전 섹션 요약(피드백)을 다음 섹션 컨텍스트로 제공."""
         intro_res = await self._evaluate_section(
-            rubric_item="introduction", text=intro, level=level
+            rubric_item="introduction", text=intro, level=level, topic_prompt=topic_prompt
         )
         body_res = await self._evaluate_section(
             rubric_item="body",
             text=body,
             level=level,
+            topic_prompt=topic_prompt,
             previous_summary=intro_res.get("feedback"),
         )
         concl_res = await self._evaluate_section(
             rubric_item="conclusion",
             text=conclusion,
             level=level,
+            topic_prompt=topic_prompt,
             previous_summary=body_res.get("feedback"),
         )
 
@@ -163,6 +170,14 @@ class StructureEvaluator:
 
 
 # 기존 함수 시그니처 유지용 래퍼
-async def run_structure_chain(intro: str, body: str, conclusion: str, level: str = "Basic") -> Dict[str, Any]:
+async def run_structure_chain(
+    intro: str, 
+    body: str, 
+    conclusion: str, 
+    level: str = "Basic", 
+    topic_prompt: Optional[str] = None
+) -> Dict[str, Any]:
     evaluator = StructureEvaluator()
-    return await evaluator.run_structure_chain(intro=intro, body=body, conclusion=conclusion, level=level)
+    return await evaluator.run_structure_chain(
+        intro=intro, body=body, conclusion=conclusion, level=level, topic_prompt=topic_prompt
+    )

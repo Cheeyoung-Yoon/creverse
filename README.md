@@ -18,7 +18,7 @@
 conda create -n essay-eval python=3.12
 conda activate essay-eval
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+python main.py
 ````
 
 → Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
